@@ -1,0 +1,476 @@
+/* ============================================================
+   AISA Lions Athletics — Shared Stylesheet
+   ============================================================ */
+
+:root {
+  --navy:      #0d2b52;
+  --navy-dark: #091e3a;
+  --gold:      #f5a800;
+  --gold-light:#ffd166;
+  --white:     #ffffff;
+  --off-white: #f8f9fb;
+  --gray-100:  #f0f2f5;
+  --gray-300:  #d1d5db;
+  --gray-600:  #4b5563;
+  --gray-800:  #1f2937;
+  --autumn:    #c0392b;
+  --winter:    #2980b9;
+  --spring:    #27ae60;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,.10);
+  --shadow-md: 0 4px 20px rgba(0,0,0,.14);
+  --radius:    10px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: var(--gray-800);
+  background: var(--white);
+  line-height: 1.6;
+}
+
+/* ---- NAV ---- */
+nav {
+  background: var(--navy-dark);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,.4);
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .85rem 0;
+  color: var(--gold);
+  font-weight: 800;
+  font-size: 1.1rem;
+  text-decoration: none;
+  letter-spacing: .02em;
+  flex-shrink: 0;
+}
+
+.nav-brand span { color: var(--white); font-weight: 400; }
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 0;
+  margin-left: auto;
+}
+
+.nav-links a {
+  display: block;
+  padding: .9rem 1rem;
+  color: var(--gray-300);
+  text-decoration: none;
+  font-size: .9rem;
+  font-weight: 500;
+  transition: color .2s, background .2s;
+  white-space: nowrap;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--gold);
+  background: rgba(255,255,255,.05);
+}
+
+/* season accent dots */
+.nav-links a[href="autumn.html"]::before { content:"🍂 "; }
+.nav-links a[href="winter.html"]::before { content:"❄️ "; }
+.nav-links a[href="spring.html"]::before { content:"🌸 "; }
+
+/* ---- HERO ---- */
+.hero {
+  background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 60%, #1a4a8a 100%);
+  color: var(--white);
+  text-align: center;
+  padding: 5rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f5a800' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 1;
+}
+
+.hero-content { position: relative; max-width: 760px; margin: 0 auto; }
+
+.hero-eyebrow {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--navy-dark);
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: .3rem .9rem;
+  border-radius: 2rem;
+  margin-bottom: 1.4rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 12px rgba(0,0,0,.3);
+}
+
+.hero h1 em {
+  color: var(--gold);
+  font-style: normal;
+}
+
+.hero p {
+  font-size: 1.15rem;
+  color: rgba(255,255,255,.82);
+  max-width: 560px;
+  margin: 0 auto 2.2rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: .75rem 1.8rem;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: .95rem;
+  text-decoration: none;
+  transition: transform .15s, box-shadow .15s, opacity .15s;
+}
+
+.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); opacity: .92; }
+
+.btn-gold  { background: var(--gold); color: var(--navy-dark); }
+.btn-white { background: var(--white); color: var(--navy); border: 2px solid var(--white); }
+.btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,.5); }
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+.hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* ---- SECTION WRAPPERS ---- */
+section { padding: 4rem 1.5rem; }
+
+.container { max-width: 1100px; margin: 0 auto; }
+
+.section-label {
+  display: inline-block;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: .5rem;
+}
+
+.section-title {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: .75rem;
+  line-height: 1.2;
+}
+
+.section-sub {
+  color: var(--gray-600);
+  max-width: 640px;
+  margin-bottom: 2.5rem;
+  font-size: 1rem;
+}
+
+/* ---- CARD GRID ---- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: transform .2s, box-shadow .2s;
+  text-decoration: none;
+  color: inherit;
+}
+
+.card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+
+.card-accent {
+  height: 5px;
+}
+
+.card-body { padding: 1.4rem; }
+
+.card-icon {
+  font-size: 2rem;
+  margin-bottom: .75rem;
+  display: block;
+}
+
+.card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: .4rem;
+}
+
+.card p {
+  font-size: .9rem;
+  color: var(--gray-600);
+  line-height: 1.55;
+}
+
+.card-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--navy);
+  text-decoration: none;
+}
+.card-link:hover { color: var(--gold); }
+
+/* ---- SEASON BANNER ---- */
+.season-hero {
+  padding: 4rem 1.5rem;
+  color: var(--white);
+  text-align: center;
+}
+
+.season-hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; margin-bottom: .5rem; }
+.season-hero p { font-size: 1.1rem; opacity: .88; max-width: 540px; margin: 0 auto; }
+
+.autumn-hero { background: linear-gradient(135deg, #7d1e10, #c0392b, #e74c3c); }
+.winter-hero { background: linear-gradient(135deg, #1a4a72, #2980b9, #3498db); }
+.spring-hero  { background: linear-gradient(135deg, #145a32, #27ae60, #2ecc71); }
+
+/* ---- SPORT CARDS ---- */
+.sport-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.sport-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.sport-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+
+.sport-card-header {
+  padding: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sport-emoji { font-size: 2.4rem; flex-shrink: 0; }
+
+.sport-card-header h3 { font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: .15rem; }
+.sport-card-header span { font-size: .8rem; opacity: .85; color: var(--white); }
+
+.sport-card-body { padding: 1.2rem 1.4rem; }
+
+.sport-card-body p { font-size: .9rem; color: var(--gray-600); margin-bottom: 1rem; }
+
+.team-badges { display: flex; flex-wrap: wrap; gap: .4rem; }
+
+.badge {
+  display: inline-block;
+  padding: .25rem .7rem;
+  border-radius: 2rem;
+  font-size: .75rem;
+  font-weight: 600;
+  border: 1.5px solid;
+}
+
+.badge-varsity { border-color: var(--navy); color: var(--navy); background: rgba(13,43,82,.07); }
+.badge-jv      { border-color: var(--gold); color: #8a6100; background: rgba(245,168,0,.10); }
+.badge-ms      { border-color: var(--spring); color: #145a32; background: rgba(39,174,96,.10); }
+
+/* ---- TEAM LEVEL SECTION (purpose page) ---- */
+.level-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.level-card {
+  border-radius: var(--radius);
+  padding: 1.8rem;
+  text-align: center;
+}
+
+.level-card h3 { font-size: 1.3rem; font-weight: 800; margin: .75rem 0 .4rem; }
+.level-card p  { font-size: .9rem; line-height: 1.6; }
+
+.level-varsity { background: linear-gradient(135deg, #0d2b52, #1a4a8a); color: var(--white); }
+.level-jv      { background: linear-gradient(135deg, #7a5100, #c47d00); color: var(--white); }
+.level-ms      { background: linear-gradient(135deg, #145a32, #1e8449); color: var(--white); }
+
+.level-icon { font-size: 2.6rem; }
+
+/* ---- VALUES ---- */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.2rem;
+}
+
+.value-item {
+  text-align: center;
+  padding: 1.6rem 1rem;
+  border-radius: var(--radius);
+  background: var(--gray-100);
+}
+
+.value-item .icon { font-size: 2rem; margin-bottom: .6rem; display: block; }
+.value-item h4 { font-weight: 700; color: var(--navy); margin-bottom: .3rem; }
+.value-item p  { font-size: .85rem; color: var(--gray-600); }
+
+/* ---- SEASON NAV CARDS ---- */
+.season-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+}
+
+.season-card {
+  border-radius: var(--radius);
+  padding: 2rem;
+  text-align: center;
+  text-decoration: none;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: var(--shadow-sm);
+}
+
+.season-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.season-card p { font-size: .85rem; font-weight: 400; margin-top: .4rem; opacity: .9; }
+.season-card .season-icon { font-size: 2.4rem; display: block; margin-bottom: .6rem; }
+
+.sc-autumn { background: linear-gradient(135deg, #c0392b, #e74c3c); }
+.sc-winter { background: linear-gradient(135deg, #2980b9, #3498db); }
+.sc-spring  { background: linear-gradient(135deg, #27ae60, #2ecc71); }
+
+/* ---- STATS STRIP ---- */
+.stats-strip {
+  background: var(--navy);
+  color: var(--white);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+}
+
+.stats-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.5rem;
+}
+
+.stat-item h2 { font-size: 2.4rem; font-weight: 900; color: var(--gold); }
+.stat-item p  { font-size: .9rem; color: rgba(255,255,255,.75); margin-top: .15rem; }
+
+/* ---- SCHEDULE TABLE ---- */
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .9rem;
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.schedule-table th {
+  background: var(--navy);
+  color: var(--gold);
+  text-align: left;
+  padding: .75rem 1rem;
+  font-weight: 700;
+  font-size: .8rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.schedule-table td {
+  padding: .7rem 1rem;
+  border-bottom: 1px solid var(--gray-100);
+  color: var(--gray-800);
+}
+
+.schedule-table tr:last-child td { border-bottom: none; }
+.schedule-table tr:nth-child(even) td { background: var(--gray-100); }
+
+/* ---- QUOTE / CALLOUT ---- */
+.callout {
+  background: linear-gradient(135deg, var(--navy), #1a4a8a);
+  color: var(--white);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.callout p { font-size: 1.15rem; font-style: italic; opacity: .9; max-width: 600px; margin: 0 auto 1rem; }
+.callout cite { font-size: .85rem; opacity: .7; font-style: normal; display: block; }
+
+/* ---- FOOTER ---- */
+footer {
+  background: var(--navy-dark);
+  color: rgba(255,255,255,.65);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  font-size: .88rem;
+}
+
+footer strong { color: var(--gold); }
+footer a { color: var(--gold); text-decoration: none; }
+footer .footer-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: .75rem; }
+
+/* ---- BREADCRUMB ---- */
+.breadcrumb {
+  background: var(--gray-100);
+  padding: .6rem 1.5rem;
+  font-size: .82rem;
+  color: var(--gray-600);
+}
+
+.breadcrumb a { color: var(--navy); text-decoration: none; font-weight: 500; }
+.breadcrumb a:hover { color: var(--gold); }
+.breadcrumb span { margin: 0 .4rem; }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 640px) {
+  .nav-links a { padding: .7rem .6rem; font-size: .8rem; }
+  .nav-links a::before { display: none; }
+  section { padding: 2.5rem 1rem; }
+  .hero { padding: 3.5rem 1rem; }
+  .callout { padding: 1.8rem 1rem; }
+}

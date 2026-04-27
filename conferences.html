@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conferences – AISA Lions Athletics</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .conf-hero {
+      background: linear-gradient(135deg, #091e3a 0%, #1a3a6b 55%, #0d5c8a 100%);
+    }
+
+    .conf-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+      transition: box-shadow .2s;
+    }
+    .conf-card:hover { box-shadow: var(--shadow-md); }
+
+    .conf-header {
+      padding: 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .conf-logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      flex-shrink: 0;
+    }
+
+    .conf-header-text h2 { font-size: 1.6rem; font-weight: 900; color: var(--navy); margin-bottom: .2rem; }
+    .conf-header-text h3 { font-size: 1rem; font-weight: 500; color: var(--gray-600); margin-bottom: .6rem; }
+    .conf-header-text p  { font-size: .92rem; color: var(--gray-600); max-width: 560px; line-height: 1.6; }
+
+    .conf-body { padding: 0 2rem 2rem; }
+
+    .conf-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .conf-detail {
+      background: var(--gray-100);
+      border-radius: 8px;
+      padding: .9rem 1rem;
+    }
+    .conf-detail strong { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--gray-600); margin-bottom: .2rem; }
+    .conf-detail span { font-size: .92rem; color: var(--navy); font-weight: 600; }
+
+    .sports-offered { display: flex; flex-wrap: wrap; gap: .45rem; }
+
+    .sport-tag {
+      display: inline-block;
+      padding: .3rem .8rem;
+      border-radius: 2rem;
+      font-size: .78rem;
+      font-weight: 600;
+    }
+
+    .nesac-color { background: #e8f0fe; color: #1a3a8a; border: 1.5px solid #c5d5fb; }
+    .isac-color  { background: #fef3e2; color: #7a4400; border: 1.5px solid #f8d8a0; }
+    .eac-color   { background: #e6f5ec; color: #145a32; border: 1.5px solid #a8dab5; }
+
+    .nesac-logo { background: linear-gradient(135deg, #1a3a8a, #3558c7); }
+    .isac-logo  { background: linear-gradient(135deg, #7a4400, #c47d00); }
+    .eac-logo   { background: linear-gradient(135deg, #145a32, #27ae60); }
+
+    .conf-accent-nesac { height: 6px; background: linear-gradient(90deg, #1a3a8a, #3558c7); }
+    .conf-accent-isac  { height: 6px; background: linear-gradient(90deg, #c47d00, #f5a800); }
+    .conf-accent-eac   { height: 6px; background: linear-gradient(90deg, #145a32, #27ae60); }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .88rem;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .compare-table th {
+      background: var(--navy);
+      color: var(--gold);
+      padding: .8rem 1rem;
+      text-align: left;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+    }
+
+    .compare-table td {
+      padding: .75rem 1rem;
+      border-bottom: 1px solid var(--gray-100);
+      vertical-align: top;
+    }
+
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:nth-child(even) td { background: var(--gray-100); }
+
+    .tag-nesac { display:inline-block; background:#e8f0fe; color:#1a3a8a; padding:.2rem .6rem; border-radius:4px; font-weight:700; font-size:.8rem; }
+    .tag-isac  { display:inline-block; background:#fef3e2; color:#7a4400; padding:.2rem .6rem; border-radius:4px; font-weight:700; font-size:.8rem; }
+    .tag-eac   { display:inline-block; background:#e6f5ec; color:#145a32; padding:.2rem .6rem; border-radius:4px; font-weight:700; font-size:.8rem; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-brand" href="index.html">🦁 AISA <span>Lions Athletics</span></a>
+      <ul class="nav-links">
+        <li><a href="purpose.html">About & Teams</a></li>
+        <li><a href="conferences.html" class="active">Conferences</a></li>
+        <li><a href="autumn.html">Autumn</a></li>
+        <li><a href="winter.html">Winter</a></li>
+        <li><a href="spring.html">Spring</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="index.html">Home</a><span>›</span> Conferences
+  </div>
+
+  <!-- HERO -->
+  <section class="hero conf-hero" style="padding: 3.5rem 1.5rem;">
+    <div class="hero-content">
+      <span class="hero-eyebrow">International Competition</span>
+      <h1>Our <em>Conferences</em></h1>
+      <p>AISA Lions compete in three prestigious international school athletic conferences, giving our student-athletes the opportunity to test themselves against peers from across the region and around the world.</p>
+    </div>
+  </section>
+
+  <!-- CONFERENCE OVERVIEW INTRO -->
+  <section>
+    <div class="container">
+      <div class="section-label">Overview</div>
+      <h2 class="section-title">Three Conferences. One Lion Pride.</h2>
+      <p class="section-sub">Depending on the sport and team level, AISA participates in three different international school athletic conferences. Each conference has its own membership, geographic scope, and schedule of championship events.</p>
+
+      <!-- NESAC -->
+      <div class="conf-card">
+        <div class="conf-accent-nesac"></div>
+        <div class="conf-header">
+          <div class="conf-logo nesac-logo">🌐</div>
+          <div class="conf-header-text">
+            <h2>NESAC</h2>
+            <h3>Near East South Asia Council of Overseas Schools – Athletic Conference</h3>
+            <p>NESAC is a consortium of American-sponsored overseas schools in the Near East and South Asia region. The NESAC Athletic Conference brings together top-tier international schools for championship tournaments in a variety of sports, representing the highest level of competition available to AISA student-athletes.</p>
+          </div>
+        </div>
+        <div class="conf-body">
+          <div class="conf-details">
+            <div class="conf-detail">
+              <strong>Region</strong>
+              <span>Near East &amp; South Asia</span>
+            </div>
+            <div class="conf-detail">
+              <strong>Level</strong>
+              <span>Varsity (Primary)</span>
+            </div>
+            <div class="conf-detail">
+              <strong>Tournament Format</strong>
+              <span>Annual Championship Tournaments</span>
+            </div>
+            <div class="conf-detail">
+              <strong>Travel Required</strong>
+              <span>Yes — International Travel</span>
+            </div>
+          </div>
+          <p style="margin-bottom:.75rem; font-size:.88rem; font-weight:600; color:var(--gray-600); text-transform:uppercase; letter-spacing:.07em;">Sports Offered at NESAC</p>
+          <div class="sports-offered">
+            <span class="sport-tag nesac-color">⚽ Boys Soccer</span>
+            <span class="sport-tag nesac-color">⚽ Girls Soccer</span>
+            <span class="sport-tag nesac-color">🏐 Volleyball</span>
+            <span class="sport-tag nesac-color">🏀 Boys Basketball</span>
+            <span class="sport-tag nesac-color">🏀 Girls Basketball</span>
+            <span class="sport-tag nesac-color">🎾 Tennis</span>
+            <span class="sport-tag nesac-color">🏊 Swimming</span>
+            <span class="sport-tag nesac-color">🏃 Track &amp; Field</span>
+            <span class="sport-tag nesac-color">⚾ Baseball</span>
+            <span class="sport-tag nesac-color">🥎 Softball</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ISAC -->
+      <div class="conf-card">
+        <div class="conf-accent-isac"></div>
+        <div class="conf-header">
+          <div class="conf-logo isac-logo">🏫</div>
+          <div class="conf-header-text">
+            <h2>ISAC</h2>
+            <h3>International Schools Athletic Conference</h3>
+            <p>ISAC is a regional conference for international schools, typically focusing on local and sub-regional competition. ISAC provides a more accessible competitive environment for JV teams and Middle School programs, offering more frequent scheduling and reduced travel demands while still maintaining a high standard of competition.</p>
+          </div>
+        </div>
+        <div class="conf-body">
+          <div class="conf-details">
+            <div class="conf-detail">
+              <strong>Region</strong>
+              <span>Local / Sub-Regional</span>
+            </div>
+            <div class="conf-detail">
+              <strong>Level</strong>
+              <span>Varsity, JV &amp; Middle School</span>
+            </div>
+            <div class="conf-detail">
+              <strong>Tournament Format</strong>
+              <span>Season League + Playoffs</span>
+            </div>
+            <div class="conf-detail">
+              <strong>Travel Required</strong>
+              <span>Local &amp; Regional Travel</span>
+            </div>
+          </div>
+          <p style="margin-bottom:.75rem; font-size:.88rem; font-weight:600; color:var(--gray-600); text-transform:uppercase; letter-spacing:.07em;">Sports Offered at ISAC</p>
+          <div class="sports-offered">
+            <span class="sport-tag isac-color">⚽ Soccer</span>
+            <span class="sport-tag isac-color">🏐 Volleyball</span>
+            <span class="sport-tag isac-color">🏀 Basketball</span>
+            <span class="sport-tag isac-color">🏸 Badminton</span>
+            <span class="sport-tag isac-color">🏊 Swimming</span>
+            <span class="sport-tag isac-color">🏃 Cross Country</span>
+            <span class="sport-tag isac-color">🏃 Track &amp; Field</span>
+            <span class="sport-tag isac-color">⚾ Baseball / Softball</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- EAC -->
+      <div class="conf-card">
+        <div class="conf-accent-eac"></div>
+        <div class="conf-header">
+          <div class="conf-logo eac-logo">🌏</div>
+          <div class="conf-header-text">
+            <h2>EAC</h2>
+            <h3>East African Conference (of Overseas Schools)</h3>
+            <p>EAC serves international schools across East Africa and connects AISA with a broader network of schools across the continent. The EAC provides championship tournament opportunities particularly in team sports, and participation reflects AISA's commitment to building continental connections through athletics.</p>
+          </div>
+        </div>
+        <div class="conf-body">
+          <div class="conf-details">
+            <div class="conf-detail">
+              <strong>Region</strong>
+              <span>East &amp; West Africa</span>
+            </div>
+            <div class="conf-detail">
+              <strong>Level</strong>
+              <span>Varsity (Primary)</span>
+            </div>
+            <div class="conf-detail">
+              <strong>Tournament Format</strong>
+              <span>Annual Championship Events</span>
+            </div>
+            <div class="conf-detail">
+              <strong>Travel Required</strong>
+              <span>Yes — Continental Travel</span>
+            </div>
+          </div>
+          <p style="margin-bottom:.75rem; font-size:.88rem; font-weight:600; color:var(--gray-600); text-transform:uppercase; letter-spacing:.07em;">Sports Offered at EAC</p>
+          <div class="sports-offered">
+            <span class="sport-tag eac-color">⚽ Boys Soccer</span>
+            <span class="sport-tag eac-color">⚽ Girls Soccer</span>
+            <span class="sport-tag eac-color">🏐 Volleyball</span>
+            <span class="sport-tag eac-color">🏀 Basketball</span>
+            <span class="sport-tag eac-color">🎾 Tennis</span>
+            <span class="sport-tag eac-color">🏃 Track &amp; Field</span>
+            <span class="sport-tag eac-color">🏸 Badminton</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON TABLE -->
+  <section style="background: var(--off-white);">
+    <div class="container">
+      <div class="section-label">Quick Reference</div>
+      <h2 class="section-title">Conference Comparison</h2>
+      <p class="section-sub" style="margin-bottom:1.5rem;">A side-by-side overview of the three conferences AISA competes in.</p>
+      <div style="overflow-x:auto;">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Conference</th>
+              <th>Geographic Scope</th>
+              <th>Team Levels</th>
+              <th>Key Sports</th>
+              <th>Format</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="tag-nesac">NESAC</span></td>
+              <td>Near East &amp; South Asia</td>
+              <td>Varsity</td>
+              <td>Soccer, Basketball, Volleyball, Swimming, T&amp;F, Tennis, Baseball, Softball</td>
+              <td>Annual Championship Tournaments</td>
+            </tr>
+            <tr>
+              <td><span class="tag-isac">ISAC</span></td>
+              <td>Local / Sub-Regional</td>
+              <td>Varsity, JV, Middle School</td>
+              <td>Soccer, Basketball, Volleyball, Badminton, Swimming, Cross Country, T&amp;F</td>
+              <td>Season League + Playoffs</td>
+            </tr>
+            <tr>
+              <td><span class="tag-eac">EAC</span></td>
+              <td>East &amp; West Africa</td>
+              <td>Varsity</td>
+              <td>Soccer, Basketball, Volleyball, Tennis, T&amp;F, Badminton</td>
+              <td>Annual Championship Events</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALLOUT -->
+  <section style="padding-top:2rem; padding-bottom:3rem;">
+    <div class="container">
+      <div class="callout">
+        <p>"Competing internationally teaches our athletes that their community extends far beyond the classroom — and far beyond Abidjan."</p>
+        <cite>— AISA Athletic Director</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <strong>AISA Lions Athletics</strong> — American International School of Abidjan<br>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="purpose.html">About &amp; Teams</a>
+      <a href="conferences.html">Conferences</a>
+      <a href="autumn.html">Autumn</a>
+      <a href="winter.html">Winter</a>
+      <a href="spring.html">Spring</a>
+    </div>
+  </footer>
+
+</body>
+</html>
