@@ -474,3 +474,176 @@ footer .footer-links { display: flex; gap: 1.5rem; justify-content: center; flex
   .hero { padding: 3.5rem 1rem; }
   .callout { padding: 1.8rem 1rem; }
 }
+
+/* ============================================================
+   LEO — AISA Lions Athletics chat assistant
+============================================================ */
+#leo-widget { position: fixed; top: 70px; right: 18px; z-index: 1000; font-family: 'Segoe UI', system-ui, sans-serif; }
+
+#leo-toggle {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(135deg, var(--gold) 0%, #ffc14d 100%);
+  color: var(--navy-dark);
+  border: 2.5px solid var(--navy-dark);
+  border-radius: 50px;
+  padding: .55rem 1rem .55rem .55rem;
+  font-weight: 800;
+  font-size: .92rem;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0,0,0,.25);
+  transition: transform .15s, box-shadow .15s;
+}
+#leo-toggle:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.3); }
+#leo-toggle .leo-emoji {
+  font-size: 1.6rem;
+  background: var(--white);
+  border-radius: 50%;
+  width: 36px; height: 36px;
+  display: inline-flex; align-items: center; justify-content: center;
+  box-shadow: inset 0 0 0 2px var(--navy-dark);
+  line-height: 1;
+}
+#leo-toggle.leo-active .leo-toggle-text { display: none; }
+#leo-toggle.leo-active { padding: .35rem; }
+
+#leo-panel {
+  position: absolute;
+  top: 60px; right: 0;
+  width: 360px;
+  max-width: calc(100vw - 24px);
+  height: 540px;
+  max-height: calc(100vh - 120px);
+  background: var(--white);
+  border-radius: 14px;
+  box-shadow: 0 12px 40px rgba(0,0,0,.32);
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  transform-origin: top right;
+  transition: opacity .18s, transform .18s;
+  border: 2px solid var(--navy-dark);
+}
+#leo-panel.leo-hidden { opacity: 0; transform: scale(.92) translateY(-10px); pointer-events: none; }
+
+.leo-header {
+  background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+  color: var(--white);
+  padding: .85rem 1rem;
+  display: flex; align-items: center; gap: .7rem;
+  border-bottom: 3px solid var(--gold);
+}
+.leo-avatar {
+  font-size: 1.7rem;
+  background: var(--gold);
+  border-radius: 50%;
+  width: 42px; height: 42px;
+  display: inline-flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px var(--white);
+}
+.leo-title { flex: 1; line-height: 1.15; }
+.leo-title strong { display: block; font-size: 1.05rem; color: var(--gold); }
+.leo-title small { font-size: .72rem; opacity: .8; }
+.leo-title small::before {
+  content: '●';
+  color: #2ecc71;
+  margin-right: .25rem;
+  font-size: .65rem;
+  vertical-align: 1px;
+}
+#leo-close {
+  background: transparent; border: none; color: var(--white);
+  font-size: 1.7rem; line-height: 1; cursor: pointer;
+  width: 28px; height: 28px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s;
+}
+#leo-close:hover { background: rgba(255,255,255,.15); }
+
+#leo-messages {
+  flex: 1; overflow-y: auto;
+  padding: 1rem;
+  background: var(--off-white);
+  display: flex; flex-direction: column; gap: .6rem;
+}
+.leo-msg { display: flex; gap: .5rem; max-width: 92%; }
+.leo-msg-bot  { align-self: flex-start; }
+.leo-msg-user { align-self: flex-end; flex-direction: row-reverse; }
+.leo-msg-avatar {
+  font-size: 1.1rem; flex-shrink: 0;
+  background: var(--gold); border-radius: 50%;
+  width: 28px; height: 28px;
+  display: inline-flex; align-items: center; justify-content: center;
+  align-self: flex-end;
+}
+.leo-msg-text {
+  background: var(--white);
+  color: var(--gray-800);
+  padding: .55rem .8rem;
+  border-radius: 14px;
+  font-size: .87rem;
+  line-height: 1.5;
+  box-shadow: 0 1px 3px rgba(0,0,0,.08);
+  word-wrap: break-word;
+}
+.leo-msg-bot .leo-msg-text  { border-bottom-left-radius: 4px; }
+.leo-msg-user .leo-msg-text {
+  background: var(--navy);
+  color: var(--white);
+  border-bottom-right-radius: 4px;
+}
+.leo-msg-text b { color: var(--navy); font-weight: 700; }
+.leo-msg-user .leo-msg-text b { color: var(--gold); }
+
+#leo-suggestions {
+  display: flex; flex-wrap: wrap; gap: .35rem;
+  padding: .6rem .8rem 0;
+  background: var(--off-white);
+}
+.leo-chip {
+  background: var(--white);
+  border: 1.5px solid var(--gold);
+  color: var(--navy);
+  border-radius: 2rem;
+  padding: .3rem .75rem;
+  font-size: .76rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+.leo-chip:hover { background: var(--gold); color: var(--navy-dark); }
+
+#leo-form {
+  display: flex; gap: .4rem;
+  padding: .7rem .8rem .8rem;
+  background: var(--off-white);
+  border-top: 1px solid var(--gray-100);
+}
+#leo-input {
+  flex: 1;
+  border: 1.5px solid var(--gray-300);
+  border-radius: 2rem;
+  padding: .55rem .9rem;
+  font-size: .88rem;
+  outline: none;
+  font-family: inherit;
+  transition: border-color .15s;
+}
+#leo-input:focus { border-color: var(--gold); }
+#leo-form button {
+  background: var(--navy);
+  color: var(--gold);
+  border: none;
+  border-radius: 50%;
+  width: 38px; height: 38px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background .15s;
+}
+#leo-form button:hover { background: var(--navy-dark); }
+
+@media (max-width: 640px) {
+  #leo-widget { top: 60px; right: 10px; }
+  #leo-toggle .leo-toggle-text { display: none; }
+  #leo-toggle { padding: .35rem; }
+  #leo-panel { width: calc(100vw - 20px); height: calc(100vh - 130px); top: 56px; }
+}

@@ -707,7 +707,7 @@
     tiles(nesac);
     pin(nesac, 24.5431,  54.4329, GOLD,    'AISA',       '<b>AISA Lions</b><br>Abu Dhabi, UAE',                       true);
     pin(nesac, 24.4333,  54.5945, '#1a1a1a','GAA',        '<b>GAA Wildcats</b><br>Abu Dhabi, UAE',                     false);
-    pin(nesac, 25.0657,  55.3046, '#4a0e1f','DAS',        '<b>DAS Eagles</b><br>Dubai, UAE (Associate)',               false);
+    pin(nesac, 25.0908,  55.2991, '#4a0e1f','DAS',        '<b>DAS Eagles</b><br>Wadi Al Safa 3, Dubai (Associate)',    false);
     pin(nesac, 26.3088,  50.1485, '#4a0e1f','ASD',        '<b>ASD Scorpions</b><br>Dhahran, Saudi Arabia',            false);
     pin(nesac, 29.3117,  48.0131, '#1a1a1a','ASK',        '<b>ASK Falcons</b><br>Kuwait',                             false);
     pin(nesac, 29.3650,  48.0920, '#1a3a8a','AISK',       '<b>AISK Lions</b><br>Kuwait',                              false);
@@ -715,34 +715,35 @@
     pin(nesac, 33.9000,  35.5700, '#145a32','IC Beirut',  '<b>IC Cougars</b><br>Beirut, Lebanon',                     false);
     pin(nesac, 29.9523,  31.2548, '#1a1a1a','CAC',        '<b>CAC Screaming Eagles</b><br>Cairo, Egypt (Associate)',  false);
 
-    /* ── ISAC – Abu Dhabi local ── */
-    var isac = L.map('map-isac', { scrollWheelZoom: false }).setView([24.43, 54.50], 11);
+    /* ── ISAC – Abu Dhabi local (+ DAS in Dubai) ── */
+    var isac = L.map('map-isac', { scrollWheelZoom: false }).setView([24.78, 54.86], 9);
     tiles(isac);
     pin(isac, 24.5431, 54.4329, GOLD,    'AISA', '<b>AISA Lions</b><br>Saadiyat Island, Abu Dhabi',         true);
     pin(isac, 24.3835, 54.5354, '#c0392b','CIS', '<b>CIS Grizzlies</b><br>Mohammed Bin Zayed City, Abu Dhabi', false);
-    pin(isac, 24.3800, 54.5200, '#4a0e1f','DAS', '<b>DAS Eagles</b><br>Abu Dhabi',                           false);
-    pin(isac, 24.4333, 54.5945, '#1a1a1a','GAA', '<b>GAA Wildcats</b><br>Khalifa City, Abu Dhabi',           false);
+    pin(isac, 25.0908, 55.2991, '#4a0e1f','DAS', '<b>DAS Eagles</b><br>Wadi Al Safa 3, Dubai',              false);
+    pin(isac, 24.4333, 54.5945, '#1a1a1a','GAA', '<b>GAA Wildcats</b><br>Khalifa City, Abu Dhabi',          false);
 
     /* ── EAC – UAE-wide (Middle School) ── */
     var eac = L.map('map-eac', { scrollWheelZoom: false }).setView([24.85, 54.90], 8);
     tiles(eac);
-    pin(eac, 24.5431, 54.4329, GOLD,    'AISA', '<b>AISA Lions</b><br>Saadiyat Island, Abu Dhabi', true);
-    pin(eac, 24.4756, 54.3631, '#5a3a1a','ACS', '<b>ACS Vipers</b><br>Abu Dhabi',                 false);
-    pin(eac, 24.4333, 54.5945, '#1a1a1a','GAA', '<b>GAA Wildcats</b><br>Khalifa City, Abu Dhabi', false);
-    pin(eac, 24.3800, 54.5200, '#4a0e1f','DAS', '<b>DAS Eagles</b><br>Abu Dhabi',                 false);
-    pin(eac, 25.1022, 55.2028, '#1a3a8a','ASD', '<b>ASD Falcons</b><br>Al Barsha, Dubai',         false);
-    pin(eac, 25.0950, 55.2076, '#0a3d62','DAA', '<b>DAA Leopards</b><br>Dubai',                   false);
+    pin(eac, 24.5431, 54.4329, GOLD,    'AISA', '<b>AISA Lions</b><br>Saadiyat Island, Abu Dhabi',     true);
+    pin(eac, 24.5345, 54.4250, '#5a3a1a','ACS', '<b>ACS Vipers</b><br>Saadiyat Promenade, Abu Dhabi',  false);
+    pin(eac, 24.4333, 54.5945, '#1a1a1a','GAA', '<b>GAA Wildcats</b><br>Khalifa City, Abu Dhabi',      false);
+    pin(eac, 25.0908, 55.2991, '#4a0e1f','DAS', '<b>DAS Eagles</b><br>Wadi Al Safa 3, Dubai',          false);
+    pin(eac, 25.1022, 55.2028, '#1a3a8a','ASD', '<b>ASD Falcons</b><br>Al Barsha, Dubai',              false);
+    pin(eac, 25.0950, 55.2076, '#0a3d62','DAA', '<b>DAA Leopards</b><br>Dubai',                        false);
 
     /* ── JEAC – same geography as EAC ── */
     var jeac = L.map('map-jeac', { scrollWheelZoom: false }).setView([24.85, 54.90], 8);
     tiles(jeac);
-    pin(jeac, 24.5431, 54.4329, GOLD,    'AISA', '<b>AISA Lions</b><br>Saadiyat Island, Abu Dhabi', true);
-    pin(jeac, 24.4756, 54.3631, '#5a3a1a','ACS', '<b>ACS Vipers</b><br>Abu Dhabi',                 false);
-    pin(jeac, 24.4333, 54.5945, '#1a1a1a','GAA', '<b>GAA Wildcats</b><br>Khalifa City, Abu Dhabi', false);
-    pin(jeac, 24.3800, 54.5200, '#4a0e1f','DAS', '<b>DAS Eagles</b><br>Abu Dhabi',                 false);
-    pin(jeac, 25.1022, 55.2028, '#1a3a8a','ASD', '<b>ASD Falcons</b><br>Al Barsha, Dubai',         false);
-    pin(jeac, 25.0950, 55.2076, '#0a3d62','DAA', '<b>DAA Leopards</b><br>Dubai',                   false);
+    pin(jeac, 24.5431, 54.4329, GOLD,    'AISA', '<b>AISA Lions</b><br>Saadiyat Island, Abu Dhabi',    true);
+    pin(jeac, 24.5345, 54.4250, '#5a3a1a','ACS', '<b>ACS Vipers</b><br>Saadiyat Promenade, Abu Dhabi', false);
+    pin(jeac, 24.4333, 54.5945, '#1a1a1a','GAA', '<b>GAA Wildcats</b><br>Khalifa City, Abu Dhabi',     false);
+    pin(jeac, 25.0908, 55.2991, '#4a0e1f','DAS', '<b>DAS Eagles</b><br>Wadi Al Safa 3, Dubai',         false);
+    pin(jeac, 25.1022, 55.2028, '#1a3a8a','ASD', '<b>ASD Falcons</b><br>Al Barsha, Dubai',             false);
+    pin(jeac, 25.0950, 55.2076, '#0a3d62','DAA', '<b>DAA Leopards</b><br>Dubai',                       false);
   })();
   </script>
+  <script src="leo.js" defer></script>
 </body>
 </html>

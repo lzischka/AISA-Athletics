@@ -1,0 +1,242 @@
+/* ============================================================
+   Leo — AISA Lions Athletics Chat Assistant
+   ============================================================
+   A lightweight FAQ-style assistant that answers questions about
+   AISA Athletics using a keyword-matched knowledge base.
+   Drops itself into any page that loads this script.
+============================================================ */
+(function () {
+  'use strict';
+  if (window.__leoLoaded) return;
+  window.__leoLoaded = true;
+
+  /* ---------- Knowledge base ---------- */
+  const KB = [
+    { id: 'greet',
+      kw: ['hi','hello','hey','hola','greetings','sup','yo'],
+      a: "Hi there! I'm Leo, your AISA Lions Athletics assistant. Ask me about our conferences, sports, seasons, team levels, or eligibility — or pick a quick topic below. 🦁" },
+
+    { id: 'mission',
+      kw: ['mission','purpose','about','why','philosophy','goal','aim','vision'],
+      a: "AISA Athletics complements the school's academic mission by teaching life skills through competitive sport. Our six core values are <b>Teamwork, Resilience, Excellence, Global Citizenship, Student-First, and Sportsmanship</b>. Academics always come first." },
+
+    { id: 'conferences',
+      kw: ['conference','conferences','league','leagues'],
+      a: "AISA competes in <b>4 conferences</b>: <b>NESAC</b> (regional Near East, JV/Varsity), <b>ISAC</b> (Abu Dhabi local, MS/JV/V), <b>EAC</b> (UAE-wide Middle School), and <b>JEAC</b> (UAE Elementary jamborees). Want details on any one of them?" },
+
+    { id: 'nesac',
+      kw: ['nesac','near east','regional','championship','jordan','beirut','kuwait','dhahran','cairo'],
+      a: "<b>NESAC</b> = Near East Schools Activities Conference. Founded 2014. Levels: JV &amp; Varsity. <b>7 full members</b> (AISA, ACS Beirut, AISK, ASD Dhahran, ASK, GAA, IC Beirut) + <b>2 associates</b> (CAC Cairo, DAS Dubai). Annual championship tournaments across UAE, KSA, Kuwait, Lebanon, and Egypt. Includes Academic Games, Band &amp; Choir, and a Leadership Conference." },
+
+    { id: 'isac',
+      kw: ['isac','abu dhabi local','local league'],
+      a: "<b>ISAC</b> = International Schools Activities Conference. Founded 2024. <b>4 schools</b>: AISA Lions, CIS Grizzlies, DAS Eagles, GAA Wildcats. Levels: MS, JV, Varsity. Format: home/away league + playoffs. Local — minimal travel." },
+
+    { id: 'eac',
+      kw: ['eac','emirates athletics','middle school league','deac'],
+      a: "<b>EAC</b> = Emirates Athletics Conference. Middle School only (Grades 6-8). <b>6 UAE schools</b>: AISA, ACS Abu Dhabi, ASD Dubai, DAA, DAS, GAA. Format: 5-game league + 4-team final. A development league (<b>DEAC</b>) runs alongside for less-experienced athletes." },
+
+    { id: 'jeac',
+      kw: ['jeac','elementary','grade 4','grade 5','grade 6','jamboree','junior emirates'],
+      a: "<b>JEAC</b> = Junior Emirates Athletics Conference. Elementary level (Grades 4-6). Same 6 schools as EAC. Jamboree format — <b>no awards</b>. One sport per season: Soccer (Autumn), Track &amp; Field (Winter), Basketball (Spring). Focus is fun, fundamentals, and sportsmanship." },
+
+    { id: 'levels',
+      kw: ['level','levels','varsity','jv','junior varsity','middle school','team structure'],
+      a: "AISA fields teams at <b>4 competitive levels</b>:<br>• <b>Varsity</b> (Grades 9-12) — NESAC + ISAC, international travel<br>• <b>Junior Varsity</b> (Under-16 before Sept 1) — NESAC + ISAC<br>• <b>Middle School</b> (Grades 6-8) — EAC + ISAC, with DEAC available<br>• <b>Elementary</b> (Grades 4-6) — JEAC jamborees" },
+
+    { id: 'autumn',
+      kw: ['autumn','fall','season 1','september','october','november','volleyball','swim','swimming'],
+      a: "<b>Autumn season</b> runs September–November. Sports: <b>Volleyball</b> (all levels, headline sport), <b>Swimming</b> (invitational at all levels), <b>JEAC Soccer</b> (elementary), and the <b>NESAC Leadership Conference</b>. Varsity Volleyball Championship is in mid-November." },
+
+    { id: 'winter',
+      kw: ['winter','season 2','december','january','february','basketball','soccer','cross country','football','band','choir'],
+      a: "<b>Winter season</b> runs late November–early February. Sports: <b>Basketball</b> &amp; <b>Soccer</b> (all levels), <b>Cross Country</b> (EAC MS only, 3km), <b>JEAC Track &amp; Field</b> (elementary), and the <b>NESAC Band &amp; Choir Festival</b>. NESAC championships in mid-February." },
+
+    { id: 'spring',
+      kw: ['spring','season 3','march','april','may','badminton','track','academic games','field'],
+      a: "<b>Spring season</b> runs February–late May. Sports: <b>Badminton</b> (all levels, Yonex Mavis 350 shuttle), <b>Track &amp; Field</b> (NESAC meet held in Jordan), <b>JEAC Basketball</b> (elementary), and the <b>NESAC Academic Games</b> — 7 Olympiads including Quiz Bowl, Math, and Fine Arts." },
+
+    { id: 'volleyball',
+      kw: ['volleyball','volley'],
+      a: "<b>Volleyball</b> is the headline Autumn sport. AISA fields teams at every competitive level. Played by FIVB rules with NESAC-specific net heights for each level. MS/JV play ISAC + EAC; Varsity plays the NESAC championship." },
+
+    { id: 'basketball',
+      kw: ['basketball','hoops','bball'],
+      a: "<b>Basketball</b> is the marquee Winter sport — every level. Played by FIBA rules. Quarters are 4×8 min at EAC MS and 4×7 min at NESAC. A 20-point lead triggers running clock or half-court defense to keep games balanced." },
+
+    { id: 'soccer',
+      kw: ['soccer','football'],
+      a: "<b>Soccer</b> runs in Winter. FIFA rules, 2×25-min halves, unlimited substitutions. EAC MS plays 8-a-side; ISAC and NESAC play 7v7 girls and 11v11 boys at JV/V. Mercy rule caps goal differential at +5 per match." },
+
+    { id: 'badminton',
+      kw: ['badminton','shuttle','shuttlecock'],
+      a: "<b>Badminton</b> is one of the largest Spring programs at AISA — every level. Singles seeds (SB1-SB4 / SG1-SG4) and doubles (BD1, BD2, GD1, GD2). The official shuttle is the Yonex Mavis 350 blue cap. Tournaments are 2-3 days, round-robin into seeded playoffs." },
+
+    { id: 'track',
+      kw: ['track','field','running','sprint','relay','high jump','long jump','discus','shot put'],
+      a: "<b>Track &amp; Field</b> is run by World Athletics rules. The NESAC meet is held annually in <b>Jordan</b> — a 2-day event with sprints, distance, hurdles, relays, jumps, shot put, and discus. Each athlete may enter up to 5 events. EAC MS T&amp;F is a one-afternoon meet." },
+
+    { id: 'swim',
+      kw: ['swim','swimming','pool','fina'],
+      a: "<b>Swimming</b> runs as an Invitational at all 3 high school conferences in Autumn. Follows FINA rules. AISA swimmers may enter up to 4 individual events and 2 relays per meet." },
+
+    { id: 'crosscountry',
+      kw: ['cross country','xc','3k','3km','distance running'],
+      a: "<b>Cross Country</b> runs in Winter for EAC Middle School only — a 3km course with team scoring based on the top four finishers. JV and Varsity races are organized informally on the same days." },
+
+    { id: 'academic',
+      kw: ['academic','quiz','math','olympiad','spelling','geography','science','quiz bowl'],
+      a: "The <b>NESAC Academic Games</b> are a Core (non-athletic) Spring event. Schools field up to two 4-student teams across <b>7 Olympiads</b>: Quiz Bowl, Current Events, Geography, Spelling, Science/Engineering, Math, and Fine Arts &amp; Music. JV and Varsity champions receive plaques." },
+
+    { id: 'eligibility',
+      kw: ['eligibility','requirements','sign up','register','join','tryout','tryouts','fee','medical','physical','consent','gpa'],
+      a: "To participate in AISA Athletics each season, athletes must:<br>• Maintain the minimum <b>GPA</b><br>• Have a current annual <b>physical exam</b> on file<br>• Submit a signed <b>parent/guardian consent</b> form<br>• Pay the per-season <b>athletics fee</b> (financial assistance is available)" },
+
+    { id: 'schools',
+      kw: ['member schools','schools','rivals','opponents','who do we play'],
+      a: "AISA plays a wide network of American-curriculum schools. Highlights: <b>NESAC</b> includes ACS Beirut, AISK, ASD Dhahran, ASK, GAA, IC Beirut, plus associates CAC and DAS. <b>ISAC</b>: AISA, CIS, DAS, GAA. <b>EAC/JEAC</b>: AISA, ACS, ASD Dubai, DAA, DAS, GAA." },
+
+    { id: 'aisa',
+      kw: ['aisa','american international','abu dhabi','lions','saadiyat'],
+      a: "AISA is the <b>American International School of Abu Dhabi</b>, home of the <b>Lions</b> 🦁 (yellow &amp; blue), located on Saadiyat Island. We're the host school for many regional tournaments, and our athletes compete at all 4 levels across all 4 conferences." },
+
+    { id: 'travel',
+      kw: ['travel','trip','away','flight','passport'],
+      a: "Travel varies by level: <b>Varsity</b> athletes can travel internationally for NESAC tournaments (UAE, KSA, Kuwait, Lebanon, Egypt). <b>JV</b> also travels for NESAC. <b>MS</b> stays within the UAE for EAC. <b>Elementary</b> JEAC events are local jamborees." },
+
+    { id: 'colors',
+      kw: ['colors','mascot','lion','school colors'],
+      a: "AISA's colors are <b>Yellow &amp; Blue</b>, and our mascot is the <b>Lion</b> 🦁. That's me — go Lions!" },
+
+    { id: 'thanks',
+      kw: ['thanks','thank you','thx','appreciate'],
+      a: "You're welcome! Roar on. 🦁" },
+  ];
+
+  const SUGGESTIONS = [
+    { label: 'Our mission',     q: 'mission' },
+    { label: 'Conferences',     q: 'conferences' },
+    { label: 'Team levels',     q: 'levels' },
+    { label: 'Autumn sports',   q: 'autumn' },
+    { label: 'Winter sports',   q: 'winter' },
+    { label: 'Spring sports',   q: 'spring' },
+    { label: 'Eligibility',     q: 'eligibility' },
+  ];
+
+  /* ---------- Match logic ---------- */
+  function match(q) {
+    const text = q.toLowerCase().trim();
+    if (!text) return null;
+    let best = null, bestScore = 0;
+    for (const item of KB) {
+      let score = 0;
+      for (const k of item.kw) {
+        if (text.includes(k)) score += k.length;
+      }
+      if (score > bestScore) { best = item; bestScore = score; }
+    }
+    return best;
+  }
+
+  function fallback() {
+    return "Hmm, I'm not sure about that one. Try asking about <b>conferences</b>, <b>seasons</b> (autumn/winter/spring), a specific <b>sport</b>, <b>team levels</b>, or <b>eligibility</b>. You can also pick a quick topic below.";
+  }
+
+  /* ---------- DOM injection ---------- */
+  function ready(fn){ if (document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
+
+  ready(function () {
+    const wrap = document.createElement('div');
+    wrap.id = 'leo-widget';
+    wrap.innerHTML = `
+      <button id="leo-toggle" aria-label="Open Leo, the AISA Athletics chat assistant" type="button">
+        <span class="leo-emoji">🦁</span>
+        <span class="leo-toggle-text">Ask Leo</span>
+      </button>
+      <section id="leo-panel" class="leo-hidden" role="dialog" aria-label="Leo chat">
+        <header class="leo-header">
+          <span class="leo-emoji leo-avatar" aria-hidden="true">🦁</span>
+          <div class="leo-title">
+            <strong>Leo</strong>
+            <small>AISA Lions Assistant · Online</small>
+          </div>
+          <button id="leo-close" aria-label="Close chat" type="button">×</button>
+        </header>
+        <div id="leo-messages" aria-live="polite"></div>
+        <div id="leo-suggestions"></div>
+        <form id="leo-form" autocomplete="off">
+          <input id="leo-input" type="text" placeholder="Ask Leo a question..." aria-label="Type your question to Leo" />
+          <button type="submit" aria-label="Send">➤</button>
+        </form>
+      </section>
+    `;
+    document.body.appendChild(wrap);
+
+    const toggle = document.getElementById('leo-toggle');
+    const panel  = document.getElementById('leo-panel');
+    const close  = document.getElementById('leo-close');
+    const msgs   = document.getElementById('leo-messages');
+    const sugg   = document.getElementById('leo-suggestions');
+    const form   = document.getElementById('leo-form');
+    const input  = document.getElementById('leo-input');
+
+    function bubble(html, who) {
+      const div = document.createElement('div');
+      div.className = 'leo-msg leo-msg-' + who;
+      if (who === 'bot') {
+        div.innerHTML = '<span class="leo-emoji leo-msg-avatar">🦁</span><span class="leo-msg-text">' + html + '</span>';
+      } else {
+        div.innerHTML = '<span class="leo-msg-text">' + escape(html) + '</span>';
+      }
+      msgs.appendChild(div);
+      msgs.scrollTop = msgs.scrollHeight;
+    }
+
+    function escape(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+    function answer(q) {
+      const hit = match(q);
+      const html = hit ? hit.a : fallback();
+      setTimeout(() => bubble(html, 'bot'), 280);
+    }
+
+    function renderSuggestions() {
+      sugg.innerHTML = '';
+      SUGGESTIONS.forEach(s => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'leo-chip';
+        b.textContent = s.label;
+        b.addEventListener('click', () => {
+          bubble(s.label, 'user');
+          answer(s.q);
+        });
+        sugg.appendChild(b);
+      });
+    }
+
+    function open() {
+      panel.classList.remove('leo-hidden');
+      toggle.classList.add('leo-active');
+      if (!msgs.dataset.greeted) {
+        bubble("Hi! I'm <b>Leo</b>, the AISA Lions Athletics assistant. 🦁<br>Ask me anything about our program, or tap a quick topic below.", 'bot');
+        msgs.dataset.greeted = '1';
+      }
+      setTimeout(() => input.focus(), 100);
+    }
+    function shut() { panel.classList.add('leo-hidden'); toggle.classList.remove('leo-active'); }
+
+    toggle.addEventListener('click', () => panel.classList.contains('leo-hidden') ? open() : shut());
+    close.addEventListener('click', shut);
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const q = input.value.trim();
+      if (!q) return;
+      bubble(q, 'user');
+      input.value = '';
+      answer(q);
+    });
+
+    renderSuggestions();
+  });
+})();
