@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Conferences – AISA Lions Athletics</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <style>
     .conf-hero {
       background: linear-gradient(135deg, #091e3a 0%, #1a3a6b 55%, #0d5c8a 100%);
@@ -171,42 +172,25 @@
     }
 
     /* ---- REGIONAL MAP ---- */
-    .region-map-wrap {
-      background: linear-gradient(180deg, #d6e9f5 0%, #b9d6e9 100%);
-      border-radius: 10px;
-      padding: 1rem;
-      margin-bottom: 1.5rem;
-      border: 1px solid #a4c4d8;
-    }
+    .region-map-wrap { border-radius: 10px; overflow: hidden; margin-bottom: 1.5rem; border: 1px solid #a4c4d8; box-shadow: var(--shadow-sm); }
     .region-map-wrap .map-caption {
-      font-size: .72rem;
-      font-weight: 700;
-      letter-spacing: .09em;
-      text-transform: uppercase;
-      color: var(--gray-600);
-      margin-bottom: .6rem;
-      text-align: center;
+      font-size: .72rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
+      color: var(--gray-600); padding: .55rem 1rem; background: var(--gray-100);
+      border-bottom: 1px solid #d1d5db;
     }
-    .region-map-wrap svg { width: 100%; height: auto; display: block; max-height: 360px; }
-
-    .map-land { fill: #f3e5c4; stroke: #b89a5e; stroke-width: 1; }
-    .map-sea-label { font-family: 'Segoe UI', sans-serif; font-size: 11px; fill: #4b6f8a; font-style: italic; opacity: .7; }
-    .map-country-label { font-family: 'Segoe UI', sans-serif; font-size: 12px; fill: #6b5328; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; opacity: .65; }
-    .map-pin { stroke: var(--white); stroke-width: 2; cursor: pointer; transition: r .15s; }
-    .map-pin:hover { r: 11; }
-    .map-pin-aisa { fill: var(--gold); stroke: var(--navy-dark); stroke-width: 2.5; }
-    .map-pin-label {
-      font-family: 'Segoe UI', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      fill: var(--navy-dark);
-      paint-order: stroke;
-      stroke: var(--white);
-      stroke-width: 3;
-      stroke-linejoin: round;
+    .leaflet-map { height: 340px; }
+    .leaflet-tooltip.map-tip {
+      background: rgba(255,255,255,.92) !important;
+      border: 1px solid #bbb !important;
+      border-radius: 4px !important;
+      padding: 1px 6px !important;
+      font-size: 11px !important;
+      font-weight: 700 !important;
+      color: #1a1a1a !important;
+      white-space: nowrap;
+      box-shadow: 0 1px 4px rgba(0,0,0,.15) !important;
     }
-    .map-pin-label-aisa { fill: var(--navy-dark); font-size: 12px; }
-
+    .leaflet-tooltip.map-tip::before { display: none !important; }
     /* ---- SCHOOL LOGO MONOGRAMS ---- */
     .school-row {
       display: flex;
@@ -305,76 +289,7 @@
           <!-- NEAR EAST REGIONAL MAP -->
           <div class="region-map-wrap">
             <div class="map-caption">📍 NESAC Member School Locations · Near East Region</div>
-            <svg viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of NESAC member schools across the Near East">
-              <!-- Sea background -->
-              <rect x="0" y="0" width="800" height="460" fill="#cfe4f1"/>
-              <text class="map-sea-label" x="120" y="80">Mediterranean Sea</text>
-              <text class="map-sea-label" x="555" y="375">Persian Gulf</text>
-              <text class="map-sea-label" x="220" y="280" transform="rotate(-70 220 280)">Red Sea</text>
-
-              <!-- Egypt -->
-              <path class="map-land" d="M 0,90 L 200,80 L 235,160 L 215,240 L 175,330 L 130,420 L 0,420 Z"/>
-              <text class="map-country-label" x="60" y="220">Egypt</text>
-
-              <!-- Sinai bridge -->
-              <path class="map-land" d="M 200,80 L 250,90 L 250,150 L 235,160 Z"/>
-
-              <!-- Saudi Arabia (large peninsula) -->
-              <path class="map-land" d="M 250,90 L 470,75 L 540,110 L 595,170 L 645,250 L 640,330 L 600,395 L 510,420 L 400,415 L 320,395 L 245,330 L 215,240 L 235,160 Z"/>
-              <text class="map-country-label" x="380" y="265">Saudi Arabia</text>
-
-              <!-- Lebanon -->
-              <path class="map-land" d="M 295,55 L 360,45 L 380,80 L 365,105 L 320,100 L 295,80 Z"/>
-              <text class="map-country-label" x="305" y="80" style="font-size:9px;">Lebanon</text>
-
-              <!-- Kuwait -->
-              <path class="map-land" d="M 530,150 L 580,145 L 595,170 L 580,200 L 540,200 L 530,180 Z"/>
-              <text class="map-country-label" x="540" y="180" style="font-size:9px;">Kuwait</text>
-
-              <!-- UAE -->
-              <path class="map-land" d="M 645,300 L 720,290 L 760,310 L 770,350 L 720,375 L 670,365 L 640,335 Z"/>
-              <text class="map-country-label" x="680" y="335" style="font-size:9px;">UAE</text>
-
-              <!-- Oman tail -->
-              <path class="map-land" d="M 760,310 L 790,330 L 795,400 L 720,420 L 700,390 L 720,375 Z"/>
-
-              <!-- =============== PINS =============== -->
-              <!-- AISA - Abu Dhabi UAE (highlighted) -->
-              <circle class="map-pin map-pin-aisa" cx="690" cy="345" r="11"/>
-              <text class="map-pin-label map-pin-label-aisa" x="690" y="375" text-anchor="middle">AISA</text>
-
-              <!-- GAA - Abu Dhabi UAE -->
-              <circle class="map-pin" cx="710" cy="335" r="7" fill="#1a1a1a"/>
-              <text class="map-pin-label" x="725" y="328">GAA</text>
-
-              <!-- DAS - Dubai UAE -->
-              <circle class="map-pin" cx="735" cy="320" r="7" fill="#4a0e1f"/>
-              <text class="map-pin-label" x="752" y="316">DAS</text>
-
-              <!-- ASD - Dhahran Saudi Arabia -->
-              <circle class="map-pin" cx="600" cy="280" r="8" fill="#4a0e1f"/>
-              <text class="map-pin-label" x="617" y="284">ASD</text>
-
-              <!-- ASK - Kuwait -->
-              <circle class="map-pin" cx="555" cy="170" r="7" fill="#1a1a1a"/>
-              <text class="map-pin-label" x="572" y="167">ASK</text>
-
-              <!-- AISK - Kuwait -->
-              <circle class="map-pin" cx="565" cy="185" r="7" fill="#1a3a8a"/>
-              <text class="map-pin-label" x="582" y="195">AISK</text>
-
-              <!-- ACS Beirut - Beirut Lebanon -->
-              <circle class="map-pin" cx="320" cy="75" r="7" fill="#8a1c1c"/>
-              <text class="map-pin-label" x="245" y="55">ACS Beirut</text>
-
-              <!-- IC Beirut - Beirut Lebanon -->
-              <circle class="map-pin" cx="335" cy="90" r="7" fill="#145a32"/>
-              <text class="map-pin-label" x="350" y="100">IC Beirut</text>
-
-              <!-- CAC - Cairo Egypt (associate) -->
-              <circle class="map-pin" cx="115" cy="170" r="7" fill="#1a1a1a" stroke-dasharray="2 2"/>
-              <text class="map-pin-label" x="130" y="167">CAC</text>
-            </svg>
+            <div id="map-nesac" class="leaflet-map"></div>
           </div>
 
           <p class="sport-section-label">Full Member Schools (7)</p>
@@ -478,40 +393,7 @@
           <!-- ISAC ABU DHABI MAP -->
           <div class="region-map-wrap">
             <div class="map-caption">📍 ISAC Member School Locations · Abu Dhabi</div>
-            <svg viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of ISAC member schools in Abu Dhabi">
-              <rect x="0" y="0" width="700" height="360" fill="#cfe4f1"/>
-              <text class="map-sea-label" x="60" y="60">Persian Gulf</text>
-              <text class="map-sea-label" x="280" y="335">Arabian Peninsula</text>
-
-              <!-- Abu Dhabi mainland -->
-              <path class="map-land" d="M 60,170 L 150,140 L 280,130 L 410,135 L 540,150 L 640,180 L 670,230 L 640,300 L 540,330 L 400,335 L 250,330 L 130,310 L 60,260 Z"/>
-              <text class="map-country-label" x="320" y="265">Abu Dhabi Emirate</text>
-
-              <!-- Abu Dhabi Island -->
-              <path class="map-land" d="M 215,165 L 290,160 L 340,180 L 335,210 L 270,225 L 210,210 Z"/>
-              <text class="map-country-label" x="240" y="195" style="font-size:10px; opacity:.85;">AD Island</text>
-
-              <!-- Saadiyat Island -->
-              <path class="map-land" d="M 320,140 L 380,135 L 395,165 L 370,180 L 330,170 Z"/>
-
-              <!-- AISA - Saadiyat Island -->
-              <circle class="map-pin map-pin-aisa" cx="360" cy="155" r="11"/>
-              <text class="map-pin-label map-pin-label-aisa" x="360" y="125" text-anchor="middle">AISA</text>
-              <text class="map-pin-label" x="360" y="115" text-anchor="middle" style="font-size:9px;">Saadiyat</text>
-
-              <!-- CIS - Mohammed Bin Zayed City -->
-              <circle class="map-pin" cx="430" cy="220" r="8" fill="#c0392b"/>
-              <text class="map-pin-label" x="445" y="218">CIS</text>
-              <text class="map-pin-label" x="445" y="232" style="font-size:9px; font-weight:500;">MBZ City</text>
-
-              <!-- DAS - Dunecrest (relative location near AD) -->
-              <circle class="map-pin" cx="290" cy="210" r="8" fill="#4a0e1f"/>
-              <text class="map-pin-label" x="220" y="240">DAS</text>
-
-              <!-- GAA - Saadiyat Island -->
-              <circle class="map-pin" cx="385" cy="160" r="8" fill="#1a1a1a"/>
-              <text class="map-pin-label" x="410" y="150">GAA</text>
-            </svg>
+            <div id="map-isac" class="leaflet-map"></div>
           </div>
 
           <p class="sport-section-label">Member Schools (4)</p>
@@ -584,52 +466,7 @@
           <!-- EAC UAE-WIDE MAP -->
           <div class="region-map-wrap">
             <div class="map-caption">📍 EAC Member School Locations · UAE (Abu Dhabi &amp; Dubai)</div>
-            <svg viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of EAC member schools across the UAE">
-              <rect x="0" y="0" width="700" height="400" fill="#cfe4f1"/>
-              <text class="map-sea-label" x="40" y="60">Persian Gulf</text>
-              <text class="map-sea-label" x="540" y="380">Oman</text>
-
-              <!-- UAE mainland -->
-              <path class="map-land" d="M 40,220 L 100,180 L 180,160 L 280,150 L 360,140 L 430,125 L 500,110 L 570,135 L 620,180 L 640,240 L 615,310 L 540,355 L 440,360 L 340,355 L 240,345 L 150,320 L 80,280 Z"/>
-              <text class="map-country-label" x="280" y="275">United Arab Emirates</text>
-
-              <!-- Abu Dhabi Island -->
-              <path class="map-land" d="M 195,225 L 270,220 L 310,238 L 305,265 L 245,278 L 190,265 Z"/>
-
-              <!-- Saadiyat / Yas Islands -->
-              <path class="map-land" d="M 275,195 L 335,190 L 350,215 L 325,232 L 285,222 Z"/>
-
-              <!-- Region label dividers -->
-              <line x1="350" y1="120" x2="350" y2="365" stroke="#b89a5e" stroke-width="1" stroke-dasharray="4 4" opacity=".4"/>
-              <text class="map-country-label" x="180" y="170" style="font-size:10px;">Abu Dhabi</text>
-              <text class="map-country-label" x="445" y="155" style="font-size:10px;">Dubai</text>
-
-              <!-- ===== ABU DHABI SCHOOLS ===== -->
-              <!-- AISA - Saadiyat -->
-              <circle class="map-pin map-pin-aisa" cx="320" cy="205" r="11"/>
-              <text class="map-pin-label map-pin-label-aisa" x="320" y="180" text-anchor="middle">AISA</text>
-
-              <!-- GAA - Saadiyat -->
-              <circle class="map-pin" cx="335" cy="215" r="8" fill="#1a1a1a"/>
-              <text class="map-pin-label" x="355" y="220">GAA</text>
-
-              <!-- ACS - Abu Dhabi -->
-              <circle class="map-pin" cx="240" cy="245" r="8" fill="#5a3a1a"/>
-              <text class="map-pin-label" x="240" y="295" text-anchor="middle">ACS</text>
-
-              <!-- DAS - Dunecrest (north of AD) -->
-              <circle class="map-pin" cx="265" cy="208" r="8" fill="#4a0e1f"/>
-              <text class="map-pin-label" x="190" y="210">DAS</text>
-
-              <!-- ===== DUBAI SCHOOLS ===== -->
-              <!-- ASD - American School of Dubai -->
-              <circle class="map-pin" cx="475" cy="170" r="8" fill="#1a3a8a"/>
-              <text class="map-pin-label" x="475" y="155" text-anchor="middle">ASD</text>
-
-              <!-- DAA - Dubai American Academy -->
-              <circle class="map-pin" cx="500" cy="190" r="8" fill="#0a3d62"/>
-              <text class="map-pin-label" x="520" y="195">DAA</text>
-            </svg>
+            <div id="map-eac" class="leaflet-map"></div>
           </div>
 
           <p class="sport-section-label">Full Member Schools (6)</p>
@@ -715,39 +552,7 @@
           <!-- JEAC UAE-WIDE MAP -->
           <div class="region-map-wrap">
             <div class="map-caption">📍 JEAC Member School Locations · UAE (Abu Dhabi &amp; Dubai)</div>
-            <svg viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of JEAC member schools across the UAE">
-              <rect x="0" y="0" width="700" height="400" fill="#cfe4f1"/>
-              <text class="map-sea-label" x="40" y="60">Persian Gulf</text>
-              <text class="map-sea-label" x="540" y="380">Oman</text>
-
-              <path class="map-land" d="M 40,220 L 100,180 L 180,160 L 280,150 L 360,140 L 430,125 L 500,110 L 570,135 L 620,180 L 640,240 L 615,310 L 540,355 L 440,360 L 340,355 L 240,345 L 150,320 L 80,280 Z"/>
-              <text class="map-country-label" x="280" y="275">United Arab Emirates</text>
-
-              <path class="map-land" d="M 195,225 L 270,220 L 310,238 L 305,265 L 245,278 L 190,265 Z"/>
-              <path class="map-land" d="M 275,195 L 335,190 L 350,215 L 325,232 L 285,222 Z"/>
-
-              <line x1="350" y1="120" x2="350" y2="365" stroke="#b89a5e" stroke-width="1" stroke-dasharray="4 4" opacity=".4"/>
-              <text class="map-country-label" x="180" y="170" style="font-size:10px;">Abu Dhabi</text>
-              <text class="map-country-label" x="445" y="155" style="font-size:10px;">Dubai</text>
-
-              <circle class="map-pin map-pin-aisa" cx="320" cy="205" r="11"/>
-              <text class="map-pin-label map-pin-label-aisa" x="320" y="180" text-anchor="middle">AISA</text>
-
-              <circle class="map-pin" cx="335" cy="215" r="8" fill="#1a1a1a"/>
-              <text class="map-pin-label" x="355" y="220">GAA</text>
-
-              <circle class="map-pin" cx="240" cy="245" r="8" fill="#5a3a1a"/>
-              <text class="map-pin-label" x="240" y="295" text-anchor="middle">ACS</text>
-
-              <circle class="map-pin" cx="265" cy="208" r="8" fill="#4a0e1f"/>
-              <text class="map-pin-label" x="190" y="210">DAS</text>
-
-              <circle class="map-pin" cx="475" cy="170" r="8" fill="#1a3a8a"/>
-              <text class="map-pin-label" x="475" y="155" text-anchor="middle">ASD</text>
-
-              <circle class="map-pin" cx="500" cy="190" r="8" fill="#0a3d62"/>
-              <text class="map-pin-label" x="520" y="195">DAA</text>
-            </svg>
+            <div id="map-jeac" class="leaflet-map"></div>
           </div>
 
           <p class="sport-section-label">Full Member Schools (6)</p>
@@ -868,5 +673,76 @@
     </div>
   </footer>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+  (function () {
+    var GOLD = '#f5a800', NAVY = '#0d2b52';
+
+    function tiles(map) {
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
+      }).addTo(map);
+    }
+
+    function pin(map, lat, lng, color, label, html, home) {
+      var m = L.circleMarker([lat, lng], {
+        radius:      home ? 11 : 8,
+        fillColor:   home ? GOLD : color,
+        color:       home ? NAVY : '#ffffff',
+        weight:      home ? 3 : 2,
+        fillOpacity: 0.92
+      }).addTo(map);
+      m.bindPopup(html);
+      m.bindTooltip(label, {
+        permanent:  true,
+        direction:  'right',
+        offset:     [home ? 13 : 10, 0],
+        className:  'map-tip'
+      });
+    }
+
+    /* ── NESAC – Near East ── */
+    var nesac = L.map('map-nesac', { scrollWheelZoom: false }).setView([30.5, 44], 4);
+    tiles(nesac);
+    pin(nesac, 24.5431,  54.4329, GOLD,    'AISA',       '<b>AISA Lions</b><br>Abu Dhabi, UAE',                       true);
+    pin(nesac, 24.4333,  54.5945, '#1a1a1a','GAA',        '<b>GAA Wildcats</b><br>Abu Dhabi, UAE',                     false);
+    pin(nesac, 25.0657,  55.3046, '#4a0e1f','DAS',        '<b>DAS Eagles</b><br>Dubai, UAE (Associate)',               false);
+    pin(nesac, 26.3088,  50.1485, '#4a0e1f','ASD',        '<b>ASD Scorpions</b><br>Dhahran, Saudi Arabia',            false);
+    pin(nesac, 29.3117,  48.0131, '#1a1a1a','ASK',        '<b>ASK Falcons</b><br>Kuwait',                             false);
+    pin(nesac, 29.3650,  48.0920, '#1a3a8a','AISK',       '<b>AISK Lions</b><br>Kuwait',                              false);
+    pin(nesac, 33.8813,  35.4880, '#8a1c1c','ACS Beirut', '<b>ACS Knights</b><br>Beirut, Lebanon',                   false);
+    pin(nesac, 33.9000,  35.5700, '#145a32','IC Beirut',  '<b>IC Cougars</b><br>Beirut, Lebanon',                     false);
+    pin(nesac, 29.9523,  31.2548, '#1a1a1a','CAC',        '<b>CAC Screaming Eagles</b><br>Cairo, Egypt (Associate)',  false);
+
+    /* ── ISAC – Abu Dhabi local ── */
+    var isac = L.map('map-isac', { scrollWheelZoom: false }).setView([24.43, 54.50], 11);
+    tiles(isac);
+    pin(isac, 24.5431, 54.4329, GOLD,    'AISA', '<b>AISA Lions</b><br>Saadiyat Island, Abu Dhabi',         true);
+    pin(isac, 24.3835, 54.5354, '#c0392b','CIS', '<b>CIS Grizzlies</b><br>Mohammed Bin Zayed City, Abu Dhabi', false);
+    pin(isac, 24.3800, 54.5200, '#4a0e1f','DAS', '<b>DAS Eagles</b><br>Abu Dhabi',                           false);
+    pin(isac, 24.4333, 54.5945, '#1a1a1a','GAA', '<b>GAA Wildcats</b><br>Khalifa City, Abu Dhabi',           false);
+
+    /* ── EAC – UAE-wide (Middle School) ── */
+    var eac = L.map('map-eac', { scrollWheelZoom: false }).setView([24.85, 54.90], 8);
+    tiles(eac);
+    pin(eac, 24.5431, 54.4329, GOLD,    'AISA', '<b>AISA Lions</b><br>Saadiyat Island, Abu Dhabi', true);
+    pin(eac, 24.4756, 54.3631, '#5a3a1a','ACS', '<b>ACS Vipers</b><br>Abu Dhabi',                 false);
+    pin(eac, 24.4333, 54.5945, '#1a1a1a','GAA', '<b>GAA Wildcats</b><br>Khalifa City, Abu Dhabi', false);
+    pin(eac, 24.3800, 54.5200, '#4a0e1f','DAS', '<b>DAS Eagles</b><br>Abu Dhabi',                 false);
+    pin(eac, 25.1022, 55.2028, '#1a3a8a','ASD', '<b>ASD Falcons</b><br>Al Barsha, Dubai',         false);
+    pin(eac, 25.0950, 55.2076, '#0a3d62','DAA', '<b>DAA Leopards</b><br>Dubai',                   false);
+
+    /* ── JEAC – same geography as EAC ── */
+    var jeac = L.map('map-jeac', { scrollWheelZoom: false }).setView([24.85, 54.90], 8);
+    tiles(jeac);
+    pin(jeac, 24.5431, 54.4329, GOLD,    'AISA', '<b>AISA Lions</b><br>Saadiyat Island, Abu Dhabi', true);
+    pin(jeac, 24.4756, 54.3631, '#5a3a1a','ACS', '<b>ACS Vipers</b><br>Abu Dhabi',                 false);
+    pin(jeac, 24.4333, 54.5945, '#1a1a1a','GAA', '<b>GAA Wildcats</b><br>Khalifa City, Abu Dhabi', false);
+    pin(jeac, 24.3800, 54.5200, '#4a0e1f','DAS', '<b>DAS Eagles</b><br>Abu Dhabi',                 false);
+    pin(jeac, 25.1022, 55.2028, '#1a3a8a','ASD', '<b>ASD Falcons</b><br>Al Barsha, Dubai',         false);
+    pin(jeac, 25.0950, 55.2076, '#0a3d62','DAA', '<b>DAA Leopards</b><br>Dubai',                   false);
+  })();
+  </script>
 </body>
 </html>
