@@ -29,18 +29,24 @@
     }
 
     .conf-logo {
-      width: 80px;
-      height: 80px;
+      width: 92px;
+      height: 92px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
+      font-size: 1.4rem;
       flex-shrink: 0;
       color: var(--white);
       font-weight: 900;
       letter-spacing: -.02em;
+      background: var(--white);
+      box-shadow: 0 2px 8px rgba(0,0,0,.15);
+      padding: 8px;
+      overflow: hidden;
     }
+    .conf-logo img { width: 100%; height: 100%; object-fit: contain; }
+    .conf-logo.text-logo { color: var(--white); padding: 0; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
 
     .conf-header-text h2 { font-size: 1.6rem; font-weight: 900; color: var(--navy); margin-bottom: .2rem; }
     .conf-header-text h3 { font-size: 1rem; font-weight: 500; color: var(--gray-600); margin-bottom: .6rem; }
@@ -208,38 +214,24 @@
       gap: .75rem;
     }
     .school-logo-mini {
-      width: 44px;
-      height: 44px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 900;
-      font-size: .68rem;
-      color: var(--white);
-      letter-spacing: -.02em;
-      box-shadow: 0 2px 4px rgba(0,0,0,.18);
-      border: 2.5px solid var(--white);
+      background: var(--white);
+      box-shadow: 0 2px 5px rgba(0,0,0,.18);
+      border: 2px solid var(--white);
+      overflow: hidden;
+      padding: 4px;
     }
+    .school-logo-mini img { width: 100%; height: 100%; object-fit: contain; display: block; }
     .school-row-text { flex: 1; min-width: 0; }
     .school-row-text strong { display: block; font-size: .9rem; }
     .school-row-text small { font-size: .78rem; opacity: .85; }
 
-    /* Per-school logo styles (background + secondary tone) */
-    .logo-aisa  { background: linear-gradient(135deg, #0d2b52 0%, #0d2b52 50%, #f5a800 50%, #f5a800 100%); color: var(--white); }
-    .logo-acs-bei { background: linear-gradient(135deg, #8a1c1c, #c0392b); }
-    .logo-acs-ad  { background: linear-gradient(135deg, #5a3a1a, #8a5a2c); }
-    .logo-aisk  { background: linear-gradient(135deg, #1a3a8a, #ffd700 95%); color: var(--navy-dark); text-shadow: 0 1px 0 rgba(255,255,255,.4); }
-    .logo-asd-dh { background: linear-gradient(135deg, #4a0e1f, #7a1e35); }
-    .logo-asd-du { background: linear-gradient(135deg, #1a3a8a, #c0392b); }
-    .logo-ask   { background: linear-gradient(135deg, #1a1a1a, #f5a800); color: var(--gold-light); }
-    .logo-cac   { background: linear-gradient(135deg, #1a1a1a, #d4a017); color: var(--gold-light); }
-    .logo-cis   { background: linear-gradient(135deg, #1a1a1a 0%, #1a1a1a 50%, #c0392b 50%, #c0392b 100%); }
-    .logo-daa   { background: linear-gradient(135deg, #0a3d62, #1e6091); }
-    .logo-das   { background: linear-gradient(135deg, #4a0e1f, #d4d4d4 95%); }
-    .logo-gaa   { background: linear-gradient(135deg, #1a1a1a, #4a4a4a); color: var(--white); }
-    .logo-ic    { background: linear-gradient(135deg, #145a32, #1e8449); }
   </style>
 </head>
 <body>
@@ -283,7 +275,7 @@
       <div class="conf-card">
         <div class="conf-accent-nesac"></div>
         <div class="conf-header">
-          <div class="conf-logo nesac-logo">NESAC</div>
+          <div class="conf-logo"><img src="NESAC%20Logos/NESAC%20Logo.png" alt="NESAC conference logo"></div>
           <div class="conf-header-text">
             <h2>NESAC</h2>
             <h3>Near East Schools Activities Conference · Founded 2014</h3>
@@ -388,44 +380,44 @@
           <p class="sport-section-label">Full Member Schools (7)</p>
           <div class="school-grid">
             <div class="school-row aisa-highlight nesac-school">
-              <div class="school-logo-mini logo-aisa">AISA</div>
-              <div class="school-row-text"><strong>AISA</strong><small>American International School of Abu Dhabi · Host</small></div>
+              <div class="school-logo-mini"><img src="NESAC%20Logos/AISALionsLogo.png" alt="AISA Lions logo"></div>
+              <div class="school-row-text"><strong>AISA · Lions</strong><small>American International School of Abu Dhabi · Host</small></div>
             </div>
             <div class="school-row nesac-school">
-              <div class="school-logo-mini logo-acs-bei">ACS</div>
-              <div class="school-row-text"><strong>ACS Beirut</strong><small>American Community School Beirut</small></div>
+              <div class="school-logo-mini"><img src="NESAC%20Logos/ACSKnightsLogo.png" alt="ACS Beirut Knights logo"></div>
+              <div class="school-row-text"><strong>ACS Beirut · Knights</strong><small>American Community School Beirut</small></div>
             </div>
             <div class="school-row nesac-school">
-              <div class="school-logo-mini logo-aisk">AISK</div>
-              <div class="school-row-text"><strong>AISK</strong><small>American International School Kuwait</small></div>
+              <div class="school-logo-mini"><img src="NESAC%20Logos/AISKLionsLogo.png" alt="AISK Lions logo"></div>
+              <div class="school-row-text"><strong>AISK · Lions</strong><small>American International School Kuwait</small></div>
             </div>
             <div class="school-row nesac-school">
-              <div class="school-logo-mini logo-asd-dh">ASD</div>
-              <div class="school-row-text"><strong>ASD</strong><small>American School of Dhahran</small></div>
+              <div class="school-logo-mini"><img src="NESAC%20Logos/ASDScorpionsLogo.png" alt="ASD Scorpions logo"></div>
+              <div class="school-row-text"><strong>ASD · Scorpions</strong><small>American School of Dhahran</small></div>
             </div>
             <div class="school-row nesac-school">
-              <div class="school-logo-mini logo-ask">ASK</div>
-              <div class="school-row-text"><strong>ASK</strong><small>American School Kuwait</small></div>
+              <div class="school-logo-mini"><img src="NESAC%20Logos/ASKFalconsLogo.png" alt="ASK Falcons logo"></div>
+              <div class="school-row-text"><strong>ASK · Falcons</strong><small>American School Kuwait</small></div>
             </div>
             <div class="school-row nesac-school">
-              <div class="school-logo-mini logo-gaa">GAA</div>
-              <div class="school-row-text"><strong>GAA</strong><small>GEMS American Academy (Abu Dhabi)</small></div>
+              <div class="school-logo-mini"><img src="NESAC%20Logos/GAAWildcatsLogo.png" alt="GAA Wildcats logo"></div>
+              <div class="school-row-text"><strong>GAA · Wildcats</strong><small>GEMS American Academy (Abu Dhabi)</small></div>
             </div>
             <div class="school-row nesac-school">
-              <div class="school-logo-mini logo-ic">IC</div>
-              <div class="school-row-text"><strong>IC Beirut</strong><small>International College Beirut</small></div>
+              <div class="school-logo-mini"><img src="NESAC%20Logos/ICCougarsLogo.png" alt="IC Beirut Cougars logo"></div>
+              <div class="school-row-text"><strong>IC Beirut · Cougars</strong><small>International College Beirut</small></div>
             </div>
           </div>
 
           <p class="sport-section-label">Associate Member Schools (2)</p>
           <div class="school-grid">
-            <div class="school-row nesac-school" style="opacity:.9;">
-              <div class="school-logo-mini logo-cac">CAC</div>
-              <div class="school-row-text"><strong>CAC</strong><small>Cairo American College</small></div>
+            <div class="school-row nesac-school" style="opacity:.92;">
+              <div class="school-logo-mini"><img src="NESAC%20Logos/CACScreamingEagleLogo.png" alt="CAC Screaming Eagles logo"></div>
+              <div class="school-row-text"><strong>CAC · Screaming Eagles</strong><small>Cairo American College</small></div>
             </div>
-            <div class="school-row nesac-school" style="opacity:.9;">
-              <div class="school-logo-mini logo-das">DAS</div>
-              <div class="school-row-text"><strong>DAS</strong><small>Dunecrest American School</small></div>
+            <div class="school-row nesac-school" style="opacity:.92;">
+              <div class="school-logo-mini"><img src="NESAC%20Logos/DASEaglesLogo.png" alt="DAS Eagles logo"></div>
+              <div class="school-row-text"><strong>DAS · Eagles</strong><small>Dunecrest American School</small></div>
             </div>
           </div>
 
@@ -456,7 +448,7 @@
       <div class="conf-card">
         <div class="conf-accent-isac"></div>
         <div class="conf-header">
-          <div class="conf-logo isac-logo">ISAC</div>
+          <div class="conf-logo isac-logo text-logo">ISAC</div>
           <div class="conf-header-text">
             <h2>ISAC</h2>
             <h3>International Schools Activities Conference · Founded 2024</h3>
@@ -525,20 +517,20 @@
           <p class="sport-section-label">Member Schools (4)</p>
           <div class="school-grid">
             <div class="school-row aisa-highlight isac-school">
-              <div class="school-logo-mini logo-aisa">AISA</div>
-              <div class="school-row-text"><strong>AISA</strong><small>American International School of Abu Dhabi · Lions · Yellow/Blue</small></div>
+              <div class="school-logo-mini"><img src="ISAC%20Logos/AISALionsLogo%20%20copy.png" alt="AISA Lions logo"></div>
+              <div class="school-row-text"><strong>AISA · Lions</strong><small>American International School of Abu Dhabi · Yellow/Blue</small></div>
             </div>
             <div class="school-row isac-school">
-              <div class="school-logo-mini logo-cis">CIS</div>
-              <div class="school-row-text"><strong>CIS</strong><small>Canadian International School · Grizzlies · Red/Black</small></div>
+              <div class="school-logo-mini"><img src="ISAC%20Logos/Grizzlies%20CIS%20logo%20copy-Photoroom.png" alt="CIS Grizzlies logo"></div>
+              <div class="school-row-text"><strong>CIS · Grizzlies</strong><small>Canadian International School · Red/Black</small></div>
             </div>
             <div class="school-row isac-school">
-              <div class="school-logo-mini logo-das">DAS</div>
-              <div class="school-row-text"><strong>DAS</strong><small>Dunecrest American School · Eagles · Maroon/White</small></div>
+              <div class="school-logo-mini"><img src="ISAC%20Logos/DASEaglesLogo%20copy.png" alt="DAS Eagles logo"></div>
+              <div class="school-row-text"><strong>DAS · Eagles</strong><small>Dunecrest American School · Maroon/White</small></div>
             </div>
             <div class="school-row isac-school">
-              <div class="school-logo-mini logo-gaa">GAA</div>
-              <div class="school-row-text"><strong>GAA</strong><small>GEMS American Academy · Wildcats · White/Blue</small></div>
+              <div class="school-logo-mini"><img src="ISAC%20Logos/GAAWildcatsLogo%20copy.png" alt="GAA Wildcats logo"></div>
+              <div class="school-row-text"><strong>GAA · Wildcats</strong><small>GEMS American Academy · White/Blue</small></div>
             </div>
           </div>
 
@@ -562,7 +554,7 @@
       <div class="conf-card">
         <div class="conf-accent-eac"></div>
         <div class="conf-header">
-          <div class="conf-logo eac-logo">EAC</div>
+          <div class="conf-logo"><img src="EAC%20%26%20JEAC%20Logos/EACConferenceLogo.png" alt="EAC conference logo"></div>
           <div class="conf-header-text">
             <h2>EAC</h2>
             <h3>Emirates Athletics Conference · Middle School Level</h3>
@@ -643,28 +635,28 @@
           <p class="sport-section-label">Full Member Schools (6)</p>
           <div class="school-grid">
             <div class="school-row aisa-highlight eac-school">
-              <div class="school-logo-mini logo-aisa">AISA</div>
-              <div class="school-row-text"><strong>AISA</strong><small>American International School of Abu Dhabi</small></div>
+              <div class="school-logo-mini"><img src="EAC%20%26%20JEAC%20Logos/AISALionsLogo%20.png" alt="AISA Lions logo"></div>
+              <div class="school-row-text"><strong>AISA · Lions</strong><small>American International School of Abu Dhabi</small></div>
             </div>
             <div class="school-row eac-school">
-              <div class="school-logo-mini logo-acs-ad">ACS</div>
-              <div class="school-row-text"><strong>ACS</strong><small>American Community School of Abu Dhabi</small></div>
+              <div class="school-logo-mini"><img src="EAC%20%26%20JEAC%20Logos/ACSVipersLogo.png" alt="ACS Abu Dhabi Vipers logo"></div>
+              <div class="school-row-text"><strong>ACS · Vipers</strong><small>American Community School of Abu Dhabi</small></div>
             </div>
             <div class="school-row eac-school">
-              <div class="school-logo-mini logo-asd-du">ASD</div>
-              <div class="school-row-text"><strong>ASD</strong><small>American School of Dubai</small></div>
+              <div class="school-logo-mini"><img src="EAC%20%26%20JEAC%20Logos/ASDFalconsLogo.webp" alt="ASD Dubai Falcons logo"></div>
+              <div class="school-row-text"><strong>ASD · Falcons</strong><small>American School of Dubai</small></div>
             </div>
             <div class="school-row eac-school">
-              <div class="school-logo-mini logo-daa">DAA</div>
-              <div class="school-row-text"><strong>DAA</strong><small>Dubai American Academy</small></div>
+              <div class="school-logo-mini"><img src="EAC%20%26%20JEAC%20Logos/DAALeopardsLogo.jpg" alt="DAA Leopards logo"></div>
+              <div class="school-row-text"><strong>DAA · Leopards</strong><small>Dubai American Academy</small></div>
             </div>
             <div class="school-row eac-school">
-              <div class="school-logo-mini logo-das">DAS</div>
-              <div class="school-row-text"><strong>DAS</strong><small>Dunecrest American School</small></div>
+              <div class="school-logo-mini"><img src="EAC%20%26%20JEAC%20Logos/DASEaglesLogo.png" alt="DAS Eagles logo"></div>
+              <div class="school-row-text"><strong>DAS · Eagles</strong><small>Dunecrest American School</small></div>
             </div>
             <div class="school-row eac-school">
-              <div class="school-logo-mini logo-gaa">GAA</div>
-              <div class="school-row-text"><strong>GAA</strong><small>GEMS American Academy (Abu Dhabi)</small></div>
+              <div class="school-logo-mini"><img src="EAC%20%26%20JEAC%20Logos/GAAWildcatsLogo.png" alt="GAA Wildcats logo"></div>
+              <div class="school-row-text"><strong>GAA · Wildcats</strong><small>GEMS American Academy (Abu Dhabi)</small></div>
             </div>
           </div>
 
@@ -693,7 +685,7 @@
       <div class="conf-card">
         <div class="conf-accent-jeac"></div>
         <div class="conf-header">
-          <div class="conf-logo jeac-logo">JEAC</div>
+          <div class="conf-logo"><img src="EAC%20%26%20JEAC%20Logos/JEACConferenceLogo.png" alt="JEAC conference logo"></div>
           <div class="conf-header-text">
             <h2>JEAC</h2>
             <h3>Junior Emirates Athletics Conference · Elementary Level</h3>
@@ -761,28 +753,28 @@
           <p class="sport-section-label">Full Member Schools (6)</p>
           <div class="school-grid">
             <div class="school-row aisa-highlight jeac-school">
-              <div class="school-logo-mini logo-aisa">AISA</div>
-              <div class="school-row-text"><strong>AISA</strong><small>American International School of Abu Dhabi</small></div>
+              <div class="school-logo-mini"><img src="EAC%20%26%20JEAC%20Logos/AISALionsLogo%20.png" alt="AISA Lions logo"></div>
+              <div class="school-row-text"><strong>AISA · Lions</strong><small>American International School of Abu Dhabi</small></div>
             </div>
             <div class="school-row jeac-school">
-              <div class="school-logo-mini logo-acs-ad">ACS</div>
-              <div class="school-row-text"><strong>ACS</strong><small>American Community School of Abu Dhabi</small></div>
+              <div class="school-logo-mini"><img src="EAC%20%26%20JEAC%20Logos/ACSVipersLogo.png" alt="ACS Abu Dhabi Vipers logo"></div>
+              <div class="school-row-text"><strong>ACS · Vipers</strong><small>American Community School of Abu Dhabi</small></div>
             </div>
             <div class="school-row jeac-school">
-              <div class="school-logo-mini logo-asd-du">ASD</div>
-              <div class="school-row-text"><strong>ASD</strong><small>American School of Dubai</small></div>
+              <div class="school-logo-mini"><img src="EAC%20%26%20JEAC%20Logos/ASDFalconsLogo.webp" alt="ASD Dubai Falcons logo"></div>
+              <div class="school-row-text"><strong>ASD · Falcons</strong><small>American School of Dubai</small></div>
             </div>
             <div class="school-row jeac-school">
-              <div class="school-logo-mini logo-daa">DAA</div>
-              <div class="school-row-text"><strong>DAA</strong><small>Dubai American Academy</small></div>
+              <div class="school-logo-mini"><img src="EAC%20%26%20JEAC%20Logos/DAALeopardsLogo.jpg" alt="DAA Leopards logo"></div>
+              <div class="school-row-text"><strong>DAA · Leopards</strong><small>Dubai American Academy</small></div>
             </div>
             <div class="school-row jeac-school">
-              <div class="school-logo-mini logo-das">DAS</div>
-              <div class="school-row-text"><strong>DAS</strong><small>Dunecrest American School</small></div>
+              <div class="school-logo-mini"><img src="EAC%20%26%20JEAC%20Logos/DASEaglesLogo.png" alt="DAS Eagles logo"></div>
+              <div class="school-row-text"><strong>DAS · Eagles</strong><small>Dunecrest American School</small></div>
             </div>
             <div class="school-row jeac-school">
-              <div class="school-logo-mini logo-gaa">GAA</div>
-              <div class="school-row-text"><strong>GAA</strong><small>GEMS American Academy (Abu Dhabi)</small></div>
+              <div class="school-logo-mini"><img src="EAC%20%26%20JEAC%20Logos/GAAWildcatsLogo.png" alt="GAA Wildcats logo"></div>
+              <div class="school-row-text"><strong>GAA · Wildcats</strong><small>GEMS American Academy (Abu Dhabi)</small></div>
             </div>
           </div>
 
