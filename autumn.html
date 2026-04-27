@@ -6,10 +6,10 @@
   <title>Autumn Sports – AISA Lions Athletics</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    .sport-card-header.soccer    { background: linear-gradient(135deg, #1a5276, #2980b9); }
-    .sport-card-header.volleyball{ background: linear-gradient(135deg, #7d1e10, #c0392b); }
-    .sport-card-header.xc        { background: linear-gradient(135deg, #784212, #d35400); }
-    .sport-card-header.tennis    { background: linear-gradient(135deg, #145a32, #27ae60); }
+    .sport-card-header.volleyball { background: linear-gradient(135deg, #7d1e10, #c0392b); }
+    .sport-card-header.swimming   { background: linear-gradient(135deg, #0d5c8a, #1abc9c); }
+    .sport-card-header.soccer-jeac{ background: linear-gradient(135deg, #1a5276, #2980b9); }
+    .sport-card-header.leadership { background: linear-gradient(135deg, #4a235a, #8e44ad); }
   </style>
 </head>
 <body>
@@ -37,7 +37,7 @@
   <div class="season-hero autumn-hero">
     <span style="font-size:3.5rem; display:block; margin-bottom:.6rem;">🍂</span>
     <h1>Autumn Season</h1>
-    <p>The school year begins with energy and competition. The Autumn season launches AISA Athletics and sets the tone for the year.</p>
+    <p>The school year opens with energy on the volleyball court and in the pool. The Autumn season runs from September through November across all four AISA conferences.</p>
   </div>
 
   <!-- OVERVIEW -->
@@ -45,57 +45,33 @@
     <div class="container">
       <div class="section-label">Season Overview</div>
       <h2 class="section-title">Autumn Athletics at AISA</h2>
-      <p class="section-sub">The Autumn season typically runs from late August through early November. With four sports in play, it is the most active season on the AISA athletics calendar and includes major conference tournament opportunities in NESAC, ISAC, and EAC.</p>
+      <p class="section-sub">Autumn is "Season One" across NESAC, ISAC, and EAC. Volleyball is the headline sport at every level, with Swimming running as an Invitational across all three conferences. JEAC elementary Soccer also runs in this season, and NESAC's Leadership Conference rounds out the cultural calendar.</p>
 
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1rem; margin-bottom:2.5rem;">
         <div class="value-item">
           <span class="icon">📅</span>
           <h4>Season Dates</h4>
-          <p>Late August – Early November</p>
+          <p>September – November</p>
         </div>
         <div class="value-item">
           <span class="icon">🏅</span>
-          <h4>Sports Offered</h4>
-          <p>Soccer, Volleyball, Cross Country, Tennis</p>
+          <h4>Sports &amp; Events</h4>
+          <p>Volleyball · Swimming · JEAC Soccer · Leadership Conf.</p>
         </div>
         <div class="value-item">
           <span class="icon">🌍</span>
           <h4>Conferences</h4>
-          <p>NESAC · ISAC · EAC</p>
+          <p>NESAC · ISAC · EAC · JEAC</p>
         </div>
         <div class="value-item">
           <span class="icon">🎽</span>
-          <h4>Team Levels</h4>
-          <p>Varsity · JV · Middle School</p>
+          <h4>Levels</h4>
+          <p>Elementary · MS · JV · Varsity</p>
         </div>
       </div>
 
       <!-- SPORT CARDS -->
       <div class="sport-grid">
-
-        <!-- SOCCER -->
-        <div class="sport-card">
-          <div class="sport-card-header soccer">
-            <div class="sport-emoji">⚽</div>
-            <div>
-              <h3>Soccer</h3>
-              <span>Boys &amp; Girls Programs</span>
-            </div>
-          </div>
-          <div class="sport-card-body">
-            <p>Soccer is the flagship Autumn sport at AISA. Boys and Girls soccer programs each field Varsity, JV, and Middle School teams. The Lions compete in ISAC league play throughout the season and send Varsity squads to NESAC and EAC championship tournaments.</p>
-            <div class="team-badges">
-              <span class="badge badge-varsity">Varsity Boys</span>
-              <span class="badge badge-varsity">Varsity Girls</span>
-              <span class="badge badge-jv">JV Boys</span>
-              <span class="badge badge-jv">JV Girls</span>
-              <span class="badge badge-ms">MS Boys</span>
-              <span class="badge badge-ms">MS Girls</span>
-            </div>
-            <br>
-            <small style="color:var(--gray-600);">Conferences: NESAC · ISAC · EAC</small>
-          </div>
-        </div>
 
         <!-- VOLLEYBALL -->
         <div class="sport-card">
@@ -103,62 +79,84 @@
             <div class="sport-emoji">🏐</div>
             <div>
               <h3>Volleyball</h3>
-              <span>Girls &amp; Coed Programs</span>
+              <span>Boys &amp; Girls · All Levels</span>
             </div>
           </div>
           <div class="sport-card-body">
-            <p>Volleyball at AISA is a high-energy program that competes across multiple levels. The Varsity girls team aims for NESAC and EAC tournament berths, while JV and Middle School teams build the pipeline through ISAC local competition.</p>
-            <div class="team-badges">
-              <span class="badge badge-varsity">Varsity Girls</span>
-              <span class="badge badge-jv">JV Girls</span>
-              <span class="badge badge-ms">MS Girls</span>
-            </div>
-            <br>
-            <small style="color:var(--gray-600);">Conferences: NESAC · ISAC · EAC</small>
-          </div>
-        </div>
-
-        <!-- CROSS COUNTRY -->
-        <div class="sport-card">
-          <div class="sport-card-header xc">
-            <div class="sport-emoji">🏃</div>
-            <div>
-              <h3>Cross Country</h3>
-              <span>Boys &amp; Girls Programs</span>
-            </div>
-          </div>
-          <div class="sport-card-body">
-            <p>Cross Country is an individual and team sport that tests endurance and mental toughness. AISA runners compete in ISAC invitational meets throughout the season, building fitness and camaraderie before a culminating end-of-season championship event.</p>
-            <div class="team-badges">
-              <span class="badge badge-varsity">Varsity Boys</span>
-              <span class="badge badge-varsity">Varsity Girls</span>
-              <span class="badge badge-ms">MS Boys</span>
-              <span class="badge badge-ms">MS Girls</span>
-            </div>
-            <br>
-            <small style="color:var(--gray-600);">Conference: ISAC</small>
-          </div>
-        </div>
-
-        <!-- TENNIS -->
-        <div class="sport-card">
-          <div class="sport-card-header tennis">
-            <div class="sport-emoji">🎾</div>
-            <div>
-              <h3>Tennis</h3>
-              <span>Boys &amp; Girls Programs</span>
-            </div>
-          </div>
-          <div class="sport-card-body">
-            <p>Tennis offers individual and doubles competition for AISA student-athletes. The Varsity program competes in NESAC and EAC tournaments, while ISAC provides local match opportunities. Both boys and girls compete across singles, doubles, and mixed doubles formats.</p>
+            <p>Volleyball is the headline Autumn sport at AISA, with teams at every competitive level. Middle School and JV teams compete in the ISAC and EAC leagues, while Varsity competes at NESAC for the regional championship. Played by FIVB rules with NESAC-specific net heights for each level.</p>
             <div class="team-badges">
               <span class="badge badge-varsity">Varsity Boys</span>
               <span class="badge badge-varsity">Varsity Girls</span>
               <span class="badge badge-jv">JV Boys</span>
               <span class="badge badge-jv">JV Girls</span>
+              <span class="badge badge-ms">MS Boys</span>
+              <span class="badge badge-ms">MS Girls</span>
             </div>
             <br>
             <small style="color:var(--gray-600);">Conferences: NESAC · ISAC · EAC</small>
+          </div>
+        </div>
+
+        <!-- SWIMMING -->
+        <div class="sport-card">
+          <div class="sport-card-header swimming">
+            <div class="sport-emoji">🏊</div>
+            <div>
+              <h3>Swimming</h3>
+              <span>Boys &amp; Girls · MS / JV / Varsity</span>
+            </div>
+          </div>
+          <div class="sport-card-body">
+            <p>Swimming runs as an Invitational at all three high school conferences in the Autumn season. The competitive program follows FINA swimming rules. AISA swimmers can enter up to 4 individual events and 2 relays per meet, with morning and afternoon sessions for distance and stroke events.</p>
+            <div class="team-badges">
+              <span class="badge badge-varsity">Varsity Boys</span>
+              <span class="badge badge-varsity">Varsity Girls</span>
+              <span class="badge badge-jv">JV Boys</span>
+              <span class="badge badge-jv">JV Girls</span>
+              <span class="badge badge-ms">MS Mixed</span>
+            </div>
+            <br>
+            <small style="color:var(--gray-600);">Conferences: NESAC · ISAC · EAC (all Invitational)</small>
+          </div>
+        </div>
+
+        <!-- JEAC SOCCER -->
+        <div class="sport-card">
+          <div class="sport-card-header soccer-jeac">
+            <div class="sport-emoji">⚽</div>
+            <div>
+              <h3>JEAC Soccer</h3>
+              <span>Elementary · Grades 4-6</span>
+            </div>
+          </div>
+          <div class="sport-card-body">
+            <p>Junior Emirates Athletics Conference Soccer is the Autumn jamboree event for AISA's elementary student-athletes. Played 7-a-side on a quarter-field with no offside rule and unlimited substitutions, the focus at this level is fun, skill development, and equal playing time for every athlete.</p>
+            <div class="team-badges">
+              <span class="badge badge-ms">Grades 4-5 Mixed</span>
+              <span class="badge badge-ms">Grade 6 Boys</span>
+              <span class="badge badge-ms">Grade 6 Girls</span>
+            </div>
+            <br>
+            <small style="color:var(--gray-600);">Conference: JEAC (Jamboree, no awards)</small>
+          </div>
+        </div>
+
+        <!-- LEADERSHIP CONFERENCE -->
+        <div class="sport-card">
+          <div class="sport-card-header leadership">
+            <div class="sport-emoji">🎯</div>
+            <div>
+              <h3>Leadership Conference</h3>
+              <span>NESAC Invitational</span>
+            </div>
+          </div>
+          <div class="sport-card-body">
+            <p>The NESAC Leadership Conference is a non-athletic Invitational event held during the Autumn season. AISA student leaders join peers from across the Near East region for a multi-day program of workshops, speakers, collaborative activities, and cross-cultural exchange.</p>
+            <div class="team-badges">
+              <span class="badge badge-varsity">Varsity Delegation</span>
+            </div>
+            <br>
+            <small style="color:var(--gray-600);">Conference: NESAC (Invitational · Up to 10 students)</small>
           </div>
         </div>
 
@@ -170,8 +168,8 @@
   <section style="background: var(--off-white);">
     <div class="container">
       <div class="section-label">Sample Schedule</div>
-      <h2 class="section-title">Typical Autumn Season Calendar</h2>
-      <p class="section-sub" style="margin-bottom:1.5rem;">Dates vary each year. Check with the Athletics Office for the current season schedule.</p>
+      <h2 class="section-title">Typical Autumn Calendar</h2>
+      <p class="section-sub" style="margin-bottom:1.5rem;">Based on the conference handbook recommended weekend windows. Final dates are confirmed at each conference's Spring meeting.</p>
       <div style="overflow-x:auto;">
         <table class="schedule-table">
           <thead>
@@ -184,58 +182,52 @@
           </thead>
           <tbody>
             <tr>
-              <td>Late August</td>
+              <td>August / September</td>
               <td>Pre-season Practices Begin</td>
               <td>All Sports</td>
               <td>—</td>
             </tr>
             <tr>
               <td>September</td>
-              <td>ISAC League Play Opens</td>
-              <td>Soccer, Volleyball, Cross Country</td>
+              <td>ISAC Volleyball League Opens</td>
+              <td>MS / JV / V Volleyball</td>
               <td>ISAC</td>
             </tr>
             <tr>
               <td>September</td>
-              <td>Local Tennis Invitational</td>
-              <td>Tennis</td>
-              <td>ISAC</td>
+              <td>JEAC Soccer Jamboree</td>
+              <td>Elementary Soccer</td>
+              <td>JEAC</td>
             </tr>
             <tr>
               <td>October</td>
-              <td>EAC Soccer Tournament</td>
-              <td>Boys &amp; Girls Soccer</td>
+              <td>EAC Volleyball &amp; Swimming Events</td>
+              <td>MS Volleyball, MS Swimming</td>
               <td>EAC</td>
             </tr>
             <tr>
-              <td>October</td>
-              <td>ISAC Cross Country Championship</td>
-              <td>Cross Country</td>
-              <td>ISAC</td>
-            </tr>
-            <tr>
-              <td>October</td>
-              <td>EAC Volleyball Tournament</td>
-              <td>Volleyball</td>
-              <td>EAC</td>
-            </tr>
-            <tr>
-              <td>November</td>
-              <td>NESAC Soccer Championships</td>
-              <td>Boys &amp; Girls Soccer</td>
+              <td>Early November</td>
+              <td>JV Volleyball Tournament</td>
+              <td>JV Volleyball</td>
               <td>NESAC</td>
             </tr>
             <tr>
-              <td>November</td>
-              <td>NESAC Volleyball Championships</td>
-              <td>Volleyball</td>
+              <td>Early November</td>
+              <td>NESAC Leadership Conference</td>
+              <td>Student Leaders</td>
+              <td>NESAC (Invit)</td>
+            </tr>
+            <tr>
+              <td>Mid November</td>
+              <td>Varsity Volleyball Championship</td>
+              <td>Varsity Volleyball</td>
               <td>NESAC</td>
             </tr>
             <tr>
-              <td>November</td>
-              <td>NESAC Tennis Championships</td>
-              <td>Tennis</td>
-              <td>NESAC</td>
+              <td>Mid November</td>
+              <td>JV/V Swimming Invitational</td>
+              <td>JV/V Swimming</td>
+              <td>NESAC (Invit)</td>
             </tr>
           </tbody>
         </table>
@@ -252,12 +244,12 @@
         <a class="season-card sc-winter" href="winter.html">
           <span class="season-icon">❄️</span>
           Winter Season
-          <p>Basketball · Swimming · Badminton</p>
+          <p>Basketball · Soccer · Cross Country</p>
         </a>
         <a class="season-card sc-spring" href="spring.html">
           <span class="season-icon">🌸</span>
           Spring Season
-          <p>Track &amp; Field · Baseball · Softball · Golf</p>
+          <p>Badminton · Track &amp; Field · Academic Games</p>
         </a>
       </div>
     </div>

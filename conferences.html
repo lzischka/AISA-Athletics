@@ -35,19 +35,22 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.2rem;
+      font-size: 2rem;
       flex-shrink: 0;
+      color: var(--white);
+      font-weight: 900;
+      letter-spacing: -.02em;
     }
 
     .conf-header-text h2 { font-size: 1.6rem; font-weight: 900; color: var(--navy); margin-bottom: .2rem; }
     .conf-header-text h3 { font-size: 1rem; font-weight: 500; color: var(--gray-600); margin-bottom: .6rem; }
-    .conf-header-text p  { font-size: .92rem; color: var(--gray-600); max-width: 560px; line-height: 1.6; }
+    .conf-header-text p  { font-size: .92rem; color: var(--gray-600); max-width: 620px; line-height: 1.6; }
 
     .conf-body { padding: 0 2rem 2rem; }
 
     .conf-details {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 1rem;
       margin-bottom: 1.5rem;
     }
@@ -60,6 +63,23 @@
     .conf-detail strong { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--gray-600); margin-bottom: .2rem; }
     .conf-detail span { font-size: .92rem; color: var(--navy); font-weight: 600; }
 
+    .school-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: .6rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .school-row {
+      padding: .55rem .85rem;
+      border-radius: 6px;
+      font-size: .85rem;
+      border-left: 4px solid;
+    }
+    .school-row strong { font-weight: 700; }
+    .school-row.aisa-highlight { font-weight: 700; }
+    .school-row .role { font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; opacity: .75; display: block; margin-top: .15rem; }
+
     .sports-offered { display: flex; flex-wrap: wrap; gap: .45rem; }
 
     .sport-tag {
@@ -70,22 +90,30 @@
       font-weight: 600;
     }
 
-    .nesac-color { background: #e8f0fe; color: #1a3a8a; border: 1.5px solid #c5d5fb; }
-    .isac-color  { background: #fef3e2; color: #7a4400; border: 1.5px solid #f8d8a0; }
-    .eac-color   { background: #e6f5ec; color: #145a32; border: 1.5px solid #a8dab5; }
+    .nesac-color { background: #fde8e8; color: #8a1c1c; border: 1.5px solid #f5b8b8; }
+    .isac-color  { background: #e8f0fe; color: #1a3a8a; border: 1.5px solid #c5d5fb; }
+    .eac-color   { background: #fef3e2; color: #7a4400; border: 1.5px solid #f8d8a0; }
+    .jeac-color  { background: #fff4e0; color: #8a4a00; border: 1.5px solid #ffd699; }
 
-    .nesac-logo { background: linear-gradient(135deg, #1a3a8a, #3558c7); }
-    .isac-logo  { background: linear-gradient(135deg, #7a4400, #c47d00); }
-    .eac-logo   { background: linear-gradient(135deg, #145a32, #27ae60); }
+    .school-row.nesac-school { background: #fde8e8; border-color: #c0392b; color: #8a1c1c; }
+    .school-row.isac-school  { background: #e8f0fe; border-color: #1a3a8a; color: #1a3a8a; }
+    .school-row.eac-school   { background: #fef3e2; border-color: #c47d00; color: #7a4400; }
+    .school-row.jeac-school  { background: #fff4e0; border-color: #e08a00; color: #8a4a00; }
 
-    .conf-accent-nesac { height: 6px; background: linear-gradient(90deg, #1a3a8a, #3558c7); }
-    .conf-accent-isac  { height: 6px; background: linear-gradient(90deg, #c47d00, #f5a800); }
-    .conf-accent-eac   { height: 6px; background: linear-gradient(90deg, #145a32, #27ae60); }
+    .nesac-logo { background: linear-gradient(135deg, #8a1c1c, #c0392b); }
+    .isac-logo  { background: linear-gradient(135deg, #1a3a8a, #3558c7); }
+    .eac-logo   { background: linear-gradient(135deg, #7a4400, #c47d00); }
+    .jeac-logo  { background: linear-gradient(135deg, #8a4a00, #e08a00); }
+
+    .conf-accent-nesac { height: 6px; background: linear-gradient(90deg, #8a1c1c, #c0392b); }
+    .conf-accent-isac  { height: 6px; background: linear-gradient(90deg, #1a3a8a, #3558c7); }
+    .conf-accent-eac   { height: 6px; background: linear-gradient(90deg, #c47d00, #f5a800); }
+    .conf-accent-jeac  { height: 6px; background: linear-gradient(90deg, #e08a00, #f5b942); }
 
     .compare-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: .88rem;
+      font-size: .85rem;
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: var(--shadow-sm);
@@ -96,7 +124,7 @@
       color: var(--gold);
       padding: .8rem 1rem;
       text-align: left;
-      font-size: .78rem;
+      font-size: .72rem;
       text-transform: uppercase;
       letter-spacing: .07em;
     }
@@ -110,9 +138,31 @@
     .compare-table tr:last-child td { border-bottom: none; }
     .compare-table tr:nth-child(even) td { background: var(--gray-100); }
 
-    .tag-nesac { display:inline-block; background:#e8f0fe; color:#1a3a8a; padding:.2rem .6rem; border-radius:4px; font-weight:700; font-size:.8rem; }
-    .tag-isac  { display:inline-block; background:#fef3e2; color:#7a4400; padding:.2rem .6rem; border-radius:4px; font-weight:700; font-size:.8rem; }
-    .tag-eac   { display:inline-block; background:#e6f5ec; color:#145a32; padding:.2rem .6rem; border-radius:4px; font-weight:700; font-size:.8rem; }
+    .tag-nesac { display:inline-block; background:#fde8e8; color:#8a1c1c; padding:.2rem .6rem; border-radius:4px; font-weight:700; font-size:.78rem; }
+    .tag-isac  { display:inline-block; background:#e8f0fe; color:#1a3a8a; padding:.2rem .6rem; border-radius:4px; font-weight:700; font-size:.78rem; }
+    .tag-eac   { display:inline-block; background:#fef3e2; color:#7a4400; padding:.2rem .6rem; border-radius:4px; font-weight:700; font-size:.78rem; }
+    .tag-jeac  { display:inline-block; background:#fff4e0; color:#8a4a00; padding:.2rem .6rem; border-radius:4px; font-weight:700; font-size:.78rem; }
+
+    .sport-section-label {
+      margin-top:1.25rem;
+      margin-bottom:.6rem;
+      font-size:.78rem;
+      font-weight:700;
+      color:var(--gray-600);
+      text-transform:uppercase;
+      letter-spacing:.07em;
+    }
+
+    .source-note {
+      font-size: .8rem;
+      color: var(--gray-600);
+      font-style: italic;
+      margin-top: 1rem;
+      padding: .8rem 1rem;
+      background: var(--gray-100);
+      border-left: 3px solid var(--gold);
+      border-radius: 4px;
+    }
   </style>
 </head>
 <body>
@@ -139,9 +189,9 @@
   <!-- HERO -->
   <section class="hero conf-hero" style="padding: 3.5rem 1.5rem;">
     <div class="hero-content">
-      <span class="hero-eyebrow">International Competition</span>
+      <span class="hero-eyebrow">Athletics Conferences 2025-2026</span>
       <h1>Our <em>Conferences</em></h1>
-      <p>AISA Lions compete in three prestigious international school athletic conferences, giving our student-athletes the opportunity to test themselves against peers from across the region and around the world.</p>
+      <p>AISA Lions compete in four conferences spanning elementary, middle, junior varsity, and varsity levels — connecting our student-athletes with peers across the UAE and the Near East region.</p>
     </div>
   </section>
 
@@ -149,63 +199,76 @@
   <section>
     <div class="container">
       <div class="section-label">Overview</div>
-      <h2 class="section-title">Three Conferences. One Lion Pride.</h2>
-      <p class="section-sub">Depending on the sport and team level, AISA participates in three different international school athletic conferences. Each conference has its own membership, geographic scope, and schedule of championship events.</p>
+      <h2 class="section-title">Four Conferences. One Lion Pride.</h2>
+      <p class="section-sub">From Grade 4 jamborees to Varsity championship tournaments across the Near East, every level of AISA Athletics has a competitive home. Information on this page is sourced directly from the official 2025-2026 handbooks of each conference.</p>
 
       <!-- NESAC -->
       <div class="conf-card">
         <div class="conf-accent-nesac"></div>
         <div class="conf-header">
-          <div class="conf-logo nesac-logo">🌐</div>
+          <div class="conf-logo nesac-logo">NESAC</div>
           <div class="conf-header-text">
             <h2>NESAC</h2>
-            <h3>Near East Schools Activities Conference</h3>
-            <p>NESAC is the broadest and most far-reaching conference AISA competes in, connecting American-curriculum schools across the UAE, Kuwait, Lebanon, and Egypt. Championship tournaments bring together the top Varsity programs from across the region and represent the highest level of competition on AISA's athletic calendar. Participation requires international travel and reflects the pinnacle of student-athlete achievement at AISA.</p>
+            <h3>Near East Schools Activities Conference · Founded 2014</h3>
+            <p>NESAC is the broadest and most far-reaching conference AISA competes in, connecting American-curriculum schools across the UAE, Saudi Arabia, Kuwait, Lebanon, and Egypt. It is a JV and Varsity competition that includes both athletic and academic/cultural events. NESAC tournaments represent the highest level of competition on AISA's calendar and require international travel.</p>
           </div>
         </div>
         <div class="conf-body">
           <div class="conf-details">
             <div class="conf-detail">
               <strong>Region</strong>
-              <span>UAE · Kuwait · Lebanon · Egypt</span>
+              <span>UAE · KSA · Kuwait · Lebanon · Egypt</span>
             </div>
             <div class="conf-detail">
-              <strong>Level</strong>
-              <span>Varsity (Primary)</span>
+              <strong>Levels</strong>
+              <span>Junior Varsity · Varsity</span>
             </div>
             <div class="conf-detail">
-              <strong>Tournament Format</strong>
+              <strong>Format</strong>
               <span>Annual Championship Tournaments</span>
             </div>
             <div class="conf-detail">
-              <strong>Travel Required</strong>
-              <span>Yes — International Travel</span>
+              <strong>Travel</strong>
+              <span>International</span>
             </div>
           </div>
-          <p style="margin-bottom:.75rem; font-size:.88rem; font-weight:600; color:var(--gray-600); text-transform:uppercase; letter-spacing:.07em;">Member Schools</p>
-          <div class="sports-offered" style="margin-bottom:1.25rem;">
-            <span class="sport-tag nesac-color">DAS – Dunecrest American Academy</span>
-            <span class="sport-tag nesac-color">AISA – American International School Abu Dhabi</span>
-            <span class="sport-tag nesac-color">GAA – GEMS American Academy</span>
-            <span class="sport-tag nesac-color">ASD – American School of the Emirates (Dubai)</span>
-            <span class="sport-tag nesac-color">ASK – American School Kuwait</span>
-            <span class="sport-tag nesac-color">AISK – American International School Kuwait</span>
-            <span class="sport-tag nesac-color">IC – International College Beirut</span>
-            <span class="sport-tag nesac-color">ACS – American Community School Beirut</span>
-            <span class="sport-tag nesac-color">CAC – Cairo American College</span>
+
+          <p class="sport-section-label">Full Member Schools (7)</p>
+          <div class="school-grid">
+            <div class="school-row aisa-highlight nesac-school"><strong>AISA</strong> – American International School of Abu Dhabi <span class="role">Host school</span></div>
+            <div class="school-row nesac-school"><strong>ACS Beirut</strong> – American Community School Beirut</div>
+            <div class="school-row nesac-school"><strong>AISK</strong> – American International School Kuwait</div>
+            <div class="school-row nesac-school"><strong>ASD</strong> – American School of Dhahran</div>
+            <div class="school-row nesac-school"><strong>ASK</strong> – American School Kuwait</div>
+            <div class="school-row nesac-school"><strong>GAA</strong> – GEMS American Academy (Abu Dhabi)</div>
+            <div class="school-row nesac-school"><strong>IC Beirut</strong> – International College Beirut</div>
           </div>
-          <p style="margin-bottom:.75rem; font-size:.88rem; font-weight:600; color:var(--gray-600); text-transform:uppercase; letter-spacing:.07em;">Sports Offered at NESAC</p>
+
+          <p class="sport-section-label">Associate Member Schools (2)</p>
+          <div class="school-grid">
+            <div class="school-row nesac-school" style="opacity:.85;"><strong>CAC</strong> – Cairo American College</div>
+            <div class="school-row nesac-school" style="opacity:.85;"><strong>DAS</strong> – Dunecrest American School</div>
+          </div>
+
+          <p class="sport-section-label">Core Athletic Events</p>
+          <div class="sports-offered" style="margin-bottom:1rem;">
+            <span class="sport-tag nesac-color">🏐 Volleyball (JV/V)</span>
+            <span class="sport-tag nesac-color">⚽ Soccer (JV/V)</span>
+            <span class="sport-tag nesac-color">🏀 Basketball (JV/V)</span>
+            <span class="sport-tag nesac-color">🏸 Badminton (JV/V)</span>
+            <span class="sport-tag nesac-color">🏃 Track &amp; Field (JV/V)</span>
+          </div>
+
+          <p class="sport-section-label">Core Academic Event</p>
+          <div class="sports-offered" style="margin-bottom:1rem;">
+            <span class="sport-tag nesac-color">📚 Academic Games (JV/V)</span>
+          </div>
+
+          <p class="sport-section-label">Invitational Events</p>
           <div class="sports-offered">
-            <span class="sport-tag nesac-color">⚽ Boys Soccer</span>
-            <span class="sport-tag nesac-color">⚽ Girls Soccer</span>
-            <span class="sport-tag nesac-color">🏐 Volleyball</span>
-            <span class="sport-tag nesac-color">🏀 Boys Basketball</span>
-            <span class="sport-tag nesac-color">🏀 Girls Basketball</span>
-            <span class="sport-tag nesac-color">🎾 Tennis</span>
-            <span class="sport-tag nesac-color">🏊 Swimming</span>
-            <span class="sport-tag nesac-color">🏃 Track &amp; Field</span>
-            <span class="sport-tag nesac-color">⚾ Baseball</span>
-            <span class="sport-tag nesac-color">🥎 Softball</span>
+            <span class="sport-tag nesac-color">🏊 Swimming (JV/V)</span>
+            <span class="sport-tag nesac-color">🎺 Band &amp; Choir</span>
+            <span class="sport-tag nesac-color">🎯 Leadership Conference</span>
           </div>
         </div>
       </div>
@@ -214,11 +277,11 @@
       <div class="conf-card">
         <div class="conf-accent-isac"></div>
         <div class="conf-header">
-          <div class="conf-logo isac-logo">🏫</div>
+          <div class="conf-logo isac-logo">ISAC</div>
           <div class="conf-header-text">
             <h2>ISAC</h2>
-            <h3>International Schools Activities Conference</h3>
-            <p>ISAC is a smaller, Abu Dhabi-centered conference that serves as the foundation of regular-season competition for AISA teams at all levels. With just four member schools, ISAC offers frequent matchups, reduced travel demands, and a tight-knit competitive community — making it the primary home for JV and Middle School programs while also anchoring the Varsity regular season schedule.</p>
+            <h3>International Schools Activities Conference · Founded 2024</h3>
+            <p>ISAC is a four-school local conference based in Abu Dhabi, providing the foundation for regular-season league play at the Middle School, Junior Varsity, and Varsity levels. With frequent home-and-away matchups and reduced travel, ISAC is the primary competitive home for AISA's broadest pool of student-athletes — including the All-Star awards program at the close of each season.</p>
           </div>
         </div>
         <div class="conf-body">
@@ -228,35 +291,39 @@
               <span>Abu Dhabi (Local)</span>
             </div>
             <div class="conf-detail">
-              <strong>Level</strong>
-              <span>Varsity, JV &amp; Middle School</span>
+              <strong>Levels</strong>
+              <span>Middle School · JV · Varsity</span>
             </div>
             <div class="conf-detail">
-              <strong>Tournament Format</strong>
-              <span>Season League + Playoffs</span>
+              <strong>Format</strong>
+              <span>Home/Away League + Playoffs</span>
             </div>
             <div class="conf-detail">
-              <strong>Travel Required</strong>
-              <span>Local Travel Only</span>
+              <strong>Travel</strong>
+              <span>Local Only</span>
             </div>
           </div>
-          <p style="margin-bottom:.75rem; font-size:.88rem; font-weight:600; color:var(--gray-600); text-transform:uppercase; letter-spacing:.07em;">Member Schools</p>
-          <div class="sports-offered" style="margin-bottom:1.25rem;">
-            <span class="sport-tag isac-color">DAS – Dunecrest American Academy</span>
-            <span class="sport-tag isac-color">AISA – American International School Abu Dhabi</span>
-            <span class="sport-tag isac-color">GAA – GEMS American Academy</span>
-            <span class="sport-tag isac-color">CIS – Canadian International School</span>
+
+          <p class="sport-section-label">Member Schools (4)</p>
+          <div class="school-grid">
+            <div class="school-row aisa-highlight isac-school"><strong>AISA</strong> – American International School of Abu Dhabi <span class="role">Lions · Yellow/Blue</span></div>
+            <div class="school-row isac-school"><strong>CIS</strong> – Canadian International School <span class="role">Grizzlies · Red/Black</span></div>
+            <div class="school-row isac-school"><strong>DAS</strong> – Dunecrest American School <span class="role">Eagles · Maroon/White</span></div>
+            <div class="school-row isac-school"><strong>GAA</strong> – GEMS American Academy <span class="role">Wildcats · White/Blue</span></div>
           </div>
-          <p style="margin-bottom:.75rem; font-size:.88rem; font-weight:600; color:var(--gray-600); text-transform:uppercase; letter-spacing:.07em;">Sports Offered at ISAC</p>
+
+          <p class="sport-section-label">Core Sports</p>
+          <div class="sports-offered" style="margin-bottom:1rem;">
+            <span class="sport-tag isac-color">🏐 Volleyball (MS/JV/V)</span>
+            <span class="sport-tag isac-color">🏀 Basketball (MS/JV/V)</span>
+            <span class="sport-tag isac-color">⚽ Soccer (JV/V)</span>
+            <span class="sport-tag isac-color">🏸 Badminton (MS/JV/V)</span>
+          </div>
+
+          <p class="sport-section-label">Invitational Sports</p>
           <div class="sports-offered">
-            <span class="sport-tag isac-color">⚽ Soccer</span>
-            <span class="sport-tag isac-color">🏐 Volleyball</span>
-            <span class="sport-tag isac-color">🏀 Basketball</span>
-            <span class="sport-tag isac-color">🏸 Badminton</span>
-            <span class="sport-tag isac-color">🏊 Swimming</span>
-            <span class="sport-tag isac-color">🏃 Cross Country</span>
+            <span class="sport-tag isac-color">🏊 Swimming (JV/V)</span>
             <span class="sport-tag isac-color">🏃 Track &amp; Field</span>
-            <span class="sport-tag isac-color">⚾ Baseball / Softball</span>
           </div>
         </div>
       </div>
@@ -265,11 +332,11 @@
       <div class="conf-card">
         <div class="conf-accent-eac"></div>
         <div class="conf-header">
-          <div class="conf-logo eac-logo">🇦🇪</div>
+          <div class="conf-logo eac-logo">EAC</div>
           <div class="conf-header-text">
             <h2>EAC</h2>
-            <h3>Emirates Athletics Conference</h3>
-            <p>EAC is the UAE-wide conference that connects American-curriculum schools across Abu Dhabi and Dubai. With six member schools, it provides a competitive mid-tier between ISAC's local focus and NESAC's regional reach. EAC tournaments typically involve intra-UAE travel and are a key part of the Varsity competitive schedule across multiple sports.</p>
+            <h3>Emirates Athletics Conference · Middle School Level</h3>
+            <p>EAC is a six-school Middle School league connecting American-curriculum schools across Abu Dhabi and Dubai. Each school plays a five-game league season, with the top four advancing to a one-day final tournament. EAC also operates a development league (DEAC) for less experienced student-athletes, ensuring every AISA Middle School Lion has a place to play.</p>
           </div>
         </div>
         <div class="conf-body">
@@ -280,35 +347,95 @@
             </div>
             <div class="conf-detail">
               <strong>Level</strong>
-              <span>Varsity (Primary)</span>
+              <span>Middle School (Grades 6-8)</span>
             </div>
             <div class="conf-detail">
-              <strong>Tournament Format</strong>
-              <span>Annual Championship Events</span>
+              <strong>Format</strong>
+              <span>League + 4-Team Final Tournament</span>
             </div>
             <div class="conf-detail">
-              <strong>Travel Required</strong>
-              <span>Yes — Intra-UAE Travel</span>
+              <strong>Travel</strong>
+              <span>Intra-UAE</span>
             </div>
           </div>
-          <p style="margin-bottom:.75rem; font-size:.88rem; font-weight:600; color:var(--gray-600); text-transform:uppercase; letter-spacing:.07em;">Member Schools</p>
-          <div class="sports-offered" style="margin-bottom:1.25rem;">
-            <span class="sport-tag eac-color">ACS – American Community School</span>
-            <span class="sport-tag eac-color">DAS – Dunecrest American Academy</span>
-            <span class="sport-tag eac-color">AISA – American International School Abu Dhabi</span>
-            <span class="sport-tag eac-color">GAA – GEMS American Academy</span>
-            <span class="sport-tag eac-color">ASD – American School of the Emirates (Dubai)</span>
-            <span class="sport-tag eac-color">DAA – Dubai American Academy</span>
+
+          <p class="sport-section-label">Full Member Schools (6)</p>
+          <div class="school-grid">
+            <div class="school-row aisa-highlight eac-school"><strong>AISA</strong> – American International School of Abu Dhabi</div>
+            <div class="school-row eac-school"><strong>ACS</strong> – American Community School of Abu Dhabi</div>
+            <div class="school-row eac-school"><strong>ASD</strong> – American School of Dubai</div>
+            <div class="school-row eac-school"><strong>DAA</strong> – Dubai American Academy</div>
+            <div class="school-row eac-school"><strong>DAS</strong> – Dunecrest American School</div>
+            <div class="school-row eac-school"><strong>GAA</strong> – GEMS American Academy (Abu Dhabi)</div>
           </div>
-          <p style="margin-bottom:.75rem; font-size:.88rem; font-weight:600; color:var(--gray-600); text-transform:uppercase; letter-spacing:.07em;">Sports Offered at EAC</p>
-          <div class="sports-offered">
-            <span class="sport-tag eac-color">⚽ Boys Soccer</span>
-            <span class="sport-tag eac-color">⚽ Girls Soccer</span>
-            <span class="sport-tag eac-color">🏐 Volleyball</span>
+
+          <p class="sport-section-label">Core Sports</p>
+          <div class="sports-offered" style="margin-bottom:1rem;">
             <span class="sport-tag eac-color">🏀 Basketball</span>
-            <span class="sport-tag eac-color">🎾 Tennis</span>
-            <span class="sport-tag eac-color">🏃 Track &amp; Field</span>
             <span class="sport-tag eac-color">🏸 Badminton</span>
+            <span class="sport-tag eac-color">🏃 Cross Country</span>
+            <span class="sport-tag eac-color">⚽ Soccer (8-a-side)</span>
+            <span class="sport-tag eac-color">🏊 Swimming</span>
+            <span class="sport-tag eac-color">🏃 Track &amp; Field</span>
+            <span class="sport-tag eac-color">🏐 Volleyball</span>
+          </div>
+
+          <p class="sport-section-label">Invitational Sports</p>
+          <div class="sports-offered">
+            <span class="sport-tag eac-color">⚾ Baseball / Softball</span>
+            <span class="sport-tag eac-color">💃 Dance</span>
+            <span class="sport-tag eac-color">⛳ Golf</span>
+            <span class="sport-tag eac-color">🎾 Tennis</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- JEAC -->
+      <div class="conf-card">
+        <div class="conf-accent-jeac"></div>
+        <div class="conf-header">
+          <div class="conf-logo jeac-logo">JEAC</div>
+          <div class="conf-header-text">
+            <h2>JEAC</h2>
+            <h3>Junior Emirates Athletics Conference · Elementary Level</h3>
+            <p>JEAC is the elementary version of EAC, designed for student-athletes in Grades 4-6. The focus is on fun, fundamental skill development, sportsmanship, and learning through game play. Grades 4-5 are entirely inclusive of all ability levels, while Grade 6 begins to introduce competitive concepts in preparation for the Middle School EAC program. JEAC events are held as jamborees rather than competitive tournaments, with no individual or team awards.</p>
+          </div>
+        </div>
+        <div class="conf-body">
+          <div class="conf-details">
+            <div class="conf-detail">
+              <strong>Region</strong>
+              <span>UAE (Abu Dhabi &amp; Dubai)</span>
+            </div>
+            <div class="conf-detail">
+              <strong>Level</strong>
+              <span>Elementary (Grades 4-6)</span>
+            </div>
+            <div class="conf-detail">
+              <strong>Format</strong>
+              <span>Jamboree (No Awards)</span>
+            </div>
+            <div class="conf-detail">
+              <strong>Focus</strong>
+              <span>Fun · Skills · Sportsmanship</span>
+            </div>
+          </div>
+
+          <p class="sport-section-label">Full Member Schools (6)</p>
+          <div class="school-grid">
+            <div class="school-row aisa-highlight jeac-school"><strong>AISA</strong> – American International School of Abu Dhabi</div>
+            <div class="school-row jeac-school"><strong>ACS</strong> – American Community School of Abu Dhabi</div>
+            <div class="school-row jeac-school"><strong>ASD</strong> – American School of Dubai</div>
+            <div class="school-row jeac-school"><strong>DAA</strong> – Dubai American Academy</div>
+            <div class="school-row jeac-school"><strong>DAS</strong> – Dunecrest American School</div>
+            <div class="school-row jeac-school"><strong>GAA</strong> – GEMS American Academy (Abu Dhabi)</div>
+          </div>
+
+          <p class="sport-section-label">Sports Offered (One Per Season)</p>
+          <div class="sports-offered">
+            <span class="sport-tag jeac-color">⚽ Soccer (Sep-Nov, 7-a-side)</span>
+            <span class="sport-tag jeac-color">🏃 Track &amp; Field (Nov-Jan)</span>
+            <span class="sport-tag jeac-color">🏀 Basketball (Apr-May)</span>
           </div>
         </div>
       </div>
@@ -320,42 +447,53 @@
     <div class="container">
       <div class="section-label">Quick Reference</div>
       <h2 class="section-title">Conference Comparison</h2>
-      <p class="section-sub" style="margin-bottom:1.5rem;">A side-by-side overview of the three conferences AISA competes in.</p>
+      <p class="section-sub" style="margin-bottom:1.5rem;">A side-by-side overview of the four conferences AISA Lions compete in.</p>
       <div style="overflow-x:auto;">
         <table class="compare-table">
           <thead>
             <tr>
               <th>Conference</th>
               <th>Geographic Scope</th>
-              <th>Team Levels</th>
-              <th>Key Sports</th>
+              <th>Levels</th>
+              <th># Schools</th>
               <th>Format</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><span class="tag-nesac">NESAC</span></td>
-              <td>UAE · Kuwait · Lebanon · Egypt</td>
-              <td>Varsity</td>
-              <td>Soccer, Basketball, Volleyball, Swimming, T&amp;F, Tennis, Baseball, Softball</td>
+              <td>UAE · KSA · Kuwait · Lebanon · Egypt</td>
+              <td>JV, Varsity</td>
+              <td>7 Full + 2 Associate</td>
               <td>Annual Championship Tournaments</td>
             </tr>
             <tr>
               <td><span class="tag-isac">ISAC</span></td>
               <td>Abu Dhabi (Local)</td>
-              <td>Varsity, JV, Middle School</td>
-              <td>Soccer, Basketball, Volleyball, Badminton, Swimming, Cross Country, T&amp;F</td>
-              <td>Season League + Playoffs</td>
+              <td>MS, JV, Varsity</td>
+              <td>4</td>
+              <td>Home/Away League + Playoffs</td>
             </tr>
             <tr>
               <td><span class="tag-eac">EAC</span></td>
               <td>UAE (Abu Dhabi &amp; Dubai)</td>
-              <td>Varsity</td>
-              <td>Soccer, Basketball, Volleyball, Tennis, T&amp;F, Badminton</td>
-              <td>Annual Championship Events</td>
+              <td>Middle School</td>
+              <td>6</td>
+              <td>League + 4-Team Final Tournament</td>
+            </tr>
+            <tr>
+              <td><span class="tag-jeac">JEAC</span></td>
+              <td>UAE (Abu Dhabi &amp; Dubai)</td>
+              <td>Elementary (Gr. 4-6)</td>
+              <td>6</td>
+              <td>Jamboree (No Awards)</td>
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <div class="source-note">
+        <strong>Source:</strong> Information on this page is taken directly from the official 2025-2026 NESAC, ISAC, EAC, and JEAC handbooks provided to AISA. All membership rosters, sport listings, and league formats reflect the current academic year.
       </div>
     </div>
   </section>
