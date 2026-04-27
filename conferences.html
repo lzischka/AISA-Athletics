@@ -163,6 +163,83 @@
       border-left: 3px solid var(--gold);
       border-radius: 4px;
     }
+
+    /* ---- REGIONAL MAP ---- */
+    .region-map-wrap {
+      background: linear-gradient(180deg, #d6e9f5 0%, #b9d6e9 100%);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid #a4c4d8;
+    }
+    .region-map-wrap .map-caption {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: var(--gray-600);
+      margin-bottom: .6rem;
+      text-align: center;
+    }
+    .region-map-wrap svg { width: 100%; height: auto; display: block; max-height: 360px; }
+
+    .map-land { fill: #f3e5c4; stroke: #b89a5e; stroke-width: 1; }
+    .map-sea-label { font-family: 'Segoe UI', sans-serif; font-size: 11px; fill: #4b6f8a; font-style: italic; opacity: .7; }
+    .map-country-label { font-family: 'Segoe UI', sans-serif; font-size: 12px; fill: #6b5328; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; opacity: .65; }
+    .map-pin { stroke: var(--white); stroke-width: 2; cursor: pointer; transition: r .15s; }
+    .map-pin:hover { r: 11; }
+    .map-pin-aisa { fill: var(--gold); stroke: var(--navy-dark); stroke-width: 2.5; }
+    .map-pin-label {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      fill: var(--navy-dark);
+      paint-order: stroke;
+      stroke: var(--white);
+      stroke-width: 3;
+      stroke-linejoin: round;
+    }
+    .map-pin-label-aisa { fill: var(--navy-dark); font-size: 12px; }
+
+    /* ---- SCHOOL LOGO MONOGRAMS ---- */
+    .school-row {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .school-logo-mini {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: .68rem;
+      color: var(--white);
+      letter-spacing: -.02em;
+      box-shadow: 0 2px 4px rgba(0,0,0,.18);
+      border: 2.5px solid var(--white);
+    }
+    .school-row-text { flex: 1; min-width: 0; }
+    .school-row-text strong { display: block; font-size: .9rem; }
+    .school-row-text small { font-size: .78rem; opacity: .85; }
+
+    /* Per-school logo styles (background + secondary tone) */
+    .logo-aisa  { background: linear-gradient(135deg, #0d2b52 0%, #0d2b52 50%, #f5a800 50%, #f5a800 100%); color: var(--white); }
+    .logo-acs-bei { background: linear-gradient(135deg, #8a1c1c, #c0392b); }
+    .logo-acs-ad  { background: linear-gradient(135deg, #5a3a1a, #8a5a2c); }
+    .logo-aisk  { background: linear-gradient(135deg, #1a3a8a, #ffd700 95%); color: var(--navy-dark); text-shadow: 0 1px 0 rgba(255,255,255,.4); }
+    .logo-asd-dh { background: linear-gradient(135deg, #4a0e1f, #7a1e35); }
+    .logo-asd-du { background: linear-gradient(135deg, #1a3a8a, #c0392b); }
+    .logo-ask   { background: linear-gradient(135deg, #1a1a1a, #f5a800); color: var(--gold-light); }
+    .logo-cac   { background: linear-gradient(135deg, #1a1a1a, #d4a017); color: var(--gold-light); }
+    .logo-cis   { background: linear-gradient(135deg, #1a1a1a 0%, #1a1a1a 50%, #c0392b 50%, #c0392b 100%); }
+    .logo-daa   { background: linear-gradient(135deg, #0a3d62, #1e6091); }
+    .logo-das   { background: linear-gradient(135deg, #4a0e1f, #d4d4d4 95%); }
+    .logo-gaa   { background: linear-gradient(135deg, #1a1a1a, #4a4a4a); color: var(--white); }
+    .logo-ic    { background: linear-gradient(135deg, #145a32, #1e8449); }
   </style>
 </head>
 <body>
@@ -233,21 +310,123 @@
             </div>
           </div>
 
+          <!-- NEAR EAST REGIONAL MAP -->
+          <div class="region-map-wrap">
+            <div class="map-caption">📍 NESAC Member School Locations · Near East Region</div>
+            <svg viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of NESAC member schools across the Near East">
+              <!-- Sea background -->
+              <rect x="0" y="0" width="800" height="460" fill="#cfe4f1"/>
+              <text class="map-sea-label" x="120" y="80">Mediterranean Sea</text>
+              <text class="map-sea-label" x="555" y="375">Persian Gulf</text>
+              <text class="map-sea-label" x="220" y="280" transform="rotate(-70 220 280)">Red Sea</text>
+
+              <!-- Egypt -->
+              <path class="map-land" d="M 0,90 L 200,80 L 235,160 L 215,240 L 175,330 L 130,420 L 0,420 Z"/>
+              <text class="map-country-label" x="60" y="220">Egypt</text>
+
+              <!-- Sinai bridge -->
+              <path class="map-land" d="M 200,80 L 250,90 L 250,150 L 235,160 Z"/>
+
+              <!-- Saudi Arabia (large peninsula) -->
+              <path class="map-land" d="M 250,90 L 470,75 L 540,110 L 595,170 L 645,250 L 640,330 L 600,395 L 510,420 L 400,415 L 320,395 L 245,330 L 215,240 L 235,160 Z"/>
+              <text class="map-country-label" x="380" y="265">Saudi Arabia</text>
+
+              <!-- Lebanon -->
+              <path class="map-land" d="M 295,55 L 360,45 L 380,80 L 365,105 L 320,100 L 295,80 Z"/>
+              <text class="map-country-label" x="305" y="80" style="font-size:9px;">Lebanon</text>
+
+              <!-- Kuwait -->
+              <path class="map-land" d="M 530,150 L 580,145 L 595,170 L 580,200 L 540,200 L 530,180 Z"/>
+              <text class="map-country-label" x="540" y="180" style="font-size:9px;">Kuwait</text>
+
+              <!-- UAE -->
+              <path class="map-land" d="M 645,300 L 720,290 L 760,310 L 770,350 L 720,375 L 670,365 L 640,335 Z"/>
+              <text class="map-country-label" x="680" y="335" style="font-size:9px;">UAE</text>
+
+              <!-- Oman tail -->
+              <path class="map-land" d="M 760,310 L 790,330 L 795,400 L 720,420 L 700,390 L 720,375 Z"/>
+
+              <!-- =============== PINS =============== -->
+              <!-- AISA - Abu Dhabi UAE (highlighted) -->
+              <circle class="map-pin map-pin-aisa" cx="690" cy="345" r="11"/>
+              <text class="map-pin-label map-pin-label-aisa" x="690" y="375" text-anchor="middle">AISA</text>
+
+              <!-- GAA - Abu Dhabi UAE -->
+              <circle class="map-pin" cx="710" cy="335" r="7" fill="#1a1a1a"/>
+              <text class="map-pin-label" x="725" y="328">GAA</text>
+
+              <!-- DAS - Dubai UAE -->
+              <circle class="map-pin" cx="735" cy="320" r="7" fill="#4a0e1f"/>
+              <text class="map-pin-label" x="752" y="316">DAS</text>
+
+              <!-- ASD - Dhahran Saudi Arabia -->
+              <circle class="map-pin" cx="600" cy="280" r="8" fill="#4a0e1f"/>
+              <text class="map-pin-label" x="617" y="284">ASD</text>
+
+              <!-- ASK - Kuwait -->
+              <circle class="map-pin" cx="555" cy="170" r="7" fill="#1a1a1a"/>
+              <text class="map-pin-label" x="572" y="167">ASK</text>
+
+              <!-- AISK - Kuwait -->
+              <circle class="map-pin" cx="565" cy="185" r="7" fill="#1a3a8a"/>
+              <text class="map-pin-label" x="582" y="195">AISK</text>
+
+              <!-- ACS Beirut - Beirut Lebanon -->
+              <circle class="map-pin" cx="320" cy="75" r="7" fill="#8a1c1c"/>
+              <text class="map-pin-label" x="245" y="55">ACS Beirut</text>
+
+              <!-- IC Beirut - Beirut Lebanon -->
+              <circle class="map-pin" cx="335" cy="90" r="7" fill="#145a32"/>
+              <text class="map-pin-label" x="350" y="100">IC Beirut</text>
+
+              <!-- CAC - Cairo Egypt (associate) -->
+              <circle class="map-pin" cx="115" cy="170" r="7" fill="#1a1a1a" stroke-dasharray="2 2"/>
+              <text class="map-pin-label" x="130" y="167">CAC</text>
+            </svg>
+          </div>
+
           <p class="sport-section-label">Full Member Schools (7)</p>
           <div class="school-grid">
-            <div class="school-row aisa-highlight nesac-school"><strong>AISA</strong> – American International School of Abu Dhabi <span class="role">Host school</span></div>
-            <div class="school-row nesac-school"><strong>ACS Beirut</strong> – American Community School Beirut</div>
-            <div class="school-row nesac-school"><strong>AISK</strong> – American International School Kuwait</div>
-            <div class="school-row nesac-school"><strong>ASD</strong> – American School of Dhahran</div>
-            <div class="school-row nesac-school"><strong>ASK</strong> – American School Kuwait</div>
-            <div class="school-row nesac-school"><strong>GAA</strong> – GEMS American Academy (Abu Dhabi)</div>
-            <div class="school-row nesac-school"><strong>IC Beirut</strong> – International College Beirut</div>
+            <div class="school-row aisa-highlight nesac-school">
+              <div class="school-logo-mini logo-aisa">AISA</div>
+              <div class="school-row-text"><strong>AISA</strong><small>American International School of Abu Dhabi · Host</small></div>
+            </div>
+            <div class="school-row nesac-school">
+              <div class="school-logo-mini logo-acs-bei">ACS</div>
+              <div class="school-row-text"><strong>ACS Beirut</strong><small>American Community School Beirut</small></div>
+            </div>
+            <div class="school-row nesac-school">
+              <div class="school-logo-mini logo-aisk">AISK</div>
+              <div class="school-row-text"><strong>AISK</strong><small>American International School Kuwait</small></div>
+            </div>
+            <div class="school-row nesac-school">
+              <div class="school-logo-mini logo-asd-dh">ASD</div>
+              <div class="school-row-text"><strong>ASD</strong><small>American School of Dhahran</small></div>
+            </div>
+            <div class="school-row nesac-school">
+              <div class="school-logo-mini logo-ask">ASK</div>
+              <div class="school-row-text"><strong>ASK</strong><small>American School Kuwait</small></div>
+            </div>
+            <div class="school-row nesac-school">
+              <div class="school-logo-mini logo-gaa">GAA</div>
+              <div class="school-row-text"><strong>GAA</strong><small>GEMS American Academy (Abu Dhabi)</small></div>
+            </div>
+            <div class="school-row nesac-school">
+              <div class="school-logo-mini logo-ic">IC</div>
+              <div class="school-row-text"><strong>IC Beirut</strong><small>International College Beirut</small></div>
+            </div>
           </div>
 
           <p class="sport-section-label">Associate Member Schools (2)</p>
           <div class="school-grid">
-            <div class="school-row nesac-school" style="opacity:.85;"><strong>CAC</strong> – Cairo American College</div>
-            <div class="school-row nesac-school" style="opacity:.85;"><strong>DAS</strong> – Dunecrest American School</div>
+            <div class="school-row nesac-school" style="opacity:.9;">
+              <div class="school-logo-mini logo-cac">CAC</div>
+              <div class="school-row-text"><strong>CAC</strong><small>Cairo American College</small></div>
+            </div>
+            <div class="school-row nesac-school" style="opacity:.9;">
+              <div class="school-logo-mini logo-das">DAS</div>
+              <div class="school-row-text"><strong>DAS</strong><small>Dunecrest American School</small></div>
+            </div>
           </div>
 
           <p class="sport-section-label">Core Athletic Events</p>
@@ -304,12 +483,63 @@
             </div>
           </div>
 
+          <!-- ISAC ABU DHABI MAP -->
+          <div class="region-map-wrap">
+            <div class="map-caption">📍 ISAC Member School Locations · Abu Dhabi</div>
+            <svg viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of ISAC member schools in Abu Dhabi">
+              <rect x="0" y="0" width="700" height="360" fill="#cfe4f1"/>
+              <text class="map-sea-label" x="60" y="60">Persian Gulf</text>
+              <text class="map-sea-label" x="280" y="335">Arabian Peninsula</text>
+
+              <!-- Abu Dhabi mainland -->
+              <path class="map-land" d="M 60,170 L 150,140 L 280,130 L 410,135 L 540,150 L 640,180 L 670,230 L 640,300 L 540,330 L 400,335 L 250,330 L 130,310 L 60,260 Z"/>
+              <text class="map-country-label" x="320" y="265">Abu Dhabi Emirate</text>
+
+              <!-- Abu Dhabi Island -->
+              <path class="map-land" d="M 215,165 L 290,160 L 340,180 L 335,210 L 270,225 L 210,210 Z"/>
+              <text class="map-country-label" x="240" y="195" style="font-size:10px; opacity:.85;">AD Island</text>
+
+              <!-- Saadiyat Island -->
+              <path class="map-land" d="M 320,140 L 380,135 L 395,165 L 370,180 L 330,170 Z"/>
+
+              <!-- AISA - Saadiyat Island -->
+              <circle class="map-pin map-pin-aisa" cx="360" cy="155" r="11"/>
+              <text class="map-pin-label map-pin-label-aisa" x="360" y="125" text-anchor="middle">AISA</text>
+              <text class="map-pin-label" x="360" y="115" text-anchor="middle" style="font-size:9px;">Saadiyat</text>
+
+              <!-- CIS - Mohammed Bin Zayed City -->
+              <circle class="map-pin" cx="430" cy="220" r="8" fill="#c0392b"/>
+              <text class="map-pin-label" x="445" y="218">CIS</text>
+              <text class="map-pin-label" x="445" y="232" style="font-size:9px; font-weight:500;">MBZ City</text>
+
+              <!-- DAS - Dunecrest (relative location near AD) -->
+              <circle class="map-pin" cx="290" cy="210" r="8" fill="#4a0e1f"/>
+              <text class="map-pin-label" x="220" y="240">DAS</text>
+
+              <!-- GAA - Saadiyat Island -->
+              <circle class="map-pin" cx="385" cy="160" r="8" fill="#1a1a1a"/>
+              <text class="map-pin-label" x="410" y="150">GAA</text>
+            </svg>
+          </div>
+
           <p class="sport-section-label">Member Schools (4)</p>
           <div class="school-grid">
-            <div class="school-row aisa-highlight isac-school"><strong>AISA</strong> – American International School of Abu Dhabi <span class="role">Lions · Yellow/Blue</span></div>
-            <div class="school-row isac-school"><strong>CIS</strong> – Canadian International School <span class="role">Grizzlies · Red/Black</span></div>
-            <div class="school-row isac-school"><strong>DAS</strong> – Dunecrest American School <span class="role">Eagles · Maroon/White</span></div>
-            <div class="school-row isac-school"><strong>GAA</strong> – GEMS American Academy <span class="role">Wildcats · White/Blue</span></div>
+            <div class="school-row aisa-highlight isac-school">
+              <div class="school-logo-mini logo-aisa">AISA</div>
+              <div class="school-row-text"><strong>AISA</strong><small>American International School of Abu Dhabi · Lions · Yellow/Blue</small></div>
+            </div>
+            <div class="school-row isac-school">
+              <div class="school-logo-mini logo-cis">CIS</div>
+              <div class="school-row-text"><strong>CIS</strong><small>Canadian International School · Grizzlies · Red/Black</small></div>
+            </div>
+            <div class="school-row isac-school">
+              <div class="school-logo-mini logo-das">DAS</div>
+              <div class="school-row-text"><strong>DAS</strong><small>Dunecrest American School · Eagles · Maroon/White</small></div>
+            </div>
+            <div class="school-row isac-school">
+              <div class="school-logo-mini logo-gaa">GAA</div>
+              <div class="school-row-text"><strong>GAA</strong><small>GEMS American Academy · Wildcats · White/Blue</small></div>
+            </div>
           </div>
 
           <p class="sport-section-label">Core Sports</p>
@@ -359,14 +589,83 @@
             </div>
           </div>
 
+          <!-- EAC UAE-WIDE MAP -->
+          <div class="region-map-wrap">
+            <div class="map-caption">📍 EAC Member School Locations · UAE (Abu Dhabi &amp; Dubai)</div>
+            <svg viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of EAC member schools across the UAE">
+              <rect x="0" y="0" width="700" height="400" fill="#cfe4f1"/>
+              <text class="map-sea-label" x="40" y="60">Persian Gulf</text>
+              <text class="map-sea-label" x="540" y="380">Oman</text>
+
+              <!-- UAE mainland -->
+              <path class="map-land" d="M 40,220 L 100,180 L 180,160 L 280,150 L 360,140 L 430,125 L 500,110 L 570,135 L 620,180 L 640,240 L 615,310 L 540,355 L 440,360 L 340,355 L 240,345 L 150,320 L 80,280 Z"/>
+              <text class="map-country-label" x="280" y="275">United Arab Emirates</text>
+
+              <!-- Abu Dhabi Island -->
+              <path class="map-land" d="M 195,225 L 270,220 L 310,238 L 305,265 L 245,278 L 190,265 Z"/>
+
+              <!-- Saadiyat / Yas Islands -->
+              <path class="map-land" d="M 275,195 L 335,190 L 350,215 L 325,232 L 285,222 Z"/>
+
+              <!-- Region label dividers -->
+              <line x1="350" y1="120" x2="350" y2="365" stroke="#b89a5e" stroke-width="1" stroke-dasharray="4 4" opacity=".4"/>
+              <text class="map-country-label" x="180" y="170" style="font-size:10px;">Abu Dhabi</text>
+              <text class="map-country-label" x="445" y="155" style="font-size:10px;">Dubai</text>
+
+              <!-- ===== ABU DHABI SCHOOLS ===== -->
+              <!-- AISA - Saadiyat -->
+              <circle class="map-pin map-pin-aisa" cx="320" cy="205" r="11"/>
+              <text class="map-pin-label map-pin-label-aisa" x="320" y="180" text-anchor="middle">AISA</text>
+
+              <!-- GAA - Saadiyat -->
+              <circle class="map-pin" cx="335" cy="215" r="8" fill="#1a1a1a"/>
+              <text class="map-pin-label" x="355" y="220">GAA</text>
+
+              <!-- ACS - Abu Dhabi -->
+              <circle class="map-pin" cx="240" cy="245" r="8" fill="#5a3a1a"/>
+              <text class="map-pin-label" x="240" y="295" text-anchor="middle">ACS</text>
+
+              <!-- DAS - Dunecrest (north of AD) -->
+              <circle class="map-pin" cx="265" cy="208" r="8" fill="#4a0e1f"/>
+              <text class="map-pin-label" x="190" y="210">DAS</text>
+
+              <!-- ===== DUBAI SCHOOLS ===== -->
+              <!-- ASD - American School of Dubai -->
+              <circle class="map-pin" cx="475" cy="170" r="8" fill="#1a3a8a"/>
+              <text class="map-pin-label" x="475" y="155" text-anchor="middle">ASD</text>
+
+              <!-- DAA - Dubai American Academy -->
+              <circle class="map-pin" cx="500" cy="190" r="8" fill="#0a3d62"/>
+              <text class="map-pin-label" x="520" y="195">DAA</text>
+            </svg>
+          </div>
+
           <p class="sport-section-label">Full Member Schools (6)</p>
           <div class="school-grid">
-            <div class="school-row aisa-highlight eac-school"><strong>AISA</strong> – American International School of Abu Dhabi</div>
-            <div class="school-row eac-school"><strong>ACS</strong> – American Community School of Abu Dhabi</div>
-            <div class="school-row eac-school"><strong>ASD</strong> – American School of Dubai</div>
-            <div class="school-row eac-school"><strong>DAA</strong> – Dubai American Academy</div>
-            <div class="school-row eac-school"><strong>DAS</strong> – Dunecrest American School</div>
-            <div class="school-row eac-school"><strong>GAA</strong> – GEMS American Academy (Abu Dhabi)</div>
+            <div class="school-row aisa-highlight eac-school">
+              <div class="school-logo-mini logo-aisa">AISA</div>
+              <div class="school-row-text"><strong>AISA</strong><small>American International School of Abu Dhabi</small></div>
+            </div>
+            <div class="school-row eac-school">
+              <div class="school-logo-mini logo-acs-ad">ACS</div>
+              <div class="school-row-text"><strong>ACS</strong><small>American Community School of Abu Dhabi</small></div>
+            </div>
+            <div class="school-row eac-school">
+              <div class="school-logo-mini logo-asd-du">ASD</div>
+              <div class="school-row-text"><strong>ASD</strong><small>American School of Dubai</small></div>
+            </div>
+            <div class="school-row eac-school">
+              <div class="school-logo-mini logo-daa">DAA</div>
+              <div class="school-row-text"><strong>DAA</strong><small>Dubai American Academy</small></div>
+            </div>
+            <div class="school-row eac-school">
+              <div class="school-logo-mini logo-das">DAS</div>
+              <div class="school-row-text"><strong>DAS</strong><small>Dunecrest American School</small></div>
+            </div>
+            <div class="school-row eac-school">
+              <div class="school-logo-mini logo-gaa">GAA</div>
+              <div class="school-row-text"><strong>GAA</strong><small>GEMS American Academy (Abu Dhabi)</small></div>
+            </div>
           </div>
 
           <p class="sport-section-label">Core Sports</p>
@@ -421,14 +720,70 @@
             </div>
           </div>
 
+          <!-- JEAC UAE-WIDE MAP -->
+          <div class="region-map-wrap">
+            <div class="map-caption">📍 JEAC Member School Locations · UAE (Abu Dhabi &amp; Dubai)</div>
+            <svg viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of JEAC member schools across the UAE">
+              <rect x="0" y="0" width="700" height="400" fill="#cfe4f1"/>
+              <text class="map-sea-label" x="40" y="60">Persian Gulf</text>
+              <text class="map-sea-label" x="540" y="380">Oman</text>
+
+              <path class="map-land" d="M 40,220 L 100,180 L 180,160 L 280,150 L 360,140 L 430,125 L 500,110 L 570,135 L 620,180 L 640,240 L 615,310 L 540,355 L 440,360 L 340,355 L 240,345 L 150,320 L 80,280 Z"/>
+              <text class="map-country-label" x="280" y="275">United Arab Emirates</text>
+
+              <path class="map-land" d="M 195,225 L 270,220 L 310,238 L 305,265 L 245,278 L 190,265 Z"/>
+              <path class="map-land" d="M 275,195 L 335,190 L 350,215 L 325,232 L 285,222 Z"/>
+
+              <line x1="350" y1="120" x2="350" y2="365" stroke="#b89a5e" stroke-width="1" stroke-dasharray="4 4" opacity=".4"/>
+              <text class="map-country-label" x="180" y="170" style="font-size:10px;">Abu Dhabi</text>
+              <text class="map-country-label" x="445" y="155" style="font-size:10px;">Dubai</text>
+
+              <circle class="map-pin map-pin-aisa" cx="320" cy="205" r="11"/>
+              <text class="map-pin-label map-pin-label-aisa" x="320" y="180" text-anchor="middle">AISA</text>
+
+              <circle class="map-pin" cx="335" cy="215" r="8" fill="#1a1a1a"/>
+              <text class="map-pin-label" x="355" y="220">GAA</text>
+
+              <circle class="map-pin" cx="240" cy="245" r="8" fill="#5a3a1a"/>
+              <text class="map-pin-label" x="240" y="295" text-anchor="middle">ACS</text>
+
+              <circle class="map-pin" cx="265" cy="208" r="8" fill="#4a0e1f"/>
+              <text class="map-pin-label" x="190" y="210">DAS</text>
+
+              <circle class="map-pin" cx="475" cy="170" r="8" fill="#1a3a8a"/>
+              <text class="map-pin-label" x="475" y="155" text-anchor="middle">ASD</text>
+
+              <circle class="map-pin" cx="500" cy="190" r="8" fill="#0a3d62"/>
+              <text class="map-pin-label" x="520" y="195">DAA</text>
+            </svg>
+          </div>
+
           <p class="sport-section-label">Full Member Schools (6)</p>
           <div class="school-grid">
-            <div class="school-row aisa-highlight jeac-school"><strong>AISA</strong> – American International School of Abu Dhabi</div>
-            <div class="school-row jeac-school"><strong>ACS</strong> – American Community School of Abu Dhabi</div>
-            <div class="school-row jeac-school"><strong>ASD</strong> – American School of Dubai</div>
-            <div class="school-row jeac-school"><strong>DAA</strong> – Dubai American Academy</div>
-            <div class="school-row jeac-school"><strong>DAS</strong> – Dunecrest American School</div>
-            <div class="school-row jeac-school"><strong>GAA</strong> – GEMS American Academy (Abu Dhabi)</div>
+            <div class="school-row aisa-highlight jeac-school">
+              <div class="school-logo-mini logo-aisa">AISA</div>
+              <div class="school-row-text"><strong>AISA</strong><small>American International School of Abu Dhabi</small></div>
+            </div>
+            <div class="school-row jeac-school">
+              <div class="school-logo-mini logo-acs-ad">ACS</div>
+              <div class="school-row-text"><strong>ACS</strong><small>American Community School of Abu Dhabi</small></div>
+            </div>
+            <div class="school-row jeac-school">
+              <div class="school-logo-mini logo-asd-du">ASD</div>
+              <div class="school-row-text"><strong>ASD</strong><small>American School of Dubai</small></div>
+            </div>
+            <div class="school-row jeac-school">
+              <div class="school-logo-mini logo-daa">DAA</div>
+              <div class="school-row-text"><strong>DAA</strong><small>Dubai American Academy</small></div>
+            </div>
+            <div class="school-row jeac-school">
+              <div class="school-logo-mini logo-das">DAS</div>
+              <div class="school-row-text"><strong>DAS</strong><small>Dunecrest American School</small></div>
+            </div>
+            <div class="school-row jeac-school">
+              <div class="school-logo-mini logo-gaa">GAA</div>
+              <div class="school-row-text"><strong>GAA</strong><small>GEMS American Academy (Abu Dhabi)</small></div>
+            </div>
           </div>
 
           <p class="sport-section-label">Sports Offered (One Per Season)</p>
