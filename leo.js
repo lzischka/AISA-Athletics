@@ -97,8 +97,16 @@
       a: "AISA plays a wide network of American-curriculum schools. Highlights: <b>NESAC</b> includes ACS Beirut, AISK, ASD Dhahran, ASK, GAA, IC Beirut, plus associates CAC and DAS. <b>ISAC</b>: AISA, CIS, DAS, GAA. <b>EAC/JEAC</b>: AISA, ACS, ASD Dubai, DAA, DAS, GAA." },
 
     { id: 'aisa',
-      kw: ['aisa','american international','abu dhabi','lions','saadiyat'],
-      a: "AISA is the <b>American International School of Abu Dhabi</b>, home of the <b>Lions</b> 🦁 (yellow &amp; blue), located on Saadiyat Island. We're the host school for many regional tournaments, and our athletes compete at all 4 levels across all 4 conferences." },
+      kw: ['aisa','american international','abu dhabi','lions','where','address','location','rabdan','pepsi','embassy'],
+      a: "AISA is the <b>American International School of Abu Dhabi</b>, home of the <b>Lions</b> 🦁 (yellow &amp; blue). We're located on <b>29th Street (Rabdan Street)</b>, near the Airport Road and Baghdad Street intersection in the Al Aman/Embassy Area of Abu Dhabi — opposite the Pepsi-Cola Plant. AISA athletes compete at all 4 levels across all 4 conferences." },
+
+    { id: 'lionway',
+      kw: ['lion way','responsible','safe','respectful','kind','code','values','character'],
+      a: "The <b>Lion Way</b> is the character code every AISA athlete lives by:<br>• 🦁 <b>Be Responsible</b> — Show up prepared, own your performance<br>• 🛡️ <b>Be Safe</b> — Respect your body and the rules<br>• 🤝 <b>Be Respectful</b> — Honor opponents, officials, coaches, and the game<br>• ❤️ <b>Be Kind</b> — Lead with compassion, lift others up" },
+
+    { id: 'wooden',
+      kw: ['wooden','john wooden','pyramid','philosophy','coaching','success','character','preparation','effort'],
+      a: "<b>John Wooden</b>'s philosophy is at the heart of AISA's coaching approach. He defined success as <em>\"peace of mind from knowing you made the effort to become the best you are capable of.\"</em> AISA coaches use his <b>Pyramid of Success</b> — prioritizing character, preparation, industriousness, and team spirit — rather than measuring success purely by wins. Be more concerned with your <b>character</b> than your reputation." },
 
     { id: 'travel',
       kw: ['travel','trip','away','flight','passport'],
@@ -115,6 +123,8 @@
 
   const SUGGESTIONS = [
     { label: 'Our mission',     q: 'mission' },
+    { label: 'The Lion Way',    q: 'lion way' },
+    { label: 'John Wooden',     q: 'wooden' },
     { label: 'Conferences',     q: 'conferences' },
     { label: 'Team levels',     q: 'levels' },
     { label: 'Autumn sports',   q: 'autumn' },

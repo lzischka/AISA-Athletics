@@ -5,6 +5,93 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Purpose of Athletics – AISA Lions</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Lion Way strip ── */
+    .lion-way {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+    .lion-way-card {
+      border-radius: var(--radius);
+      padding: 1.6rem 1.4rem;
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+      border-top: 5px solid;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .lion-way-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .lion-way-card .lw-icon { font-size: 2rem; margin-bottom: .65rem; display: block; }
+    .lion-way-card h4 { font-size: 1.05rem; font-weight: 800; color: var(--navy); margin-bottom: .35rem; }
+    .lion-way-card p  { font-size: .88rem; color: var(--gray-600); line-height: 1.6; }
+    .lw-responsible { border-color: var(--navy); }
+    .lw-safe        { border-color: var(--spring); }
+    .lw-respectful  { border-color: var(--gold); }
+    .lw-kind        { border-color: var(--autumn); }
+
+    /* ── Wooden Pyramid callout ── */
+    .wooden-quote {
+      background: linear-gradient(135deg, #0d2b52, #1a4a8a);
+      color: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem 2.4rem;
+      margin: 2rem 0 0;
+      border-left: 6px solid var(--gold);
+    }
+    .wooden-quote p {
+      font-size: 1.05rem;
+      font-style: italic;
+      line-height: 1.65;
+      margin-bottom: .75rem;
+      opacity: .93;
+    }
+    .wooden-quote cite {
+      font-size: .82rem;
+      opacity: .72;
+      font-style: normal;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    /* ── Pillars beyond the field ── */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+    .pillar-card {
+      text-align: center;
+      padding: 1.8rem 1.2rem;
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .pillar-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .pillar-card .pillar-icon { font-size: 2.4rem; margin-bottom: .7rem; display: block; }
+    .pillar-card h4 { font-size: 1rem; font-weight: 800; color: var(--navy); margin-bottom: .35rem; }
+    .pillar-card p  { font-size: .85rem; color: var(--gray-600); line-height: 1.6; }
+
+    /* ── Wooden attributes strip ── */
+    .wooden-attrs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: 1rem;
+    }
+    .wooden-attr {
+      background: rgba(245,168,0,.12);
+      color: var(--navy);
+      border: 1.5px solid var(--gold);
+      border-radius: 2rem;
+      padding: .3rem .85rem;
+      font-size: .8rem;
+      font-weight: 700;
+    }
+  </style>
 </head>
 <body>
 
@@ -30,9 +117,9 @@
   <!-- HERO -->
   <section class="hero" style="padding: 3.5rem 1.5rem;">
     <div class="hero-content">
-      <span class="hero-eyebrow">Mission &amp; Program</span>
+      <span class="hero-eyebrow">Mission &amp; Philosophy</span>
       <h1>Purpose of <em>Athletics</em> at AISA</h1>
-      <p>We believe sport is a vehicle for developing responsible, resilient, and compassionate leaders. Every team. Every season. Every student-athlete.</p>
+      <p>At AISA, athletics is not a break from our mission — it <em style="color:var(--gold-light); font-style:normal; font-weight:700;">is</em> our mission in motion. Developing resilient learners and compassionate leaders for a dynamic world, one season at a time.</p>
     </div>
   </section>
 
@@ -41,38 +128,102 @@
     <div class="container">
       <div class="section-label">Our Mission</div>
       <h2 class="section-title">Why Athletics Matters at AISA</h2>
-      <p class="section-sub">The AISA Athletics program exists to complement the academic mission of the school — teaching life skills through the unique environment of competitive sport.</p>
+      <p class="section-sub">The American International School Abu Dhabi exists to <strong>develop resilient learners and compassionate leaders for a dynamic world.</strong> Athletics is one of the most powerful environments that mission comes to life — nowhere else do students face challenge, failure, teamwork, and triumph in such rapid and real succession.</p>
 
       <div class="values-grid">
         <div class="value-item">
           <span class="icon">🤝</span>
           <h4>Teamwork</h4>
-          <p>Learning to collaborate, communicate, and trust others both on and off the field.</p>
+          <p>The main ingredient of stardom is the rest of the team. Sport teaches students to collaborate, communicate, and trust — skills that matter far beyond the final score.</p>
         </div>
         <div class="value-item">
           <span class="icon">💪</span>
           <h4>Resilience</h4>
-          <p>Embracing setbacks as opportunities to grow stronger and more determined.</p>
+          <p>Resilient learners are built on the practice field. Setbacks are not obstacles — they are the curriculum. Every loss, every re-try, shapes a stronger and more determined student-athlete.</p>
         </div>
         <div class="value-item">
           <span class="icon">🏆</span>
           <h4>Excellence</h4>
-          <p>Striving for the highest standard in every practice, game, and decision.</p>
+          <p>Excellence at AISA is not about trophies — it is about the effort to become the best you are capable of being. We define success by preparation, growth, and character.</p>
         </div>
         <div class="value-item">
           <span class="icon">🌍</span>
           <h4>Global Citizenship</h4>
-          <p>Competing internationally builds cross-cultural respect and understanding.</p>
+          <p>Competing against peers from the UAE, Saudi Arabia, Kuwait, Lebanon, and Egypt turns every match into a lesson in cross-cultural respect and shared humanity.</p>
         </div>
         <div class="value-item">
           <span class="icon">🎓</span>
           <h4>Student-First</h4>
-          <p>Academics always come first. Athletes are students who play sports, not the other way around.</p>
+          <p>Athletes are students who play sports — not the other way around. Academic growth and personal well-being are always the foundation on which athletic participation is built.</p>
         </div>
         <div class="value-item">
           <span class="icon">⚖️</span>
           <h4>Sportsmanship</h4>
-          <p>Competing with integrity, respecting opponents, officials, and the game itself.</p>
+          <p>Compassionate leaders compete with integrity. We honor our opponents, respect officials, and uphold the spirit of the game — in victory and in defeat.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE LION WAY -->
+  <section style="background: var(--off-white);">
+    <div class="container">
+      <div class="section-label">The Lion Way</div>
+      <h2 class="section-title">🦁 Be Responsible. Be Safe. Be Respectful. Be Kind.</h2>
+      <p class="section-sub">The Lion Way is the code that guides every AISA student-athlete — in practices, in competition, in travel, and in life. These four commitments are not rules imposed from outside; they are the character of a Lion, expressed through sport.</p>
+
+      <div class="lion-way">
+        <div class="lion-way-card lw-responsible">
+          <span class="lw-icon">🦁</span>
+          <h4>Be Responsible</h4>
+          <p>Show up prepared. Keep your academic commitments. Be accountable to your coaches and your teammates. Own your performance — the effort you bring to every practice is a choice you make for the whole team.</p>
+        </div>
+        <div class="lion-way-card lw-safe">
+          <span class="lw-icon">🛡️</span>
+          <h4>Be Safe</h4>
+          <p>Respect your body and the bodies of others. Follow safety protocols, play within the rules, and look out for your teammates. Physical well-being is the foundation of athletic development.</p>
+        </div>
+        <div class="lion-way-card lw-respectful">
+          <span class="lw-icon">🤝</span>
+          <h4>Be Respectful</h4>
+          <p>Honor your opponents, your officials, your coaches, and the game itself. Respect is not reserved for winners — it is the standard of a Lion at all times, regardless of the scoreboard.</p>
+        </div>
+        <div class="lion-way-card lw-kind">
+          <span class="lw-icon">❤️</span>
+          <h4>Be Kind</h4>
+          <p>Lead with compassion. Lift up the teammate who is struggling. Welcome the new player. Shake hands with genuine warmth. The most lasting victories are the friendships forged through sport.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEYOND THE FIELD -->
+  <section>
+    <div class="container">
+      <div class="section-label">More Than a Game</div>
+      <h2 class="section-title">What Athletics Builds Beyond the Field</h2>
+      <p class="section-sub">Athletics at AISA is intentionally designed to develop the whole student — not just the athlete. Each season, each practice, each tournament is an opportunity for academic growth, creative problem-solving, physical development, and the building of deep community.</p>
+
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <span class="pillar-icon">📚</span>
+          <h4>Learning Beyond the Classroom</h4>
+          <p>Sport extends academic growth into physical and emotional domains. Athletes learn strategy, discipline, time management, and how to perform under pressure — skills that transfer directly into the classroom and beyond.</p>
+        </div>
+        <div class="pillar-card">
+          <span class="pillar-icon">🤝</span>
+          <h4>A Community of Belonging</h4>
+          <p>Teams create communities. Student-athletes build lasting friendships, develop empathy through shared challenge, and strengthen their sense of belonging — both to AISA and to the broader international school community.</p>
+        </div>
+        <div class="pillar-card">
+          <span class="pillar-icon">🌍</span>
+          <h4>Growing Global Citizens</h4>
+          <p>Competing across the UAE and throughout the Near East exposes our athletes to diverse cultures, perspectives, and ways of being. Collaboration, leadership, and intercultural understanding are forged on the courts and fields of NESAC, ISAC, EAC, and JEAC.</p>
+        </div>
+        <div class="pillar-card">
+          <span class="pillar-icon">🌿</span>
+          <h4>Physical &amp; Personal Well-being</h4>
+          <p>Regular physical activity supports mental health, focus, and resilience. AISA Athletics provides every student — from Grade 4 to Grade 12 — a structured, supportive, and joyful environment to grow physically and personally.</p>
         </div>
       </div>
     </div>
@@ -81,8 +232,9 @@
   <!-- PHILOSOPHY -->
   <section style="background: var(--off-white);">
     <div class="container">
-      <div class="section-label">Philosophy</div>
+      <div class="section-label">Coaching Philosophy</div>
       <h2 class="section-title">Our Guiding Philosophy</h2>
+      <p class="section-sub">AISA Athletics draws on a rich tradition of character-based coaching — most deeply rooted in the philosophy of legendary UCLA coach <strong>John Wooden</strong>, whose Pyramid of Success placed character, effort, and team above individual achievement and winning.</p>
 
       <div class="card-grid">
         <div class="card">
@@ -90,25 +242,50 @@
           <div class="card-body">
             <span class="card-icon">📚</span>
             <h3>Academics First</h3>
-            <p>Student-athletes at AISA are expected to maintain strong academic standing. Participation in athletics is a privilege contingent on meeting academic requirements. Our coaches and AD work closely with teachers to monitor progress and provide support.</p>
+            <p>Student-athletes at AISA are expected to maintain strong academic standing. Participation in athletics is a privilege contingent on meeting academic requirements. Our coaches and Athletic Director work closely with teachers to monitor progress and provide support. A student who struggles in the classroom receives help before they take the field.</p>
           </div>
         </div>
+
         <div class="card">
           <div class="card-accent" style="background: var(--gold);"></div>
           <div class="card-body">
-            <span class="card-icon">🌱</span>
-            <h3>Development Over Winning</h3>
-            <p>While we compete to win, our primary goal is the holistic development of every student-athlete. Coaches are trained to prioritize growth, playing time at developmental levels, and a positive experience that keeps students engaged in sport.</p>
+            <span class="card-icon">🏛️</span>
+            <h3>The Wooden Standard</h3>
+            <p>John Wooden defined success not as winning, but as <em>"peace of mind, which is a direct result of self-satisfaction in knowing you made the effort to become the best of which you are capable."</em> AISA coaches are trained to hold this standard — to measure athletes by effort, preparation, and character, and to never mistake activity for achievement.</p>
+            <div class="wooden-attrs">
+              <span class="wooden-attr">Character</span>
+              <span class="wooden-attr">Preparation</span>
+              <span class="wooden-attr">Industriousness</span>
+              <span class="wooden-attr">Enthusiasm</span>
+              <span class="wooden-attr">Team Spirit</span>
+              <span class="wooden-attr">Competitive Greatness</span>
+            </div>
           </div>
         </div>
+
         <div class="card">
           <div class="card-accent" style="background: var(--spring);"></div>
           <div class="card-body">
-            <span class="card-icon">🌐</span>
-            <h3>International Perspective</h3>
-            <p>As a member of four conferences — JEAC (Elementary), EAC (Middle School UAE-wide), ISAC (Abu Dhabi local, MS/JV/V), and NESAC (Near East regional, JV/V) — AISA students compete against peers from Abu Dhabi, the wider UAE, Saudi Arabia, Kuwait, Lebanon, and Egypt, building a broad perspective through sport.</p>
+            <span class="card-icon">🌱</span>
+            <h3>Development Over Winning</h3>
+            <p>While we compete to win, our primary goal is the holistic development of every student-athlete. As Wooden taught, <em>"It's what you learn after you know it all that counts."</em> Coaches prioritize growth, equitable playing time at developmental levels, and the kind of positive experience that keeps students engaged in sport for life — not just one season.</p>
           </div>
         </div>
+
+        <div class="card">
+          <div class="card-accent" style="background: var(--winter);"></div>
+          <div class="card-body">
+            <span class="card-icon">🌐</span>
+            <h3>International Perspective</h3>
+            <p>Competing across four conferences — JEAC (Elementary), EAC (UAE Middle School), ISAC (Abu Dhabi local, MS/JV/V), and NESAC (Near East regional, JV/V) — means AISA student-athletes engage with peers from Abu Dhabi, Dubai, Saudi Arabia, Kuwait, Lebanon, and Egypt. Every away tournament is a lesson in intercultural leadership.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wooden callout -->
+      <div class="wooden-quote">
+        <p>"Be more concerned with your character than your reputation, because your character is what you really are, while your reputation is merely what others think you are. The true test of a man's character is what he does when no one is watching."</p>
+        <cite>— John Wooden, Coach · UCLA · 10× National Champion</cite>
       </div>
     </div>
   </section>
@@ -203,11 +380,11 @@
   </section>
 
   <!-- CALLOUT -->
-  <section style="padding-top: 0; padding-bottom: 3rem;">
+  <section style="padding-top: 2rem; padding-bottom: 3rem;">
     <div class="container">
       <div class="callout">
-        <p>"The goal of our athletics program is not merely to produce champions, but to develop young people of character who will lead with integrity throughout their lives."</p>
-        <cite>— AISA Athletics Department</cite>
+        <p>"Success is peace of mind, which is a direct result of self-satisfaction in knowing you made the effort to become the best of which you are capable."</p>
+        <cite>— John Wooden · The standard every AISA Lion strives for</cite>
       </div>
     </div>
   </section>
