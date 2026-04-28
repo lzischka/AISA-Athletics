@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Additional Opportunities – AISA Lions Athletics</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .opp-hero {
+      background: linear-gradient(135deg, #0d2b52 0%, #1a4480 50%, #f5a800 140%);
+      padding: 4.5rem 1.5rem;
+      color: var(--white);
+      text-align: center;
+    }
+    .opp-hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; margin-bottom: .5rem; }
+    .opp-hero p  { font-size: 1.1rem; opacity: .92; max-width: 640px; margin: 0 auto; }
+    .opp-eyebrow {
+      display:inline-block; background: var(--gold); color: var(--navy);
+      font-size: .7rem; font-weight: 800; letter-spacing: .12em;
+      text-transform: uppercase; padding: .35rem .9rem; border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+
+    .opp-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+    .opp-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .opp-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .opp-banner {
+      color: var(--white);
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: .6rem;
+    }
+    .opp-banner .opp-emoji { font-size: 3rem; line-height: 1; }
+    .opp-banner h3 { font-size: 1.4rem; font-weight: 800; color: var(--white); margin: 0; }
+    .opp-banner .opp-tag {
+      background: rgba(255,255,255,.18);
+      padding: .25rem .7rem;
+      border-radius: 999px;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .opp-banner.jrnba    { background: linear-gradient(135deg, #17408b, #c9082a); }
+    .opp-banner.pass     { background: linear-gradient(135deg, #0a3d2c, #1f8a5b, #2ecc71); }
+    .opp-banner.gametime { background: linear-gradient(135deg, #f5a800, #d4880c, #b06d00); color: var(--navy); }
+    .opp-banner.gametime h3, .opp-banner.gametime .opp-tag { color: var(--navy); }
+    .opp-banner.gametime .opp-tag { background: rgba(13,43,82,.15); }
+    .opp-banner.adek     { background: linear-gradient(135deg, #6a1b9a, #9c27b0, #d81b60); }
+
+    .opp-body { padding: 1.8rem 2rem; }
+    .opp-body h4 {
+      font-size: .75rem; font-weight: 800; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: .3rem;
+    }
+    .opp-body h2 { font-size: 1.55rem; font-weight: 800; color: var(--navy); margin-bottom: .9rem; }
+    .opp-body p  { color: var(--gray-600); margin-bottom: 1rem; line-height: 1.65; }
+    .opp-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: .75rem;
+      margin-top: 1rem;
+    }
+    .opp-feature {
+      background: var(--off-white);
+      border-left: 3px solid var(--gold);
+      padding: .7rem .9rem;
+      border-radius: 6px;
+    }
+    .opp-feature strong { display:block; color: var(--navy); font-size: .82rem; margin-bottom: .15rem; }
+    .opp-feature span   { font-size: .78rem; color: var(--gray-600); }
+
+    .partner-strip {
+      display:flex; flex-wrap:wrap; gap:.5rem; margin-top: 1rem;
+    }
+    .partner-pill {
+      background: var(--gray-100);
+      color: var(--navy);
+      font-size: .75rem; font-weight: 600;
+      padding: .35rem .75rem;
+      border-radius: 999px;
+    }
+
+    .opp-cta {
+      background: var(--navy);
+      color: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+    .opp-cta h3 { font-size: 1.5rem; font-weight: 800; color: var(--white); margin-bottom: .6rem; }
+    .opp-cta p  { color: rgba(255,255,255,.85); max-width: 560px; margin: 0 auto 1.2rem; }
+
+    @media (max-width: 760px) {
+      .opp-card { grid-template-columns: 1fr; }
+      .opp-banner { padding: 1.5rem 1rem; }
+      .opp-body { padding: 1.4rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- AISA SITE HEADER -->
+  <header class="site-header">
+    <div class="top-bar">
+      <div class="top-bar-inner">
+        <img src="AISAOfficalLogo.png" alt="AISA – American International School of Abu Dhabi" class="official-logo" />
+        <span class="school-name">American International School of Abu Dhabi</span>
+        <span class="top-bar-tagline">Developing resilient learners and compassionate leaders for a dynamic world</span>
+      </div>
+    </div>
+    <nav class="main-nav" aria-label="Primary">
+      <div class="main-nav-inner">
+        <a href="index.html" class="lions-brand" aria-label="AISA Lions Athletics — Home">
+          <img src="NESAC%20Logos/AISALionsLogo.png" alt="AISA Lions Athletics" />
+        </a>
+        <input type="checkbox" id="nav-toggle-checkbox" />
+        <label for="nav-toggle-checkbox" class="nav-toggle" aria-label="Toggle navigation">☰</label>
+        <ul class="nav-links">
+          <li><a href="purpose.html">About &amp; Teams</a></li>
+          <li><a href="conferences.html">Conferences</a></li>
+          <li><a href="autumn.html">Autumn</a></li>
+          <li><a href="winter.html">Winter</a></li>
+          <li><a href="spring.html">Spring</a></li>
+          <li><a href="opportunities.html" class="active">Opportunities</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="index.html">Home</a><span>›</span> Additional Opportunities
+  </div>
+
+  <!-- HERO -->
+  <div class="opp-hero">
+    <span class="opp-eyebrow">Beyond the Conference Calendar</span>
+    <h1>Additional Opportunities</h1>
+    <p>Beyond NESAC, ISAC, EAC, and JEAC competition, AISA Lions student-athletes have access to elite partnerships, professional camps, and high-profile UAE-wide events that extend their experience well beyond the school season.</p>
+  </div>
+
+  <!-- INTRO -->
+  <section>
+    <div class="container">
+      <div class="section-label">Why It Matters</div>
+      <h2 class="section-title">More Than a Season</h2>
+      <p class="section-sub">AISA Athletics partners with elite organizations and signature UAE events to give our student-athletes year-round development pathways, exposure to professional-grade coaching, and the opportunity to represent the Lions on national and international stages.</p>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1rem; margin: 2rem 0;">
+        <div class="value-item">
+          <span class="icon">🤝</span>
+          <h4>Elite Partners</h4>
+          <p>PASS Football · GameTimeSports</p>
+        </div>
+        <div class="value-item">
+          <span class="icon">🏀</span>
+          <h4>Signature Events</h4>
+          <p>Jr. NBA Abu Dhabi</p>
+        </div>
+        <div class="value-item">
+          <span class="icon">🏆</span>
+          <h4>National Competition</h4>
+          <p>ADEK SportsCup</p>
+        </div>
+        <div class="value-item">
+          <span class="icon">🌟</span>
+          <h4>Year-Round</h4>
+          <p>Camps · Clinics · Tournaments</p>
+        </div>
+      </div>
+
+      <!-- OPPORTUNITY CARDS -->
+      <div class="opp-grid">
+
+        <!-- JR NBA -->
+        <div class="opp-card">
+          <div class="opp-banner jrnba">
+            <span class="opp-emoji">🏀</span>
+            <h3>Jr. NBA Abu Dhabi</h3>
+            <span class="opp-tag">Annual · Marquee Event</span>
+          </div>
+          <div class="opp-body">
+            <h4>The NBA in Our Backyard</h4>
+            <h2>Jr. NBA Experience in Abu Dhabi</h2>
+            <p>Each year, AISA Lions student-athletes participate in the <strong>Jr. NBA Abu Dhabi</strong> experience — the NBA's youth basketball development program hosted in the UAE capital. The event coincides with the NBA Abu Dhabi Games at Etihad Arena and gives our players the chance to learn from NBA coaches, meet current and former players, and compete in skills clinics alongside the very best young basketball talent in the region.</p>
+            <p>This is a signature highlight of the AISA basketball calendar and connects our student-athletes directly to the global game.</p>
+            <div class="opp-features">
+              <div class="opp-feature"><strong>NBA Coaching</strong><span>Skills sessions led by NBA-certified coaches</span></div>
+              <div class="opp-feature"><strong>Pro Player Access</strong><span>Meet current & former NBA stars</span></div>
+              <div class="opp-feature"><strong>Etihad Arena</strong><span>Tied to NBA Abu Dhabi Games</span></div>
+              <div class="opp-feature"><strong>All Levels</strong><span>Age-grouped skills clinics</span></div>
+            </div>
+            <div class="partner-strip">
+              <span class="partner-pill">NBA</span>
+              <span class="partner-pill">Department of Culture &amp; Tourism – Abu Dhabi</span>
+              <span class="partner-pill">Etihad Arena</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PASS FOOTBALL -->
+        <div class="opp-card">
+          <div class="opp-banner pass">
+            <span class="opp-emoji">⚽</span>
+            <h3>PASS Football</h3>
+            <span class="opp-tag">Official Partner</span>
+          </div>
+          <div class="opp-body">
+            <h4>Football Development Partner</h4>
+            <h2>AISA × PASS Football</h2>
+            <p>AISA Athletics is proud to partner with <strong>PASS Football</strong>, one of the UAE's leading football academies, to deliver elite-level coaching and development pathways for our student-athletes. PASS Football brings UEFA-licensed coaches, structured curriculum, and competitive opportunities directly to AISA — supporting our soccer program from elementary entry-level through Varsity.</p>
+            <p>The partnership provides a year-round complement to our seasonal soccer competition, giving committed players a serious pathway to grow their game.</p>
+            <div class="opp-features">
+              <div class="opp-feature"><strong>UEFA Coaches</strong><span>Licensed, professional instruction</span></div>
+              <div class="opp-feature"><strong>Year-Round</strong><span>Training extends beyond the soccer season</span></div>
+              <div class="opp-feature"><strong>All Ages</strong><span>Elementary through Varsity pathways</span></div>
+              <div class="opp-feature"><strong>Competitive Play</strong><span>Access to PASS league fixtures</span></div>
+            </div>
+            <div class="partner-strip">
+              <span class="partner-pill">PASS Football Academy</span>
+              <span class="partner-pill">UEFA-Licensed Coaching</span>
+              <span class="partner-pill">UAE Football Development</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- GAMETIMESPORTS -->
+        <div class="opp-card">
+          <div class="opp-banner gametime">
+            <span class="opp-emoji">🏐</span>
+            <h3>GameTimeSports</h3>
+            <span class="opp-tag">Official Partner</span>
+          </div>
+          <div class="opp-body">
+            <h4>Multi-Sport Development Partner</h4>
+            <h2>AISA × GameTimeSports</h2>
+            <p>Our partnership with <strong>GameTimeSports</strong> brings expert multi-sport coaching, after-school programs, and tournament opportunities to AISA Lions student-athletes. GameTimeSports specializes in delivering structured, age-appropriate sports programming across basketball, volleyball, and other core AISA sports — giving our athletes additional touches, additional reps, and additional competition outside the school day.</p>
+            <p>Together with PASS Football, GameTimeSports forms the core of AISA's extended-season development network in the UAE.</p>
+            <div class="opp-features">
+              <div class="opp-feature"><strong>Multi-Sport</strong><span>Basketball, volleyball, and more</span></div>
+              <div class="opp-feature"><strong>After-School</strong><span>Programs run alongside school athletics</span></div>
+              <div class="opp-feature"><strong>Holiday Camps</strong><span>Intensive break-week training</span></div>
+              <div class="opp-feature"><strong>Tournaments</strong><span>Competitive play across the UAE</span></div>
+            </div>
+            <div class="partner-strip">
+              <span class="partner-pill">GameTimeSports</span>
+              <span class="partner-pill">After-School Programs</span>
+              <span class="partner-pill">UAE Tournaments</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ADEK SPORTSCUP -->
+        <div class="opp-card">
+          <div class="opp-banner adek">
+            <span class="opp-emoji">🏆</span>
+            <h3>ADEK SportsCup</h3>
+            <span class="opp-tag">Emirate-Wide Competition</span>
+          </div>
+          <div class="opp-body">
+            <h4>Abu Dhabi's Premier School Tournament</h4>
+            <h2>ADEK SportsCup</h2>
+            <p>The <strong>ADEK SportsCup</strong> is the Abu Dhabi Department of Education and Knowledge's flagship inter-school sports competition, bringing together private schools from across the emirate in a wide range of sports. AISA Lions teams compete proudly in the SportsCup as part of our commitment to representing AISA on the largest possible Abu Dhabi stage.</p>
+            <p>The tournament is an opportunity for our student-athletes to test themselves against the broader Abu Dhabi private school community — well beyond the AISA-affiliated conference circuit — and to bring home recognition for our program.</p>
+            <div class="opp-features">
+              <div class="opp-feature"><strong>ADEK-Run</strong><span>Official Abu Dhabi government event</span></div>
+              <div class="opp-feature"><strong>Multi-Sport</strong><span>Basketball, volleyball, soccer, athletics</span></div>
+              <div class="opp-feature"><strong>Emirate-Wide</strong><span>Private schools across Abu Dhabi</span></div>
+              <div class="opp-feature"><strong>Annual</strong><span>Recurring tournament series</span></div>
+            </div>
+            <div class="partner-strip">
+              <span class="partner-pill">Abu Dhabi Department of Education &amp; Knowledge</span>
+              <span class="partner-pill">Private School Competition</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CTA -->
+      <div class="opp-cta">
+        <h3>Want to Get Involved?</h3>
+        <p>AISA student-athletes are eligible to participate in any of these opportunities. Talk to your coach or the Athletics Department to learn more about Jr. NBA selection, PASS Football and GameTimeSports enrollment, and ADEK SportsCup team rosters.</p>
+        <a class="btn btn-gold" href="purpose.html">Learn About Our Program</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <strong>AISA Lions Athletics</strong> — American International School of Abu Dhabi<br>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="purpose.html">About &amp; Teams</a>
+      <a href="conferences.html">Conferences</a>
+      <a href="autumn.html">Autumn</a>
+      <a href="winter.html">Winter</a>
+      <a href="spring.html">Spring</a>
+      <a href="opportunities.html">Opportunities</a>
+    </div>
+  </footer>
+
+  <script src="leo.js" defer></script>
+</body>
+</html>

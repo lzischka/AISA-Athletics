@@ -116,6 +116,26 @@
       kw: ['colors','mascot','lion','school colors'],
       a: "AISA's colors are <b>Yellow &amp; Blue</b>, and our mascot is the <b>Lion</b> 🦁. That's me — go Lions!" },
 
+    { id: 'opportunities',
+      kw: ['opportunities','additional','partners','partnership','beyond','extra','programs'],
+      a: "Beyond the conference calendar, AISA offers <b>4 signature opportunities</b>: the <b>Jr. NBA Abu Dhabi</b> experience, our partnerships with <b>PASS Football</b> and <b>GameTimeSports</b>, and the <b>ADEK SportsCup</b>. Visit the <b>Opportunities</b> page for details on each!" },
+
+    { id: 'jrnba',
+      kw: ['jr nba','jr. nba','junior nba','nba','etihad arena','abu dhabi games'],
+      a: "The <b>Jr. NBA Abu Dhabi</b> experience is an annual highlight for AISA basketball. Our student-athletes get NBA-certified coaching, meet current and former NBA players, and participate in skills clinics tied to the NBA Abu Dhabi Games at Etihad Arena. It's the NBA in our backyard." },
+
+    { id: 'pass',
+      kw: ['pass football','pass','football academy','uefa'],
+      a: "<b>PASS Football</b> is one of AISA's official athletics partners. Their UEFA-licensed coaches deliver year-round football development from elementary through Varsity, complementing our seasonal soccer program with a serious year-round pathway." },
+
+    { id: 'gametime',
+      kw: ['gametime','game time','gametimesports','after-school','after school','holiday camp'],
+      a: "<b>GameTimeSports</b> is AISA's multi-sport development partner. They run after-school programs, holiday camps, and tournaments across basketball, volleyball, and other core AISA sports — extending our athletes' development beyond the school day." },
+
+    { id: 'adek',
+      kw: ['adek','sportscup','sports cup','abu dhabi department','department of education'],
+      a: "The <b>ADEK SportsCup</b> is the Abu Dhabi Department of Education and Knowledge's flagship inter-school competition. AISA Lions teams compete against private schools from across the emirate in a wide range of sports — a chance to represent AISA on the broadest Abu Dhabi stage." },
+
     { id: 'thanks',
       kw: ['thanks','thank you','thx','appreciate'],
       a: "You're welcome! Roar on. 🦁" },
@@ -131,6 +151,7 @@
     { label: 'Winter sports',   q: 'winter' },
     { label: 'Spring sports',   q: 'spring' },
     { label: 'Eligibility',     q: 'eligibility' },
+    { label: 'Jr. NBA & Partners', q: 'opportunities' },
   ];
 
   /* ---------- Match logic ---------- */
