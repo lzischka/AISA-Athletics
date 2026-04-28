@@ -136,6 +136,10 @@
       kw: ['adek','sportscup','sports cup','abu dhabi department','department of education'],
       a: "The <b>ADEK SportsCup</b> is the Abu Dhabi Department of Education and Knowledge's flagship inter-school competition. AISA Lions teams compete against private schools from across the emirate in a wide range of sports — a chance to represent AISA on the broadest Abu Dhabi stage." },
 
+    { id: 'handbook',
+      kw: ['handbook','student parent','student-parent','rules','policies','policy','tryout','code of conduct','faq','faqs','document','download','pdf','manual'],
+      a: "The <b>AISA Lions Student–Parent Handbook</b> covers everything: tryouts, eligibility, practices, travel, code of conduct, injuries, uniforms, fees, communication, and awards. Visit our <a href='handbook.html'><b>Handbook page</b></a> for quick FAQs by topic, or download the full PDF directly." },
+
     { id: 'thanks',
       kw: ['thanks','thank you','thx','appreciate'],
       a: "You're welcome! Roar on. 🦁" },
@@ -152,6 +156,7 @@
     { label: 'Spring sports',   q: 'spring' },
     { label: 'Eligibility',     q: 'eligibility' },
     { label: 'Jr. NBA & Partners', q: 'opportunities' },
+    { label: 'Handbook & FAQs', q: 'handbook' },
   ];
 
   /* ---------- Match logic ---------- */

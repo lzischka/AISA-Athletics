@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student–Parent Handbook – AISA Lions Athletics</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ===== HANDBOOK HERO ===== */
+    .hb-hero {
+      position: relative;
+      background: radial-gradient(circle at 50% 30%, #1a4480 0%, #0d2b52 60%, #07173a 100%);
+      color: var(--white);
+      padding: 4rem 1.5rem 5rem;
+      text-align: center;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .hb-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 80% 20%, rgba(245,168,0,.18), transparent 45%),
+                  radial-gradient(circle at 15% 85%, rgba(245,168,0,.12), transparent 40%);
+      z-index: -1;
+    }
+    .hb-logo-wrap {
+      width: clamp(220px, 32vw, 360px);
+      height: clamp(220px, 32vw, 360px);
+      margin: 0 auto 1.8rem;
+      background: var(--white);
+      border-radius: 50%;
+      padding: 1.6rem;
+      box-shadow:
+        0 0 0 6px rgba(245,168,0,.45),
+        0 0 0 12px rgba(255,255,255,.08),
+        0 25px 60px rgba(0,0,0,.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: hb-logo-in .9s cubic-bezier(.2,.9,.3,1.2) both;
+    }
+    .hb-logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    @keyframes hb-logo-in {
+      from { transform: scale(.4) rotate(-12deg); opacity: 0; }
+      to   { transform: scale(1)   rotate(0);     opacity: 1; }
+    }
+    .hb-eyebrow {
+      display: inline-block;
+      background: var(--gold); color: var(--navy);
+      font-size: .72rem; font-weight: 800; letter-spacing: .15em;
+      text-transform: uppercase;
+      padding: .4rem 1rem; border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+    .hb-hero h1 {
+      font-size: clamp(2rem, 5.5vw, 3.4rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: .75rem;
+      letter-spacing: -0.5px;
+    }
+    .hb-hero h1 em { color: var(--gold); font-style: normal; }
+    .hb-hero p.lead {
+      font-size: 1.1rem;
+      max-width: 640px;
+      margin: 0 auto 1.5rem;
+      opacity: .92;
+    }
+    .hb-hero-meta {
+      display: inline-flex; flex-wrap: wrap; gap: .6rem;
+      justify-content: center; margin-top: .5rem;
+    }
+    .hb-meta-pill {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+      font-size: .75rem; font-weight: 600;
+      padding: .35rem .85rem; border-radius: 999px;
+    }
+
+    /* ===== DOWNLOAD CTA ===== */
+    .hb-download {
+      max-width: 1100px;
+      margin: -3rem auto 0;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 5;
+    }
+    .hb-download-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      padding: 2.2rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 1.8rem;
+      border-top: 5px solid var(--gold);
+    }
+    .hb-download-icon {
+      width: 80px; height: 80px;
+      background: linear-gradient(135deg, var(--navy), #1a4480);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.4rem;
+      color: var(--gold);
+      box-shadow: var(--shadow-sm);
+    }
+    .hb-download-text h2 {
+      font-size: 1.4rem; font-weight: 800; color: var(--navy);
+      margin: 0 0 .25rem;
+    }
+    .hb-download-text p {
+      color: var(--gray-600); font-size: .9rem; margin: 0;
+    }
+    .hb-download .btn {
+      white-space: nowrap;
+    }
+    @media (max-width: 720px) {
+      .hb-download-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 1.6rem;
+      }
+      .hb-download-icon { margin: 0 auto; }
+    }
+
+    /* ===== RELATED HANDBOOKS ===== */
+    .hb-related {
+      padding: 3rem 1.5rem 1rem;
+    }
+    .hb-related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      max-width: 1100px;
+      margin: 1.5rem auto 0;
+    }
+    .hb-related-card {
+      display: flex; align-items: center; gap: .9rem;
+      background: var(--white);
+      border: 1.5px solid var(--gray-100);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      text-decoration: none;
+      transition: all .2s;
+    }
+    .hb-related-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(245,168,0,.18);
+    }
+    .hb-related-card .ico {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: var(--off-white);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .hb-related-card .name {
+      font-weight: 700; color: var(--navy); font-size: .9rem; display: block;
+    }
+    .hb-related-card .meta {
+      font-size: .72rem; color: var(--gray-600);
+    }
+
+    /* ===== FAQ CATEGORY JUMP GRID ===== */
+    .hb-cats {
+      padding: 3rem 1.5rem 1rem;
+      background: var(--off-white);
+    }
+    .hb-cats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 1rem;
+      max-width: 1100px;
+      margin: 1.5rem auto 0;
+    }
+    .hb-cat {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.4rem 1rem;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: var(--shadow-sm);
+      border: 2px solid transparent;
+      transition: all .25s;
+    }
+    .hb-cat:hover {
+      border-color: var(--gold);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 22px rgba(13,43,82,.15);
+    }
+    .hb-cat .cat-icon {
+      display: block;
+      width: 52px; height: 52px;
+      margin: 0 auto .7rem;
+      background: linear-gradient(135deg, #0d2b52, #1a4480);
+      color: var(--gold);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+    }
+    .hb-cat .cat-name {
+      font-weight: 700; color: var(--navy); font-size: .88rem;
+      display: block; line-height: 1.3;
+    }
+    .hb-cat .cat-count {
+      font-size: .7rem; color: var(--gray-600);
+      display: block; margin-top: .3rem;
+    }
+
+    /* ===== FAQ ACCORDION ===== */
+    .hb-faq { padding: 3rem 1.5rem; }
+    .hb-faq-section {
+      max-width: 880px;
+      margin: 0 auto 2.5rem;
+      scroll-margin-top: 110px;
+    }
+    .hb-faq-header {
+      display: flex; align-items: center; gap: .9rem;
+      margin-bottom: 1rem;
+      padding-bottom: .8rem;
+      border-bottom: 3px solid var(--gold);
+    }
+    .hb-faq-header .ico {
+      width: 48px; height: 48px;
+      background: var(--navy); color: var(--gold);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .hb-faq-header h3 {
+      font-size: 1.4rem; font-weight: 800; color: var(--navy); margin: 0;
+    }
+    .hb-faq-header p {
+      font-size: .82rem; color: var(--gray-600); margin: 0;
+    }
+    .hb-faq details {
+      background: var(--white);
+      border: 1.5px solid var(--gray-100);
+      border-radius: 10px;
+      margin-bottom: .6rem;
+      transition: border-color .2s, box-shadow .2s;
+      overflow: hidden;
+    }
+    .hb-faq details[open] {
+      border-color: var(--gold);
+      box-shadow: 0 4px 14px rgba(245,168,0,.13);
+    }
+    .hb-faq summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 1rem 1.2rem;
+      font-weight: 700; color: var(--navy); font-size: .95rem;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem;
+    }
+    .hb-faq summary::-webkit-details-marker { display: none; }
+    .hb-faq summary::after {
+      content: '＋';
+      color: var(--gold);
+      font-size: 1.3rem;
+      font-weight: 700;
+      transition: transform .25s;
+      flex-shrink: 0;
+    }
+    .hb-faq details[open] summary::after {
+      content: '−';
+      transform: rotate(180deg);
+    }
+    .hb-faq summary:hover { color: var(--gold-dark, #c08400); }
+    .hb-faq .answer {
+      padding: 0 1.2rem 1.1rem;
+      color: var(--gray-700, #444);
+      font-size: .9rem; line-height: 1.65;
+    }
+    .hb-faq .answer strong { color: var(--navy); }
+    .hb-back-top {
+      display: inline-block;
+      font-size: .78rem; color: var(--gray-600);
+      text-decoration: none;
+      margin-top: .8rem;
+    }
+    .hb-back-top:hover { color: var(--gold); }
+
+    /* ===== FINAL CTA ===== */
+    .hb-final {
+      background: linear-gradient(135deg, #0d2b52, #1a4480);
+      color: var(--white);
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+    .hb-final h3 { font-size: 1.6rem; font-weight: 800; color: var(--white); margin-bottom: .6rem; }
+    .hb-final p  { color: rgba(255,255,255,.85); max-width: 560px; margin: 0 auto 1.4rem; }
+  </style>
+</head>
+<body>
+
+  <!-- AISA SITE HEADER -->
+  <header class="site-header">
+    <div class="top-bar">
+      <div class="top-bar-inner">
+        <img src="AISAOfficalLogo.png" alt="AISA – American International School of Abu Dhabi" class="official-logo" />
+        <span class="school-name">American International School of Abu Dhabi</span>
+        <span class="top-bar-tagline">Developing resilient learners and compassionate leaders for a dynamic world</span>
+      </div>
+    </div>
+    <nav class="main-nav" aria-label="Primary">
+      <div class="main-nav-inner">
+        <a href="index.html" class="lions-brand" aria-label="AISA Lions Athletics — Home">
+          <img src="NESAC%20Logos/AISALionsLogo.png" alt="AISA Lions Athletics" />
+        </a>
+        <input type="checkbox" id="nav-toggle-checkbox" />
+        <label for="nav-toggle-checkbox" class="nav-toggle" aria-label="Toggle navigation">☰</label>
+        <ul class="nav-links">
+          <li><a href="purpose.html">About &amp; Teams</a></li>
+          <li><a href="conferences.html">Conferences</a></li>
+          <li><a href="autumn.html">Autumn</a></li>
+          <li><a href="winter.html">Winter</a></li>
+          <li><a href="spring.html">Spring</a></li>
+          <li><a href="opportunities.html">Opportunities</a></li>
+          <li><a href="handbook.html" class="active">Handbook</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="index.html">Home</a><span>›</span> Student–Parent Handbook
+  </div>
+
+  <!-- HERO with prominent logo -->
+  <div class="hb-hero">
+    <div class="hb-logo-wrap">
+      <img src="NESAC%20Logos/AISALionsLogo.png" alt="AISA Lions Athletics — Official Crest" />
+    </div>
+    <span class="hb-eyebrow">Official Athletics Resource</span>
+    <h1>AISA Lions <em>Student–Parent</em> Handbook</h1>
+    <p class="lead">Everything student-athletes and families need to know about competing for the Lions — eligibility, expectations, conduct, communication, travel, fees, and more. Find quick answers below or download the full handbook.</p>
+    <div class="hb-hero-meta">
+      <span class="hb-meta-pill">📘 2025–2026 Edition</span>
+      <span class="hb-meta-pill">🦁 All AISA Athletes &amp; Families</span>
+      <span class="hb-meta-pill">🏆 Aligned with NESAC · ISAC · EAC · JEAC</span>
+    </div>
+  </div>
+
+  <!-- DOWNLOAD CTA -->
+  <div class="hb-download">
+    <div class="hb-download-card">
+      <div class="hb-download-icon">📘</div>
+      <div class="hb-download-text">
+        <h2>Download the Full Handbook</h2>
+        <p>Get the complete 2025–2026 AISA Lions Student–Parent Handbook as a PDF. Keep a copy for reference throughout the season.</p>
+      </div>
+      <a class="btn btn-gold" href="AISA-Lions-Student-Parent-Handbook.pdf" download>
+        ⬇ Download PDF
+      </a>
+    </div>
+  </div>
+
+  <!-- RELATED HANDBOOKS -->
+  <section class="hb-related">
+    <div class="container">
+      <div class="section-label">Conference Handbooks</div>
+      <h2 class="section-title">Companion Resources</h2>
+      <p class="section-sub">Each conference AISA participates in publishes its own official handbook. Download any of them below for the full sport-by-sport rules and tournament procedures.</p>
+      <div class="hb-related-grid">
+        <a class="hb-related-card" href="NESAC%20Handbook%202025-2026.docx%20(1)%20(1).pdf" download>
+          <span class="ico">📕</span>
+          <div>
+            <span class="name">NESAC Handbook</span>
+            <span class="meta">2025–2026 · Regional</span>
+          </div>
+        </a>
+        <a class="hb-related-card" href="ISAC%202024-2025%20Handbook%20%20%20(1).pdf" download>
+          <span class="ico">📗</span>
+          <div>
+            <span class="name">ISAC Handbook</span>
+            <span class="meta">2024–2025 · Abu Dhabi local</span>
+          </div>
+        </a>
+        <a class="hb-related-card" href="EAC%20Handbook%20(Updated%20Aug.%202025).pdf" download>
+          <span class="ico">📘</span>
+          <div>
+            <span class="name">EAC Handbook</span>
+            <span class="meta">Updated Aug 2025 · UAE MS</span>
+          </div>
+        </a>
+        <a class="hb-related-card" href="JEAC%20Handbook%20(updated%20Aug.%202025).pdf" download>
+          <span class="ico">📒</span>
+          <div>
+            <span class="name">JEAC Handbook</span>
+            <span class="meta">Updated Aug 2025 · UAE Elementary</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ CATEGORY JUMP GRID -->
+  <section class="hb-cats">
+    <div class="container">
+      <div class="section-label">Browse by Topic</div>
+      <h2 class="section-title">Find Your Answer</h2>
+      <p class="section-sub">Jump to the section that matches your question. Each topic has short, direct answers to the most common student-athlete and parent questions.</p>
+      <div class="hb-cats-grid">
+        <a class="hb-cat" href="#tryouts">
+          <span class="cat-icon">🎯</span>
+          <span class="cat-name">Tryouts &amp; Team Selection</span>
+          <span class="cat-count">5 questions</span>
+        </a>
+        <a class="hb-cat" href="#eligibility">
+          <span class="cat-icon">📚</span>
+          <span class="cat-name">Eligibility &amp; Academics</span>
+          <span class="cat-count">5 questions</span>
+        </a>
+        <a class="hb-cat" href="#practices">
+          <span class="cat-icon">⏰</span>
+          <span class="cat-name">Practices &amp; Attendance</span>
+          <span class="cat-count">5 questions</span>
+        </a>
+        <a class="hb-cat" href="#travel">
+          <span class="cat-icon">✈️</span>
+          <span class="cat-name">Travel &amp; Away Games</span>
+          <span class="cat-count">5 questions</span>
+        </a>
+        <a class="hb-cat" href="#conduct">
+          <span class="cat-icon">🤝</span>
+          <span class="cat-name">Code of Conduct</span>
+          <span class="cat-count">5 questions</span>
+        </a>
+        <a class="hb-cat" href="#medical">
+          <span class="cat-icon">🩹</span>
+          <span class="cat-name">Injuries &amp; Medical</span>
+          <span class="cat-count">4 questions</span>
+        </a>
+        <a class="hb-cat" href="#uniforms">
+          <span class="cat-icon">👕</span>
+          <span class="cat-name">Uniforms &amp; Equipment</span>
+          <span class="cat-count">4 questions</span>
+        </a>
+        <a class="hb-cat" href="#fees">
+          <span class="cat-icon">💵</span>
+          <span class="cat-name">Fees &amp; Payments</span>
+          <span class="cat-count">4 questions</span>
+        </a>
+        <a class="hb-cat" href="#communication">
+          <span class="cat-icon">📞</span>
+          <span class="cat-name">Communication</span>
+          <span class="cat-count">4 questions</span>
+        </a>
+        <a class="hb-cat" href="#awards">
+          <span class="cat-icon">🏅</span>
+          <span class="cat-name">Awards &amp; Recognition</span>
+          <span class="cat-count">3 questions</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ ACCORDIONS -->
+  <section class="hb-faq">
+    <div class="container">
+
+      <!-- TRYOUTS -->
+      <div class="hb-faq-section" id="tryouts">
+        <div class="hb-faq-header">
+          <span class="ico">🎯</span>
+          <div>
+            <h3>Tryouts &amp; Team Selection</h3>
+            <p>How AISA athletes earn their spot on a Lions team.</p>
+          </div>
+        </div>
+        <details>
+          <summary>When are tryouts held?</summary>
+          <div class="answer">Tryouts are held at the start of each athletic season (Autumn, Winter, Spring), typically during the first 1–2 weeks. Specific dates are announced through the Athletics Department, the school newsletter, and team coaches.</div>
+        </details>
+        <details>
+          <summary>Are all athletes guaranteed a spot on a team?</summary>
+          <div class="answer">Middle School and Elementary teams generally aim to be inclusive, with development squads (DEAC) available where rosters fill. <strong>Junior Varsity and Varsity</strong> teams are selected based on skill, commitment, and conduct — cuts may be necessary depending on numbers and program needs.</div>
+        </details>
+        <details>
+          <summary>What happens if I miss tryouts?</summary>
+          <div class="answer">Contact the head coach <strong>before</strong> tryouts begin if a conflict (illness, school event, family travel) is unavoidable. Late tryout opportunities are at the coach's discretion and not guaranteed.</div>
+        </details>
+        <details>
+          <summary>Can I play on more than one team in a season?</summary>
+          <div class="answer">In most cases AISA athletes commit to <strong>one sport per season</strong> to manage practice schedules and academic load. Dual-sport participation requires written approval from both head coaches and the Athletic Director.</div>
+        </details>
+        <details>
+          <summary>How are team levels (MS, JV, Varsity) determined?</summary>
+          <div class="answer">Team level is based on grade and skill: <strong>MS</strong> = Grades 6–8, <strong>JV</strong> = Under-16 before Sept 1 (typically Grades 9–10), <strong>Varsity</strong> = Grades 9–12. Coaches and the Athletic Director may move athletes up a level based on competitive readiness.</div>
+        </details>
+        <a href="#" class="hb-back-top">↑ Back to top</a>
+      </div>
+
+      <!-- ELIGIBILITY -->
+      <div class="hb-faq-section" id="eligibility">
+        <div class="hb-faq-header">
+          <span class="ico">📚</span>
+          <div>
+            <h3>Eligibility &amp; Academics</h3>
+            <p>Academics come first. Here's what's required to compete.</p>
+          </div>
+        </div>
+        <details>
+          <summary>What are the academic requirements to play?</summary>
+          <div class="answer">Athletes must maintain the <strong>minimum GPA</strong> set by the AISA Athletic Department and remain in good academic standing. Athletes on academic probation may be required to attend study halls or sit out competition until grades are restored.</div>
+        </details>
+        <details>
+          <summary>What paperwork is required each season?</summary>
+          <div class="answer">Each athlete must have on file: a <strong>current annual physical exam</strong>, a signed <strong>parent/guardian consent &amp; release form</strong>, an emergency contact form, and proof of athletics fee payment. Paperwork is renewed every academic year.</div>
+        </details>
+        <details>
+          <summary>Do I need to be a full-time AISA student to play?</summary>
+          <div class="answer">Yes. Athletes must be currently enrolled full-time at AISA and meeting all standard attendance requirements. Conference rules (NESAC, ISAC, EAC, JEAC) also require full-time enrollment in a member school.</div>
+        </details>
+        <details>
+          <summary>What happens if my grades drop mid-season?</summary>
+          <div class="answer">Coaches and the Athletic Director receive academic monitoring reports. If grades fall below the threshold, the athlete may be placed on probation, restricted from travel, or suspended from games until the grade is brought up. Academic recovery support is available.</div>
+        </details>
+        <details>
+          <summary>Can transfer or new students join a team mid-year?</summary>
+          <div class="answer">Yes. New students may try out at any time during the season, subject to roster space and coach approval. Conference eligibility rules around transfers (especially for Varsity) apply — see the conference handbooks for details.</div>
+        </details>
+        <a href="#" class="hb-back-top">↑ Back to top</a>
+      </div>
+
+      <!-- PRACTICES -->
+      <div class="hb-faq-section" id="practices">
+        <div class="hb-faq-header">
+          <span class="ico">⏰</span>
+          <div>
+            <h3>Practices &amp; Attendance</h3>
+            <p>The Lion Way starts with showing up prepared.</p>
+          </div>
+        </div>
+        <details>
+          <summary>How often do teams practice?</summary>
+          <div class="answer">Most teams practice <strong>3–5 times per week</strong> after school, typically 1.5–2 hours per session. Frequency varies by level: Varsity practices most, JEAC Elementary practices least.</div>
+        </details>
+        <details>
+          <summary>Is practice attendance required?</summary>
+          <div class="answer">Yes. Practices are mandatory unless the absence is excused (illness, academic conflict, family emergency). Communicate with your coach <strong>in advance</strong> whenever possible. Repeated unexcused absences can result in reduced playing time or roster removal.</div>
+        </details>
+        <details>
+          <summary>What if I have an academic conflict (test, project, tutoring)?</summary>
+          <div class="answer">Academics come first. Notify your coach in advance — these conflicts are excused. Plan ahead so missed practices are minimized over the season.</div>
+        </details>
+        <details>
+          <summary>Can I miss practice for another club or activity?</summary>
+          <div class="answer">Athletes are expected to prioritize their team commitment during the season. Discuss any recurring conflicts with the coach <strong>before</strong> the season starts so expectations are clear on both sides.</div>
+        </details>
+        <details>
+          <summary>What should I bring to every practice?</summary>
+          <div class="answer">Proper athletic attire (sport-specific), water bottle, sport-specific gear (shoes, ball, racket, etc.), and any required medical items (inhaler, etc.). Jewelry should be removed; long hair tied back.</div>
+        </details>
+        <a href="#" class="hb-back-top">↑ Back to top</a>
+      </div>
+
+      <!-- TRAVEL -->
+      <div class="hb-faq-section" id="travel">
+        <div class="hb-faq-header">
+          <span class="ico">✈️</span>
+          <div>
+            <h3>Travel &amp; Away Games</h3>
+            <p>Bus rides, regional tournaments, and international travel.</p>
+          </div>
+        </div>
+        <details>
+          <summary>Do AISA teams travel internationally?</summary>
+          <div class="answer">Yes. <strong>Varsity</strong> and <strong>JV</strong> teams travel internationally for NESAC tournaments to UAE, Saudi Arabia, Kuwait, Lebanon, and Egypt. <strong>MS</strong> teams stay within the UAE for EAC events. <strong>Elementary</strong> JEAC events are local jamborees.</div>
+        </details>
+        <details>
+          <summary>Who pays for travel?</summary>
+          <div class="answer">Travel costs are covered partially by the athletics fee and partially by family contributions, depending on the trip. Specific cost breakdowns are shared in advance of each travel tournament. <strong>Financial assistance is available</strong> — speak privately with the Athletic Director.</div>
+        </details>
+        <details>
+          <summary>What documents are needed for international travel?</summary>
+          <div class="answer">Athletes need a current <strong>passport</strong> (valid for at least 6 months past the trip date), required visas, signed parent travel consent, and a current emergency contact + medical info form. Document deadlines are firm.</div>
+        </details>
+        <details>
+          <summary>Are families allowed to travel with the team?</summary>
+          <div class="answer">Family members travel separately and stay in their own accommodation. Athletes travel and lodge with the team under coach/chaperone supervision per AISA travel policy. Families are warmly welcomed at games.</div>
+        </details>
+        <details>
+          <summary>What's the policy for missing classes due to travel?</summary>
+          <div class="answer">Athletes are responsible for communicating with teachers <strong>in advance</strong> and completing missed work on time. Travel-related absences are excused, but academic accountability is not.</div>
+        </details>
+        <a href="#" class="hb-back-top">↑ Back to top</a>
+      </div>
+
+      <!-- CODE OF CONDUCT -->
+      <div class="hb-faq-section" id="conduct">
+        <div class="hb-faq-header">
+          <span class="ico">🤝</span>
+          <div>
+            <h3>Code of Conduct &amp; Sportsmanship</h3>
+            <p>The Lion Way: Be Responsible, Be Safe, Be Respectful, Be Kind.</p>
+          </div>
+        </div>
+        <details>
+          <summary>What is the AISA Athletic Code of Conduct?</summary>
+          <div class="answer">All AISA athletes follow the <strong>Lion Way</strong>: be responsible, be safe, be respectful, be kind. This applies to teammates, opponents, officials, coaches, hosts, transportation, and uniform. Athletes represent AISA at all times during team activities.</div>
+        </details>
+        <details>
+          <summary>What are the consequences of a code violation?</summary>
+          <div class="answer">Consequences range from a coach conversation to game suspensions, removal from the team, or disciplinary referral — depending on severity. Anything involving harassment, substance use, or harm to others is treated as a serious violation.</div>
+        </details>
+        <details>
+          <summary>Is social media use covered by the code?</summary>
+          <div class="answer">Yes. Online conduct that disparages teammates, opponents, AISA, host schools, officials, or AISA's name reflects on the team and is subject to the same standards as in-person conduct.</div>
+        </details>
+        <details>
+          <summary>What about smoking, vaping, alcohol, or drugs?</summary>
+          <div class="answer">Strictly prohibited at all times during the athletic season — at school, at events, on travel, and during all team-related activities. Violations result in <strong>immediate suspension</strong> from competition and a referral to school administration.</div>
+        </details>
+        <details>
+          <summary>Are parents and spectators expected to follow a code too?</summary>
+          <div class="answer">Yes. AISA expects positive, respectful behavior from all spectators — toward officials, opposing players, coaches, and host schools. Disruptive spectator behavior may result in removal from the venue.</div>
+        </details>
+        <a href="#" class="hb-back-top">↑ Back to top</a>
+      </div>
+
+      <!-- MEDICAL -->
+      <div class="hb-faq-section" id="medical">
+        <div class="hb-faq-header">
+          <span class="ico">🩹</span>
+          <div>
+            <h3>Injuries &amp; Medical</h3>
+            <p>Keeping our Lions healthy on and off the field.</p>
+          </div>
+        </div>
+        <details>
+          <summary>What if my child gets injured at practice or a game?</summary>
+          <div class="answer">Coaches are trained in first response. The athlete will be assessed, treated as needed, and a parent will be contacted. For serious injury, the school nurse or emergency services are involved immediately.</div>
+        </details>
+        <details>
+          <summary>Is a doctor's note required to return after injury?</summary>
+          <div class="answer">For any injury that involved medical care or kept the athlete out for more than a few days, <strong>yes</strong> — a written clearance from the treating physician is required before returning to practice or competition.</div>
+        </details>
+        <details>
+          <summary>What's the concussion policy?</summary>
+          <div class="answer">Suspected concussions = athlete is removed from play immediately. Return-to-play follows a graduated protocol with medical clearance. <strong>No exceptions.</strong> Athlete safety is the highest priority.</div>
+        </details>
+        <details>
+          <summary>Where can I get the required physical exam?</summary>
+          <div class="answer">Any licensed physician can complete the AISA athletics physical form. Contact the Athletics Office for the official form. Physicals must be current within the last 12 months.</div>
+        </details>
+        <a href="#" class="hb-back-top">↑ Back to top</a>
+      </div>
+
+      <!-- UNIFORMS -->
+      <div class="hb-faq-section" id="uniforms">
+        <div class="hb-faq-header">
+          <span class="ico">👕</span>
+          <div>
+            <h3>Uniforms &amp; Equipment</h3>
+            <p>Yellow &amp; Blue, head to toe.</p>
+          </div>
+        </div>
+        <details>
+          <summary>Are uniforms provided or purchased?</summary>
+          <div class="answer">Game-day uniforms are provided by AISA on a season loan. Athletes are responsible for their own practice gear, athletic shoes, and sport-specific personal equipment (mouthguards, shin guards, etc.).</div>
+        </details>
+        <details>
+          <summary>What if I lose or damage my uniform?</summary>
+          <div class="answer">Athletes are financially responsible for lost or damaged AISA-issued uniforms. Replacement fees are billed at the end of the season if items are not returned in good condition.</div>
+        </details>
+        <details>
+          <summary>What sport-specific gear do I need to provide?</summary>
+          <div class="answer">Varies by sport: e.g., <strong>volleyball/basketball</strong> — court shoes &amp; knee pads (volleyball); <strong>soccer</strong> — cleats, shin guards; <strong>swimming</strong> — team suit, cap, goggles; <strong>track</strong> — spikes (event-dependent); <strong>badminton</strong> — racket. Coaches will share a sport-specific list.</div>
+        </details>
+        <details>
+          <summary>Do AISA Lions spirit wear / fan gear get sold?</summary>
+          <div class="answer">Yes — AISA Lions spirit wear (t-shirts, hoodies, fan gear) is sold periodically through the Athletics Department or via online stores. Watch for announcements at the start of each season.</div>
+        </details>
+        <a href="#" class="hb-back-top">↑ Back to top</a>
+      </div>
+
+      <!-- FEES -->
+      <div class="hb-faq-section" id="fees">
+        <div class="hb-faq-header">
+          <span class="ico">💵</span>
+          <div>
+            <h3>Fees &amp; Payments</h3>
+            <p>Cost structure and financial assistance.</p>
+          </div>
+        </div>
+        <details>
+          <summary>Is there a fee to play AISA athletics?</summary>
+          <div class="answer">Yes — there is a per-season athletics fee that covers coaching, league registration, basic uniform loan, transportation to local games, and program operations. Travel-tournament costs are billed separately.</div>
+        </details>
+        <details>
+          <summary>When is the fee due?</summary>
+          <div class="answer">Fees are typically due before the first game of the season. An athlete cannot compete in matches until their fee is paid (or a financial-assistance arrangement is in place).</div>
+        </details>
+        <details>
+          <summary>Is financial assistance available?</summary>
+          <div class="answer"><strong>Yes.</strong> AISA offers confidential financial assistance so that no student-athlete is excluded from athletics for cost reasons. Speak privately with the Athletic Director or the school's finance office.</div>
+        </details>
+        <details>
+          <summary>Are refunds available if my child gets cut or quits?</summary>
+          <div class="answer">Refund eligibility depends on timing. Cuts before the first game generally qualify for a full refund. Withdrawals after games begin are reviewed case-by-case. Contact the Athletics Office.</div>
+        </details>
+        <a href="#" class="hb-back-top">↑ Back to top</a>
+      </div>
+
+      <!-- COMMUNICATION -->
+      <div class="hb-faq-section" id="communication">
+        <div class="hb-faq-header">
+          <span class="ico">📞</span>
+          <div>
+            <h3>Communication</h3>
+            <p>Staying in the loop with coaches and the Athletics Department.</p>
+          </div>
+        </div>
+        <details>
+          <summary>How will I be informed about practice schedules and game changes?</summary>
+          <div class="answer">Coaches communicate primarily via <strong>email</strong> and a team app (or AISA portal) to athletes and parents. Last-minute changes (weather, venue) go out via the team channel — please check before traveling to a game.</div>
+        </details>
+        <details>
+          <summary>What's the right way to raise a concern about my child's playing time or coaching?</summary>
+          <div class="answer">Speak to the <strong>head coach first</strong>, ideally not immediately after a game. If the issue isn't resolved, contact the Athletic Director. AISA follows the "24-hour rule" — wait a day before raising a heated concern.</div>
+        </details>
+        <details>
+          <summary>How do I reach the Athletics Department?</summary>
+          <div class="answer">Through the Athletics Office at AISA — phone, email, or in person. Office hours are during the school day. The Athletic Director also attends home games.</div>
+        </details>
+        <details>
+          <summary>Where can I find the latest schedules and results?</summary>
+          <div class="answer">Schedules, scores, and announcements are posted on the AISA Athletics site, the team app, and through email updates. Major conference events also publish to the official NESAC, ISAC, EAC, and JEAC channels.</div>
+        </details>
+        <a href="#" class="hb-back-top">↑ Back to top</a>
+      </div>
+
+      <!-- AWARDS -->
+      <div class="hb-faq-section" id="awards">
+        <div class="hb-faq-header">
+          <span class="ico">🏅</span>
+          <div>
+            <h3>Awards &amp; Recognition</h3>
+            <p>Celebrating Lions on and off the field.</p>
+          </div>
+        </div>
+        <details>
+          <summary>What end-of-season awards are given?</summary>
+          <div class="answer">Each team typically recognizes a <strong>Most Valuable Player</strong>, <strong>Most Improved</strong>, and a <strong>Lion Way Award</strong> for character. NESAC, ISAC, and EAC also recognize all-conference athletes and championship medalists.</div>
+        </details>
+        <details>
+          <summary>Are letters / varsity letters earned?</summary>
+          <div class="answer">Yes. Varsity athletes who meet participation and conduct standards earn an <strong>AISA Varsity Letter</strong>, awarded annually at the Athletic Awards Banquet.</div>
+        </details>
+        <details>
+          <summary>How are scholar-athletes recognized?</summary>
+          <div class="answer">AISA recognizes athletes who combine athletic participation with strong academic performance through the <strong>Scholar-Athlete</strong> program — often aligned with NESAC's regional academic recognition.</div>
+        </details>
+        <a href="#" class="hb-back-top">↑ Back to top</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="hb-final">
+    <h3>Still have a question?</h3>
+    <p>Download the full handbook for the complete policies, or reach out to the AISA Athletics Department directly.</p>
+    <a class="btn btn-gold" href="AISA-Lions-Student-Parent-Handbook.pdf" download>⬇ Download Full Handbook</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <strong>AISA Lions Athletics</strong> — American International School of Abu Dhabi<br>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="purpose.html">About &amp; Teams</a>
+      <a href="conferences.html">Conferences</a>
+      <a href="autumn.html">Autumn</a>
+      <a href="winter.html">Winter</a>
+      <a href="spring.html">Spring</a>
+      <a href="opportunities.html">Opportunities</a>
+      <a href="handbook.html">Handbook</a>
+    </div>
+  </footer>
+
+  <script src="leo.js" defer></script>
+</body>
+</html>
