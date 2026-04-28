@@ -170,7 +170,7 @@
   }
 
   function fallback() {
-    return "Um, I'm not sure about that one. Try asking about <b>conferences</b>, <b>seasons</b> (autumn/winter/spring), a specific <b>sport</b>, <b>team levels</b>, or <b>eligibility</b>. You can also pick a quick topic below.";
+    return "Hmm, I'm not sure about that one. Try asking about <b>conferences</b>, <b>seasons</b> (autumn/winter/spring), a specific <b>sport</b>, <b>team levels</b>, or <b>eligibility</b>. You can also pick a quick topic below.";
   }
 
   /* ---------- DOM injection ---------- */
