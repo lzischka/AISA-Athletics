@@ -91,6 +91,92 @@
       font-size: .8rem;
       font-weight: 700;
     }
+
+    /* ── Wooden Pyramid of Success ── */
+    .pyramid-wrap {
+      background: linear-gradient(160deg, #0d2b52 0%, #102e5e 60%, #0a2040 100%);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 1.5rem 2rem;
+      margin: 2.5rem 0 0;
+    }
+    .pyramid-title {
+      text-align: center;
+      color: var(--gold);
+      font-size: 1.3rem;
+      font-weight: 900;
+      letter-spacing: .04em;
+      margin-bottom: .3rem;
+    }
+    .pyramid-sub {
+      text-align: center;
+      color: rgba(255,255,255,.65);
+      font-size: .8rem;
+      margin-bottom: 1.8rem;
+    }
+    .pyramid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .py-row {
+      display: flex;
+      gap: 5px;
+      width: 100%;
+    }
+    /* each row is progressively narrower via padding */
+    .py-row.row-1 { padding: 0 0%; }
+    .py-row.row-2 { padding: 0 5%; }
+    .py-row.row-3 { padding: 0 12%; }
+    .py-row.row-4 { padding: 0 20%; }
+    .py-row.row-5 { padding: 0 30%; }
+    .py-row.row-6 { padding: 0 38%; }
+    .py-block {
+      flex: 1;
+      border-radius: 7px;
+      padding: .55rem .4rem;
+      text-align: center;
+      font-size: .72rem;
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      cursor: default;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .py-block:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,.4); }
+
+    /* tier colours — bottom = darkest navy, top = gold */
+    .py-t1 { background: #0d2b52; color: #f5a800; border: 1.5px solid rgba(245,168,0,.4); }
+    .py-t2 { background: #12366a; color: #ffc14d; border: 1.5px solid rgba(245,168,0,.35); }
+    .py-t3 { background: #1a4480; color: #ffe08a; border: 1.5px solid rgba(245,168,0,.3); }
+    .py-t4 { background: #c08400; color: #fff; border: 1.5px solid rgba(255,255,255,.25); }
+    .py-t5 { background: #d4930d; color: #fff; border: 1.5px solid rgba(255,255,255,.3); }
+    .py-t6 { background: #f5a800; color: #0d2b52; border: 2px solid #fff; font-size: .8rem; }
+
+    .py-block .py-label { display: block; font-size: .62rem; opacity: .75; font-weight: 600; margin-top: .2rem; text-transform: none; }
+
+    .pyramid-legend {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: .45rem;
+      margin-top: 1.5rem;
+    }
+    .py-legend-item {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      color: rgba(255,255,255,.8);
+      font-size: .68rem; font-weight: 600;
+      padding: .22rem .6rem; border-radius: 999px;
+      letter-spacing: .04em;
+    }
+    .py-legend-item.gold { background: rgba(245,168,0,.15); border-color: rgba(245,168,0,.35); color: #f5a800; }
+
+    @media (max-width: 600px) {
+      .py-block { font-size: .6rem; padding: .45rem .2rem; }
+      .py-row.row-5 { padding: 0 22%; }
+      .py-row.row-6 { padding: 0 30%; }
+    }
   </style>
 </head>
 <body>
@@ -302,6 +388,114 @@
         <p>"Be more concerned with your character than your reputation, because your character is what you really are, while your reputation is merely what others think you are. The true test of a man's character is what he does when no one is watching."</p>
         <cite>— John Wooden, Coach · UCLA · 10× National Champion</cite>
       </div>
+
+      <!-- Wooden Pyramid of Success -->
+      <div class="pyramid-wrap">
+        <div class="pyramid-title">Wooden's Pyramid of Success</div>
+        <div class="pyramid-sub">The 15 building blocks that form the foundation of every AISA Lions coach's philosophy</div>
+        <div class="pyramid">
+
+          <!-- Row 1 — Foundation (widest) -->
+          <div class="py-row row-1">
+            <div class="py-block py-t1">
+              Industriousness
+              <span class="py-label">Work hard every day</span>
+            </div>
+            <div class="py-block py-t1">
+              Enthusiasm
+              <span class="py-label">Bring joy to the work</span>
+            </div>
+          </div>
+
+          <!-- Row 2 -->
+          <div class="py-row row-2">
+            <div class="py-block py-t2">
+              Friendship
+              <span class="py-label">Build bonds</span>
+            </div>
+            <div class="py-block py-t2">
+              Loyalty
+              <span class="py-label">To team &amp; school</span>
+            </div>
+            <div class="py-block py-t2">
+              Cooperation
+              <span class="py-label">Work together</span>
+            </div>
+          </div>
+
+          <!-- Row 3 -->
+          <div class="py-row row-3">
+            <div class="py-block py-t2">
+              Self-Control
+              <span class="py-label">Discipline</span>
+            </div>
+            <div class="py-block py-t2">
+              Alertness
+              <span class="py-label">Stay sharp</span>
+            </div>
+            <div class="py-block py-t2">
+              Initiative
+              <span class="py-label">Take action</span>
+            </div>
+            <div class="py-block py-t2">
+              Intentness
+              <span class="py-label">Persist &amp; focus</span>
+            </div>
+          </div>
+
+          <!-- Row 4 -->
+          <div class="py-row row-4">
+            <div class="py-block py-t3">
+              Condition
+              <span class="py-label">Mind, body, spirit</span>
+            </div>
+            <div class="py-block py-t3">
+              Skill
+              <span class="py-label">Master your craft</span>
+            </div>
+            <div class="py-block py-t3">
+              Team Spirit
+              <span class="py-label">Sacrifice for others</span>
+            </div>
+          </div>
+
+          <!-- Row 5 -->
+          <div class="py-row row-5">
+            <div class="py-block py-t4">
+              Poise
+              <span class="py-label">Be yourself</span>
+            </div>
+            <div class="py-block py-t4">
+              Confidence
+              <span class="py-label">Earned, not given</span>
+            </div>
+          </div>
+
+          <!-- Apex -->
+          <div class="py-row row-6">
+            <div class="py-block py-t6">
+              Competitive Greatness
+              <span class="py-label" style="color:#0d2b52; opacity:.8;">Your very best when it matters most</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Mortar values legend -->
+        <div class="pyramid-legend">
+          <span class="py-legend-item gold">Mortar Values:</span>
+          <span class="py-legend-item">Ambition</span>
+          <span class="py-legend-item">Adaptability</span>
+          <span class="py-legend-item">Resourcefulness</span>
+          <span class="py-legend-item">Fight</span>
+          <span class="py-legend-item">Faith</span>
+          <span class="py-legend-item">Patience</span>
+          <span class="py-legend-item">Reliability</span>
+          <span class="py-legend-item">Integrity</span>
+          <span class="py-legend-item">Honesty</span>
+        </div>
+      </div>
+
     </div>
   </section>
 
