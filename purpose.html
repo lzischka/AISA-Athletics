@@ -6,6 +6,38 @@
   <title>Purpose of Athletics – AISA Lions</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
+    /* ── MS Blue/Yellow team split ── */
+    .ms-team-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+      margin: 1rem 0 .8rem;
+    }
+    .ms-team {
+      border-radius: 8px;
+      padding: .85rem .9rem;
+      font-size: .82rem;
+      line-height: 1.5;
+    }
+    .ms-team p { margin: .4rem 0 0; opacity: .95; }
+    .ms-team-badge {
+      display: inline-block;
+      font-weight: 800;
+      font-size: .78rem;
+      letter-spacing: .03em;
+    }
+    .blue-team {
+      background: rgba(13,43,82,.55);
+      border: 1.5px solid rgba(100,160,255,.35);
+    }
+    .yellow-team {
+      background: rgba(180,120,0,.45);
+      border: 1.5px solid rgba(245,168,0,.45);
+    }
+    @media (max-width: 500px) {
+      .ms-team-split { grid-template-columns: 1fr; }
+    }
+
     /* ── Lion Way strip ── */
     .lion-way {
       display: grid;
@@ -504,7 +536,7 @@
     <div class="container">
       <div class="section-label">Team Structure</div>
       <h2 class="section-title">Team Levels at AISA</h2>
-      <p class="section-sub">AISA Athletics organizes teams into four competitive levels, each designed to meet student-athletes where they are in their development and to provide appropriate levels of challenge, playing time, and conference competition.</p>
+      <p class="section-sub">AISA Athletics organizes teams into four competitive levels. Middle School teams are divided into <strong>Blue</strong> (competition) and <strong>Yellow</strong> (development) squads. At the Elementary level, all JEAC teams are proudly known as the <strong>CUBS — our Young Lions</strong>.</p>
 
       <div class="level-grid">
 
@@ -527,17 +559,26 @@
         <div class="level-card level-ms">
           <div class="level-icon">🌱</div>
           <h3>Middle School (MS)</h3>
-          <p>Middle School athletics introduce students in Grades 6-8 to competitive sport. MS teams compete in the EAC six-school league across Abu Dhabi and Dubai, and in the ISAC local league. The EAC also runs a development league (DEAC) for less experienced athletes, ensuring a place to play for everyone.</p>
-          <br>
-          <small style="opacity:.75;">Grades 6–8 · EAC + ISAC · DEAC available</small>
+          <p>Middle School athletics introduce students in Grades 6–8 to competitive sport. AISA MS teams are organized into two distinct squads — <strong>Blue</strong> and <strong>Yellow</strong> — to match the right level of competition to every athlete's development stage.</p>
+          <div class="ms-team-split">
+            <div class="ms-team blue-team">
+              <span class="ms-team-badge">🔵 Blue Team</span>
+              <p>Competition-focused for more skilled and experienced athletes. Blue teams represent AISA in the <strong>EAC</strong> (Emirates Athletics Conference — 6-school UAE league) and <strong>ISAC</strong> (Abu Dhabi local league).</p>
+            </div>
+            <div class="ms-team yellow-team">
+              <span class="ms-team-badge">🟡 Yellow Team</span>
+              <p>Development-focused for athletes who are newer to the sport or still building their skills. Yellow teams compete in <strong>DEAC</strong> (Development Emirates Athletics Conference), a lower-pressure environment designed for growth.</p>
+            </div>
+          </div>
+          <small style="opacity:.75;">Grades 6–8 · Blue: EAC + ISAC · Yellow: DEAC</small>
         </div>
 
         <div class="level-card level-ms" style="background: linear-gradient(135deg, #8a4a00, #e08a00);">
-          <div class="level-icon">⭐</div>
-          <h3>Elementary (JEAC)</h3>
-          <p>The Junior Emirates Athletics Conference welcomes students in Grades 4-6 to organized sport for the first time. Grades 4-5 are entirely inclusive of all ability levels, while Grade 6 begins to introduce competitive concepts. JEAC events are run as jamborees with no individual or team awards — the focus is on fun, fundamentals, and sportsmanship.</p>
+          <div class="level-icon">🦁</div>
+          <h3>CUBS Teams — Young Lions</h3>
+          <p>At AISA, all of our JEAC (Junior Emirates Athletics Conference) teams are known as the <strong>CUBS</strong> — our Young Lions. The CUBS program welcomes students in Grades 4–6 to organized sport for the first time, with an emphasis on fun, fundamentals, and the Lion Way. JEAC events are jamborees — <strong>no individual or team awards</strong> — so every Cub can compete free from pressure and grow their love of sport.</p>
           <br>
-          <small style="opacity:.75;">Grades 4–6 · JEAC Jamborees · Participation-first</small>
+          <small style="opacity:.75;">Grades 4–6 · JEAC Jamborees · Participation-first · 🦁 Young Lions</small>
         </div>
 
       </div>

@@ -42,7 +42,15 @@
 
     { id: 'levels',
       kw: ['level','levels','varsity','jv','junior varsity','middle school','team structure'],
-      a: "AISA fields teams at <b>4 competitive levels</b>:<br>• <b>Varsity</b> (Grades 9-12) — NESAC + ISAC, international travel<br>• <b>Junior Varsity</b> (Under-16 before Sept 1) — NESAC + ISAC<br>• <b>Middle School</b> (Grades 6-8) — EAC + ISAC, with DEAC available<br>• <b>Elementary</b> (Grades 4-6) — JEAC jamborees" },
+      a: "AISA fields teams at <b>4 competitive levels</b>:<br>• <b>Varsity</b> (Grades 9-12) — NESAC + ISAC, international travel<br>• <b>Junior Varsity</b> (Under-16 before Sept 1) — NESAC + ISAC<br>• <b>Middle School</b> (Grades 6-8) — split into <b>Blue</b> (EAC + ISAC) &amp; <b>Yellow</b> (DEAC) teams<br>• <b>CUBS / Elementary</b> (Grades 4-6) — JEAC jamborees, our Young Lions" },
+
+    { id: 'blueyellow',
+      kw: ['blue team','yellow team','blue','yellow','ms team','deac','development team'],
+      a: "AISA MS teams are split into two squads:<br>• 🔵 <b>Blue Team</b> — competition-focused for more skilled athletes, competes in <b>EAC</b> &amp; <b>ISAC</b><br>• 🟡 <b>Yellow Team</b> — development-focused for athletes building their skills, competes in <b>DEAC</b> (Development EAC)" },
+
+    { id: 'cubs',
+      kw: ['cubs','young lions','elementary','jeac','cub','cubs team'],
+      a: "At AISA, all JEAC (Junior Emirates Athletics Conference) teams are known as the <b>CUBS — our Young Lions</b> 🦁. The CUBS program is for Grades 4–6. JEAC events are jamborees with no awards — the focus is fun, fundamentals, and the Lion Way." },
 
     { id: 'autumn',
       kw: ['autumn','fall','season 1','september','october','november','volleyball','swim','swimming'],
