@@ -199,8 +199,9 @@
           <button id="leo-close" aria-label="Close chat" type="button">×</button>
         </header>
         <div id="leo-messages" aria-live="polite"></div>
-        <div id="leo-suggestions"></div>
+        <div id="leo-suggestions" role="group" aria-label="Quick topic suggestions"></div>
         <form id="leo-form" autocomplete="off">
+          <button type="button" id="leo-chips-toggle" aria-label="Quick topic suggestions" title="Quick topics">💡</button>
           <input id="leo-input" type="text" placeholder="Ask Leo a question..." aria-label="Type your question to Leo" />
           <button type="submit" aria-label="Send">➤</button>
         </form>
@@ -208,13 +209,14 @@
     `;
     document.body.appendChild(wrap);
 
-    const toggle = document.getElementById('leo-toggle');
-    const panel  = document.getElementById('leo-panel');
-    const close  = document.getElementById('leo-close');
-    const msgs   = document.getElementById('leo-messages');
-    const sugg   = document.getElementById('leo-suggestions');
-    const form   = document.getElementById('leo-form');
-    const input  = document.getElementById('leo-input');
+    const toggle      = document.getElementById('leo-toggle');
+    const panel       = document.getElementById('leo-panel');
+    const close       = document.getElementById('leo-close');
+    const msgs        = document.getElementById('leo-messages');
+    const sugg        = document.getElementById('leo-suggestions');
+    const form        = document.getElementById('leo-form');
+    const input       = document.getElementById('leo-input');
+    const chipsToggle = document.getElementById('leo-chips-toggle');
 
     function bubble(html, who) {
       const div = document.createElement('div');
@@ -255,21 +257,34 @@
       panel.classList.remove('leo-hidden');
       toggle.classList.add('leo-active');
       if (!msgs.dataset.greeted) {
-        bubble("Hi! I'm <b>Leo</b>, the AISA Lions Athletics assistant. 🦁<br>Ask me anything about our program, or tap a quick topic below.", 'bot');
+        bubble("Hi! I'm <b>Leo</b>, the AISA Lions Athletics assistant. 🦁<br>Ask me anything, or tap <b>💡</b> below for quick topic suggestions.", 'bot');
         msgs.dataset.greeted = '1';
       }
       setTimeout(() => input.focus(), 100);
     }
-    function shut() { panel.classList.add('leo-hidden'); toggle.classList.remove('leo-active'); }
+    function shut() {
+      panel.classList.add('leo-hidden');
+      toggle.classList.remove('leo-active');
+      sugg.classList.remove('leo-chips-open');
+      chipsToggle.classList.remove('active');
+    }
 
     toggle.addEventListener('click', () => panel.classList.contains('leo-hidden') ? open() : shut());
     close.addEventListener('click', shut);
+
+    chipsToggle.addEventListener('click', () => {
+      const isOpen = sugg.classList.toggle('leo-chips-open');
+      chipsToggle.classList.toggle('active', isOpen);
+    });
+
     form.addEventListener('submit', e => {
       e.preventDefault();
       const q = input.value.trim();
       if (!q) return;
       bubble(q, 'user');
       input.value = '';
+      sugg.classList.remove('leo-chips-open');
+      chipsToggle.classList.remove('active');
       answer(q);
     });
 

@@ -614,9 +614,9 @@ footer .footer-links { display: flex; gap: 1.5rem; justify-content: center; flex
 #leo-panel {
   position: absolute;
   top: 60px; right: 0;
-  width: 360px;
+  width: 480px;
   max-width: calc(100vw - 24px);
-  height: 540px;
+  height: 620px;
   max-height: calc(100vh - 120px);
   background: var(--white);
   border-radius: 14px;
@@ -683,10 +683,10 @@ footer .footer-links { display: flex; gap: 1.5rem; justify-content: center; flex
 .leo-msg-text {
   background: var(--white);
   color: var(--gray-800);
-  padding: .55rem .8rem;
+  padding: .65rem .95rem;
   border-radius: 14px;
-  font-size: .87rem;
-  line-height: 1.5;
+  font-size: .93rem;
+  line-height: 1.58;
   box-shadow: 0 1px 3px rgba(0,0,0,.08);
   word-wrap: break-word;
 }
@@ -699,30 +699,54 @@ footer .footer-links { display: flex; gap: 1.5rem; justify-content: center; flex
 .leo-msg-text b { color: var(--navy); font-weight: 700; }
 .leo-msg-user .leo-msg-text b { color: var(--gold); }
 
+/* Suggestions dropdown — hidden until toggle is clicked */
 #leo-suggestions {
-  display: flex; flex-wrap: wrap; gap: .35rem;
-  padding: .6rem .8rem 0;
-  background: var(--off-white);
+  display: none;
+  flex-wrap: wrap; gap: .4rem;
+  padding: .65rem .9rem .55rem;
+  background: #f0f4ff;
+  border-top: 1px solid rgba(13,43,82,.1);
+  animation: chips-in .15s ease;
+}
+#leo-suggestions.leo-chips-open { display: flex; }
+@keyframes chips-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 .leo-chip {
   background: var(--white);
   border: 1.5px solid var(--gold);
   color: var(--navy);
   border-radius: 2rem;
-  padding: .3rem .75rem;
-  font-size: .76rem;
+  padding: .3rem .8rem;
+  font-size: .77rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background .15s, color .15s;
+  transition: background .15s, color .15s, transform .1s;
 }
-.leo-chip:hover { background: var(--gold); color: var(--navy-dark); }
+.leo-chip:hover { background: var(--gold); color: var(--navy-dark); transform: translateY(-1px); }
 
 #leo-form {
-  display: flex; gap: .4rem;
+  display: flex; gap: .4rem; align-items: center;
   padding: .7rem .8rem .8rem;
   background: var(--off-white);
   border-top: 1px solid var(--gray-100);
 }
+#leo-chips-toggle {
+  background: var(--white);
+  border: 1.5px solid var(--gold);
+  color: var(--navy);
+  border-radius: 50%;
+  width: 36px; height: 36px;
+  flex-shrink: 0;
+  font-size: .85rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s, color .15s;
+  title: 'Quick topics';
+}
+#leo-chips-toggle:hover,
+#leo-chips-toggle.active { background: var(--gold); color: var(--navy-dark); }
 #leo-input {
   flex: 1;
   border: 1.5px solid var(--gray-300);
