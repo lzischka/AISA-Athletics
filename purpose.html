@@ -10,31 +10,35 @@
     .ms-team-split {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: .75rem;
-      margin: 1rem 0 .8rem;
+      gap: 1rem;
+      margin: 1.1rem 0 .9rem;
+      text-align: left;
     }
     .ms-team {
-      border-radius: 8px;
-      padding: .85rem .9rem;
-      font-size: .82rem;
-      line-height: 1.5;
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      font-size: .83rem;
+      line-height: 1.55;
     }
-    .ms-team p { margin: .4rem 0 0; opacity: .95; }
+    .ms-team p { margin: .45rem 0 0; }
     .ms-team-badge {
-      display: inline-block;
+      display: block;
       font-weight: 800;
-      font-size: .78rem;
+      font-size: .85rem;
       letter-spacing: .03em;
+      margin-bottom: .2rem;
     }
     .blue-team {
-      background: rgba(13,43,82,.55);
-      border: 1.5px solid rgba(100,160,255,.35);
+      background: rgba(8,28,70,.7);
+      border: 2px solid rgba(120,180,255,.5);
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
     }
     .yellow-team {
-      background: rgba(180,120,0,.45);
-      border: 1.5px solid rgba(245,168,0,.45);
+      background: rgba(120,70,0,.75);
+      border: 2px solid rgba(255,185,0,.55);
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
     }
-    @media (max-width: 500px) {
+    @media (max-width: 540px) {
       .ms-team-split { grid-template-columns: 1fr; }
     }
 
