@@ -22,11 +22,11 @@
 
     { id: 'conferences',
       kw: ['conference','conferences','league','leagues'],
-      a: "AISA competes in <b>4 conferences</b>: <b>NESAC</b> (regional Near East, JV/Varsity), <b>ISAC</b> (Abu Dhabi local, MS/JV/V), <b>EAC</b> (UAE-wide Middle School), and <b>JEAC</b> (UAE Elementary jamborees). Want details on any one of them?" },
+      a: "AISA competes in <b>4 conferences</b>: <b>GAAC</b> (Gulf regional, Varsity only), <b>ISAC</b> (Abu Dhabi local, MS/JV/V), <b>EAC</b> (UAE-wide Middle School), and <b>JEAC</b> (UAE Elementary jamborees). Want details on any one of them?" },
 
-    { id: 'nesac',
-      kw: ['nesac','near east','regional','championship','jordan','beirut','kuwait','dhahran','cairo'],
-      a: "<b>NESAC</b> = Near East Schools Activities Conference. Founded 2014. Levels: JV &amp; Varsity. <b>7 full members</b> (AISA, ACS Beirut, AISK, ASD Dhahran, ASK, GAA, IC Beirut) + <b>2 associates</b> (CAC Cairo, DAS Dubai). Annual championship tournaments across UAE, KSA, Kuwait, Lebanon, and Egypt. Includes Academic Games, Band &amp; Choir, and a Leadership Conference." },
+    { id: 'gaac',
+      kw: ['gaac','gulf athletics','gulf conference','regional','championship','jordan','doha','qatar','kuwait','bahrain','riyadh'],
+      a: "<b>GAAC</b> = Gulf Athletics &amp; Activities Conference. Founded 2024. Levels: <b>Varsity only</b>. <b>10 member schools</b> across UAE, Qatar, Kuwait, Bahrain, and Saudi Arabia — including AISA Lions &amp; DAS Eagles as new additions. Annual championship tournaments. Sports: Volleyball, Swimming, Soccer, Basketball, Badminton, Track &amp; Field, and Academic Games." },
 
     { id: 'isac',
       kw: ['isac','abu dhabi local','local league'],
@@ -42,7 +42,7 @@
 
     { id: 'levels',
       kw: ['level','levels','varsity','jv','junior varsity','middle school','team structure'],
-      a: "AISA fields teams at <b>4 competitive levels</b>:<br>• <b>Varsity</b> (Grades 9-12) — NESAC + ISAC, international travel<br>• <b>Junior Varsity</b> (Under-16 before Sept 1) — NESAC + ISAC<br>• <b>Middle School</b> (Grades 6-8) — split into <b>Blue</b> (EAC + ISAC) &amp; <b>Yellow</b> (DEAC) teams<br>• <b>CUBS / Elementary</b> (Grades 4-6) — JEAC jamborees, our Young Lions" },
+      a: "AISA fields teams at <b>4 competitive levels</b>:<br>• <b>Varsity</b> (Grades 9-12) — GAAC + ISAC, international travel<br>• <b>Junior Varsity</b> (Under-16 before Sept 1) — ISAC<br>• <b>Middle School</b> (Grades 6-8) — split into <b>Blue</b> (EAC + ISAC) &amp; <b>Yellow</b> (DEAC) teams<br>• <b>CUBS / Elementary</b> (Grades 4-6) — JEAC jamborees, our Young Lions" },
 
     { id: 'blueyellow',
       kw: ['blue team','yellow team','blue','yellow','ms team','deac','development team'],
@@ -54,27 +54,27 @@
 
     { id: 'autumn',
       kw: ['autumn','fall','season 1','september','october','november','volleyball','swim','swimming'],
-      a: "<b>Autumn season</b> runs September–November. Sports: <b>Volleyball</b> (all levels, headline sport), <b>Swimming</b> (invitational at all levels), <b>JEAC Soccer</b> (elementary), and the <b>NESAC Leadership Conference</b>. Varsity Volleyball Championship is in mid-November." },
+      a: "<b>Autumn season</b> runs September–November. Sports: <b>Volleyball</b> (all levels, headline sport), <b>Swimming</b> (invitational at all levels), <b>JEAC Soccer</b> (elementary), and the <b>GAAC Leadership Conference</b>. Varsity Volleyball Championship is in mid-November." },
 
     { id: 'winter',
       kw: ['winter','season 2','december','january','february','basketball','soccer','cross country','football','band','choir'],
-      a: "<b>Winter season</b> runs late November–early February. Sports: <b>Basketball</b> &amp; <b>Soccer</b> (all levels), <b>Cross Country</b> (EAC MS only, 3km), <b>JEAC Track &amp; Field</b> (elementary), and the <b>NESAC Band &amp; Choir Festival</b>. NESAC championships in mid-February." },
+      a: "<b>Winter season</b> runs late November–early February. Sports: <b>Basketball</b> &amp; <b>Soccer</b> (all levels), <b>Cross Country</b> (EAC MS only, 3km), <b>JEAC Track &amp; Field</b> (elementary), and the <b>GAAC Band &amp; Choir Festival</b>. GAAC championships in mid-February." },
 
     { id: 'spring',
       kw: ['spring','season 3','march','april','may','badminton','track','academic games','field'],
-      a: "<b>Spring season</b> runs February–late May. Sports: <b>Badminton</b> (all levels, Yonex Mavis 350 shuttle), <b>Track &amp; Field</b> (NESAC meet held in Jordan), <b>JEAC Basketball</b> (elementary), and the <b>NESAC Academic Games</b> — 7 Olympiads including Quiz Bowl, Math, and Fine Arts." },
+      a: "<b>Spring season</b> runs February–late May. Sports: <b>Badminton</b> (all levels, Yonex Mavis 350 shuttle), <b>Track &amp; Field</b> (GAAC meet, international), <b>JEAC Basketball</b> (elementary), and the <b>GAAC Academic Games</b> — 7 Olympiads including Quiz Bowl, Math, and Fine Arts." },
 
     { id: 'volleyball',
       kw: ['volleyball','volley'],
-      a: "<b>Volleyball</b> is the headline Autumn sport. AISA fields teams at every competitive level. Played by FIVB rules with NESAC-specific net heights for each level. MS/JV play ISAC + EAC; Varsity plays the NESAC championship." },
+      a: "<b>Volleyball</b> is the headline Autumn sport. AISA fields teams at every competitive level. Played by FIVB rules with GAAC-specific net heights for each level. MS/JV play ISAC + EAC; Varsity plays the GAAC championship." },
 
     { id: 'basketball',
       kw: ['basketball','hoops','bball'],
-      a: "<b>Basketball</b> is the marquee Winter sport — every level. Played by FIBA rules. Quarters are 4×8 min at EAC MS and 4×7 min at NESAC. A 20-point lead triggers running clock or half-court defense to keep games balanced." },
+      a: "<b>Basketball</b> is the marquee Winter sport — every level. Played by FIBA rules. Quarters are 4×8 min at EAC MS and 4×7 min at GAAC. A 20-point lead triggers running clock or half-court defense to keep games balanced." },
 
     { id: 'soccer',
       kw: ['soccer','football'],
-      a: "<b>Soccer</b> runs in Winter. FIFA rules, 2×25-min halves, unlimited substitutions. EAC MS plays 8-a-side; ISAC and NESAC play 7v7 girls and 11v11 boys at JV/V. Mercy rule caps goal differential at +5 per match." },
+      a: "<b>Soccer</b> runs in Winter. FIFA rules, 2×25-min halves, unlimited substitutions. EAC MS plays 8-a-side; ISAC and GAAC play 7v7 girls and 11v11 boys at JV/V. Mercy rule caps goal differential at +5 per match." },
 
     { id: 'badminton',
       kw: ['badminton','shuttle','shuttlecock'],
@@ -82,7 +82,7 @@
 
     { id: 'track',
       kw: ['track','field','running','sprint','relay','high jump','long jump','discus','shot put'],
-      a: "<b>Track &amp; Field</b> is run by World Athletics rules. The NESAC meet is held annually in <b>Jordan</b> — a 2-day event with sprints, distance, hurdles, relays, jumps, shot put, and discus. Each athlete may enter up to 5 events. EAC MS T&amp;F is a one-afternoon meet." },
+      a: "<b>Track &amp; Field</b> is run by World Athletics rules. The GAAC meet is held annually in <b>Jordan</b> — a 2-day event with sprints, distance, hurdles, relays, jumps, shot put, and discus. Each athlete may enter up to 5 events. EAC MS T&amp;F is a one-afternoon meet." },
 
     { id: 'swim',
       kw: ['swim','swimming','pool','fina'],
@@ -94,7 +94,7 @@
 
     { id: 'academic',
       kw: ['academic','quiz','math','olympiad','spelling','geography','science','quiz bowl'],
-      a: "The <b>NESAC Academic Games</b> are a Core (non-athletic) Spring event. Schools field up to two 4-student teams across <b>7 Olympiads</b>: Quiz Bowl, Current Events, Geography, Spelling, Science/Engineering, Math, and Fine Arts &amp; Music. JV and Varsity champions receive plaques." },
+      a: "The <b>GAAC Academic Games</b> are a Core (non-athletic) Spring event. Schools field up to two 4-student teams across <b>7 Olympiads</b>: Quiz Bowl, Current Events, Geography, Spelling, Science/Engineering, Math, and Fine Arts &amp; Music. JV and Varsity champions receive plaques." },
 
     { id: 'eligibility',
       kw: ['eligibility','requirements','sign up','register','join','tryout','tryouts','fee','medical','physical','consent','gpa'],
@@ -102,7 +102,7 @@
 
     { id: 'schools',
       kw: ['member schools','schools','rivals','opponents','who do we play'],
-      a: "AISA plays a wide network of American-curriculum schools. Highlights: <b>NESAC</b> includes ACS Beirut, AISK, ASD Dhahran, ASK, GAA, IC Beirut, plus associates CAC and DAS. <b>ISAC</b>: AISA, CIS, DAS, GAA. <b>EAC/JEAC</b>: AISA, ACS, ASD Dubai, DAA, DAS, GAA." },
+      a: "AISA plays a wide network of American-curriculum schools. Highlights: <b>GAAC</b>: AISA, DAS, GIS, ACS Qatar, ISL Qatar, GAAQ, AUS, UAS, ASB, AISR. <b>ISAC</b>: AISA, CIS, DAS, GAA. <b>EAC/JEAC</b>: AISA, ACS, ASD Dubai, DAA, DAS, GAA." },
 
     { id: 'aisa',
       kw: ['aisa','american international','abu dhabi','lions','where','address','location','rabdan','pepsi','embassy'],
@@ -118,7 +118,7 @@
 
     { id: 'travel',
       kw: ['travel','trip','away','flight','passport'],
-      a: "Travel varies by level: <b>Varsity</b> athletes can travel internationally for NESAC tournaments (UAE, KSA, Kuwait, Lebanon, Egypt). <b>JV</b> also travels for NESAC. <b>MS</b> stays within the UAE for EAC. <b>Elementary</b> JEAC events are local jamborees." },
+      a: "Travel varies by level: <b>Varsity</b> athletes travel internationally for GAAC tournaments (UAE, Qatar, Kuwait, Bahrain, Saudi Arabia). <b>JV</b> competes locally in ISAC. <b>MS</b> stays within the UAE for EAC. <b>Elementary</b> JEAC events are local jamborees." },
 
     { id: 'colors',
       kw: ['colors','mascot','lion','school colors'],
