@@ -11,6 +11,161 @@
     .sport-card-header.xc         { background: linear-gradient(135deg, #784212, #d35400); }
     .sport-card-header.bandchoir  { background: linear-gradient(135deg, #6c1a6c, #9b59b6); }
     .sport-card-header.jeac-track { background: linear-gradient(135deg, #4a235a, #8e44ad); }
+
+    /* ── Schedule Button ── */
+    .btn-schedule {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: var(--gold); color: var(--navy-dark);
+      border: none; border-radius: 6px;
+      padding: .4rem .9rem; font-size: .8rem; font-weight: 800;
+      cursor: pointer; letter-spacing: .02em; margin-top: .75rem;
+      transition: background .15s, transform .1s;
+    }
+    .btn-schedule:hover { background: #e09900; transform: translateY(-1px); }
+
+    /* ── Schedule Modal Overlay ── */
+    .sched-modal {
+      display: none; position: fixed; inset: 0; z-index: 9000;
+      background: rgba(10,20,45,.7); backdrop-filter: blur(4px);
+      align-items: center; justify-content: center; padding: 1rem;
+    }
+    .sched-modal.open { display: flex; }
+    .sched-inner {
+      background: #fff; border-radius: 14px; width: 100%; max-width: 700px;
+      max-height: 90vh; overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+      animation: popIn .2s ease-out;
+    }
+    @keyframes popIn { from { transform: scale(.94); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+    .sched-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.1rem 1.4rem .8rem;
+      border-bottom: 2px solid #f0f0f0;
+      background: linear-gradient(135deg, #0d2b52, #1a4a8a);
+      border-radius: 14px 14px 0 0; color: #fff;
+    }
+    .sched-header h2 { margin: 0; font-size: 1.15rem; }
+    .sched-header p  { margin: .15rem 0 0; font-size: .78rem; opacity: .8; }
+    .sched-close {
+      background: rgba(255,255,255,.2); border: none; color: #fff;
+      border-radius: 50%; width: 32px; height: 32px; font-size: 1rem;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: background .15s;
+    }
+    .sched-close:hover { background: rgba(255,255,255,.35); }
+
+    /* Legend */
+    .cal-legend {
+      display: flex; flex-wrap: wrap; gap: .5rem 1rem;
+      padding: .7rem 1.4rem; background: #f8faff;
+      border-bottom: 1px solid #e8eef6; font-size: .76rem; color: #444;
+    }
+    .cal-legend span { display: inline-flex; align-items: center; gap: .35rem; font-weight: 600; }
+    .cal-dot { width: 11px; height: 11px; border-radius: 3px; flex-shrink: 0; }
+    .cal-dot.reg  { background: #bfdbfe; border: 1.5px solid #3b82f6; }
+    .cal-dot.try  { background: #fde68a; border: 1.5px solid #f59e0b; }
+    .cal-dot.prac { background: #a7f3d0; border: 1.5px solid #10b981; }
+    .cal-dot.game { background: #dc2626; border: 1.5px solid #991b1b; }
+    .cal-dot.brk  { background: #e5e7eb; border: 1.5px solid #9ca3af; }
+
+    /* Month Tabs */
+    .cal-tabs {
+      display: flex; border-bottom: 2px solid #e8eef6;
+      padding: 0 1rem;
+    }
+    .cal-tab {
+      padding: .6rem 1rem; border: none; background: none;
+      font-size: .83rem; font-weight: 700; color: #666;
+      cursor: pointer; border-bottom: 3px solid transparent;
+      margin-bottom: -2px; transition: color .15s, border-color .15s;
+    }
+    .cal-tab:hover { color: #0d2b52; }
+    .cal-tab.active { color: #0d2b52; border-bottom-color: #f5a800; }
+
+    /* Calendar Grid */
+    .cal-month { padding: 1rem 1.4rem; }
+    .cal-month-title {
+      font-size: 1rem; font-weight: 800; color: #0d2b52;
+      margin-bottom: .75rem; text-align: center;
+    }
+    .cal-grid {
+      display: grid; grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+    }
+    .cal-dow {
+      text-align: center; font-size: .68rem; font-weight: 700;
+      color: #888; padding: .3rem 0; text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .cal-empty { min-height: 50px; border-radius: 6px; }
+    .cal-day {
+      min-height: 50px; border-radius: 6px; padding: 5px 4px 3px;
+      font-size: .82rem; font-weight: 600;
+      display: flex; flex-direction: column; align-items: center;
+      cursor: default; color: #374151;
+      background: #f3f4f6; transition: transform .1s;
+    }
+    .cal-day span {
+      font-size: .58rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: .04em; margin-top: 2px; text-align: center;
+      line-height: 1.25;
+    }
+    .cal-day.reg  { background: #dbeafe; color: #1e40af; }
+    .cal-day.try  { background: #fef3c7; color: #92400e; border: 1.5px solid #f59e0b; }
+    .cal-day.prac { background: #d1fae5; color: #065f46; }
+    .cal-day.prac span { color: #047857; }
+    .cal-day.game {
+      background: #dc2626; color: #fff;
+      border: 2px solid #991b1b;
+      box-shadow: 0 3px 10px rgba(220,38,38,.4);
+      transform: scale(1.04); cursor: pointer;
+    }
+    .cal-day.game span { color: rgba(255,255,255,.9); font-size: .64rem; }
+    .cal-day.game:hover { transform: scale(1.08); }
+    .cal-day.brk  { background: #e5e7eb; color: #9ca3af; font-weight: 400; font-size: .76rem; }
+    .cal-break-note {
+      margin: .6rem 0 0; font-size: .77rem; color: #6b7280;
+      text-align: center; font-style: italic;
+    }
+
+    /* Game Day Summary */
+    .game-summary {
+      border-top: 2px solid #f0f0f0;
+      padding: 1rem 1.4rem;
+      background: #f8faff;
+    }
+    .game-summary h3 {
+      font-size: .92rem; font-weight: 800; color: #0d2b52;
+      margin: 0 0 .75rem;
+    }
+    .game-list { display: flex; flex-direction: column; gap: .5rem; }
+    .game-item {
+      display: flex; align-items: flex-start; gap: .85rem;
+      background: #fff; border-radius: 8px; padding: .7rem .9rem;
+      border-left: 4px solid #dc2626;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07);
+    }
+    .game-date {
+      font-size: .95rem; font-weight: 900; color: #dc2626;
+      min-width: 44px; text-align: center; line-height: 1.3;
+    }
+    .game-details { font-size: .82rem; color: #374151; }
+    .game-details strong { display: block; font-size: .87rem; color: #0d2b52; margin-bottom: .2rem; }
+    .game-details .teams { display: flex; flex-wrap: wrap; gap: .3rem .8rem; margin-top: .2rem; }
+    .game-details .team-row { display: flex; align-items: center; gap: .3rem; }
+
+    .sched-footer {
+      padding: .85rem 1.4rem 1.1rem; text-align: center;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    @media (max-width: 500px) {
+      .cal-day { min-height: 40px; font-size: .74rem; padding: 3px 2px; }
+      .cal-day span { font-size: .52rem; }
+      .sched-inner { border-radius: 10px; }
+      .game-item { flex-direction: column; gap: .3rem; }
+    }
   </style>
 </head>
 <body>
@@ -110,6 +265,9 @@
             </div>
             <br>
             <small style="color:var(--gray-600);">Conferences: GAAC · ISAC · EAC</small>
+            <div>
+              <button class="btn-schedule" onclick="document.getElementById('ms-bb-modal').classList.add('open')">📅 MS Yellow Basketball Schedule</button>
+            </div>
           </div>
         </div>
 
@@ -314,5 +472,197 @@
   </footer>
 
   <script src="leo.js" defer></script>
+
+  <!-- ── MS YELLOW BASKETBALL SCHEDULE MODAL ── -->
+  <div id="ms-bb-modal" class="sched-modal" role="dialog" aria-modal="true" aria-label="MS Yellow Basketball Schedule">
+    <div class="sched-inner">
+
+      <!-- Header -->
+      <div class="sched-header">
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <span style="font-size:1.8rem;line-height:1;">🏀</span>
+          <div>
+            <h2>MS Yellow Basketball</h2>
+            <p>2026–2027 · DEAC (Development Emirates Athletics Conference)</p>
+          </div>
+        </div>
+        <button class="sched-close" onclick="document.getElementById('ms-bb-modal').classList.remove('open')" aria-label="Close">✕</button>
+      </div>
+
+      <!-- Legend -->
+      <div class="cal-legend">
+        <span><span class="cal-dot reg"></span>Registration</span>
+        <span><span class="cal-dot try"></span>Tryouts</span>
+        <span><span class="cal-dot prac"></span>Practice</span>
+        <span><span class="cal-dot game"></span>Game Day</span>
+        <span><span class="cal-dot brk"></span>Winter Break</span>
+      </div>
+
+      <!-- Month Tabs -->
+      <div class="cal-tabs" role="tablist">
+        <button class="cal-tab active" role="tab" onclick="showSchedMonth('nov',this)">🍂 Nov 2026</button>
+        <button class="cal-tab" role="tab" onclick="showSchedMonth('dec',this)">❄️ Dec 2026</button>
+        <button class="cal-tab" role="tab" onclick="showSchedMonth('jan',this)">🏀 Jan 2027</button>
+      </div>
+
+      <!-- NOVEMBER 2026 -->
+      <div id="sched-nov" class="cal-month">
+        <div class="cal-month-title">November 2026</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div><div class="cal-day">4</div><div class="cal-day">5</div><div class="cal-day">6</div><div class="cal-day">7</div>
+          <div class="cal-day">8</div><div class="cal-day">9</div><div class="cal-day">10</div><div class="cal-day">11</div><div class="cal-day">12</div><div class="cal-day">13</div><div class="cal-day">14</div>
+          <div class="cal-day">15</div>
+          <div class="cal-day reg" title="Registration opens online · All MS teams">16<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration · All MS teams">17<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration · All MS teams">18<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration · All MS teams">19<span>Reg</span></div>
+          <div class="cal-day">20</div><div class="cal-day">21</div>
+          <div class="cal-day">22</div>
+          <div class="cal-day try" title="Tryouts — Girls · Lower Gym · 3:00–4:30 PM">23<span>Tryout<br>Girls</span></div>
+          <div class="cal-day try" title="Tryouts — Boys · Lower Gym · 3:00–4:30 PM">24<span>Tryout<br>Boys</span></div>
+          <div class="cal-day try" title="Tryouts — Girls · Lower Gym · 3:00–4:30 PM">25<span>Tryout<br>Girls</span></div>
+          <div class="cal-day try" title="Tryouts — Boys · Lower Gym · 3:00–4:30 PM">26<span>Tryout<br>Boys</span></div>
+          <div class="cal-day">27</div><div class="cal-day">28</div>
+          <div class="cal-day">29</div>
+          <div class="cal-day prac" title="Practice — Boys · Lower Gym · 3:00–4:30 PM">30<span>Practice</span></div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+        </div>
+      </div>
+
+      <!-- DECEMBER 2026 -->
+      <div id="sched-dec" class="cal-month" style="display:none;">
+        <div class="cal-month-title">December 2026</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div>
+          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 3:00–4:30 PM">1<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice — Boys · Lower Gym · 3:00–4:30 PM">2<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 3:00–4:30 PM">3<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 11:40 AM–1:10 PM">4<span>Practice</span></div>
+          <div class="cal-day">5</div>
+          <div class="cal-day">6</div>
+          <div class="cal-day prac" title="Practice — Boys · Lower Gym · 3:00–4:30 PM">7<span>Practice</span></div>
+          <div class="cal-day game" title="🔴 GAME DAY · DEAC 3–5 Games&#10;Boys → @ ASD, Dubai&#10;Girls → @ DAS, Dubai">8<span>GAME DAY</span></div>
+          <div class="cal-day prac" title="Practice — Boys · Lower Gym · 3:00–4:30 PM">9<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 3:00–4:30 PM">10<span>Practice</span></div>
+          <div class="cal-day">11</div><div class="cal-day">12</div>
+          <div class="cal-day brk">13</div><div class="cal-day brk">14</div><div class="cal-day brk">15</div><div class="cal-day brk">16</div><div class="cal-day brk">17</div><div class="cal-day brk">18</div><div class="cal-day brk">19</div>
+          <div class="cal-day brk">20</div><div class="cal-day brk">21</div><div class="cal-day brk">22</div><div class="cal-day brk">23</div><div class="cal-day brk">24</div><div class="cal-day brk">25</div><div class="cal-day brk">26</div>
+          <div class="cal-day brk">27</div><div class="cal-day brk">28</div><div class="cal-day brk">29</div><div class="cal-day brk">30</div><div class="cal-day brk">31</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div>
+        </div>
+        <p class="cal-break-note">❄️ Winter Break — Dec 13 through Jan 3. No practices or games.</p>
+      </div>
+
+      <!-- JANUARY 2027 -->
+      <div id="sched-jan" class="cal-month" style="display:none;">
+        <div class="cal-month-title">January 2027</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+          <div class="cal-day">1</div><div class="cal-day">2</div>
+          <div class="cal-day">3</div>
+          <div class="cal-day prac" title="Practice — Boys · Lower Gym · 3:00–4:30 PM">4<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 3:00–4:30 PM">5<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 3:00–4:30 PM">6<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice — Boys · Lower Gym · 3:00–4:30 PM">7<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 11:40 AM–1:10 PM">8<span>Practice</span></div>
+          <div class="cal-day game" title="🔴 GAME DAY · DEAC 3–5 Games&#10;Boys → @ ASD, Dubai&#10;Girls → @ DAS, Dubai">9<span>GAME DAY</span></div>
+          <div class="cal-day">10</div>
+          <div class="cal-day prac" title="Practice — Boys · Lower Gym · 3:00–4:30 PM">11<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 3:00–4:30 PM">12<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice — Boys · Lower Gym · 3:00–4:30 PM">13<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 3:00–4:30 PM">14<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 11:40 AM–1:10 PM">15<span>Practice</span></div>
+          <div class="cal-day">16</div>
+          <div class="cal-day">17</div>
+          <div class="cal-day game" title="🔴 GAME DAY · DEAC 2 Games&#10;Boys → @ DAA, Dubai&#10;Girls → @ ACS">18<span>GAME DAY</span></div>
+          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 3:00–4:30 PM">19<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice — Boys · Lower Gym · 3:00–4:30 PM">20<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 3:00–4:30 PM">21<span>Practice</span></div>
+          <div class="cal-day">22</div><div class="cal-day">23</div>
+          <div class="cal-day">24</div>
+          <div class="cal-day prac" title="Practice — Boys · Lower Gym · 3:00–4:30 PM">25<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 3:00–4:30 PM">26<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice — Boys · Lower Gym · 3:00–4:30 PM">27<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 3:00–4:30 PM">28<span>Practice</span></div>
+          <div class="cal-day">29</div>
+          <div class="cal-day game" title="🔴 GAME DAY · DEAC 3–5 Matches&#10;Boys → @ DAS, Dubai&#10;Girls → @ DAS, Dubai">30<span>GAME DAY</span></div>
+          <div class="cal-day">31</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+        </div>
+      </div>
+
+      <!-- Game Day Summary -->
+      <div class="game-summary">
+        <h3>🔴 Game Days — 2026-2027</h3>
+        <div class="game-list">
+          <div class="game-item">
+            <div class="game-date">Dec<br>8</div>
+            <div class="game-details">
+              <strong>DEAC Games (3–5 games)</strong>
+              <div class="teams">
+                <div class="team-row">🔵 Boys → <strong>@ ASD</strong>, Dubai</div>
+                <div class="team-row">🟡 Girls → <strong>@ DAS</strong>, Dubai</div>
+              </div>
+            </div>
+          </div>
+          <div class="game-item">
+            <div class="game-date">Jan<br>9</div>
+            <div class="game-details">
+              <strong>DEAC Games (3–5 games)</strong>
+              <div class="teams">
+                <div class="team-row">🔵 Boys → <strong>@ ASD</strong>, Dubai</div>
+                <div class="team-row">🟡 Girls → <strong>@ DAS</strong>, Dubai</div>
+              </div>
+            </div>
+          </div>
+          <div class="game-item">
+            <div class="game-date">Jan<br>18</div>
+            <div class="game-details">
+              <strong>DEAC Games (2 games)</strong>
+              <div class="teams">
+                <div class="team-row">🔵 Boys → <strong>@ DAA</strong>, Dubai</div>
+                <div class="team-row">🟡 Girls → <strong>@ ACS</strong></div>
+              </div>
+            </div>
+          </div>
+          <div class="game-item">
+            <div class="game-date">Jan<br>30</div>
+            <div class="game-details">
+              <strong>DEAC Matches (3–5 matches)</strong>
+              <div class="teams">
+                <div class="team-row">🔵 Boys → <strong>@ DAS</strong>, Dubai</div>
+                <div class="team-row">🟡 Girls → <strong>@ DAS</strong>, Dubai</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer / Download -->
+      <div class="sched-footer">
+        <a href="schedules/MS_Yellow_Basketball_2026-27.pdf" class="btn-schedule" download style="text-decoration:none;">📄 Download Full Schedule PDF</a>
+      </div>
+
+    </div><!-- /.sched-inner -->
+  </div><!-- /#ms-bb-modal -->
+
+  <script>
+    function showSchedMonth(month, btn) {
+      ['nov','dec','jan'].forEach(function(m) {
+        document.getElementById('sched-' + m).style.display = m === month ? '' : 'none';
+      });
+      document.querySelectorAll('.cal-tab').forEach(function(t) { t.classList.remove('active'); });
+      btn.classList.add('active');
+    }
+    document.getElementById('ms-bb-modal').addEventListener('click', function(e) {
+      if (e.target === this) this.classList.remove('open');
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') document.getElementById('ms-bb-modal').classList.remove('open');
+    });
+  </script>
 </body>
 </html>
