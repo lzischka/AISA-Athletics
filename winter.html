@@ -66,6 +66,8 @@
     .cal-dot.reg  { background: #bfdbfe; border: 1.5px solid #3b82f6; }
     .cal-dot.try  { background: #fde68a; border: 1.5px solid #f59e0b; }
     .cal-dot.prac { background: #a7f3d0; border: 1.5px solid #10b981; }
+    .cal-dot.prac-b { background: #dbeafe; border: 1.5px solid #3b82f6; }
+    .cal-dot.prac-g { background: #fce7f3; border: 1.5px solid #ec4899; }
     .cal-dot.game { background: #dc2626; border: 1.5px solid #991b1b; }
     .cal-dot.brk  { background: #e5e7eb; border: 1.5px solid #9ca3af; }
 
@@ -113,8 +115,12 @@
     }
     .cal-day.reg  { background: #dbeafe; color: #1e40af; }
     .cal-day.try  { background: #fef3c7; color: #92400e; border: 1.5px solid #f59e0b; }
-    .cal-day.prac { background: #d1fae5; color: #065f46; }
+    .cal-day.prac  { background: #d1fae5; color: #065f46; }
     .cal-day.prac span { color: #047857; }
+    .cal-day.prac-b { background: #dbeafe; color: #1e3a5f; }
+    .cal-day.prac-b span { color: #1d4ed8; font-size: .6rem; }
+    .cal-day.prac-g { background: #fce7f3; color: #701a40; }
+    .cal-day.prac-g span { color: #be185d; font-size: .6rem; }
     .cal-day.game {
       background: #dc2626; color: #fff;
       border: 2px solid #991b1b;
@@ -154,6 +160,31 @@
     .game-details strong { display: block; font-size: .87rem; color: #0d2b52; margin-bottom: .2rem; }
     .game-details .teams { display: flex; flex-wrap: wrap; gap: .3rem .8rem; margin-top: .2rem; }
     .game-details .team-row { display: flex; align-items: center; gap: .3rem; }
+
+    /* Game Detail Popup */
+    .game-popup {
+      display: none; margin: 0 1.4rem 1rem;
+      background: #fff3f3; border: 2px solid #dc2626;
+      border-radius: 10px; padding: .85rem 1.1rem;
+      animation: fadeIn .18s ease-out;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+    .game-popup.visible { display: block; }
+    .game-popup-title {
+      font-size: .9rem; font-weight: 800; color: #dc2626;
+      margin: 0 0 .55rem; display: flex; align-items: center; gap: .4rem;
+    }
+    .game-popup-rows { display: flex; flex-direction: column; gap: .35rem; }
+    .game-popup-row {
+      display: flex; align-items: center; gap: .5rem;
+      font-size: .83rem; color: #374151;
+    }
+    .game-popup-row strong { color: #0d2b52; min-width: 42px; }
+    .game-popup-close {
+      float: right; background: none; border: none;
+      color: #dc2626; font-size: .85rem; cursor: pointer;
+      font-weight: 700; padding: 0; line-height: 1;
+    }
 
     .sched-footer {
       padding: .85rem 1.4rem 1.1rem; text-align: center;
@@ -493,7 +524,8 @@
       <div class="cal-legend">
         <span><span class="cal-dot reg"></span>Registration</span>
         <span><span class="cal-dot try"></span>Tryouts</span>
-        <span><span class="cal-dot prac"></span>Practice</span>
+        <span><span class="cal-dot prac-b"></span>Practice (Boys)</span>
+        <span><span class="cal-dot prac-g"></span>Practice (Girls)</span>
         <span><span class="cal-dot game"></span>Game Day</span>
         <span><span class="cal-dot brk"></span>Winter Break</span>
       </div>
@@ -525,7 +557,7 @@
           <div class="cal-day try" title="Tryouts — Boys · Lower Gym · 3:00–4:30 PM">26<span>Tryout<br>Boys</span></div>
           <div class="cal-day">27</div><div class="cal-day">28</div>
           <div class="cal-day">29</div>
-          <div class="cal-day prac" title="Practice — Boys · Lower Gym · 3:00–4:30 PM">30<span>Practice</span></div>
+          <div title="Practice — Boys · Lower Gym · 3:00–4:30 PM" class="cal-day prac-b">30<span>Practice<br>Boys</span></div>
           <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
         </div>
       </div>
@@ -536,16 +568,16 @@
         <div class="cal-grid">
           <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
           <div class="cal-empty"></div><div class="cal-empty"></div>
-          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 3:00–4:30 PM">1<span>Practice</span></div>
-          <div class="cal-day prac" title="Practice — Boys · Lower Gym · 3:00–4:30 PM">2<span>Practice</span></div>
-          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 3:00–4:30 PM">3<span>Practice</span></div>
-          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 11:40 AM–1:10 PM">4<span>Practice</span></div>
+          <div title="Practice — Girls · Lower Gym · 3:00–4:30 PM" class="cal-day prac-g">1<span>Practice<br>Girls</span></div>
+          <div title="Practice — Boys · Lower Gym · 3:00–4:30 PM" class="cal-day prac-b">2<span>Practice<br>Boys</span></div>
+          <div title="Practice — Girls · Lower Gym · 3:00–4:30 PM" class="cal-day prac-g">3<span>Practice<br>Girls</span></div>
+          <div title="Practice — Girls · Lower Gym · 11:40 AM–1:10 PM" class="cal-day prac-g">4<span>Practice<br>Girls</span></div>
           <div class="cal-day">5</div>
           <div class="cal-day">6</div>
-          <div class="cal-day prac" title="Practice — Boys · Lower Gym · 3:00–4:30 PM">7<span>Practice</span></div>
-          <div class="cal-day game" title="🔴 GAME DAY · DEAC 3–5 Games&#10;Boys → @ ASD, Dubai&#10;Girls → @ DAS, Dubai">8<span>GAME DAY</span></div>
-          <div class="cal-day prac" title="Practice — Boys · Lower Gym · 3:00–4:30 PM">9<span>Practice</span></div>
-          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 3:00–4:30 PM">10<span>Practice</span></div>
+          <div title="Practice — Boys · Lower Gym · 3:00–4:30 PM" class="cal-day prac-b">7<span>Practice<br>Boys</span></div>
+          <div class="cal-day game" onclick="showGamePopup('Dec 8','DEAC 3–5 Games','@ ASD (American School of Dubai)','@ DAS (Dubai)')">8<span>GAME DAY</span></div>
+          <div title="Practice — Boys · Lower Gym · 3:00–4:30 PM" class="cal-day prac-b">9<span>Practice<br>Boys</span></div>
+          <div title="Practice — Girls · Lower Gym · 3:00–4:30 PM" class="cal-day prac-g">10<span>Practice<br>Girls</span></div>
           <div class="cal-day">11</div><div class="cal-day">12</div>
           <div class="cal-day brk">13</div><div class="cal-day brk">14</div><div class="cal-day brk">15</div><div class="cal-day brk">16</div><div class="cal-day brk">17</div><div class="cal-day brk">18</div><div class="cal-day brk">19</div>
           <div class="cal-day brk">20</div><div class="cal-day brk">21</div><div class="cal-day brk">22</div><div class="cal-day brk">23</div><div class="cal-day brk">24</div><div class="cal-day brk">25</div><div class="cal-day brk">26</div>
@@ -563,34 +595,44 @@
           <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
           <div class="cal-day">1</div><div class="cal-day">2</div>
           <div class="cal-day">3</div>
-          <div class="cal-day prac" title="Practice — Boys · Lower Gym · 3:00–4:30 PM">4<span>Practice</span></div>
-          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 3:00–4:30 PM">5<span>Practice</span></div>
-          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 3:00–4:30 PM">6<span>Practice</span></div>
-          <div class="cal-day prac" title="Practice — Boys · Lower Gym · 3:00–4:30 PM">7<span>Practice</span></div>
-          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 11:40 AM–1:10 PM">8<span>Practice</span></div>
-          <div class="cal-day game" title="🔴 GAME DAY · DEAC 3–5 Games&#10;Boys → @ ASD, Dubai&#10;Girls → @ DAS, Dubai">9<span>GAME DAY</span></div>
+          <div title="Practice — Boys · Lower Gym · 3:00–4:30 PM" class="cal-day prac-b">4<span>Practice<br>Boys</span></div>
+          <div title="Practice — Girls · Lower Gym · 3:00–4:30 PM" class="cal-day prac-g">5<span>Practice<br>Girls</span></div>
+          <div title="Practice — Girls · Lower Gym · 3:00–4:30 PM" class="cal-day prac-g">6<span>Practice<br>Girls</span></div>
+          <div title="Practice — Boys · Lower Gym · 3:00–4:30 PM" class="cal-day prac-b">7<span>Practice<br>Boys</span></div>
+          <div title="Practice — Girls · Lower Gym · 11:40 AM–1:10 PM" class="cal-day prac-g">8<span>Practice<br>Girls</span></div>
+          <div class="cal-day game" onclick="showGamePopup('Jan 9','DEAC 3–5 Games','@ ASD (American School of Dubai)','@ DAS (Dubai)')">9<span>GAME DAY</span></div>
           <div class="cal-day">10</div>
-          <div class="cal-day prac" title="Practice — Boys · Lower Gym · 3:00–4:30 PM">11<span>Practice</span></div>
-          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 3:00–4:30 PM">12<span>Practice</span></div>
-          <div class="cal-day prac" title="Practice — Boys · Lower Gym · 3:00–4:30 PM">13<span>Practice</span></div>
-          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 3:00–4:30 PM">14<span>Practice</span></div>
-          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 11:40 AM–1:10 PM">15<span>Practice</span></div>
+          <div title="Practice — Boys · Lower Gym · 3:00–4:30 PM" class="cal-day prac-b">11<span>Practice<br>Boys</span></div>
+          <div title="Practice — Girls · Lower Gym · 3:00–4:30 PM" class="cal-day prac-g">12<span>Practice<br>Girls</span></div>
+          <div title="Practice — Boys · Lower Gym · 3:00–4:30 PM" class="cal-day prac-b">13<span>Practice<br>Boys</span></div>
+          <div title="Practice — Girls · Lower Gym · 3:00–4:30 PM" class="cal-day prac-g">14<span>Practice<br>Girls</span></div>
+          <div title="Practice — Girls · Lower Gym · 11:40 AM–1:10 PM" class="cal-day prac-g">15<span>Practice<br>Girls</span></div>
           <div class="cal-day">16</div>
           <div class="cal-day">17</div>
-          <div class="cal-day game" title="🔴 GAME DAY · DEAC 2 Games&#10;Boys → @ DAA, Dubai&#10;Girls → @ ACS">18<span>GAME DAY</span></div>
-          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 3:00–4:30 PM">19<span>Practice</span></div>
-          <div class="cal-day prac" title="Practice — Boys · Lower Gym · 3:00–4:30 PM">20<span>Practice</span></div>
-          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 3:00–4:30 PM">21<span>Practice</span></div>
+          <div class="cal-day game" onclick="showGamePopup('Jan 18','DEAC 2 Games','@ DAA (Dubai American Academy)','@ ACS (Abu Dhabi)')">18<span>GAME DAY</span></div>
+          <div title="Practice — Girls · Lower Gym · 3:00–4:30 PM" class="cal-day prac-g">19<span>Practice<br>Girls</span></div>
+          <div title="Practice — Boys · Lower Gym · 3:00–4:30 PM" class="cal-day prac-b">20<span>Practice<br>Boys</span></div>
+          <div title="Practice — Girls · Lower Gym · 3:00–4:30 PM" class="cal-day prac-g">21<span>Practice<br>Girls</span></div>
           <div class="cal-day">22</div><div class="cal-day">23</div>
           <div class="cal-day">24</div>
-          <div class="cal-day prac" title="Practice — Boys · Lower Gym · 3:00–4:30 PM">25<span>Practice</span></div>
-          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 3:00–4:30 PM">26<span>Practice</span></div>
-          <div class="cal-day prac" title="Practice — Boys · Lower Gym · 3:00–4:30 PM">27<span>Practice</span></div>
-          <div class="cal-day prac" title="Practice — Girls · Lower Gym · 3:00–4:30 PM">28<span>Practice</span></div>
+          <div title="Practice — Boys · Lower Gym · 3:00–4:30 PM" class="cal-day prac-b">25<span>Practice<br>Boys</span></div>
+          <div title="Practice — Girls · Lower Gym · 3:00–4:30 PM" class="cal-day prac-g">26<span>Practice<br>Girls</span></div>
+          <div title="Practice — Boys · Lower Gym · 3:00–4:30 PM" class="cal-day prac-b">27<span>Practice<br>Boys</span></div>
+          <div title="Practice — Girls · Lower Gym · 3:00–4:30 PM" class="cal-day prac-g">28<span>Practice<br>Girls</span></div>
           <div class="cal-day">29</div>
-          <div class="cal-day game" title="🔴 GAME DAY · DEAC 3–5 Matches&#10;Boys → @ DAS, Dubai&#10;Girls → @ DAS, Dubai">30<span>GAME DAY</span></div>
+          <div class="cal-day game" onclick="showGamePopup('Jan 30','DEAC 3–5 Matches','@ DAS (Dubai)','@ DAS (Dubai)')">30<span>GAME DAY</span></div>
           <div class="cal-day">31</div>
           <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+        </div>
+      </div>
+
+      <!-- Game Detail Popup (shown on cell click) -->
+      <div id="game-popup" class="game-popup">
+        <button class="game-popup-close" onclick="document.getElementById('game-popup').classList.remove('visible')" aria-label="Close">✕ close</button>
+        <div class="game-popup-title">🔴 <span id="gp-title"></span></div>
+        <div class="game-popup-rows">
+          <div class="game-popup-row">🔵 <strong>Boys:</strong> <span id="gp-boys"></span></div>
+          <div class="game-popup-row">🩷 <strong>Girls:</strong> <span id="gp-girls"></span></div>
         </div>
       </div>
 
@@ -656,6 +698,15 @@
       });
       document.querySelectorAll('.cal-tab').forEach(function(t) { t.classList.remove('active'); });
       btn.classList.add('active');
+      document.getElementById('game-popup').classList.remove('visible');
+    }
+    function showGamePopup(date, label, boys, girls) {
+      var p = document.getElementById('game-popup');
+      document.getElementById('gp-title').textContent = date + ' · ' + label;
+      document.getElementById('gp-boys').textContent = boys;
+      document.getElementById('gp-girls').textContent = girls;
+      p.classList.add('visible');
+      p.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
     document.getElementById('ms-bb-modal').addEventListener('click', function(e) {
       if (e.target === this) this.classList.remove('open');
