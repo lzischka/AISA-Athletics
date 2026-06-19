@@ -181,6 +181,15 @@
     .cal-day.support { background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; cursor: default; }
     .cal-day.support span { color: #0284c7; font-size: .58rem; }
     .cal-dot.support { background: #bae6fd; border: 1.5px solid #0ea5e9; }
+    .cal-day.game-eac {
+      background: #0f766e; color: #fff;
+      border: 2px solid #115e59;
+      box-shadow: 0 3px 10px rgba(15,118,110,.4);
+      transform: scale(1.04); cursor: pointer;
+    }
+    .cal-day.game-eac span { color: rgba(255,255,255,.9); font-size: .6rem; }
+    .cal-day.game-eac:hover { transform: scale(1.08); }
+    .cal-dot.game-eac { background: #0f766e; border: 1.5px solid #115e59; }
     .game-popup-title {
       font-size: .9rem; font-weight: 800; color: #dc2626;
       margin: 0 0 .55rem; display: flex; align-items: center; gap: .4rem;
@@ -309,6 +318,8 @@
             <small style="color:var(--gray-600);">Conferences: GAAC · ISAC · EAC</small>
             <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem;">
               <button class="btn-schedule" onclick="document.getElementById('hs-badminton-modal').classList.add('open')">📅 HS Badminton Schedule</button>
+              <button class="btn-schedule" style="background:#3b82f6;color:#fff;" onclick="document.getElementById('ms-blue-badminton-modal').classList.add('open')">📅 MS Blue Badminton Schedule</button>
+              <button class="btn-schedule" style="background:#eab308;color:#1f2937;" onclick="document.getElementById('ms-yellow-badminton-modal').classList.add('open')">📅 MS Yellow Badminton Schedule</button>
             </div>
           </div>
         </div>
@@ -514,6 +525,7 @@
         <span><span class="cal-dot prac"></span>Practice (JV &amp; Varsity)</span>
         <span><span class="cal-dot game"></span>ISAC Match</span>
         <span><span class="cal-dot game-gaac"></span>GAAC Tournament</span>
+        <span><span class="cal-dot support"></span>Support MS Badminton</span>
         <span><span class="cal-dot brk"></span>Spring Break</span>
       </div>
 
@@ -555,8 +567,8 @@
         <div class="cal-grid">
           <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
           <div class="cal-empty"></div>
-          <div class="cal-day">1</div>
-          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 1:45–3:00 PM">2<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 1:45–3:00 PM">1<span>Practice</span></div>
+          <div class="cal-day support" title="Support AISA MS Badminton · JV &amp; Varsity · 1:45–3:00 PM">2<span>Support<br>MS Bad.</span></div>
           <div class="cal-day game" onclick="showBadGamePopup('Mar 3','ISAC Matches · 4-6 Matches · HOME','Lower Gym @ AISA vs CIS · 2:15 PM','Main Gym @ AISA vs CIS · 2:15 PM')">3<span>ISAC MATCH</span></div>
           <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 1:45–3:00 PM">4<span>Practice</span></div>
           <div class="cal-day">5</div><div class="cal-day">6</div>
@@ -570,8 +582,9 @@
           <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 1:45–3:00 PM">17<span>Practice</span></div>
           <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 1:45–3:00 PM">18<span>Practice</span></div>
           <div class="cal-day">19</div><div class="cal-day">20</div>
-          <div class="cal-day">21</div><div class="cal-day">22</div>
-          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 1:45–3:00 PM">23<span>Practice</span></div>
+          <div class="cal-day">21</div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 1:45–3:00 PM">22<span>Practice</span></div>
+          <div class="cal-day support" title="Support AISA MS Badminton · JV &amp; Varsity · 1:45–3:00 PM">23<span>Support<br>MS Bad.</span></div>
           <div class="cal-day game" onclick="showBadGamePopup('Mar 24','ISAC Matches · 4-6 Matches · HOME','Main Gym @ AISA vs GAA · 2:15 PM','Lower Gym @ AISA vs GAA · 2:15 PM')">24<span>ISAC MATCH</span></div>
           <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 1:45–3:00 PM">25<span>Practice</span></div>
           <div class="cal-day">26</div><div class="cal-day">27</div>
@@ -669,6 +682,358 @@
     </div><!-- /.sched-inner -->
   </div><!-- /#hs-badminton-modal -->
 
+  <!-- ── MS BLUE BADMINTON SCHEDULE MODAL ── -->
+  <div id="ms-blue-badminton-modal" class="sched-modal" role="dialog" aria-modal="true" aria-label="MS Blue Badminton Schedule">
+    <div class="sched-inner">
+
+      <!-- Header -->
+      <div class="sched-header" style="background: linear-gradient(135deg, #1e3a8a, #3b82f6);">
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <span style="font-size:1.8rem;line-height:1;">🏸</span>
+          <div>
+            <h2>MS Blue Badminton</h2>
+            <p>2026–2027 · ISAC League + EAC Exchange (Boys &amp; Girls)</p>
+          </div>
+        </div>
+        <button class="sched-close" onclick="document.getElementById('ms-blue-badminton-modal').classList.remove('open')" aria-label="Close">✕</button>
+      </div>
+
+      <!-- Legend -->
+      <div class="cal-legend">
+        <span><span class="cal-dot reg"></span>Registration</span>
+        <span><span class="cal-dot prac-b"></span>Tryouts · 👦 Boys</span>
+        <span><span class="cal-dot prac-g"></span>Tryouts · 👧 Girls</span>
+        <span><span class="cal-dot prac"></span>Practice (Boys &amp; Girls)</span>
+        <span><span class="cal-dot game"></span>ISAC Match / Championship</span>
+        <span><span class="cal-dot game-eac"></span>EAC Exchange / Championship</span>
+        <span><span class="cal-dot support"></span>Support HS/MS Badminton</span>
+        <span><span class="cal-dot brk"></span>Spring Break</span>
+      </div>
+
+      <!-- Month Tabs -->
+      <div class="cal-tabs" role="tablist">
+        <button class="cal-tab active" role="tab" onclick="showMsBlueMonth('msblue-feb',this)">🌷 Feb 2027</button>
+        <button class="cal-tab" role="tab" onclick="showMsBlueMonth('msblue-mar',this)">🏸 Mar 2027</button>
+        <button class="cal-tab" role="tab" onclick="showMsBlueMonth('msblue-apr',this)">🏆 Apr 2027</button>
+      </div>
+
+      <!-- FEBRUARY 2027 -->
+      <div id="msblue-feb" class="cal-month">
+        <div class="cal-month-title">February 2027</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div>
+          <div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div><div class="cal-day">4</div><div class="cal-day">5</div><div class="cal-day">6</div>
+          <div class="cal-day">7</div><div class="cal-day">8</div><div class="cal-day">9</div><div class="cal-day">10</div><div class="cal-day">11</div><div class="cal-day">12</div><div class="cal-day">13</div>
+          <div class="cal-day">14</div>
+          <div class="cal-day reg" title="Registration for MS Badminton · Online · Boys &amp; Girls">15<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration for MS Badminton · Online · Boys &amp; Girls">16<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration for MS Badminton · Online · Boys &amp; Girls">17<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration for MS Badminton · Online · Boys &amp; Girls">18<span>Reg</span></div>
+          <div class="cal-day">19</div><div class="cal-day">20</div>
+          <div class="cal-day">21</div><div class="cal-day">22</div>
+          <div class="cal-day prac-b" title="Tryouts · Boys · Small Gym · 1:45–3:00 PM">23<span>Tryout<br>Boys</span></div>
+          <div class="cal-day prac-g" title="Tryouts · Girls · Small Gym · 1:45–3:00 PM">24<span>Tryout<br>Girls</span></div>
+          <div class="cal-day prac-b" title="Tryouts · Boys · Small Gym · 1:45–3:00 PM">25<span>Tryout<br>Boys</span></div>
+          <div class="cal-day prac-g" title="Tryouts · Girls · Small Gym · 11:40 AM–1:10 PM">26<span>Tryout<br>Girls</span></div>
+          <div class="cal-day">27</div>
+          <div class="cal-day">28</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+        </div>
+      </div>
+
+      <!-- MARCH 2027 -->
+      <div id="msblue-mar" class="cal-month" style="display:none;">
+        <div class="cal-month-title">March 2027</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div>
+          <div class="cal-day">1</div>
+          <div class="cal-day game" onclick="showMsBlueGamePopup('Mar 2','ISAC Matches · 4-6 Matches · HOME','Small Gym @ AISA vs CIS · 2:15 PM','Main Gym @ AISA vs CIS · 2:15 PM')">2<span>ISAC MATCH</span></div>
+          <div class="cal-day support" title="Support AISA HS Badminton · Boys &amp; Girls · 1:45–3:00 PM">3<span>Support<br>HS Bad.</span></div>
+          <div class="cal-day prac" title="Practice · Boys &amp; Girls · Small Gym · 1:45–3:00 PM">4<span>Practice</span></div>
+          <div class="cal-day">5</div><div class="cal-day">6</div>
+          <div class="cal-day">7</div><div class="cal-day">8</div>
+          <div class="cal-day prac" title="Practice · Boys &amp; Girls · Small Gym · 1:45–3:00 PM">9<span>Practice</span></div>
+          <div class="cal-day">10</div>
+          <div class="cal-day prac" title="Practice · Boys &amp; Girls · Small Gym · 1:45–3:00 PM">11<span>Practice</span></div>
+          <div class="cal-day">12</div><div class="cal-day">13</div>
+          <div class="cal-day">14</div><div class="cal-day">15</div>
+          <div class="cal-day prac" title="Practice · Boys &amp; Girls · Small Gym · 1:45–3:00 PM">16<span>Practice</span></div>
+          <div class="cal-day">17</div>
+          <div class="cal-day prac" title="Practice · Boys &amp; Girls · Small Gym · 1:45–3:00 PM">18<span>Practice</span></div>
+          <div class="cal-day">19</div>
+          <div class="cal-day game-eac" onclick="showMsBlueGamePopup('Mar 20','EAC Exchange · 3-5 Matches','@ ACS · Schedule TBC','@ ACS · Schedule TBC')">20<span>EAC<br>EXCHANGE</span></div>
+          <div class="cal-day">21</div><div class="cal-day">22</div>
+          <div class="cal-day support" title="Support AISA MS Badminton · Boys &amp; Girls · 1:45–3:00 PM">23<span>Support<br>MS Bad.</span></div>
+          <div class="cal-day game" onclick="showMsBlueGamePopup('Mar 24','ISAC Matches · 4-6 Matches · HOME','Main Gym @ AISA vs GAA · 2:15 PM','Small Gym @ AISA vs GAA · 2:15 PM')">24<span>ISAC MATCH</span></div>
+          <div class="cal-day prac" title="Practice · Boys &amp; Girls · Small Gym · 1:45–3:00 PM">25<span>Practice</span></div>
+          <div class="cal-day">26</div><div class="cal-day">27</div>
+          <div class="cal-day">28</div><div class="cal-day">29</div>
+          <div class="cal-day prac" title="Practice · Boys &amp; Girls · Small Gym · 1:45–3:00 PM">30<span>Practice</span></div>
+          <div class="cal-day">31</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+        </div>
+      </div>
+
+      <!-- APRIL 2027 -->
+      <div id="msblue-apr" class="cal-month" style="display:none;">
+        <div class="cal-month-title">April 2027</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+          <div class="cal-day prac" title="Practice · Boys &amp; Girls · Small Gym · 1:45–3:00 PM">1<span>Practice</span></div>
+          <div class="cal-day">2</div>
+          <div class="cal-day brk">3</div>
+          <div class="cal-day brk">4</div><div class="cal-day brk">5</div><div class="cal-day brk">6</div><div class="cal-day brk">7</div><div class="cal-day brk">8</div><div class="cal-day brk">9</div><div class="cal-day brk">10</div>
+          <div class="cal-day brk">11</div>
+          <div class="cal-day">12</div>
+          <div class="cal-day prac" title="Practice · Boys &amp; Girls · Small Gym · 1:45–3:00 PM">13<span>Practice</span></div>
+          <div class="cal-day">14</div>
+          <div class="cal-day prac" title="Practice · Boys &amp; Girls · Small Gym · 1:45–3:00 PM">15<span>Practice</span></div>
+          <div class="cal-day">16</div>
+          <div class="cal-day game" onclick="showMsBlueGamePopup('Apr 17','ISAC Championships · 8 Matches','@ DAS · Bus 7:00 AM–3:00 PM · Start 9:00 AM','@ DAS · Bus 7:00 AM–3:00 PM · Start 9:00 AM')">17<span>ISAC<br>CHAMPS</span></div>
+          <div class="cal-day">18</div><div class="cal-day">19</div>
+          <div class="cal-day prac" title="Practice · Boys &amp; Girls · Small Gym · 1:45–3:00 PM">20<span>Practice</span></div>
+          <div class="cal-day">21</div>
+          <div class="cal-day prac" title="Practice · Boys &amp; Girls · Small Gym · 1:45–3:00 PM">22<span>Practice</span></div>
+          <div class="cal-day">23</div>
+          <div class="cal-day game-eac" onclick="showMsBlueGamePopup('Apr 24','EAC Championships · 5-8 Matches','@ ASD (Dubai) · Schedule TBC','@ ASD (Dubai) · Schedule TBC')">24<span>EAC<br>CHAMPS</span></div>
+          <div class="cal-day">25</div><div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div><div class="cal-day">29</div><div class="cal-day">30</div>
+          <div class="cal-empty"></div>
+        </div>
+        <p class="cal-break-note">🌴 Spring Break — Apr 3 through Apr 11. No practices or games.</p>
+      </div>
+
+      <!-- Game Detail Popup -->
+      <div id="msblue-game-popup" class="game-popup">
+        <button class="game-popup-close" onclick="document.getElementById('msblue-game-popup').classList.remove('visible')" aria-label="Close">✕ close</button>
+        <div class="game-popup-title">🏸 <span id="msblue-gp-title"></span></div>
+        <div class="game-popup-rows">
+          <div class="game-popup-row">👦 <strong>Boys:</strong> <span id="msblue-gp-boys"></span></div>
+          <div class="game-popup-row">👧 <strong>Girls:</strong> <span id="msblue-gp-girls"></span></div>
+        </div>
+      </div>
+
+      <!-- Game Day Summary -->
+      <div class="game-summary">
+        <h3>📅 Game Days — 2026-2027</h3>
+        <div class="game-list">
+          <div class="game-item">
+            <div class="game-date">Mar<br>2</div>
+            <div class="game-details">
+              <strong>ISAC Matches (4-6 matches) — HOME vs CIS</strong>
+              <div class="teams">
+                <div class="team-row">👦 Boys → <strong>Small Gym @ AISA</strong> · 2:15 PM</div>
+                <div class="team-row">👧 Girls → <strong>Main Gym @ AISA</strong> · 2:15 PM</div>
+              </div>
+            </div>
+          </div>
+          <div class="game-item">
+            <div class="game-date">Mar<br>24</div>
+            <div class="game-details">
+              <strong>ISAC Matches (4-6 matches) — HOME vs GAA</strong>
+              <div class="teams">
+                <div class="team-row">👦 Boys → <strong>Main Gym @ AISA</strong> · 2:15 PM</div>
+                <div class="team-row">👧 Girls → <strong>Small Gym @ AISA</strong> · 2:15 PM</div>
+              </div>
+            </div>
+          </div>
+          <div class="game-item" style="border-left-color:#0f766e;background:linear-gradient(90deg,#f0fdfa,#fff);">
+            <div class="game-date" style="color:#0f766e;">Mar<br>20</div>
+            <div class="game-details">
+              <strong style="color:#0f766e;">🌍 EAC Exchange (3-5 matches) @ ACS</strong>
+              <div class="teams">
+                <div class="team-row" style="font-size:.75rem;color:#666;">Schools: GAA · ACS · AISA · ASD · DAA · DAS</div>
+              </div>
+            </div>
+          </div>
+          <div class="game-item">
+            <div class="game-date">Apr<br>17</div>
+            <div class="game-details">
+              <strong>ISAC Championships (8 matches) @ DAS</strong>
+              <div class="teams">
+                <div class="team-row">Bus 7:00 AM–3:00 PM · Start 9:00 AM</div>
+                <div class="team-row" style="font-size:.75rem;color:#666;">Schools: AISA · DAS · CIS · GAA</div>
+              </div>
+            </div>
+          </div>
+          <div class="game-item" style="border-left-color:#0f766e;background:linear-gradient(90deg,#f0fdfa,#fff);">
+            <div class="game-date" style="color:#0f766e;">Apr<br>24</div>
+            <div class="game-details">
+              <strong style="color:#0f766e;">🌍 EAC Championships (5-8 matches) @ ASD (Dubai)</strong>
+              <div class="teams">
+                <div class="team-row" style="font-size:.75rem;color:#666;">Schools: GAA · ACS · AISA · ASD · DAA · DAS</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="sched-footer">
+        <a href="schedules/MS_Blue_Badminton_2026-27.pdf" class="btn-schedule" download style="text-decoration:none;background:#1e3a8a;color:#fff;">📄 Download Full Schedule PDF</a>
+      </div>
+
+    </div><!-- /.sched-inner -->
+  </div><!-- /#ms-blue-badminton-modal -->
+
+  <!-- ── MS YELLOW BADMINTON SCHEDULE MODAL ── -->
+  <div id="ms-yellow-badminton-modal" class="sched-modal" role="dialog" aria-modal="true" aria-label="MS Yellow Badminton Schedule">
+    <div class="sched-inner">
+
+      <!-- Header -->
+      <div class="sched-header" style="background: linear-gradient(135deg, #92400e, #eab308); color:#1f2937;">
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <span style="font-size:1.8rem;line-height:1;">🏸</span>
+          <div>
+            <h2 style="color:#1f2937;">MS Yellow Badminton</h2>
+            <p style="color:#3f3008;">2026–2027 · DEAC Exchange (Boys &amp; Girls)</p>
+          </div>
+        </div>
+        <button class="sched-close" style="background:rgba(0,0,0,.15);color:#1f2937;" onclick="document.getElementById('ms-yellow-badminton-modal').classList.remove('open')" aria-label="Close">✕</button>
+      </div>
+
+      <!-- Legend -->
+      <div class="cal-legend">
+        <span><span class="cal-dot reg"></span>Registration</span>
+        <span><span class="cal-dot prac-b"></span>Tryouts · 👦 Boys</span>
+        <span><span class="cal-dot prac-g"></span>Tryouts · 👧 Girls</span>
+        <span><span class="cal-dot prac"></span>Practice (Boys &amp; Girls)</span>
+        <span><span class="cal-dot game-eac"></span>DEAC Exchange</span>
+        <span><span class="cal-dot support"></span>Support HS/MS Badminton</span>
+        <span><span class="cal-dot brk"></span>Spring Break</span>
+      </div>
+
+      <!-- Month Tabs -->
+      <div class="cal-tabs" role="tablist">
+        <button class="cal-tab active" role="tab" onclick="showMsYellowMonth('msyellow-feb',this)">🌷 Feb 2027</button>
+        <button class="cal-tab" role="tab" onclick="showMsYellowMonth('msyellow-mar',this)">🏸 Mar 2027</button>
+        <button class="cal-tab" role="tab" onclick="showMsYellowMonth('msyellow-apr',this)">🏆 Apr 2027</button>
+      </div>
+
+      <!-- FEBRUARY 2027 -->
+      <div id="msyellow-feb" class="cal-month">
+        <div class="cal-month-title">February 2027</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div>
+          <div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div><div class="cal-day">4</div><div class="cal-day">5</div><div class="cal-day">6</div>
+          <div class="cal-day">7</div><div class="cal-day">8</div><div class="cal-day">9</div><div class="cal-day">10</div><div class="cal-day">11</div><div class="cal-day">12</div><div class="cal-day">13</div>
+          <div class="cal-day">14</div>
+          <div class="cal-day reg" title="Registration for MS Badminton · Online · Boys &amp; Girls">15<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration for MS Badminton · Online · Boys &amp; Girls">16<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration for MS Badminton · Online · Boys &amp; Girls">17<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration for MS Badminton · Online · Boys &amp; Girls">18<span>Reg</span></div>
+          <div class="cal-day">19</div><div class="cal-day">20</div>
+          <div class="cal-day">21</div><div class="cal-day">22</div>
+          <div class="cal-day prac-b" title="Tryouts · Boys · Small Gym · 1:45–3:00 PM">23<span>Tryout<br>Boys</span></div>
+          <div class="cal-day prac-g" title="Tryouts · Girls · Small Gym · 1:45–3:00 PM">24<span>Tryout<br>Girls</span></div>
+          <div class="cal-day prac-b" title="Tryouts · Boys · Small Gym · 1:45–3:00 PM">25<span>Tryout<br>Boys</span></div>
+          <div class="cal-day prac-g" title="Tryouts · Girls · Small Gym · 11:40 AM–1:10 PM">26<span>Tryout<br>Girls</span></div>
+          <div class="cal-day">27</div>
+          <div class="cal-day">28</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+        </div>
+      </div>
+
+      <!-- MARCH 2027 -->
+      <div id="msyellow-mar" class="cal-month" style="display:none;">
+        <div class="cal-month-title">March 2027</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div>
+          <div class="cal-day">1</div><div class="cal-day">2</div>
+          <div class="cal-day support" title="Support AISA HS Badminton · Boys &amp; Girls · 1:45–3:00 PM">3<span>Support<br>HS Bad.</span></div>
+          <div class="cal-day">4</div>
+          <div class="cal-day prac" title="Practice · Boys &amp; Girls · Small Gym · 11:40 AM–1:10 PM">5<span>Practice</span></div>
+          <div class="cal-day">6</div><div class="cal-day">7</div><div class="cal-day">8</div><div class="cal-day">9</div>
+          <div class="cal-day prac" title="Practice · Boys &amp; Girls · Small Gym · 1:45–3:00 PM">10<span>Practice</span></div>
+          <div class="cal-day">11</div>
+          <div class="cal-day prac" title="Practice · Boys &amp; Girls · Small Gym · 11:40 AM–1:10 PM">12<span>Practice</span></div>
+          <div class="cal-day">13</div><div class="cal-day">14</div><div class="cal-day">15</div><div class="cal-day">16</div>
+          <div class="cal-day prac" title="Practice · Boys &amp; Girls · Small Gym · 1:45–3:00 PM">17<span>Practice</span></div>
+          <div class="cal-day">18</div>
+          <div class="cal-day prac" title="Practice · Boys &amp; Girls · Small Gym · 11:40 AM–1:10 PM">19<span>Practice</span></div>
+          <div class="cal-day game-eac" onclick="showMsYellowGamePopup('Mar 20','DEAC Exchange · 3-5 Matches','@ ASD (Dubai) · Schedule TBC')">20<span>DEAC<br>EXCHANGE</span></div>
+          <div class="cal-day">21</div><div class="cal-day">22</div><div class="cal-day">23</div>
+          <div class="cal-day support" title="Support AISA MS Badminton · Boys &amp; Girls · 1:45–3:00 PM">24<span>Support<br>MS Bad.</span></div>
+          <div class="cal-day">25</div>
+          <div class="cal-day prac" title="Practice · Boys &amp; Girls · Small Gym · 11:40 AM–1:10 PM">26<span>Practice</span></div>
+          <div class="cal-day">27</div><div class="cal-day">28</div><div class="cal-day">29</div><div class="cal-day">30</div>
+          <div class="cal-day prac" title="Practice · Boys &amp; Girls · Small Gym · 1:45–3:00 PM">31<span>Practice</span></div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+        </div>
+      </div>
+
+      <!-- APRIL 2027 -->
+      <div id="msyellow-apr" class="cal-month" style="display:none;">
+        <div class="cal-month-title">April 2027</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+          <div class="cal-day">1</div><div class="cal-day">2</div>
+          <div class="cal-day brk">3</div>
+          <div class="cal-day brk">4</div><div class="cal-day brk">5</div><div class="cal-day brk">6</div><div class="cal-day brk">7</div><div class="cal-day brk">8</div><div class="cal-day brk">9</div><div class="cal-day brk">10</div>
+          <div class="cal-day brk">11</div>
+          <div class="cal-day">12</div><div class="cal-day">13</div>
+          <div class="cal-day prac" title="Practice · Boys &amp; Girls · Small Gym · 1:45–3:00 PM">14<span>Practice</span></div>
+          <div class="cal-day">15</div>
+          <div class="cal-day prac" title="Practice · Boys &amp; Girls · Small Gym · 11:40 AM–1:10 PM">16<span>Practice</span></div>
+          <div class="cal-day">17</div><div class="cal-day">18</div><div class="cal-day">19</div><div class="cal-day">20</div>
+          <div class="cal-day prac" title="Practice · Boys &amp; Girls · Small Gym · 1:45–3:00 PM">21<span>Practice</span></div>
+          <div class="cal-day">22</div>
+          <div class="cal-day prac" title="Practice · Boys &amp; Girls · Small Gym · 11:40 AM–1:10 PM">23<span>Practice</span></div>
+          <div class="cal-day game-eac" onclick="showMsYellowGamePopup('Apr 24','DEAC Exchange · 5-8 Matches','@ ASD (Dubai) · Schedule TBC')">24<span>DEAC<br>EXCHANGE</span></div>
+          <div class="cal-day">25</div><div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div><div class="cal-day">29</div><div class="cal-day">30</div>
+          <div class="cal-empty"></div>
+        </div>
+        <p class="cal-break-note">🌴 Spring Break — Apr 3 through Apr 11. No practices or games.</p>
+      </div>
+
+      <!-- Game Detail Popup -->
+      <div id="msyellow-game-popup" class="game-popup">
+        <button class="game-popup-close" onclick="document.getElementById('msyellow-game-popup').classList.remove('visible')" aria-label="Close">✕ close</button>
+        <div class="game-popup-title">🏸 <span id="msyellow-gp-title"></span></div>
+        <div class="game-popup-rows">
+          <div class="game-popup-row">📍 <strong>Both:</strong> <span id="msyellow-gp-both"></span></div>
+        </div>
+      </div>
+
+      <!-- Game Day Summary -->
+      <div class="game-summary">
+        <h3>📅 Game Days — 2026-2027</h3>
+        <div class="game-list">
+          <div class="game-item" style="border-left-color:#0f766e;background:linear-gradient(90deg,#f0fdfa,#fff);">
+            <div class="game-date" style="color:#0f766e;">Mar<br>20</div>
+            <div class="game-details">
+              <strong style="color:#0f766e;">🌍 DEAC Exchange (3-5 matches) @ ASD (Dubai)</strong>
+              <div class="teams">
+                <div class="team-row" style="font-size:.75rem;color:#666;">Schools: GAA · ACS · AISA · ASD · DAA · DAS</div>
+              </div>
+            </div>
+          </div>
+          <div class="game-item" style="border-left-color:#0f766e;background:linear-gradient(90deg,#f0fdfa,#fff);">
+            <div class="game-date" style="color:#0f766e;">Apr<br>24</div>
+            <div class="game-details">
+              <strong style="color:#0f766e;">🌍 DEAC Exchange (5-8 matches) @ ASD (Dubai)</strong>
+              <div class="teams">
+                <div class="team-row" style="font-size:.75rem;color:#666;">Schools: GAA · ACS · AISA · ASD · DAA · DAS</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:.76rem;color:#6b7280;margin-top:.75rem;font-style:italic;">🟡 MS Yellow Badminton competes exclusively in DEAC (no ISAC matches) — practices run Wed &amp; Fri.</p>
+      </div>
+
+      <!-- Footer -->
+      <div class="sched-footer">
+        <a href="schedules/MS_Yellow_Badminton_2026-27.pdf" class="btn-schedule" download style="text-decoration:none;background:#92400e;color:#fff;">📄 Download Full Schedule PDF</a>
+      </div>
+
+    </div><!-- /.sched-inner -->
+  </div><!-- /#ms-yellow-badminton-modal -->
+
   <script>
     function showBadMonth(month, btn) {
       ['bad-feb','bad-mar','bad-apr'].forEach(function(m) {
@@ -686,12 +1051,47 @@
       p.classList.add('visible');
       p.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
-    document.getElementById('hs-badminton-modal').addEventListener('click', function(e) {
-      if (e.target === this) this.classList.remove('open');
+    function showMsBlueMonth(month, btn) {
+      ['msblue-feb','msblue-mar','msblue-apr'].forEach(function(m) {
+        document.getElementById(m).style.display = m === month ? '' : 'none';
+      });
+      document.querySelectorAll('#ms-blue-badminton-modal .cal-tab').forEach(function(t) { t.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('msblue-game-popup').classList.remove('visible');
+    }
+    function showMsBlueGamePopup(date, label, boys, girls) {
+      var p = document.getElementById('msblue-game-popup');
+      document.getElementById('msblue-gp-title').textContent = date + ' · ' + label;
+      document.getElementById('msblue-gp-boys').textContent = boys;
+      document.getElementById('msblue-gp-girls').textContent = girls;
+      p.classList.add('visible');
+      p.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    function showMsYellowMonth(month, btn) {
+      ['msyellow-feb','msyellow-mar','msyellow-apr'].forEach(function(m) {
+        document.getElementById(m).style.display = m === month ? '' : 'none';
+      });
+      document.querySelectorAll('#ms-yellow-badminton-modal .cal-tab').forEach(function(t) { t.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('msyellow-game-popup').classList.remove('visible');
+    }
+    function showMsYellowGamePopup(date, label, both) {
+      var p = document.getElementById('msyellow-game-popup');
+      document.getElementById('msyellow-gp-title').textContent = date + ' · ' + label;
+      document.getElementById('msyellow-gp-both').textContent = both;
+      p.classList.add('visible');
+      p.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    ['hs-badminton-modal','ms-blue-badminton-modal','ms-yellow-badminton-modal'].forEach(function(id) {
+      document.getElementById(id).addEventListener('click', function(e) {
+        if (e.target === this) this.classList.remove('open');
+      });
     });
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
-        document.getElementById('hs-badminton-modal').classList.remove('open');
+        ['hs-badminton-modal','ms-blue-badminton-modal','ms-yellow-badminton-modal'].forEach(function(id) {
+          document.getElementById(id).classList.remove('open');
+        });
       }
     });
   </script>
