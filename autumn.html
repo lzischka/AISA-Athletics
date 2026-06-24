@@ -10,6 +10,223 @@
     .sport-card-header.swimming   { background: linear-gradient(135deg, #0d5c8a, #1abc9c); }
     .sport-card-header.soccer-jeac{ background: linear-gradient(135deg, #1a5276, #2980b9); }
     .sport-card-header.leadership { background: linear-gradient(135deg, #4a235a, #8e44ad); }
+    .sport-card-header.football   { background: linear-gradient(135deg, #92400e, #c0392b); }
+
+    /* ── Schedule Button ── */
+    .btn-schedule {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: var(--gold); color: var(--navy-dark);
+      border: none; border-radius: 6px;
+      padding: .4rem .9rem; font-size: .8rem; font-weight: 800;
+      cursor: pointer; letter-spacing: .02em; margin-top: .75rem;
+      transition: background .15s, transform .1s;
+    }
+    .btn-schedule:hover { background: #e09900; transform: translateY(-1px); }
+
+    /* ── Schedule Modal Overlay ── */
+    .sched-modal {
+      display: none; position: fixed; inset: 0; z-index: 9000;
+      background: rgba(10,20,45,.7); backdrop-filter: blur(4px);
+      align-items: center; justify-content: center; padding: 1rem;
+    }
+    .sched-modal.open { display: flex; }
+    .sched-inner {
+      background: #fff; border-radius: 14px; width: 100%; max-width: 700px;
+      max-height: 90vh; overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+      animation: popIn .2s ease-out;
+    }
+    @keyframes popIn { from { transform: scale(.94); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+    .sched-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.1rem 1.4rem .8rem;
+      border-bottom: 2px solid #f0f0f0;
+      background: linear-gradient(135deg, #0d2b52, #1a4a8a);
+      border-radius: 14px 14px 0 0; color: #fff;
+    }
+    .sched-header h2 { margin: 0; font-size: 1.15rem; }
+    .sched-header p  { margin: .15rem 0 0; font-size: .78rem; opacity: .8; }
+    .sched-close {
+      background: rgba(255,255,255,.2); border: none; color: #fff;
+      border-radius: 50%; width: 32px; height: 32px; font-size: 1rem;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: background .15s;
+    }
+    .sched-close:hover { background: rgba(255,255,255,.35); }
+
+    /* Legend */
+    .cal-legend {
+      display: flex; flex-wrap: wrap; gap: .5rem 1rem;
+      padding: .7rem 1.4rem; background: #f8faff;
+      border-bottom: 1px solid #e8eef6; font-size: .76rem; color: #444;
+    }
+    .cal-legend span { display: inline-flex; align-items: center; gap: .35rem; font-weight: 600; }
+    .cal-dot { width: 11px; height: 11px; border-radius: 3px; flex-shrink: 0; }
+    .cal-dot.reg  { background: #bfdbfe; border: 1.5px solid #3b82f6; }
+    .cal-dot.try  { background: #fde68a; border: 1.5px solid #f59e0b; }
+    .cal-dot.prac { background: #a7f3d0; border: 1.5px solid #10b981; }
+    .cal-dot.prac-b { background: #dbeafe; border: 1.5px solid #3b82f6; }
+    .cal-dot.prac-g { background: #fce7f3; border: 1.5px solid #ec4899; }
+    .cal-dot.game { background: #dc2626; border: 1.5px solid #991b1b; }
+    .cal-dot.brk  { background: #e5e7eb; border: 1.5px solid #9ca3af; }
+
+    /* Month Tabs */
+    .cal-tabs {
+      display: flex; border-bottom: 2px solid #e8eef6;
+      padding: 0 1rem;
+    }
+    .cal-tab {
+      padding: .6rem 1rem; border: none; background: none;
+      font-size: .83rem; font-weight: 700; color: #666;
+      cursor: pointer; border-bottom: 3px solid transparent;
+      margin-bottom: -2px; transition: color .15s, border-color .15s;
+    }
+    .cal-tab:hover { color: #0d2b52; }
+    .cal-tab.active { color: #0d2b52; border-bottom-color: #f5a800; }
+
+    /* Calendar Grid */
+    .cal-month { padding: 1rem 1.4rem; }
+    .cal-month-title {
+      font-size: 1rem; font-weight: 800; color: #0d2b52;
+      margin-bottom: .75rem; text-align: center;
+    }
+    .cal-grid {
+      display: grid; grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+    }
+    .cal-dow {
+      text-align: center; font-size: .68rem; font-weight: 700;
+      color: #888; padding: .3rem 0; text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .cal-empty { min-height: 50px; border-radius: 6px; }
+    .cal-day {
+      min-height: 50px; border-radius: 6px; padding: 5px 4px 3px;
+      font-size: .82rem; font-weight: 600;
+      display: flex; flex-direction: column; align-items: center;
+      cursor: default; color: #374151;
+      background: #f3f4f6; transition: transform .1s;
+    }
+    .cal-day span {
+      font-size: .58rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: .04em; margin-top: 2px; text-align: center;
+      line-height: 1.25;
+    }
+    .cal-day.reg  { background: #dbeafe; color: #1e40af; }
+    .cal-day.try  { background: #fef3c7; color: #92400e; border: 1.5px solid #f59e0b; }
+    .cal-day.prac  { background: #d1fae5; color: #065f46; }
+    .cal-day.prac span { color: #047857; }
+    .cal-day.prac-b { background: #dbeafe; color: #1e3a5f; }
+    .cal-day.prac-b span { color: #1d4ed8; font-size: .6rem; }
+    .cal-day.prac-g { background: #fce7f3; color: #701a40; }
+    .cal-day.prac-g span { color: #be185d; font-size: .6rem; }
+    .cal-day.game {
+      background: #dc2626; color: #fff;
+      border: 2px solid #991b1b;
+      box-shadow: 0 3px 10px rgba(220,38,38,.4);
+      transform: scale(1.04); cursor: pointer;
+    }
+    .cal-day.game span { color: rgba(255,255,255,.9); font-size: .64rem; }
+    .cal-day.game:hover { transform: scale(1.08); }
+    .cal-day.brk  { background: #e5e7eb; color: #9ca3af; font-weight: 400; font-size: .76rem; }
+    .cal-break-note {
+      margin: .6rem 0 0; font-size: .77rem; color: #6b7280;
+      text-align: center; font-style: italic;
+    }
+
+    /* Game Day Summary */
+    .game-summary {
+      border-top: 2px solid #f0f0f0;
+      padding: 1rem 1.4rem;
+      background: #f8faff;
+    }
+    .game-summary h3 {
+      font-size: .92rem; font-weight: 800; color: #0d2b52;
+      margin: 0 0 .75rem;
+    }
+    .game-list { display: flex; flex-direction: column; gap: .5rem; }
+    .game-item {
+      display: flex; align-items: flex-start; gap: .85rem;
+      background: #fff; border-radius: 8px; padding: .7rem .9rem;
+      border-left: 4px solid #dc2626;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07);
+    }
+    .game-date {
+      font-size: .95rem; font-weight: 900; color: #dc2626;
+      min-width: 44px; text-align: center; line-height: 1.3;
+    }
+    .game-details { font-size: .82rem; color: #374151; }
+    .game-details strong { display: block; font-size: .87rem; color: #0d2b52; margin-bottom: .2rem; }
+    .game-details .teams { display: flex; flex-wrap: wrap; gap: .3rem .8rem; margin-top: .2rem; }
+    .game-details .team-row { display: flex; align-items: center; gap: .3rem; }
+
+    /* Game Detail Popup */
+    .game-popup {
+      display: none; margin: 0 1.4rem 1rem;
+      background: #fff3f3; border: 2px solid #dc2626;
+      border-radius: 10px; padding: .85rem 1.1rem;
+      animation: fadeIn .18s ease-out;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+    .game-popup.visible { display: block; }
+    .cal-day.game-gaac {
+      background: #0d2b52; color: #f5a800;
+      border: 2px solid #f5a800;
+      box-shadow: 0 3px 10px rgba(13,43,82,.4);
+      transform: scale(1.04); cursor: pointer;
+    }
+    .cal-day.game-gaac span { color: #f5a800; font-size: .62rem; }
+    .cal-day.game-gaac:hover { transform: scale(1.09); }
+    .cal-dot.game-gaac { background: #0d2b52; border: 1.5px solid #f5a800; }
+    .cal-day.support { background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; cursor: default; }
+    .cal-day.support span { color: #0284c7; font-size: .58rem; }
+    .cal-dot.support { background: #bae6fd; border: 1.5px solid #0ea5e9; }
+    .cal-day.game-eac {
+      background: #0f766e; color: #fff;
+      border: 2px solid #115e59;
+      box-shadow: 0 3px 10px rgba(15,118,110,.4);
+      transform: scale(1.04); cursor: pointer;
+    }
+    .cal-day.game-eac span { color: rgba(255,255,255,.9); font-size: .6rem; }
+    .cal-day.game-eac:hover { transform: scale(1.08); }
+    .cal-dot.game-eac { background: #0f766e; border: 1.5px solid #115e59; }
+    .game-popup-title {
+      font-size: .9rem; font-weight: 800; color: #dc2626;
+      margin: 0 0 .55rem; display: flex; align-items: center; gap: .4rem;
+    }
+    .game-popup-rows { display: flex; flex-direction: column; gap: .35rem; }
+    .game-popup-row {
+      display: flex; align-items: center; gap: .5rem;
+      font-size: .83rem; color: #374151;
+    }
+    .game-popup-row strong { color: #0d2b52; min-width: 42px; }
+    .game-popup-close {
+      float: right; background: none; border: none;
+      color: #dc2626; font-size: .85rem; cursor: pointer;
+      font-weight: 700; padding: 0; line-height: 1;
+    }
+    .cal-day.game-jeac {
+      background: #c0392b; color: #fff;
+      border: 2px solid #78281f;
+      box-shadow: 0 3px 10px rgba(192,57,43,.4);
+      transform: scale(1.04); cursor: pointer;
+    }
+    .cal-day.game-jeac span { color: rgba(255,255,255,.9); font-size: .6rem; }
+    .cal-day.game-jeac:hover { transform: scale(1.08); }
+    .cal-dot.game-jeac { background: #c0392b; border: 1.5px solid #78281f; }
+
+    .sched-footer {
+      padding: .85rem 1.4rem 1.1rem; text-align: center;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    @media (max-width: 500px) {
+      .cal-day { min-height: 40px; font-size: .74rem; padding: 3px 2px; }
+      .cal-day span { font-size: .52rem; }
+      .sched-inner { border-radius: 10px; }
+      .game-item { flex-direction: column; gap: .3rem; }
+    }
   </style>
 </head>
 <body>
@@ -109,6 +326,12 @@
             </div>
             <br>
             <small style="color:var(--gray-600);">Conferences: GAAC · ISAC · EAC</small>
+            <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem;">
+              <button class="btn-schedule" onclick="document.getElementById('hs-boys-vb-modal').classList.add('open')">📅 HS Boys VB Schedule</button>
+              <button class="btn-schedule" style="background:#ec4899;color:#fff;" onclick="document.getElementById('hs-girls-vb-modal').classList.add('open')">📅 HS Girls VB Schedule</button>
+              <button class="btn-schedule" style="background:#3b82f6;color:#fff;" onclick="document.getElementById('ms-blue-vb-modal').classList.add('open')">📅 MS Blue VB Schedule</button>
+              <button class="btn-schedule" style="background:#eab308;color:#1f2937;" onclick="document.getElementById('ms-yellow-vb-modal').classList.add('open')">📅 MS Yellow VB Schedule</button>
+            </div>
           </div>
         </div>
 
@@ -153,6 +376,31 @@
             </div>
             <br>
             <small style="color:var(--gray-600);">Conference: JEAC (Jamboree, no awards)</small>
+          </div>
+        </div>
+
+        <!-- CUBS FOOTBALL -->
+        <div class="sport-card">
+          <div class="sport-card-header football">
+            <div class="sport-emoji">🏈</div>
+            <div>
+              <h3>Cubs Football</h3>
+              <span>Elementary · Grades 4-6</span>
+            </div>
+          </div>
+          <div class="sport-card-body">
+            <p>Cubs Football is AISA's flag football program for elementary student-athletes. Weekly practices on the Football Pitch build fundamentals throughout September and October, culminating in the JEAC Final Matches with AISA's Grade 4-6 boys and girls teams facing off against regional schools.</p>
+            <div class="team-badges">
+              <span class="badge badge-ms">Grade 4-6 Girls</span>
+              <span class="badge badge-ms">Grade 4 Boys</span>
+              <span class="badge badge-ms">Grade 5 Boys</span>
+              <span class="badge badge-ms">Grade 6 Boys</span>
+            </div>
+            <br>
+            <small style="color:var(--gray-600);">Conference: JEAC (Final Matches Jamboree)</small>
+            <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem;">
+              <button class="btn-schedule" style="background:#92400e;color:#fff;" onclick="document.getElementById('cubs-football-modal').classList.add('open')">📅 Cubs Football Schedule</button>
+            </div>
           </div>
         </div>
 
@@ -284,6 +532,902 @@
       <a href="handbook.html">Handbook</a>
     </div>
   </footer>
+
+  <!-- ── HS BOYS VOLLEYBALL SCHEDULE MODAL ── -->
+  <div id="hs-boys-vb-modal" class="sched-modal" role="dialog" aria-modal="true" aria-label="HS Boys Volleyball Schedule">
+    <div class="sched-inner">
+
+      <div class="sched-header" style="background: linear-gradient(135deg, #7d1e10, #c0392b);">
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <span style="font-size:1.8rem;line-height:1;">🏐</span>
+          <div>
+            <h2>HS Boys Volleyball</h2>
+            <p>2026–2027 · ISAC League + GAAC Championship (JV &amp; Varsity)</p>
+          </div>
+        </div>
+        <button class="sched-close" onclick="document.getElementById('hs-boys-vb-modal').classList.remove('open')" aria-label="Close">✕</button>
+      </div>
+
+      <div class="cal-legend">
+        <span><span class="cal-dot reg"></span>Registration</span>
+        <span><span class="cal-dot try"></span>Tryouts</span>
+        <span><span class="cal-dot prac"></span>Practice</span>
+        <span><span class="cal-dot game"></span>ISAC Match / Championship</span>
+        <span><span class="cal-dot game-gaac"></span>GAAC Tournament (Bahrain)</span>
+        <span><span class="cal-dot support"></span>Support HS Girls VB</span>
+        <span><span class="cal-dot brk"></span>Fall Break</span>
+      </div>
+
+      <div class="cal-tabs" role="tablist">
+        <button class="cal-tab active" role="tab" onclick="showHsbMonth('hsbvb-sep',this)">🏐 Sep 2026</button>
+        <button class="cal-tab" role="tab" onclick="showHsbMonth('hsbvb-oct',this)">🏐 Oct 2026</button>
+        <button class="cal-tab" role="tab" onclick="showHsbMonth('hsbvb-nov',this)">🏆 Nov 2026</button>
+      </div>
+
+      <!-- SEPTEMBER 2026 -->
+      <div id="hsbvb-sep" class="cal-month">
+        <div class="cal-month-title">September 2026</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div>
+          <div class="cal-day reg" title="Registration for HS Volleyball Opens · Online">1<span>Reg</span></div>
+          <div class="cal-day">2</div><div class="cal-day">3</div>
+          <div class="cal-day reg" title="Last Day of Registration for HS Volleyball · Online">4<span>Reg</span></div>
+          <div class="cal-day">5</div><div class="cal-day">6</div>
+          <div class="cal-day try" title="Tryouts · JV &amp; Varsity · Main Gym · 3:00–4:30 PM">7<span>Tryouts</span></div>
+          <div class="cal-day">8</div><div class="cal-day">9</div>
+          <div class="cal-day try" title="Tryouts · JV &amp; Varsity · Main Gym · 3:00–4:30 PM">10<span>Tryouts</span></div>
+          <div class="cal-day try" title="Tryouts · JV &amp; Varsity · Main Gym · 5:40–7:15 AM">11<span>Tryouts</span></div>
+          <div class="cal-day">12</div><div class="cal-day">13</div><div class="cal-day">14</div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Little Gym · 3:00–4:30 PM">15<span>Practice</span></div>
+          <div class="cal-day">16</div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 3:00–4:30 PM">17<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 5:40–7:15 AM">18<span>Practice</span></div>
+          <div class="cal-day">19</div><div class="cal-day">20</div><div class="cal-day">21</div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 3:00–4:30 PM">22<span>Practice</span></div>
+          <div class="cal-day">23</div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 3:00–4:30 PM">24<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 5:40–7:15 AM">25<span>Practice</span></div>
+          <div class="cal-day">26</div><div class="cal-day">27</div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 3:00–4:30 PM">28<span>Practice</span></div>
+          <div class="cal-day">29</div>
+          <div class="cal-day game" onclick="showHsbGamePopup('Sep 30','ISAC Matches (2 Matches) · HOME','3:30 PM AISA vs DAS · 4:50 PM GAA vs DAS · 6:10 PM AISA vs GAA','3:30 PM AISA vs DAS · 4:50 PM GAA vs DAS · 6:10 PM AISA vs GAA')">30<span>ISAC MATCH</span></div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+        </div>
+      </div>
+
+      <!-- OCTOBER 2026 -->
+      <div id="hsbvb-oct" class="cal-month" style="display:none;">
+        <div class="cal-month-title">October 2026</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+          <div class="cal-day support" title="Watch HS Girls Volleyball Play at HOME · JV &amp; Varsity · 3:00–4:30 PM">1<span>Support<br>Girls VB</span></div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 5:40–7:15 AM">2<span>Practice</span></div>
+          <div class="cal-day">3</div><div class="cal-day">4</div><div class="cal-day">5</div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 3:00–4:30 PM">6<span>Practice</span></div>
+          <div class="cal-day game" onclick="showHsbGamePopup('Oct 7','ISAC Matches (2 Matches)','Bus 2:30–6:45 PM @ GAA · 3:30 PM GAA vs AISA · 4:50 PM AISA vs CIS · 6:10 PM GAA vs CIS','Bus 2:30–6:45 PM @ GAA · 3:30 PM GAA vs AISA · 4:50 PM AISA vs CIS · 6:10 PM GAA vs CIS')">7<span>ISAC MATCH</span></div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 3:00–4:30 PM">8<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 5:40–7:15 AM">9<span>Practice</span></div>
+          <div class="cal-day brk">10</div><div class="cal-day brk">11</div><div class="cal-day brk">12</div><div class="cal-day brk">13</div><div class="cal-day brk">14</div><div class="cal-day brk">15</div><div class="cal-day brk">16</div>
+          <div class="cal-day brk">17</div><div class="cal-day brk">18</div>
+          <div class="cal-day">19</div><div class="cal-day">20</div>
+          <div class="cal-day game" onclick="showHsbGamePopup('Oct 21','ISAC Matches (2 Matches)','Bus 3:30–7:45 PM @ CIS · 3:30 PM CIS vs DAS · 4:50 PM DAS vs AISA · 6:10 PM CIS vs AISA','Bus 3:30–7:45 PM @ CIS · 3:30 PM CIS vs DAS · 4:50 PM DAS vs AISA · 6:10 PM CIS vs AISA')">21<span>ISAC MATCH</span></div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Little Gym · 3:00–4:30 PM">22<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 5:40–7:15 AM">23<span>Practice</span></div>
+          <div class="cal-day">24</div><div class="cal-day">25</div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 3:00–4:30 PM">26<span>Practice</span></div>
+          <div class="cal-day">27</div><div class="cal-day">28</div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Little Gym · 3:00–4:30 PM">29<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 5:40–7:15 AM">30<span>Practice</span></div>
+          <div class="cal-day">31</div>
+        </div>
+        <p class="cal-break-note">🍂 Fall Break — Oct 10 through Oct 18. No practices or games.</p>
+      </div>
+
+      <!-- NOVEMBER 2026 -->
+      <div id="hsbvb-nov" class="cal-month" style="display:none;">
+        <div class="cal-month-title">November 2026</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-day game" onclick="showHsbGamePopup('Nov 1','ISAC Championships','Bus 6:30 AM–3:30 PM @ DAS (Dubai) · 9:00 Seed#1 vs Seed#4 · 10:00 Seed#2 vs Seed#3 · 11:30 Bronze Match · 12:30 Gold Match','Bus 6:30 AM–3:30 PM @ DAS (Dubai) · 9:00 Seed#1 vs Seed#4 · 10:00 Seed#2 vs Seed#3 · 11:30 Bronze Match · 12:30 Gold Match')">1<span>ISAC<br>CHAMPS</span></div>
+          <div class="cal-day">2</div>
+          <div class="cal-day prac" title="Practice · Travel Team · Main Gym · 3:00–4:30 PM">3<span>Practice</span></div>
+          <div class="cal-day">4</div>
+          <div class="cal-day prac" title="Practice · Travel Team · Main Gym · 3:00–4:30 PM">5<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice · Travel Team · Main Gym · 5:40–7:15 AM">6<span>Practice</span></div>
+          <div class="cal-day">7</div><div class="cal-day">8</div><div class="cal-day">9</div>
+          <div class="cal-day prac" title="Practice · Travel Team · Main Gym · 3:00–4:30 PM">10<span>Practice</span></div>
+          <div class="cal-day">11</div>
+          <div class="cal-day game-gaac" onclick="showHsbGamePopup('Nov 12','GAAC Round Robin Play','@ ASB (Bahrain) · Schedule TBC','@ ASB (Bahrain) · Schedule TBC')">12<span>GAAC<br>ROUND ROBIN</span></div>
+          <div class="cal-day game-gaac" onclick="showHsbGamePopup('Nov 13','GAAC Round Robin Play','@ ASB (Bahrain) · Schedule TBC','@ ASB (Bahrain) · Schedule TBC')">13<span>GAAC<br>ROUND ROBIN</span></div>
+          <div class="cal-day game-gaac" onclick="showHsbGamePopup('Nov 14','GAAC Final Tournament Day','@ ASB (Bahrain) · Schedule TBC','@ ASB (Bahrain) · Schedule TBC')">14<span>GAAC<br>FINALS</span></div>
+          <div class="cal-day">15</div><div class="cal-day">16</div><div class="cal-day">17</div><div class="cal-day">18</div><div class="cal-day">19</div><div class="cal-day">20</div><div class="cal-day">21</div>
+          <div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day">24</div><div class="cal-day">25</div><div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div>
+          <div class="cal-day">29</div><div class="cal-day">30</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+        </div>
+      </div>
+
+      <!-- Game Detail Popup -->
+      <div id="hsbvb-game-popup" class="game-popup">
+        <button class="game-popup-close" onclick="document.getElementById('hsbvb-game-popup').classList.remove('visible')" aria-label="Close">✕ close</button>
+        <div class="game-popup-title">🏐 <span id="hsbvb-gp-title"></span></div>
+        <div class="game-popup-rows">
+          <div class="game-popup-row">🟦 <strong>JV:</strong> <span id="hsbvb-gp-jv"></span></div>
+          <div class="game-popup-row">🟥 <strong>Varsity:</strong> <span id="hsbvb-gp-var"></span></div>
+        </div>
+      </div>
+
+      <!-- Game Day Summary -->
+      <div class="game-summary">
+        <h3>📅 Game Days — 2026-2027</h3>
+        <div class="game-list">
+          <div class="game-item">
+            <div class="game-date">Sep<br>30</div>
+            <div class="game-details">
+              <strong>ISAC Matches (2 matches) — HOME vs DAS &amp; GAA</strong>
+              <div class="teams"><div class="team-row">JV &amp; Varsity · 3:30, 4:50, 6:10 PM</div></div>
+            </div>
+          </div>
+          <div class="game-item">
+            <div class="game-date">Oct<br>7</div>
+            <div class="game-details">
+              <strong>ISAC Matches (2 matches) @ GAA</strong>
+              <div class="teams"><div class="team-row">Bus 2:30–6:45 PM · JV &amp; Varsity</div></div>
+            </div>
+          </div>
+          <div class="game-item">
+            <div class="game-date">Oct<br>21</div>
+            <div class="game-details">
+              <strong>ISAC Matches (2 matches) @ CIS</strong>
+              <div class="teams"><div class="team-row">Bus 3:30–7:45 PM · JV &amp; Varsity</div></div>
+            </div>
+          </div>
+          <div class="game-item">
+            <div class="game-date">Nov<br>1</div>
+            <div class="game-details">
+              <strong>ISAC Championships @ DAS (Dubai)</strong>
+              <div class="teams"><div class="team-row">Bus 6:30 AM–3:30 PM · JV &amp; Varsity</div></div>
+            </div>
+          </div>
+          <div class="game-item" style="border-left-color:#0d2b52;background:linear-gradient(90deg,#f5f7fb,#fff);">
+            <div class="game-date" style="color:#0d2b52;">Nov<br>12-14</div>
+            <div class="game-details">
+              <strong style="color:#0d2b52;">🏆 GAAC Tournament @ ASB (Bahrain) — Travel Team</strong>
+              <div class="teams">
+                <div class="team-row" style="font-size:.75rem;color:#666;">Schools: AISA · ACS (Qatar) · ISL (Qatar) · UAE (Dubai) · GAAQ (Qatar) · DAS (Dubai) · AUS (Kuwait) · UAS (Kuwait) · AISR (Riyadh) · ASB (Bahrain)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="sched-footer">
+        <a href="schedules/HS_Boys_Volleyball_2026-27.pdf" class="btn-schedule" download style="text-decoration:none;">📄 Download Full Schedule PDF</a>
+      </div>
+
+    </div>
+  </div><!-- /#hs-boys-vb-modal -->
+
+  <!-- ── HS GIRLS VOLLEYBALL SCHEDULE MODAL ── -->
+  <div id="hs-girls-vb-modal" class="sched-modal" role="dialog" aria-modal="true" aria-label="HS Girls Volleyball Schedule">
+    <div class="sched-inner">
+
+      <div class="sched-header" style="background: linear-gradient(135deg, #9d174d, #ec4899);">
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <span style="font-size:1.8rem;line-height:1;">🏐</span>
+          <div>
+            <h2>HS Girls Volleyball</h2>
+            <p>2026–2027 · ISAC League + GAAC Championship (JV &amp; Varsity)</p>
+          </div>
+        </div>
+        <button class="sched-close" onclick="document.getElementById('hs-girls-vb-modal').classList.remove('open')" aria-label="Close">✕</button>
+      </div>
+
+      <div class="cal-legend">
+        <span><span class="cal-dot reg"></span>Registration</span>
+        <span><span class="cal-dot try"></span>Tryouts</span>
+        <span><span class="cal-dot prac"></span>Practice</span>
+        <span><span class="cal-dot game"></span>ISAC Match / Championship</span>
+        <span><span class="cal-dot game-gaac"></span>GAAC Tournament (Bahrain)</span>
+        <span><span class="cal-dot support"></span>Support HS Boys VB</span>
+        <span><span class="cal-dot brk"></span>Fall Break</span>
+      </div>
+
+      <div class="cal-tabs" role="tablist">
+        <button class="cal-tab active" role="tab" onclick="showHsgMonth('hsgvb-sep',this)">🏐 Sep 2026</button>
+        <button class="cal-tab" role="tab" onclick="showHsgMonth('hsgvb-oct',this)">🏐 Oct 2026</button>
+        <button class="cal-tab" role="tab" onclick="showHsgMonth('hsgvb-nov',this)">🏆 Nov 2026</button>
+      </div>
+
+      <!-- SEPTEMBER 2026 -->
+      <div id="hsgvb-sep" class="cal-month">
+        <div class="cal-month-title">September 2026</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div>
+          <div class="cal-day reg" title="Registration for HS Volleyball Opens · Online">1<span>Reg</span></div>
+          <div class="cal-day">2</div><div class="cal-day">3</div>
+          <div class="cal-day reg" title="Last Day of Registration for HS Volleyball · Online">4<span>Reg</span></div>
+          <div class="cal-day">5</div><div class="cal-day">6</div><div class="cal-day">7</div>
+          <div class="cal-day try" title="Tryouts · JV &amp; Varsity · Main Gym · 3:00–4:30 PM">8<span>Tryouts</span></div>
+          <div class="cal-day try" title="Tryouts · JV &amp; Varsity · Main Gym · 3:00–4:30 PM">9<span>Tryouts</span></div>
+          <div class="cal-day">10</div>
+          <div class="cal-day try" title="Tryouts · JV &amp; Varsity · Main Gym · 12:15–1:45 PM">11<span>Tryouts</span></div>
+          <div class="cal-day">12</div><div class="cal-day">13</div><div class="cal-day">14</div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 3:00–4:30 PM">15<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 3:00–4:30 PM">16<span>Practice</span></div>
+          <div class="cal-day">17</div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 12:15–1:45 PM">18<span>Practice</span></div>
+          <div class="cal-day">19</div><div class="cal-day">20</div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 3:00–4:30 PM">21<span>Practice</span></div>
+          <div class="cal-day">22</div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 3:00–4:30 PM">23<span>Practice</span></div>
+          <div class="cal-day">24</div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 12:15–1:45 PM">25<span>Practice</span></div>
+          <div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 3:00–4:30 PM">29<span>Practice</span></div>
+          <div class="cal-day support" title="Watch HS Boys Volleyball Play at HOME · JV &amp; Varsity · 3:00–4:30 PM">30<span>Support<br>Boys VB</span></div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+        </div>
+      </div>
+
+      <!-- OCTOBER 2026 -->
+      <div id="hsgvb-oct" class="cal-month" style="display:none;">
+        <div class="cal-month-title">October 2026</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+          <div class="cal-day game" onclick="showHsgGamePopup('Oct 1','ISAC Matches (2 Matches) · HOME','3:30 PM AISA vs DAS · 4:50 PM GAA vs DAS · 6:10 PM AISA vs GAA','3:30 PM AISA vs DAS · 4:50 PM GAA vs DAS · 6:10 PM AISA vs GAA')">1<span>ISAC MATCH</span></div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 12:15–1:45 PM">2<span>Practice</span></div>
+          <div class="cal-day">3</div><div class="cal-day">4</div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 3:00–4:30 PM">5<span>Practice</span></div>
+          <div class="cal-day">6</div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 3:00–4:30 PM">7<span>Practice</span></div>
+          <div class="cal-day game" onclick="showHsgGamePopup('Oct 8','ISAC Matches (2 Matches)','Bus 2:30–6:45 PM @ GAA · 3:30 PM GAA vs AISA · 4:50 PM AISA vs CIS · 6:10 PM GAA vs CIS','Bus 2:30–6:45 PM @ GAA · 3:30 PM GAA vs AISA · 4:50 PM AISA vs CIS · 6:10 PM GAA vs CIS')">8<span>ISAC MATCH</span></div>
+          <div class="cal-day">9</div>
+          <div class="cal-day brk">10</div><div class="cal-day brk">11</div><div class="cal-day brk">12</div><div class="cal-day brk">13</div><div class="cal-day brk">14</div><div class="cal-day brk">15</div><div class="cal-day brk">16</div>
+          <div class="cal-day brk">17</div><div class="cal-day brk">18</div>
+          <div class="cal-day">19</div><div class="cal-day">20</div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Little Gym · 3:00–4:30 PM">21<span>Practice</span></div>
+          <div class="cal-day game" onclick="showHsgGamePopup('Oct 22','ISAC Matches (2 Matches)','Bus 3:30–7:45 PM @ CIS · 3:30 PM CIS vs DAS · 4:50 PM DAS vs AISA · 6:10 PM CIS vs AISA','Bus 3:30–7:45 PM @ CIS · 3:30 PM CIS vs DAS · 4:50 PM DAS vs AISA · 6:10 PM CIS vs AISA')">22<span>ISAC MATCH</span></div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 12:15–1:45 PM">23<span>Practice</span></div>
+          <div class="cal-day">24</div><div class="cal-day">25</div><div class="cal-day">26</div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Little Gym · 3:00–4:30 PM">27<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 3:00–4:30 PM">28<span>Practice</span></div>
+          <div class="cal-day">29</div>
+          <div class="cal-day prac" title="Practice · JV &amp; Varsity · Main Gym · 12:15–1:45 PM">30<span>Practice</span></div>
+          <div class="cal-day">31</div>
+        </div>
+        <p class="cal-break-note">🍂 Fall Break — Oct 10 through Oct 18. No practices or games.</p>
+      </div>
+
+      <!-- NOVEMBER 2026 -->
+      <div id="hsgvb-nov" class="cal-month" style="display:none;">
+        <div class="cal-month-title">November 2026</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-day game" onclick="showHsgGamePopup('Nov 1','ISAC Championships','@ DAS (Dubai) · 9:00 Seed#1 vs Seed#4 · 10:00 Seed#2 vs Seed#3 · 11:30 Bronze Match · 12:30 Gold Match','@ DAS (Dubai) · 9:00 Seed#1 vs Seed#4 · 10:00 Seed#2 vs Seed#3 · 11:30 Bronze Match · 12:30 Gold Match')">1<span>ISAC<br>CHAMPS</span></div>
+          <div class="cal-day prac" title="Practice · Travel Team · Main Gym · 3:00–4:30 PM">2<span>Practice</span></div>
+          <div class="cal-day">3</div>
+          <div class="cal-day prac" title="Practice · Travel Team · Main Gym · 3:00–4:30 PM">4<span>Practice</span></div>
+          <div class="cal-day">5</div>
+          <div class="cal-day prac" title="Practice · Travel Team · Main Gym · 12:15–1:45 PM">6<span>Practice</span></div>
+          <div class="cal-day">7</div><div class="cal-day">8</div><div class="cal-day">9</div>
+          <div class="cal-day prac" title="Practice · Travel Team · Main Gym · 3:00–4:30 PM">10<span>Practice</span></div>
+          <div class="cal-day">11</div>
+          <div class="cal-day game-gaac" onclick="showHsgGamePopup('Nov 12','GAAC Round Robin Play','@ ASB (Bahrain) · Schedule TBC','@ ASB (Bahrain) · Schedule TBC')">12<span>GAAC<br>ROUND ROBIN</span></div>
+          <div class="cal-day game-gaac" onclick="showHsgGamePopup('Nov 13','GAAC Round Robin Play','@ ASB (Bahrain) · Schedule TBC','@ ASB (Bahrain) · Schedule TBC')">13<span>GAAC<br>ROUND ROBIN</span></div>
+          <div class="cal-day game-gaac" onclick="showHsgGamePopup('Nov 14','GAAC Final Tournament Day','@ ASB (Bahrain) · Schedule TBC','@ ASB (Bahrain) · Schedule TBC')">14<span>GAAC<br>FINALS</span></div>
+          <div class="cal-day">15</div><div class="cal-day">16</div><div class="cal-day">17</div><div class="cal-day">18</div><div class="cal-day">19</div><div class="cal-day">20</div><div class="cal-day">21</div>
+          <div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day">24</div><div class="cal-day">25</div><div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div>
+          <div class="cal-day">29</div><div class="cal-day">30</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+        </div>
+      </div>
+
+      <!-- Game Detail Popup -->
+      <div id="hsgvb-game-popup" class="game-popup">
+        <button class="game-popup-close" onclick="document.getElementById('hsgvb-game-popup').classList.remove('visible')" aria-label="Close">✕ close</button>
+        <div class="game-popup-title">🏐 <span id="hsgvb-gp-title"></span></div>
+        <div class="game-popup-rows">
+          <div class="game-popup-row">🟦 <strong>JV:</strong> <span id="hsgvb-gp-jv"></span></div>
+          <div class="game-popup-row">🟥 <strong>Varsity:</strong> <span id="hsgvb-gp-var"></span></div>
+        </div>
+      </div>
+
+      <!-- Game Day Summary -->
+      <div class="game-summary">
+        <h3>📅 Game Days — 2026-2027</h3>
+        <div class="game-list">
+          <div class="game-item">
+            <div class="game-date">Oct<br>1</div>
+            <div class="game-details">
+              <strong>ISAC Matches (2 matches) — HOME vs DAS &amp; GAA</strong>
+              <div class="teams"><div class="team-row">JV &amp; Varsity · 3:30, 4:50, 6:10 PM</div></div>
+            </div>
+          </div>
+          <div class="game-item">
+            <div class="game-date">Oct<br>8</div>
+            <div class="game-details">
+              <strong>ISAC Matches (2 matches) @ GAA</strong>
+              <div class="teams"><div class="team-row">Bus 2:30–6:45 PM · JV &amp; Varsity</div></div>
+            </div>
+          </div>
+          <div class="game-item">
+            <div class="game-date">Oct<br>22</div>
+            <div class="game-details">
+              <strong>ISAC Matches (2 matches) @ CIS</strong>
+              <div class="teams"><div class="team-row">Bus 3:30–7:45 PM · JV &amp; Varsity</div></div>
+            </div>
+          </div>
+          <div class="game-item">
+            <div class="game-date">Nov<br>1</div>
+            <div class="game-details">
+              <strong>ISAC Championships @ DAS (Dubai)</strong>
+              <div class="teams"><div class="team-row">JV &amp; Varsity · Schedule TBC</div></div>
+            </div>
+          </div>
+          <div class="game-item" style="border-left-color:#0d2b52;background:linear-gradient(90deg,#f5f7fb,#fff);">
+            <div class="game-date" style="color:#0d2b52;">Nov<br>12-14</div>
+            <div class="game-details">
+              <strong style="color:#0d2b52;">🏆 GAAC Tournament @ ASB (Bahrain) — Travel Team</strong>
+              <div class="teams">
+                <div class="team-row" style="font-size:.75rem;color:#666;">Schools: AISA · ACS (Qatar) · ISL (Qatar) · UAE (Dubai) · GAAQ (Qatar) · DAS (Dubai) · AUS (Kuwait) · UAS (Kuwait) · AISR (Riyadh) · ASB (Bahrain)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="sched-footer">
+        <a href="schedules/HS_Girls_Volleyball_2026-27.pdf" class="btn-schedule" download style="text-decoration:none;background:#9d174d;color:#fff;">📄 Download Full Schedule PDF</a>
+      </div>
+
+    </div>
+  </div><!-- /#hs-girls-vb-modal -->
+
+  <!-- ── MS BLUE VOLLEYBALL SCHEDULE MODAL ── -->
+  <div id="ms-blue-vb-modal" class="sched-modal" role="dialog" aria-modal="true" aria-label="MS Blue Volleyball Schedule">
+    <div class="sched-inner">
+
+      <div class="sched-header" style="background: linear-gradient(135deg, #1e3a8a, #3b82f6);">
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <span style="font-size:1.8rem;line-height:1;">🏐</span>
+          <div>
+            <h2>MS Blue Volleyball</h2>
+            <p>2026–2027 · ISAC League + EAC Exchange/Tournament (Boys &amp; Girls)</p>
+          </div>
+        </div>
+        <button class="sched-close" onclick="document.getElementById('ms-blue-vb-modal').classList.remove('open')" aria-label="Close">✕</button>
+      </div>
+
+      <div class="cal-legend">
+        <span><span class="cal-dot reg"></span>Registration</span>
+        <span><span class="cal-dot prac-b"></span>👦 Boys</span>
+        <span><span class="cal-dot prac-g"></span>👧 Girls</span>
+        <span><span class="cal-dot game"></span>ISAC Match</span>
+        <span><span class="cal-dot game-eac"></span>EAC Exchange / Tournament</span>
+        <span><span class="cal-dot support"></span>Support HS Boys VB</span>
+        <span><span class="cal-dot brk"></span>Fall Break</span>
+      </div>
+
+      <div class="cal-tabs" role="tablist">
+        <button class="cal-tab active" role="tab" onclick="showMsbvbMonth('msbvb-sep',this)">🏐 Sep 2026</button>
+        <button class="cal-tab" role="tab" onclick="showMsbvbMonth('msbvb-oct',this)">🏆 Oct 2026</button>
+      </div>
+
+      <!-- SEPTEMBER 2026 -->
+      <div id="msbvb-sep" class="cal-month">
+        <div class="cal-month-title">September 2026</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div>
+          <div class="cal-day reg" title="Registration for MS Volleyball Opens · Online">1<span>Reg</span></div>
+          <div class="cal-day">2</div><div class="cal-day">3</div>
+          <div class="cal-day reg" title="Last Day of Registration for MS Volleyball · Online">4<span>Reg</span></div>
+          <div class="cal-day">5</div><div class="cal-day">6</div>
+          <div class="cal-day">7</div>
+          <div class="cal-day prac-b" title="Tryouts · Boys · Lower Gym · 3:00–4:30 PM">8<span>Tryout<br>Boys</span></div>
+          <div class="cal-day prac-g" title="Tryouts · Girls · Lower Gym · 3:00–4:30 PM">9<span>Tryout<br>Girls</span></div>
+          <div class="cal-day prac-b" title="Tryouts · Boys · Lower Gym · 3:00–4:30 PM">10<span>Tryout<br>Boys</span></div>
+          <div class="cal-day prac-g" title="Tryouts · Girls · Lower Gym · 12:15–1:45 PM">11<span>Tryout<br>Girls</span></div>
+          <div class="cal-day">12</div><div class="cal-day">13</div><div class="cal-day">14</div><div class="cal-day">15</div>
+          <div class="cal-day prac-g" title="Practice · Girls · Lower Gym · 3:00–4:30 PM">16<span>Practice</span></div>
+          <div class="cal-day prac-b" title="Practice · Boys · Lower Gym · 3:00–4:30 PM">17<span>Practice</span></div>
+          <div class="cal-day prac-g" title="Practice · Girls · Lower Gym · 12:15–1:45 PM">18<span>Practice</span></div>
+          <div class="cal-day">19</div><div class="cal-day">20</div><div class="cal-day">21</div>
+          <div class="cal-day prac-b" title="Practice · Boys · Lower Gym · 3:00–4:30 PM">22<span>Practice</span></div>
+          <div class="cal-day prac-g" title="Practice · Girls · Lower Gym · 3:00–4:30 PM">23<span>Practice</span></div>
+          <div class="cal-day prac-b" title="Practice · Boys · Lower Gym · 3:00–4:30 PM">24<span>Practice</span></div>
+          <div class="cal-day prac-g" title="Practice · Girls · Lower Gym · 12:15–1:45 PM">25<span>Practice</span></div>
+          <div class="cal-day game-eac" onclick="showMsbvbGamePopup('Sep 26','EAC Exchanges (3 Matches Each)','7:00 AM–3:30 PM @ ASD (Dubai) · AISA vs ASD, DAA, ACS','9:00 AM–4:30 PM @ GAA · AISA vs ASD, DAS, GAA')">26<span>EAC<br>EXCHANGE</span></div>
+          <div class="cal-day">27</div><div class="cal-day">28</div>
+          <div class="cal-day game" onclick="showMsbvbGamePopup('Sep 29','ISAC Matches · Round-Robin (CIS/GAA/AISA)','Bus 3:00–7:30 PM @ CIS · 3:30 PM CIS vs GAA · 4:50 PM GAA vs AISA · 6:10 PM CIS vs AISA','Bus 3:00–7:30 PM @ CIS · 3:30 PM CIS vs GAA · 4:50 PM GAA vs AISA · 6:10 PM CIS vs AISA')">29<span>ISAC MATCH</span></div>
+          <div class="cal-day support" title="Optional – Watch HS Boys Volleyball Play at HOME · Boys · 3:00–4:30 PM">30<span>Support<br>Boys VB</span></div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+        </div>
+      </div>
+
+      <!-- OCTOBER 2026 -->
+      <div id="msbvb-oct" class="cal-month" style="display:none;">
+        <div class="cal-month-title">October 2026</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+          <div class="cal-day game-eac" onclick="showMsbvbGamePopup('Oct 1','EAC Matches (2 Matches)','Bus 1:30–8:00 PM @ DAS (Dubai) · 4:00 PM AISA vs DAS · 5:00 PM AISA vs DAA · 6:00 PM DAS vs DAA','Bus 1:30–8:00 PM @ DAS (Dubai) · 4:00 PM AISA vs DAS · 5:00 PM AISA vs DAA · 6:00 PM DAS vs DAA')">1<span>EAC MATCH</span></div>
+          <div class="cal-day prac-g" title="Practice · Girls · Lower Gym · 12:15–1:45 PM">2<span>Practice</span></div>
+          <div class="cal-day">3</div><div class="cal-day">4</div><div class="cal-day">5</div>
+          <div class="cal-day game" onclick="showMsbvbGamePopup('Oct 6','ISAC Matches (2 Matches)','Bus 2:30–6:30 PM @ GAA · 3:30 PM GAA vs AISA · 4:50 PM AISA vs CIS · 6:10 PM GAA vs CIS','Bus 2:30–6:30 PM @ GAA · 3:30 PM GAA vs AISA · 4:50 PM AISA vs CIS · 6:10 PM GAA vs CIS')">6<span>ISAC MATCH</span></div>
+          <div class="cal-day prac-g" title="Practice · Girls · Lower Gym · 3:00–4:30 PM">7<span>Practice</span></div>
+          <div class="cal-day prac-b" title="Practice · Boys · Lower Gym · 3:00–4:30 PM">8<span>Practice</span></div>
+          <div class="cal-day">9</div>
+          <div class="cal-day brk">10</div><div class="cal-day brk">11</div><div class="cal-day brk">12</div><div class="cal-day brk">13</div><div class="cal-day brk">14</div><div class="cal-day brk">15</div><div class="cal-day brk">16</div>
+          <div class="cal-day brk">17</div><div class="cal-day brk">18</div>
+          <div class="cal-day">19</div>
+          <div class="cal-day prac-b" title="Practice · Boys · Lower Gym · 3:00–4:30 PM">20<span>Practice</span></div>
+          <div class="cal-day prac-g" title="Practice · Girls · Lower Gym · 3:00–4:30 PM">21<span>Practice</span></div>
+          <div class="cal-day game-eac" onclick="showMsbvbGamePopup('Oct 22','EAC Matches (2 Matches)','Bus 4:00–7:30 PM @ ACS · 4:00 PM DAA vs ACS · 5:00 PM AISA vs DAA · 6:00 PM ACS vs AISA','Bus 4:00–7:30 PM @ ACS · 4:00 PM DAA vs ACS · 5:00 PM AISA vs DAA · 6:00 PM ACS vs AISA')">22<span>EAC MATCH</span></div>
+          <div class="cal-day prac-g" title="Practice · Girls · Lower Gym · 12:15–1:45 PM">23<span>Practice</span></div>
+          <div class="cal-day">24</div><div class="cal-day">25</div><div class="cal-day">26</div>
+          <div class="cal-day game" onclick="showMsbvbGamePopup('Oct 27','ISAC Matches (2 Matches) · HOME','Bus 2:30–6:30 PM · 3:30 PM AISA vs CIS · 4:50 PM CIS vs GAA · 6:10 PM AISA vs GAA','Bus 2:30–6:30 PM · 3:30 PM AISA vs CIS · 4:50 PM CIS vs GAA · 6:10 PM AISA vs GAA')">27<span>ISAC MATCH</span></div>
+          <div class="cal-day prac-b" title="Practice · Boys · Lower Gym · 3:00–4:30 PM">28<span>Practice</span></div>
+          <div class="cal-day">29</div>
+          <div class="cal-day prac-g" title="Practice · Girls · Lower Gym · 12:15–1:45 PM">30<span>Practice</span></div>
+          <div class="cal-day game-eac" onclick="showMsbvbGamePopup('Oct 31','EAC Tournament · Top 4 Qualify','@ ACS · 9:00 Seed#1 vs Seed#4 · 10:00 Seed#2 vs Seed#3 · 11:30 Break · 12:00 Bronze Match · 1:00 Gold Match','@ ACS · 9:00 Seed#1 vs Seed#4 · 10:00 Seed#2 vs Seed#3 · 11:30 Break · 12:00 Bronze Match · 1:00 Gold Match')">31<span>EAC<br>TOURNAMENT</span></div>
+        </div>
+        <p class="cal-break-note">🍂 Fall Break — Oct 10 through Oct 18. No practices or games.</p>
+      </div>
+
+      <!-- Game Detail Popup -->
+      <div id="msbvb-game-popup" class="game-popup">
+        <button class="game-popup-close" onclick="document.getElementById('msbvb-game-popup').classList.remove('visible')" aria-label="Close">✕ close</button>
+        <div class="game-popup-title">🏐 <span id="msbvb-gp-title"></span></div>
+        <div class="game-popup-rows">
+          <div class="game-popup-row">👦 <strong>Boys:</strong> <span id="msbvb-gp-boys"></span></div>
+          <div class="game-popup-row">👧 <strong>Girls:</strong> <span id="msbvb-gp-girls"></span></div>
+        </div>
+      </div>
+
+      <!-- Game Day Summary -->
+      <div class="game-summary">
+        <h3>📅 Game Days — 2026-2027</h3>
+        <div class="game-list">
+          <div class="game-item" style="border-left-color:#0f766e;background:linear-gradient(90deg,#f0fdfa,#fff);">
+            <div class="game-date" style="color:#0f766e;">Sep<br>26</div>
+            <div class="game-details">
+              <strong style="color:#0f766e;">🌍 EAC Exchanges (3 matches each)</strong>
+              <div class="teams">
+                <div class="team-row">👦 Boys @ ASD (Dubai) vs ASD, DAA, ACS</div>
+                <div class="team-row">👧 Girls @ GAA vs ASD, DAS, GAA</div>
+              </div>
+            </div>
+          </div>
+          <div class="game-item">
+            <div class="game-date">Sep<br>29</div>
+            <div class="game-details">
+              <strong>ISAC Matches @ CIS — Round-Robin (CIS/GAA/AISA)</strong>
+              <div class="teams"><div class="team-row">Boys &amp; Girls · Bus 3:00–7:30 PM</div></div>
+            </div>
+          </div>
+          <div class="game-item" style="border-left-color:#0f766e;background:linear-gradient(90deg,#f0fdfa,#fff);">
+            <div class="game-date" style="color:#0f766e;">Oct<br>1</div>
+            <div class="game-details">
+              <strong style="color:#0f766e;">🌍 EAC Matches @ DAS (Dubai)</strong>
+              <div class="teams"><div class="team-row">Boys &amp; Girls · Bus 1:30–8:00 PM</div></div>
+            </div>
+          </div>
+          <div class="game-item">
+            <div class="game-date">Oct<br>6</div>
+            <div class="game-details">
+              <strong>ISAC Matches @ GAA</strong>
+              <div class="teams"><div class="team-row">Boys &amp; Girls · Bus 2:30–6:30 PM</div></div>
+            </div>
+          </div>
+          <div class="game-item" style="border-left-color:#0f766e;background:linear-gradient(90deg,#f0fdfa,#fff);">
+            <div class="game-date" style="color:#0f766e;">Oct<br>22</div>
+            <div class="game-details">
+              <strong style="color:#0f766e;">🌍 EAC Matches @ ACS</strong>
+              <div class="teams"><div class="team-row">Boys &amp; Girls · Bus 4:00–7:30 PM</div></div>
+            </div>
+          </div>
+          <div class="game-item">
+            <div class="game-date">Oct<br>27</div>
+            <div class="game-details">
+              <strong>ISAC Matches — HOME</strong>
+              <div class="teams"><div class="team-row">Boys &amp; Girls vs CIS &amp; GAA</div></div>
+            </div>
+          </div>
+          <div class="game-item" style="border-left-color:#0f766e;background:linear-gradient(90deg,#f0fdfa,#fff);">
+            <div class="game-date" style="color:#0f766e;">Oct<br>31</div>
+            <div class="game-details">
+              <strong style="color:#0f766e;">🌍 EAC Tournament @ ACS — Top 4 Qualify</strong>
+              <div class="teams"><div class="team-row" style="font-size:.75rem;color:#666;">Schools: GAA · ACS · AISA · ASD · DAA · DAS</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="sched-footer">
+        <a href="schedules/MS_Blue_Volleyball_2026-27.pdf" class="btn-schedule" download style="text-decoration:none;background:#1e3a8a;color:#fff;">📄 Download Full Schedule PDF</a>
+      </div>
+
+    </div>
+  </div><!-- /#ms-blue-vb-modal -->
+
+  <!-- ── MS YELLOW VOLLEYBALL SCHEDULE MODAL ── -->
+  <div id="ms-yellow-vb-modal" class="sched-modal" role="dialog" aria-modal="true" aria-label="MS Yellow Volleyball Schedule">
+    <div class="sched-inner">
+
+      <div class="sched-header" style="background: linear-gradient(135deg, #92400e, #eab308); color:#1f2937;">
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <span style="font-size:1.8rem;line-height:1;">🏐</span>
+          <div>
+            <h2 style="color:#1f2937;">MS Yellow Volleyball</h2>
+            <p style="color:#3f3008;">2026–2027 · DEAC Exchange/Matches (Boys &amp; Girls)</p>
+          </div>
+        </div>
+        <button class="sched-close" style="background:rgba(0,0,0,.15);color:#1f2937;" onclick="document.getElementById('ms-yellow-vb-modal').classList.remove('open')" aria-label="Close">✕</button>
+      </div>
+
+      <div class="cal-legend">
+        <span><span class="cal-dot reg"></span>Registration</span>
+        <span><span class="cal-dot prac-b"></span>👦 Boys</span>
+        <span><span class="cal-dot prac-g"></span>👧 Girls</span>
+        <span><span class="cal-dot game-eac"></span>DEAC Exchange / Matches</span>
+        <span><span class="cal-dot support"></span>Support HS Volleyball</span>
+        <span><span class="cal-dot brk"></span>Fall Break</span>
+      </div>
+
+      <div class="cal-tabs" role="tablist">
+        <button class="cal-tab active" role="tab" onclick="showMsyvbMonth('msyvb-sep',this)">🏐 Sep 2026</button>
+        <button class="cal-tab" role="tab" onclick="showMsyvbMonth('msyvb-oct',this)">🏆 Oct 2026</button>
+      </div>
+
+      <!-- SEPTEMBER 2026 -->
+      <div id="msyvb-sep" class="cal-month">
+        <div class="cal-month-title">September 2026</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div>
+          <div class="cal-day reg" title="Registration for MS Volleyball Opens · Online">1<span>Reg</span></div>
+          <div class="cal-day">2</div><div class="cal-day">3</div>
+          <div class="cal-day reg" title="Last Day of Registration for MS Volleyball · Online">4<span>Reg</span></div>
+          <div class="cal-day">5</div><div class="cal-day">6</div><div class="cal-day">7</div>
+          <div class="cal-day prac-b" title="Tryouts · Boys · Lower Gym · 3:00–4:30 PM">8<span>Tryout<br>Boys</span></div>
+          <div class="cal-day prac-g" title="Tryouts · Girls · Lower Gym · 3:00–4:30 PM">9<span>Tryout<br>Girls</span></div>
+          <div class="cal-day prac-b" title="Tryouts · Boys · Lower Gym · 3:00–4:30 PM">10<span>Tryout<br>Boys</span></div>
+          <div class="cal-day prac-g" title="Tryouts · Girls · Lower Gym · 12:15–1:45 PM">11<span>Tryout<br>Girls</span></div>
+          <div class="cal-day">12</div><div class="cal-day">13</div><div class="cal-day">14</div><div class="cal-day">15</div>
+          <div class="cal-day prac-g" title="Practice · Girls · Lower Gym · 3:00–4:30 PM">16<span>Practice</span></div>
+          <div class="cal-day prac-b" title="Practice · Boys · Lower Gym · 3:00–4:30 PM">17<span>Practice</span></div>
+          <div class="cal-day prac-g" title="Practice · Girls · Lower Gym · 12:15–1:45 PM">18<span>Practice</span></div>
+          <div class="cal-day">19</div><div class="cal-day">20</div><div class="cal-day">21</div>
+          <div class="cal-day prac-b" title="Practice · Boys · Lower Gym · 3:00–4:30 PM">22<span>Practice</span></div>
+          <div class="cal-day prac-g" title="Practice · Girls · Lower Gym · 3:00–4:30 PM">23<span>Practice</span></div>
+          <div class="cal-day prac-b" title="Practice · Boys · Lower Gym · 3:00–4:30 PM">24<span>Practice</span></div>
+          <div class="cal-day prac-g" title="Practice · Girls · Lower Gym · 12:15–1:45 PM">25<span>Practice</span></div>
+          <div class="cal-day game-eac" onclick="showMsyvbGamePopup('Sep 26','DEAC Exchange (3 Matches Each)','7:00 AM–3:30 PM @ DAA (Dubai) · AISA vs DAS, DAA, ASD','9:00 AM–4:30 PM @ DAA (Dubai) · AISA vs ACS, ASD, GAA')">26<span>DEAC<br>EXCHANGE</span></div>
+          <div class="cal-day">27</div><div class="cal-day">28</div>
+          <div class="cal-day prac-b" title="Practice · Boys · Lower Gym · 3:00–4:30 PM">29<span>Practice</span></div>
+          <div class="cal-day support" title="Optional – Watch HS Boys Volleyball Play at HOME · Boys · 3:00–4:30 PM">30<span>Support<br>Boys VB</span></div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+        </div>
+      </div>
+
+      <!-- OCTOBER 2026 -->
+      <div id="msyvb-oct" class="cal-month" style="display:none;">
+        <div class="cal-month-title">October 2026</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+          <div class="cal-day support" title="Optional – Watch HS Girls Volleyball Play at HOME · Girls · 3:00–4:30 PM">1<span>Support<br>Girls VB</span></div>
+          <div class="cal-day prac-g" title="Practice · Girls · Lower Gym · 12:15–1:45 PM">2<span>Practice</span></div>
+          <div class="cal-day">3</div><div class="cal-day">4</div><div class="cal-day">5</div>
+          <div class="cal-day prac-b" title="Practice · Boys · Lower Gym · 3:00–4:30 PM">6<span>Practice</span></div>
+          <div class="cal-day prac-g" title="Practice · Girls · Lower Gym · 3:00–4:30 PM">7<span>Practice</span></div>
+          <div class="cal-day prac-b" title="Practice · Boys · Lower Gym · 3:00–4:30 PM">8<span>Practice</span></div>
+          <div class="cal-day">9</div>
+          <div class="cal-day brk">10</div><div class="cal-day brk">11</div><div class="cal-day brk">12</div><div class="cal-day brk">13</div><div class="cal-day brk">14</div><div class="cal-day brk">15</div><div class="cal-day brk">16</div>
+          <div class="cal-day brk">17</div><div class="cal-day brk">18</div>
+          <div class="cal-day">19</div>
+          <div class="cal-day prac-b" title="Practice · Boys · Lower Gym · 3:00–4:30 PM">20<span>Practice</span></div>
+          <div class="cal-day game-eac" onclick="showMsyvbGamePopup('Oct 21','DEAC Matches (2-4 Matches)','Bus 1:15–8:30 PM @ ACS · 5:00 PM AISA vs DAA · 6:00 PM AISA vs ACS','HOME · 4:00 PM AISA vs DAS · 6:00 PM AISA vs GAA')">21<span>DEAC MATCH</span></div>
+          <div class="cal-day">22</div><div class="cal-day">23</div>
+          <div class="cal-day game-eac" onclick="showMsyvbGamePopup('Oct 24','DEAC Final Matches (3-5 Matches)','Bus 8:00 AM–4:00 PM @ ASD (Dubai) · 9:00 DAA vs AISA · 10:00 ACS vs DAS · 11:00 AISA vs GAA','HOME · 10:00 ASD vs AISA · 11:15 ASD vs DAA · 12:30 DAS vs AISA')">24<span>DEAC<br>FINALS</span></div>
+          <div class="cal-day">25</div><div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div><div class="cal-day">29</div><div class="cal-day">30</div><div class="cal-day">31</div>
+        </div>
+        <p class="cal-break-note">🍂 Fall Break — Oct 10 through Oct 18. No practices or games.<br>🏐 Season concludes Oct 24 with the DEAC Final Matches.</p>
+      </div>
+
+      <!-- Game Detail Popup -->
+      <div id="msyvb-game-popup" class="game-popup">
+        <button class="game-popup-close" onclick="document.getElementById('msyvb-game-popup').classList.remove('visible')" aria-label="Close">✕ close</button>
+        <div class="game-popup-title">🏐 <span id="msyvb-gp-title"></span></div>
+        <div class="game-popup-rows">
+          <div class="game-popup-row">👦 <strong>Boys:</strong> <span id="msyvb-gp-boys"></span></div>
+          <div class="game-popup-row">👧 <strong>Girls:</strong> <span id="msyvb-gp-girls"></span></div>
+        </div>
+      </div>
+
+      <!-- Game Day Summary -->
+      <div class="game-summary">
+        <h3>📅 Game Days — 2026-2027</h3>
+        <div class="game-list">
+          <div class="game-item" style="border-left-color:#0f766e;background:linear-gradient(90deg,#f0fdfa,#fff);">
+            <div class="game-date" style="color:#0f766e;">Sep<br>26</div>
+            <div class="game-details">
+              <strong style="color:#0f766e;">🌍 DEAC Exchange (3 matches each) @ DAA (Dubai)</strong>
+              <div class="teams">
+                <div class="team-row">👦 Boys vs DAS, DAA, ASD</div>
+                <div class="team-row">👧 Girls vs ACS, ASD, GAA</div>
+              </div>
+            </div>
+          </div>
+          <div class="game-item" style="border-left-color:#0f766e;background:linear-gradient(90deg,#f0fdfa,#fff);">
+            <div class="game-date" style="color:#0f766e;">Oct<br>21</div>
+            <div class="game-details">
+              <strong style="color:#0f766e;">🌍 DEAC Matches — Boys @ ACS / Girls HOME</strong>
+              <div class="teams">
+                <div class="team-row">👦 Boys @ ACS vs DAA, ACS</div>
+                <div class="team-row">👧 Girls HOME vs DAS, GAA</div>
+              </div>
+            </div>
+          </div>
+          <div class="game-item" style="border-left-color:#0f766e;background:linear-gradient(90deg,#f0fdfa,#fff);">
+            <div class="game-date" style="color:#0f766e;">Oct<br>24</div>
+            <div class="game-details">
+              <strong style="color:#0f766e;">🌍 DEAC Final Matches — Boys @ ASD (Dubai) / Girls HOME</strong>
+              <div class="teams">
+                <div class="team-row" style="font-size:.75rem;color:#666;">Schools: GAA · ACS · AISA · ASD · DAA · DAS</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:.76rem;color:#6b7280;margin-top:.75rem;font-style:italic;">🟡 MS Yellow Volleyball competes exclusively in DEAC (no ISAC matches) — season concludes Oct 24.</p>
+      </div>
+
+      <!-- Footer -->
+      <div class="sched-footer">
+        <a href="schedules/MS_Yellow_Volleyball_2026-27.pdf" class="btn-schedule" download style="text-decoration:none;background:#92400e;color:#fff;">📄 Download Full Schedule PDF</a>
+      </div>
+
+    </div>
+  </div><!-- /#ms-yellow-vb-modal -->
+
+  <!-- ═══════════════ CUBS FOOTBALL MODAL ═══════════════ -->
+  <div id="cubs-football-modal" class="sched-modal">
+    <div class="sched-inner">
+      <div class="sched-header" style="background: linear-gradient(135deg, #92400e, #c0392b);">
+        <div>
+          <h2>🏈 Cubs Football</h2>
+          <p>2026–2027 · Grades 4–6 · Wednesday Practices &amp; JEAC Final Matches</p>
+        </div>
+        <button class="sched-close" onclick="document.getElementById('cubs-football-modal').classList.remove('open')" aria-label="Close">✕</button>
+      </div>
+
+      <div class="cal-legend">
+        <span><i class="cal-dot reg"></i> Registration</span>
+        <span><i class="cal-dot prac"></i> Practice</span>
+        <span><i class="cal-dot game-jeac"></i> JEAC Final Matches</span>
+        <span><i class="cal-dot brk"></i> Autumn Break</span>
+      </div>
+
+      <div class="cal-tabs">
+        <button class="cal-tab active" onclick="showCubsMonth('cubs-sep', this)">September</button>
+        <button class="cal-tab" onclick="showCubsMonth('cubs-oct', this)">October</button>
+        <button class="cal-tab" onclick="showCubsMonth('cubs-nov', this)">November</button>
+      </div>
+
+      <!-- SEPTEMBER 2026 -->
+      <div id="cubs-sep" class="cal-month">
+        <div class="cal-month-title">September 2026</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div>
+          <div class="cal-day reg" title="1st Day of Registration · Online · Grades 4-6">1<span>Reg<br>Opens</span></div>
+          <div class="cal-day">2</div><div class="cal-day">3</div><div class="cal-day">4</div><div class="cal-day">5</div>
+          <div class="cal-day">6</div><div class="cal-day">7</div>
+          <div class="cal-day reg" title="Last Day of Registration · Online · Grades 4-6">8<span>Reg<br>Closes</span></div>
+          <div class="cal-day">9</div><div class="cal-day">10</div><div class="cal-day">11</div><div class="cal-day">12</div>
+          <div class="cal-day">13</div><div class="cal-day">14</div><div class="cal-day">15</div>
+          <div class="cal-day prac" title="Week 1 Practice · Football Pitch · Everyone · 3:00–4:30 PM">16<span>Practice</span></div>
+          <div class="cal-day">17</div><div class="cal-day">18</div><div class="cal-day">19</div>
+          <div class="cal-day">20</div><div class="cal-day">21</div><div class="cal-day">22</div>
+          <div class="cal-day prac" title="Week 2 Practice · Football Pitch · Everyone · 3:00–4:30 PM">23<span>Practice</span></div>
+          <div class="cal-day">24</div><div class="cal-day">25</div><div class="cal-day">26</div>
+          <div class="cal-day">27</div><div class="cal-day">28</div><div class="cal-day">29</div>
+          <div class="cal-day prac" title="Week 3 Practice · Football Pitch · Everyone · 3:00–4:30 PM">30<span>Practice</span></div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+        </div>
+      </div>
+
+      <!-- OCTOBER 2026 -->
+      <div id="cubs-oct" class="cal-month" style="display:none;">
+        <div class="cal-month-title">October 2026</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+          <div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div>
+          <div class="cal-day">4</div><div class="cal-day">5</div><div class="cal-day">6</div>
+          <div class="cal-day prac" title="Week 4 Practice · Football Pitch · Everyone · 3:00–4:00 PM">7<span>Practice</span></div>
+          <div class="cal-day">8</div><div class="cal-day">9</div>
+          <div class="cal-day brk">10</div><div class="cal-day brk">11</div><div class="cal-day brk">12</div><div class="cal-day brk">13</div><div class="cal-day brk">14</div><div class="cal-day brk">15</div><div class="cal-day brk">16</div>
+          <div class="cal-day brk">17</div><div class="cal-day brk">18</div>
+          <div class="cal-day">19</div><div class="cal-day">20</div>
+          <div class="cal-day prac" title="Week 5 Practice · Football Pitch · Everyone · 3:00–4:00 PM">21<span>Practice</span></div>
+          <div class="cal-day">22</div><div class="cal-day">23</div>
+          <div class="cal-day game-jeac" onclick="showCubsGamePopup('Oct 24','JEAC Final Matches (3-5 Matches) · Schedule TBC','Grade 4-6 Girls @ DAA — TBD vs TBD','Grade 4 Boys @ DAS — TBD vs TBD','Grade 5 Boys @ ACS — TBD vs TBD','Grade 6 Boys @ GAA — TBD vs TBD','Schools attending: GAA · ACS · AISA · ASD · DAA · DAS')">24<span>JEAC<br>FINALS</span></div>
+          <div class="cal-day">25</div><div class="cal-day">26</div><div class="cal-day">27</div>
+          <div class="cal-day prac" title="Week 6 Practice · Football Pitch · Everyone · 3:00–4:00 PM">28<span>Practice</span></div>
+          <div class="cal-day">29</div><div class="cal-day">30</div><div class="cal-day">31</div>
+        </div>
+        <p class="cal-break-note">🍂 Autumn Break — Oct 10 through Oct 18. No practices.</p>
+      </div>
+
+      <!-- NOVEMBER 2026 -->
+      <div id="cubs-nov" class="cal-month" style="display:none;">
+        <div class="cal-month-title">November 2026</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div>
+          <div class="cal-day prac" title="Week 7 Practice · Football Pitch · Everyone · 3:00–4:00 PM">4<span>Practice</span></div>
+          <div class="cal-day">5</div><div class="cal-day">6</div><div class="cal-day">7</div>
+          <div class="cal-day">8</div><div class="cal-day">9</div><div class="cal-day">10</div>
+          <div class="cal-day prac" title="Week 8 Practice · Football Pitch · Everyone · 3:00–4:00 PM">11<span>Practice</span></div>
+          <div class="cal-day">12</div><div class="cal-day">13</div><div class="cal-day">14</div>
+          <div class="cal-day">15</div><div class="cal-day">16</div><div class="cal-day">17</div><div class="cal-day">18</div>
+          <div class="cal-day">19</div><div class="cal-day">20</div><div class="cal-day">21</div>
+          <div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day">24</div><div class="cal-day">25</div>
+          <div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div>
+          <div class="cal-day">29</div><div class="cal-day">30</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+        </div>
+        <p class="cal-break-note">🏈 Season concludes after Week 8 (Nov 11) practice.</p>
+      </div>
+
+      <!-- Game Detail Popup -->
+      <div id="cubs-game-popup" class="game-popup">
+        <button class="game-popup-close" onclick="document.getElementById('cubs-game-popup').classList.remove('visible')" aria-label="Close">✕ close</button>
+        <div class="game-popup-title">🏈 <span id="cubs-gp-title"></span></div>
+        <div class="game-popup-rows">
+          <div class="game-popup-row">👧 <strong>G4-6:</strong> <span id="cubs-gp-g46"></span></div>
+          <div class="game-popup-row">👦 <strong>G4:</strong> <span id="cubs-gp-g4"></span></div>
+          <div class="game-popup-row">👦 <strong>G5:</strong> <span id="cubs-gp-g5"></span></div>
+          <div class="game-popup-row">👦 <strong>G6:</strong> <span id="cubs-gp-g6"></span></div>
+          <div class="game-popup-row">🏫 <strong>Schools:</strong> <span id="cubs-gp-schools"></span></div>
+        </div>
+      </div>
+
+      <!-- Game Day Summary -->
+      <div class="game-summary">
+        <h3>📅 Game Days — 2026-2027</h3>
+        <div class="game-list">
+          <div class="game-item" style="border-left-color:#c0392b;background:linear-gradient(90deg,#fdf2f0,#fff);">
+            <div class="game-date" style="color:#c0392b;">Oct<br>24</div>
+            <div class="game-details">
+              <strong style="color:#c0392b;">🏆 JEAC Final Matches (3-5 Matches) · Schedule TBC</strong>
+              <div class="teams">
+                <div class="team-row">👧 Grade 4-6 Girls @ DAA</div>
+                <div class="team-row">👦 Grade 4 Boys @ DAS</div>
+                <div class="team-row">👦 Grade 5 Boys @ ACS</div>
+                <div class="team-row">👦 Grade 6 Boys @ GAA</div>
+                <div class="team-row" style="font-size:.75rem;color:#666;">Schools: GAA · ACS · AISA · ASD · DAA · DAS</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="sched-footer">
+        <a href="schedules/Cubs_Football_2026-27.pdf" class="btn-schedule" download style="text-decoration:none;background:#92400e;color:#fff;">📄 Download Full Schedule PDF</a>
+      </div>
+
+    </div>
+  </div><!-- /#cubs-football-modal -->
+
+  <script>
+    function showHsbMonth(month, btn) {
+      ['hsbvb-sep','hsbvb-oct','hsbvb-nov'].forEach(function(m) {
+        document.getElementById(m).style.display = m === month ? '' : 'none';
+      });
+      document.querySelectorAll('#hs-boys-vb-modal .cal-tab').forEach(function(t) { t.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('hsbvb-game-popup').classList.remove('visible');
+    }
+    function showHsbGamePopup(date, label, jv, varsity) {
+      var p = document.getElementById('hsbvb-game-popup');
+      document.getElementById('hsbvb-gp-title').textContent = date + ' · ' + label;
+      document.getElementById('hsbvb-gp-jv').textContent = jv;
+      document.getElementById('hsbvb-gp-var').textContent = varsity;
+      p.classList.add('visible');
+      p.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    function showHsgMonth(month, btn) {
+      ['hsgvb-sep','hsgvb-oct','hsgvb-nov'].forEach(function(m) {
+        document.getElementById(m).style.display = m === month ? '' : 'none';
+      });
+      document.querySelectorAll('#hs-girls-vb-modal .cal-tab').forEach(function(t) { t.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('hsgvb-game-popup').classList.remove('visible');
+    }
+    function showHsgGamePopup(date, label, jv, varsity) {
+      var p = document.getElementById('hsgvb-game-popup');
+      document.getElementById('hsgvb-gp-title').textContent = date + ' · ' + label;
+      document.getElementById('hsgvb-gp-jv').textContent = jv;
+      document.getElementById('hsgvb-gp-var').textContent = varsity;
+      p.classList.add('visible');
+      p.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    function showMsbvbMonth(month, btn) {
+      ['msbvb-sep','msbvb-oct'].forEach(function(m) {
+        document.getElementById(m).style.display = m === month ? '' : 'none';
+      });
+      document.querySelectorAll('#ms-blue-vb-modal .cal-tab').forEach(function(t) { t.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('msbvb-game-popup').classList.remove('visible');
+    }
+    function showMsbvbGamePopup(date, label, boys, girls) {
+      var p = document.getElementById('msbvb-game-popup');
+      document.getElementById('msbvb-gp-title').textContent = date + ' · ' + label;
+      document.getElementById('msbvb-gp-boys').textContent = boys;
+      document.getElementById('msbvb-gp-girls').textContent = girls;
+      p.classList.add('visible');
+      p.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    function showMsyvbMonth(month, btn) {
+      ['msyvb-sep','msyvb-oct'].forEach(function(m) {
+        document.getElementById(m).style.display = m === month ? '' : 'none';
+      });
+      document.querySelectorAll('#ms-yellow-vb-modal .cal-tab').forEach(function(t) { t.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('msyvb-game-popup').classList.remove('visible');
+    }
+    function showMsyvbGamePopup(date, label, boys, girls) {
+      var p = document.getElementById('msyvb-game-popup');
+      document.getElementById('msyvb-gp-title').textContent = date + ' · ' + label;
+      document.getElementById('msyvb-gp-boys').textContent = boys;
+      document.getElementById('msyvb-gp-girls').textContent = girls;
+      p.classList.add('visible');
+      p.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    function showCubsMonth(month, btn) {
+      ['cubs-sep','cubs-oct','cubs-nov'].forEach(function(m) {
+        document.getElementById(m).style.display = m === month ? '' : 'none';
+      });
+      document.querySelectorAll('#cubs-football-modal .cal-tab').forEach(function(t) { t.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('cubs-game-popup').classList.remove('visible');
+    }
+    function showCubsGamePopup(date, label, g46, g4, g5, g6, schools) {
+      var p = document.getElementById('cubs-game-popup');
+      document.getElementById('cubs-gp-title').textContent = date + ' · ' + label;
+      document.getElementById('cubs-gp-g46').textContent = g46;
+      document.getElementById('cubs-gp-g4').textContent = g4;
+      document.getElementById('cubs-gp-g5').textContent = g5;
+      document.getElementById('cubs-gp-g6').textContent = g6;
+      document.getElementById('cubs-gp-schools').textContent = schools;
+      p.classList.add('visible');
+      p.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    ['hs-boys-vb-modal','hs-girls-vb-modal','ms-blue-vb-modal','ms-yellow-vb-modal','cubs-football-modal'].forEach(function(id) {
+      document.getElementById(id).addEventListener('click', function(e) {
+        if (e.target === this) this.classList.remove('open');
+      });
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        ['hs-boys-vb-modal','hs-girls-vb-modal','ms-blue-vb-modal','ms-yellow-vb-modal','cubs-football-modal'].forEach(function(id) {
+          document.getElementById(id).classList.remove('open');
+        });
+      }
+    });
+  </script>
 
   <script src="leo.js" defer></script>
 </body>
