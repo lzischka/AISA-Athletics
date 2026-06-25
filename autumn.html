@@ -355,6 +355,11 @@
             </div>
             <br>
             <small style="color:var(--gray-600);">Conferences: GAAC · ISAC · EAC (all Invitational)</small>
+            <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem;">
+              <button class="btn-schedule" onclick="document.getElementById('hs-swim-modal').classList.add('open')">📅 HS Swimming Schedule</button>
+              <button class="btn-schedule" style="background:#1abc9c;color:#fff;" onclick="document.getElementById('ms-swim-modal').classList.add('open')">📅 MS Swimming Schedule</button>
+              <button class="btn-schedule" style="background:#0d5c8a;color:#fff;" onclick="document.getElementById('cubs-swim-modal').classList.add('open')">📅 Cubs Swimming Schedule</button>
+            </div>
           </div>
         </div>
 
@@ -1331,6 +1336,484 @@
     </div>
   </div><!-- /#cubs-football-modal -->
 
+  <!-- ═══════════════ HS SWIMMING MODAL ═══════════════ -->
+  <div id="hs-swim-modal" class="sched-modal">
+    <div class="sched-inner">
+      <div class="sched-header" style="background: linear-gradient(135deg, #0d5c8a, #1abc9c);">
+        <div>
+          <h2>🏊 HS Swimming</h2>
+          <p>2026–2027 · Varsity/JV Boys &amp; Girls · GAAC · ISAC · EAC</p>
+        </div>
+        <button class="sched-close" onclick="document.getElementById('hs-swim-modal').classList.remove('open')" aria-label="Close">✕</button>
+      </div>
+
+      <div class="cal-legend">
+        <span><i class="cal-dot reg"></i> Registration</span>
+        <span><i class="cal-dot try"></i> Tryouts</span>
+        <span><i class="cal-dot prac"></i> Practice</span>
+        <span><i class="cal-dot game-eac"></i> EAC Swim Meet</span>
+        <span><i class="cal-dot game-gaac"></i> GAAC Tournament</span>
+        <span><i class="cal-dot brk"></i> Fall Break</span>
+      </div>
+
+      <div class="cal-tabs">
+        <button class="cal-tab active" role="tab" onclick="showHsswimMonth('hsswim-sep',this)">🏊 Sep 2026</button>
+        <button class="cal-tab" role="tab" onclick="showHsswimMonth('hsswim-oct',this)">🏊 Oct 2026</button>
+        <button class="cal-tab" role="tab" onclick="showHsswimMonth('hsswim-nov',this)">🏆 Nov 2026</button>
+      </div>
+
+      <!-- SEPTEMBER 2026 -->
+      <div id="hsswim-sep" class="cal-month">
+        <div class="cal-month-title">September 2026</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div>
+          <div class="cal-day reg" title="1st Day of Registration · Online · Both Genders">1<span>Reg<br>Opens</span></div>
+          <div class="cal-day">2</div><div class="cal-day">3</div>
+          <div class="cal-day reg" title="Last Day of Registration · Online · Both Genders">4<span>Reg<br>Closes</span></div>
+          <div class="cal-day">5</div>
+          <div class="cal-day">6</div><div class="cal-day">7</div>
+          <div class="cal-day try" title="Tryouts · HS · AISA Pool · 5:45–7:00 AM">8<span>Tryouts</span></div>
+          <div class="cal-day try" title="Tryouts · HS · AISA Pool · 5:45–7:00 AM">9<span>Tryouts</span></div>
+          <div class="cal-day">10</div>
+          <div class="cal-day try" title="Tryouts · MS &amp; HS · AISA Pool · 5:45–7:00 AM">11<span>Tryouts</span></div>
+          <div class="cal-day">12</div>
+          <div class="cal-day">13</div><div class="cal-day">14</div>
+          <div class="cal-day prac" title="Practice · HS · AISA Pool · 5:45–7:00 AM">15<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice · HS · AISA Pool · 5:45–7:00 AM">16<span>Practice</span></div>
+          <div class="cal-day">17</div>
+          <div class="cal-day prac" title="Practice · MS &amp; HS · AISA Pool · 5:45–7:00 AM">18<span>Practice</span></div>
+          <div class="cal-day">19</div>
+          <div class="cal-day">20</div><div class="cal-day">21</div>
+          <div class="cal-day prac" title="Practice · HS · AISA Pool · 5:45–7:00 AM">22<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice · HS · AISA Pool · 5:45–7:00 AM">23<span>Practice</span></div>
+          <div class="cal-day">24</div>
+          <div class="cal-day game-eac" onclick="showHsswimGamePopup('Sep 25','EAC Swim Meet · PM Meet (HS)','Bus TBD · @ ACS · HS PM Meet','GAA · ACS · AISA · ASD · DAA · DAS')">25<span>EAC<br>PM MEET</span></div>
+          <div class="cal-day game-eac" onclick="showHsswimGamePopup('Sep 26','EAC Swim Meet · AM Meet (HS)','Bus TBD · @ ACS · HS AM Meet','GAA · ACS · AISA · ASD · DAA · DAS')">26<span>EAC<br>AM MEET</span></div>
+          <div class="cal-day">27</div><div class="cal-day">28</div>
+          <div class="cal-day prac" title="Practice · HS · AISA Pool · 5:45–7:00 AM">29<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice · HS · AISA Pool · 5:45–7:00 AM">30<span>Practice</span></div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+        </div>
+      </div>
+
+      <!-- OCTOBER 2026 -->
+      <div id="hsswim-oct" class="cal-month" style="display:none;">
+        <div class="cal-month-title">October 2026</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+          <div class="cal-day">1</div>
+          <div class="cal-day game-eac" onclick="showHsswimGamePopup('Oct 2','EAC Swim Meet · HS','Bus 6:00 AM–5:00 PM @ ASD · HS · Start TBD (regular MS &amp; HS practice 5:45–7:00 AM also held for non-travellers)','GAA · ACS · AISA · ASD · DAA · DAS')">2<span>EAC<br>MEET</span></div>
+          <div class="cal-day">3</div>
+          <div class="cal-day">4</div><div class="cal-day">5</div>
+          <div class="cal-day prac" title="Practice · HS · AISA Pool · 5:45–7:00 AM">6<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice · HS · AISA Pool · 5:45–7:00 AM">7<span>Practice</span></div>
+          <div class="cal-day">8</div>
+          <div class="cal-day prac" title="Practice · MS &amp; HS · AISA Pool · 5:45–7:00 AM">9<span>Practice</span></div>
+          <div class="cal-day brk">10</div>
+          <div class="cal-day brk">11</div><div class="cal-day brk">12</div><div class="cal-day brk">13</div><div class="cal-day brk">14</div><div class="cal-day brk">15</div><div class="cal-day brk">16</div><div class="cal-day brk">17</div>
+          <div class="cal-day brk">18</div>
+          <div class="cal-day">19</div><div class="cal-day">20</div>
+          <div class="cal-day prac" title="Practice · HS · AISA Pool · 5:45–7:00 AM">21<span>Practice</span></div>
+          <div class="cal-day">22</div>
+          <div class="cal-day prac" title="Practice · MS &amp; HS · AISA Pool · 5:45–7:00 AM">23<span>Practice</span></div>
+          <div class="cal-day">24</div>
+          <div class="cal-day">25</div><div class="cal-day">26</div>
+          <div class="cal-day prac" title="Practice · HS · AISA Pool · 5:45–7:00 AM">27<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice · HS · AISA Pool · 5:45–7:00 AM">28<span>Practice</span></div>
+          <div class="cal-day">29</div>
+          <div class="cal-day prac" title="Practice · MS &amp; HS · AISA Pool · 5:45–7:00 AM">30<span>Practice</span></div>
+          <div class="cal-day">31</div>
+        </div>
+        <p class="cal-break-note">🍂 Fall Break — Oct 10 through Oct 18. No games or practices.</p>
+      </div>
+
+      <!-- NOVEMBER 2026 -->
+      <div id="hsswim-nov" class="cal-month" style="display:none;">
+        <div class="cal-month-title">November 2026 — GAAC Tournament</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-day">1</div><div class="cal-day">2</div>
+          <div class="cal-day prac" title="Practice · HS · AISA Pool · 5:45–7:00 AM">3<span>Practice</span></div>
+          <div class="cal-day prac" title="Practice · HS · AISA Pool · 5:45–7:00 AM">4<span>Practice</span></div>
+          <div class="cal-day">5</div>
+          <div class="cal-day prac" title="Practice · MS &amp; HS · AISA Pool · 5:45–7:00 AM">6<span>Practice</span></div>
+          <div class="cal-day">7</div>
+          <div class="cal-day">8</div><div class="cal-day">9</div>
+          <div class="cal-day prac" title="Practice · HS · AISA Pool · 5:45–7:00 AM">10<span>Practice</span></div>
+          <div class="cal-day">11</div>
+          <div class="cal-day game-gaac" onclick="showHsswimGamePopup('Nov 12','GAAC Qualifying Races · Travel Team','@ GIS (Dubai) · Start TBC','AISA · ACS (Qatar) · ISL (Qatar) · UAE (Dubai) · GAAQ (Qatar) · DAS (Dubai) · AUS (Kuwait) · UAS (Kuwait) · AISR (Riyadh) · ASB (Bahrain)')">12<span>GAAC<br>QUALIFYING</span></div>
+          <div class="cal-day game-gaac" onclick="showHsswimGamePopup('Nov 13','GAAC Qualifying Races · Travel Team','@ GIS (Dubai) · Start TBC','AISA · ACS (Qatar) · ISL (Qatar) · UAE (Dubai) · GAAQ (Qatar) · DAS (Dubai) · AUS (Kuwait) · UAS (Kuwait) · AISR (Riyadh) · ASB (Bahrain)')">13<span>GAAC<br>QUALIFYING</span></div>
+          <div class="cal-day game-gaac" onclick="showHsswimGamePopup('Nov 14','GAAC Finals Tournament Day · Travel Team','@ GIS (Dubai) · Start TBC','AISA · ACS (Qatar) · ISL (Qatar) · UAE (Dubai) · GAAQ (Qatar) · DAS (Dubai) · AUS (Kuwait) · UAS (Kuwait) · AISR (Riyadh) · ASB (Bahrain)')">14<span>GAAC<br>FINALS</span></div>
+          <div class="cal-day">15</div><div class="cal-day">16</div><div class="cal-day">17</div><div class="cal-day">18</div>
+          <div class="cal-day">19</div><div class="cal-day">20</div><div class="cal-day">21</div>
+          <div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day">24</div><div class="cal-day">25</div>
+          <div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div>
+          <div class="cal-day">29</div><div class="cal-day">30</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+        </div>
+      </div>
+
+      <!-- Game Detail Popup -->
+      <div id="hsswim-game-popup" class="game-popup">
+        <button class="game-popup-close" onclick="document.getElementById('hsswim-game-popup').classList.remove('visible')" aria-label="Close">✕ close</button>
+        <div class="game-popup-title">🏊 <span id="hsswim-gp-title"></span></div>
+        <div class="game-popup-rows">
+          <div class="game-popup-row">ℹ️ <strong>Info:</strong> <span id="hsswim-gp-info"></span></div>
+          <div class="game-popup-row">🏫 <strong>Schools:</strong> <span id="hsswim-gp-schools"></span></div>
+        </div>
+      </div>
+
+      <!-- Game Day Summary -->
+      <div class="game-summary">
+        <h3>📅 Meet Days — 2026-2027</h3>
+        <div class="game-list">
+          <div class="game-item" style="border-left-color:#0f766e;background:linear-gradient(90deg,#f0fdfa,#fff);">
+            <div class="game-date" style="color:#0f766e;">Sep<br>25-26</div>
+            <div class="game-details">
+              <strong style="color:#0f766e;">🌍 EAC Swim Meet @ ACS — PM Meet (25th) &amp; AM Meet (26th)</strong>
+              <div class="teams"><div class="team-row" style="font-size:.75rem;color:#666;">Schools: GAA · ACS · AISA · ASD · DAA · DAS</div></div>
+            </div>
+          </div>
+          <div class="game-item" style="border-left-color:#0f766e;background:linear-gradient(90deg,#f0fdfa,#fff);">
+            <div class="game-date" style="color:#0f766e;">Oct<br>2</div>
+            <div class="game-details">
+              <strong style="color:#0f766e;">🌍 EAC Swim Meet @ ASD · Bus 6:00 AM–5:00 PM</strong>
+              <div class="teams"><div class="team-row" style="font-size:.75rem;color:#666;">Schools: GAA · ACS · AISA · ASD · DAA · DAS</div></div>
+            </div>
+          </div>
+          <div class="game-item" style="border-left-color:#0d2b52;background:linear-gradient(90deg,#f0f4fa,#fff);">
+            <div class="game-date" style="color:#0d2b52;">Nov<br>12-14</div>
+            <div class="game-details">
+              <strong style="color:#0d2b52;">🏆 GAAC Tournament @ GIS (Dubai) — Qualifying (12-13) &amp; Finals (14)</strong>
+              <div class="teams"><div class="team-row" style="font-size:.75rem;color:#666;">Travel Team only · Schools: AISA, ACS, ISL, UAE, GAAQ, DAS, AUS, UAS, AISR, ASB</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="sched-footer">
+        <a href="schedules/HS_Swimming_2026-27.pdf" class="btn-schedule" download style="text-decoration:none;background:#0d5c8a;color:#fff;">📄 Download Full Schedule PDF</a>
+      </div>
+
+    </div>
+  </div><!-- /#hs-swim-modal -->
+
+  <!-- ═══════════════ MS SWIMMING MODAL ═══════════════ -->
+  <div id="ms-swim-modal" class="sched-modal">
+    <div class="sched-inner">
+      <div class="sched-header" style="background: linear-gradient(135deg, #0d5c8a, #1abc9c);">
+        <div>
+          <h2>🏊 MS Swimming</h2>
+          <p>2026–2027 · Middle School Mixed · EAC</p>
+        </div>
+        <button class="sched-close" onclick="document.getElementById('ms-swim-modal').classList.remove('open')" aria-label="Close">✕</button>
+      </div>
+
+      <div class="cal-legend">
+        <span><i class="cal-dot reg"></i> Registration</span>
+        <span><i class="cal-dot try"></i> Tryouts</span>
+        <span><i class="cal-dot prac"></i> Practice</span>
+        <span><i class="cal-dot support"></i> Optional Practice (MS &amp; HS)</span>
+        <span><i class="cal-dot game-eac"></i> EAC Swim Meet</span>
+        <span><i class="cal-dot brk"></i> Fall Break</span>
+      </div>
+
+      <div class="cal-tabs">
+        <button class="cal-tab active" role="tab" onclick="showMsswimMonth('msswim-sep',this)">🏊 Sep 2026</button>
+        <button class="cal-tab" role="tab" onclick="showMsswimMonth('msswim-oct',this)">🏆 Oct 2026</button>
+        <button class="cal-tab" role="tab" onclick="showMsswimMonth('msswim-nov',this)">🏊 Nov 2026</button>
+      </div>
+
+      <!-- SEPTEMBER 2026 -->
+      <div id="msswim-sep" class="cal-month">
+        <div class="cal-month-title">September 2026</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div>
+          <div class="cal-day reg" title="1st Day of Registration · Online · Both Genders">1<span>Reg<br>Opens</span></div>
+          <div class="cal-day">2</div><div class="cal-day">3</div>
+          <div class="cal-day reg" title="Last Day of Registration · Online · Both Genders">4<span>Reg<br>Closes</span></div>
+          <div class="cal-day">5</div>
+          <div class="cal-day">6</div><div class="cal-day">7</div>
+          <div class="cal-day try" title="Tryouts · MS · AISA Pool · 3:00–4:30 PM">8<span>Tryouts</span></div>
+          <div class="cal-day">9</div>
+          <div class="cal-day try" title="Tryouts · MS · AISA Pool · 3:00–4:30 PM">10<span>Tryouts</span></div>
+          <div class="cal-day support" title="Optional Practice · MS &amp; HS · AISA Pool · 5:45–7:00 AM">11<span>Optional</span></div>
+          <div class="cal-day">12</div>
+          <div class="cal-day">13</div><div class="cal-day">14</div>
+          <div class="cal-day prac" title="Practice · MS · AISA Pool · 3:00–4:30 PM">15<span>Practice</span></div>
+          <div class="cal-day">16</div>
+          <div class="cal-day prac" title="Practice · MS · AISA Pool · 3:00–4:30 PM">17<span>Practice</span></div>
+          <div class="cal-day">18</div><div class="cal-day">19</div>
+          <div class="cal-day">20</div><div class="cal-day">21</div><div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day">24</div>
+          <div class="cal-day game-eac" onclick="showMsswimGamePopup('Sep 25','EAC Swim Meet · MS','Bus TBD · @ ACS · MS · Start TBD','GAA · ACS · AISA · ASD · DAA · DAS')">25<span>EAC<br>MEET</span></div>
+          <div class="cal-day">26</div>
+          <div class="cal-day">27</div><div class="cal-day">28</div>
+          <div class="cal-day prac" title="Practice · MS · AISA Pool · 3:00–4:30 PM">29<span>Practice</span></div>
+          <div class="cal-day">30</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+        </div>
+      </div>
+
+      <!-- OCTOBER 2026 -->
+      <div id="msswim-oct" class="cal-month" style="display:none;">
+        <div class="cal-month-title">October 2026</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+          <div class="cal-day prac" title="Practice · MS · AISA Pool · 3:00–4:30 PM">1<span>Practice</span></div>
+          <div class="cal-day">2</div>
+          <div class="cal-day game-eac" onclick="showMsswimGamePopup('Oct 3','EAC Swim Meet · MS &amp; ELEM','Bus TBD · @ ASD · MS &amp; ELEM · Start TBD','GAA · ACS · AISA · ASD · DAA · DAS')">3<span>EAC<br>MEET</span></div>
+          <div class="cal-day">4</div><div class="cal-day">5</div>
+          <div class="cal-day prac" title="Practice · MS · AISA Pool · 3:00–4:30 PM">6<span>Practice</span></div>
+          <div class="cal-day">7</div>
+          <div class="cal-day prac" title="Practice · MS · AISA Pool · 3:00–4:30 PM">8<span>Practice</span></div>
+          <div class="cal-day support" title="Optional Practice · MS &amp; HS · AISA Pool · 5:45–7:00 AM">9<span>Optional</span></div>
+          <div class="cal-day brk">10</div>
+          <div class="cal-day brk">11</div><div class="cal-day brk">12</div><div class="cal-day brk">13</div><div class="cal-day brk">14</div><div class="cal-day brk">15</div><div class="cal-day brk">16</div><div class="cal-day brk">17</div>
+          <div class="cal-day brk">18</div>
+          <div class="cal-day">19</div><div class="cal-day">20</div><div class="cal-day">21</div>
+          <div class="cal-day prac" title="Practice · MS · AISA Pool · 3:00–4:30 PM">22<span>Practice</span></div>
+          <div class="cal-day support" title="Optional Practice · MS &amp; HS · AISA Pool · 5:45–7:00 AM">23<span>Optional</span></div>
+          <div class="cal-day">24</div>
+          <div class="cal-day game-eac" onclick="showMsswimGamePopup('Oct 25','EAC MS Championships','Bus TBC · @ DAA · MS · Schedule TBC','GAA · ACS · AISA · ASD · DAA · DAS')">25<span>EAC<br>CHAMPS</span></div>
+          <div class="cal-day">26</div>
+          <div class="cal-day prac" title="Practice · MS · AISA Pool · 3:00–4:30 PM">27<span>Practice</span></div>
+          <div class="cal-day">28</div>
+          <div class="cal-day prac" title="Practice · MS · AISA Pool · 3:00–4:30 PM">29<span>Practice</span></div>
+          <div class="cal-day support" title="Optional Practice · MS &amp; HS · AISA Pool · 5:45–7:00 AM">30<span>Optional</span></div>
+          <div class="cal-day">31</div>
+        </div>
+        <p class="cal-break-note">🍂 Fall Break — Oct 10 through Oct 18. No games or practices.</p>
+      </div>
+
+      <!-- NOVEMBER 2026 -->
+      <div id="msswim-nov" class="cal-month" style="display:none;">
+        <div class="cal-month-title">November 2026</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-day">1</div><div class="cal-day">2</div>
+          <div class="cal-day prac" title="Practice · MS · AISA Pool · 3:00–4:30 PM">3<span>Practice</span></div>
+          <div class="cal-day">4</div>
+          <div class="cal-day prac" title="Practice · MS · AISA Pool · 3:00–4:30 PM">5<span>Practice</span></div>
+          <div class="cal-day support" title="Optional Practice · MS &amp; HS · AISA Pool · 5:45–7:00 AM">6<span>Optional</span></div>
+          <div class="cal-day">7</div>
+          <div class="cal-day">8</div><div class="cal-day">9</div><div class="cal-day">10</div><div class="cal-day">11</div>
+          <div class="cal-day">12</div><div class="cal-day">13</div><div class="cal-day">14</div>
+          <div class="cal-day">15</div><div class="cal-day">16</div><div class="cal-day">17</div><div class="cal-day">18</div>
+          <div class="cal-day">19</div><div class="cal-day">20</div><div class="cal-day">21</div>
+          <div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day">24</div><div class="cal-day">25</div>
+          <div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div>
+          <div class="cal-day">29</div><div class="cal-day">30</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+        </div>
+        <p class="cal-break-note">🏊 Season concludes after Week 8 (Nov 6) optional practice.</p>
+      </div>
+
+      <!-- Game Detail Popup -->
+      <div id="msswim-game-popup" class="game-popup">
+        <button class="game-popup-close" onclick="document.getElementById('msswim-game-popup').classList.remove('visible')" aria-label="Close">✕ close</button>
+        <div class="game-popup-title">🏊 <span id="msswim-gp-title"></span></div>
+        <div class="game-popup-rows">
+          <div class="game-popup-row">ℹ️ <strong>Info:</strong> <span id="msswim-gp-info"></span></div>
+          <div class="game-popup-row">🏫 <strong>Schools:</strong> <span id="msswim-gp-schools"></span></div>
+        </div>
+      </div>
+
+      <!-- Game Day Summary -->
+      <div class="game-summary">
+        <h3>📅 Meet Days — 2026-2027</h3>
+        <div class="game-list">
+          <div class="game-item" style="border-left-color:#0f766e;background:linear-gradient(90deg,#f0fdfa,#fff);">
+            <div class="game-date" style="color:#0f766e;">Sep<br>25</div>
+            <div class="game-details">
+              <strong style="color:#0f766e;">🌍 EAC Swim Meet @ ACS · MS</strong>
+              <div class="teams"><div class="team-row" style="font-size:.75rem;color:#666;">Schools: GAA · ACS · AISA · ASD · DAA · DAS</div></div>
+            </div>
+          </div>
+          <div class="game-item" style="border-left-color:#0f766e;background:linear-gradient(90deg,#f0fdfa,#fff);">
+            <div class="game-date" style="color:#0f766e;">Oct<br>3</div>
+            <div class="game-details">
+              <strong style="color:#0f766e;">🌍 EAC Swim Meet @ ASD · MS &amp; Elementary</strong>
+              <div class="teams"><div class="team-row" style="font-size:.75rem;color:#666;">Schools: GAA · ACS · AISA · ASD · DAA · DAS</div></div>
+            </div>
+          </div>
+          <div class="game-item" style="border-left-color:#0f766e;background:linear-gradient(90deg,#f0fdfa,#fff);">
+            <div class="game-date" style="color:#0f766e;">Oct<br>25</div>
+            <div class="game-details">
+              <strong style="color:#0f766e;">🏆 EAC MS Championships @ DAA · Schedule TBC</strong>
+              <div class="teams"><div class="team-row" style="font-size:.75rem;color:#666;">Schools: GAA · ACS · AISA · ASD · DAA · DAS</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="sched-footer">
+        <a href="schedules/MS_Swimming_2026-27.pdf" class="btn-schedule" download style="text-decoration:none;background:#1abc9c;color:#fff;">📄 Download Full Schedule PDF</a>
+      </div>
+
+    </div>
+  </div><!-- /#ms-swim-modal -->
+
+  <!-- ═══════════════ CUBS SWIMMING MODAL ═══════════════ -->
+  <div id="cubs-swim-modal" class="sched-modal">
+    <div class="sched-inner">
+      <div class="sched-header" style="background: linear-gradient(135deg, #0d5c8a, #1abc9c);">
+        <div>
+          <h2>🏊 Cubs Swimming</h2>
+          <p>2026–2027 · Elementary · Beginner &amp; Competitive Training · EAC / JEAC</p>
+        </div>
+        <button class="sched-close" onclick="document.getElementById('cubs-swim-modal').classList.remove('open')" aria-label="Close">✕</button>
+      </div>
+
+      <div class="cal-legend">
+        <span><i class="cal-dot reg"></i> Registration</span>
+        <span><i class="cal-dot prac"></i> Swim Training</span>
+        <span><i class="cal-dot game-eac"></i> EAC Swim Meet</span>
+        <span><i class="cal-dot game-jeac"></i> JEAC ELEM Championships</span>
+        <span><i class="cal-dot brk"></i> Fall Break</span>
+      </div>
+
+      <div class="cal-tabs">
+        <button class="cal-tab active" role="tab" onclick="showCubsswimMonth('cubsswim-sep',this)">🏊 Sep 2026</button>
+        <button class="cal-tab" role="tab" onclick="showCubsswimMonth('cubsswim-oct',this)">🏆 Oct 2026</button>
+        <button class="cal-tab" role="tab" onclick="showCubsswimMonth('cubsswim-nov',this)">🏊 Nov 2026</button>
+      </div>
+
+      <!-- SEPTEMBER 2026 -->
+      <div id="cubsswim-sep" class="cal-month">
+        <div class="cal-month-title">September 2026</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div>
+          <div class="cal-day reg" title="1st Day of Registration · Online · Both Genders">1<span>Reg<br>Opens</span></div>
+          <div class="cal-day">2</div><div class="cal-day">3</div><div class="cal-day">4</div><div class="cal-day">5</div>
+          <div class="cal-day">6</div><div class="cal-day">7</div>
+          <div class="cal-day reg" title="Last Day of Registration · Online · Both Genders">8<span>Reg<br>Closes</span></div>
+          <div class="cal-day">9</div><div class="cal-day">10</div><div class="cal-day">11</div><div class="cal-day">12</div>
+          <div class="cal-day">13</div>
+          <div class="cal-day prac" title="Beginner Competitive Swim Training · ASA Registered · Pool · 3:00–4:00 PM">14<span>Beginner</span></div>
+          <div class="cal-day">15</div>
+          <div class="cal-day prac" title="Competitive Swim Training · ASA Registered · Pool · 3:00–4:00 PM">16<span>Training</span></div>
+          <div class="cal-day">17</div><div class="cal-day">18</div><div class="cal-day">19</div>
+          <div class="cal-day">20</div>
+          <div class="cal-day prac" title="Beginner Competitive Swim Training · ASA Registered · Pool · 3:00–4:00 PM">21<span>Beginner</span></div>
+          <div class="cal-day">22</div>
+          <div class="cal-day prac" title="Competitive Swim Training · ASA Registered · Pool · 3:00–4:00 PM">23<span>Training</span></div>
+          <div class="cal-day">24</div><div class="cal-day">25</div>
+          <div class="cal-day game-eac" onclick="showCubsswimGamePopup('Sep 26','EAC Swim Meet · ELEM PM Meet','Bus TBD · @ ACS · ELEM · PM Meet','GAA · ACS · AISA · ASD · DAA · DAS')">26<span>EAC<br>PM MEET</span></div>
+          <div class="cal-day">27</div>
+          <div class="cal-day prac" title="Beginner Competitive Swim Training · ASA Registered · Pool · 3:00–4:00 PM">28<span>Beginner</span></div>
+          <div class="cal-day">29</div>
+          <div class="cal-day prac" title="Competitive Swim Training · ASA Registered · Pool · 3:00–4:00 PM">30<span>Training</span></div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+        </div>
+      </div>
+
+      <!-- OCTOBER 2026 -->
+      <div id="cubsswim-oct" class="cal-month" style="display:none;">
+        <div class="cal-month-title">October 2026</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+          <div class="cal-day">1</div><div class="cal-day">2</div>
+          <div class="cal-day game-eac" onclick="showCubsswimGamePopup('Oct 3','EAC Swim Meet · MS &amp; ELEM','Bus TBD · @ ASD · MS &amp; ELEM · Start TBD','GAA · ACS · AISA · ASD · DAA · DAS')">3<span>EAC<br>MEET</span></div>
+          <div class="cal-day">4</div>
+          <div class="cal-day prac" title="Beginner Competitive Swim Training · ASA Registered · Pool · 3:00–4:00 PM">5<span>Beginner</span></div>
+          <div class="cal-day">6</div>
+          <div class="cal-day prac" title="Competitive Swim Training · ASA Registered · Pool · 3:00–4:00 PM">7<span>Training</span></div>
+          <div class="cal-day">8</div><div class="cal-day">9</div>
+          <div class="cal-day brk">10</div>
+          <div class="cal-day brk">11</div><div class="cal-day brk">12</div><div class="cal-day brk">13</div><div class="cal-day brk">14</div><div class="cal-day brk">15</div><div class="cal-day brk">16</div><div class="cal-day brk">17</div>
+          <div class="cal-day brk">18</div>
+          <div class="cal-day">19</div><div class="cal-day">20</div>
+          <div class="cal-day prac" title="Competitive Swim Training · ASA Registered · Pool · 3:00–4:00 PM">21<span>Training</span></div>
+          <div class="cal-day">22</div><div class="cal-day">23</div>
+          <div class="cal-day game-jeac" onclick="showCubsswimGamePopup('Oct 24','JEAC ELEM Championships','Bus TBC · @ DAA · ELEM · Schedule TBC','GAA · ACS · AISA · ASD · DAA · DAS')">24<span>JEAC<br>CHAMPS</span></div>
+          <div class="cal-day">25</div>
+          <div class="cal-day prac" title="Beginner Competitive Swim Training · ASA Registered · Pool · 3:00–4:00 PM">26<span>Beginner</span></div>
+          <div class="cal-day">27</div>
+          <div class="cal-day prac" title="Competitive Swim Training · ASA Registered · Pool · 3:00–4:00 PM">28<span>Training</span></div>
+          <div class="cal-day">29</div><div class="cal-day">30</div><div class="cal-day">31</div>
+        </div>
+        <p class="cal-break-note">🍂 Fall Break — Oct 10 through Oct 18. No training.</p>
+      </div>
+
+      <!-- NOVEMBER 2026 -->
+      <div id="cubsswim-nov" class="cal-month" style="display:none;">
+        <div class="cal-month-title">November 2026</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-day">1</div>
+          <div class="cal-day prac" title="Beginner Competitive Swim Training · ASA Registered · Pool · 3:00–4:00 PM">2<span>Beginner</span></div>
+          <div class="cal-day">3</div>
+          <div class="cal-day prac" title="Competitive Swim Training · ASA Registered · Pool · 3:00–4:00 PM">4<span>Training</span></div>
+          <div class="cal-day">5</div><div class="cal-day">6</div><div class="cal-day">7</div>
+          <div class="cal-day">8</div>
+          <div class="cal-day prac" title="Beginner Competitive Swim Training · ASA Registered · Pool · 3:00–4:00 PM">9<span>Beginner</span></div>
+          <div class="cal-day">10</div>
+          <div class="cal-day prac" title="Competitive Swim Training · ASA Registered · Pool · 3:00–4:00 PM">11<span>Training</span></div>
+          <div class="cal-day">12</div><div class="cal-day">13</div><div class="cal-day">14</div>
+          <div class="cal-day">15</div><div class="cal-day">16</div><div class="cal-day">17</div><div class="cal-day">18</div>
+          <div class="cal-day">19</div><div class="cal-day">20</div><div class="cal-day">21</div>
+          <div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day">24</div><div class="cal-day">25</div>
+          <div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div>
+          <div class="cal-day">29</div><div class="cal-day">30</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+        </div>
+        <p class="cal-break-note">🏊 Season concludes after Week 8 (Nov 11) training.</p>
+      </div>
+
+      <!-- Game Detail Popup -->
+      <div id="cubsswim-game-popup" class="game-popup">
+        <button class="game-popup-close" onclick="document.getElementById('cubsswim-game-popup').classList.remove('visible')" aria-label="Close">✕ close</button>
+        <div class="game-popup-title">🏊 <span id="cubsswim-gp-title"></span></div>
+        <div class="game-popup-rows">
+          <div class="game-popup-row">ℹ️ <strong>Info:</strong> <span id="cubsswim-gp-info"></span></div>
+          <div class="game-popup-row">🏫 <strong>Schools:</strong> <span id="cubsswim-gp-schools"></span></div>
+        </div>
+      </div>
+
+      <!-- Game Day Summary -->
+      <div class="game-summary">
+        <h3>📅 Meet Days — 2026-2027</h3>
+        <div class="game-list">
+          <div class="game-item" style="border-left-color:#0f766e;background:linear-gradient(90deg,#f0fdfa,#fff);">
+            <div class="game-date" style="color:#0f766e;">Sep<br>26</div>
+            <div class="game-details">
+              <strong style="color:#0f766e;">🌍 EAC Swim Meet @ ACS · ELEM PM Meet</strong>
+              <div class="teams"><div class="team-row" style="font-size:.75rem;color:#666;">Schools: GAA · ACS · AISA · ASD · DAA · DAS</div></div>
+            </div>
+          </div>
+          <div class="game-item" style="border-left-color:#0f766e;background:linear-gradient(90deg,#f0fdfa,#fff);">
+            <div class="game-date" style="color:#0f766e;">Oct<br>3</div>
+            <div class="game-details">
+              <strong style="color:#0f766e;">🌍 EAC Swim Meet @ ASD · MS &amp; Elementary</strong>
+              <div class="teams"><div class="team-row" style="font-size:.75rem;color:#666;">Schools: GAA · ACS · AISA · ASD · DAA · DAS</div></div>
+            </div>
+          </div>
+          <div class="game-item" style="border-left-color:#c0392b;background:linear-gradient(90deg,#fdf2f0,#fff);">
+            <div class="game-date" style="color:#c0392b;">Oct<br>24</div>
+            <div class="game-details">
+              <strong style="color:#c0392b;">🏆 JEAC ELEM Championships @ DAA · Schedule TBC</strong>
+              <div class="teams"><div class="team-row" style="font-size:.75rem;color:#666;">Schools: GAA · ACS · AISA · ASD · DAA · DAS</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="sched-footer">
+        <a href="schedules/Cubs_Swimming_2026-27.pdf" class="btn-schedule" download style="text-decoration:none;background:#0d5c8a;color:#fff;">📄 Download Full Schedule PDF</a>
+      </div>
+
+    </div>
+  </div><!-- /#cubs-swim-modal -->
+
   <script>
     function showHsbMonth(month, btn) {
       ['hsbvb-sep','hsbvb-oct','hsbvb-nov'].forEach(function(m) {
@@ -1415,14 +1898,62 @@
       p.classList.add('visible');
       p.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
-    ['hs-boys-vb-modal','hs-girls-vb-modal','ms-blue-vb-modal','ms-yellow-vb-modal','cubs-football-modal'].forEach(function(id) {
+    function showHsswimMonth(month, btn) {
+      ['hsswim-sep','hsswim-oct','hsswim-nov'].forEach(function(m) {
+        document.getElementById(m).style.display = m === month ? '' : 'none';
+      });
+      document.querySelectorAll('#hs-swim-modal .cal-tab').forEach(function(t) { t.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('hsswim-game-popup').classList.remove('visible');
+    }
+    function showHsswimGamePopup(date, label, info, schools) {
+      var p = document.getElementById('hsswim-game-popup');
+      document.getElementById('hsswim-gp-title').textContent = date + ' · ' + label;
+      document.getElementById('hsswim-gp-info').textContent = info;
+      document.getElementById('hsswim-gp-schools').textContent = schools;
+      p.classList.add('visible');
+      p.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    function showMsswimMonth(month, btn) {
+      ['msswim-sep','msswim-oct','msswim-nov'].forEach(function(m) {
+        document.getElementById(m).style.display = m === month ? '' : 'none';
+      });
+      document.querySelectorAll('#ms-swim-modal .cal-tab').forEach(function(t) { t.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('msswim-game-popup').classList.remove('visible');
+    }
+    function showMsswimGamePopup(date, label, info, schools) {
+      var p = document.getElementById('msswim-game-popup');
+      document.getElementById('msswim-gp-title').textContent = date + ' · ' + label;
+      document.getElementById('msswim-gp-info').textContent = info;
+      document.getElementById('msswim-gp-schools').textContent = schools;
+      p.classList.add('visible');
+      p.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    function showCubsswimMonth(month, btn) {
+      ['cubsswim-sep','cubsswim-oct','cubsswim-nov'].forEach(function(m) {
+        document.getElementById(m).style.display = m === month ? '' : 'none';
+      });
+      document.querySelectorAll('#cubs-swim-modal .cal-tab').forEach(function(t) { t.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('cubsswim-game-popup').classList.remove('visible');
+    }
+    function showCubsswimGamePopup(date, label, info, schools) {
+      var p = document.getElementById('cubsswim-game-popup');
+      document.getElementById('cubsswim-gp-title').textContent = date + ' · ' + label;
+      document.getElementById('cubsswim-gp-info').textContent = info;
+      document.getElementById('cubsswim-gp-schools').textContent = schools;
+      p.classList.add('visible');
+      p.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    ['hs-boys-vb-modal','hs-girls-vb-modal','ms-blue-vb-modal','ms-yellow-vb-modal','cubs-football-modal','hs-swim-modal','ms-swim-modal','cubs-swim-modal'].forEach(function(id) {
       document.getElementById(id).addEventListener('click', function(e) {
         if (e.target === this) this.classList.remove('open');
       });
     });
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
-        ['hs-boys-vb-modal','hs-girls-vb-modal','ms-blue-vb-modal','ms-yellow-vb-modal','cubs-football-modal'].forEach(function(id) {
+        ['hs-boys-vb-modal','hs-girls-vb-modal','ms-blue-vb-modal','ms-yellow-vb-modal','cubs-football-modal','hs-swim-modal','ms-swim-modal','cubs-swim-modal'].forEach(function(id) {
           document.getElementById(id).classList.remove('open');
         });
       }
